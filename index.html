@@ -195,9 +195,11 @@ details>*:not(summary){padding:1rem 1.4rem;}
 <div class="sidebar-logo">AM II — Villegas<span>Apuntes completos · UTN</span></div>
 <div class="nav-unit">
   <a class="nav-unit-header" href="#guia-final" style="color:#e74c3c;">★ Guia para el Final</a>
+  <a class="nav-link" href="#guia-vf-reales" style="color:#e74c3c;">V/F de exámenes reales</a>
   <a class="nav-link" href="#guia-vf">Como responder V/F</a>
   <a class="nav-link" href="#guia-teoria">Justificacion teorica</a>
   <a class="nav-link" href="#guia-preguntas">Preguntas frecuentes</a>
+  <a class="nav-link" href="#guia-preguntas-teoricas-reales">Preguntas de finales reales</a>
   <a class="nav-link" href="#guia-conexiones">Conexiones entre temas</a>
   <a class="nav-link" href="#guia-ejercicios" style="color:#c39bd3;">Ejercicios tipo final</a>
 </div>
@@ -327,6 +329,156 @@ details>*:not(summary){padding:1rem 1.4rem;}
   <tr><td>"La derivada direccional máxima de \(f\) en \(P_0\) es \(|\nabla f(P_0)|\)"</td><td><strong style="color:#27ae60">V</strong></td><td>\(DD_{\mathbf{u}}f = \nabla f\cdot\mathbf{u} = |\nabla f|\cos\theta\). Máx cuando \(\theta=0\) (paralelo al gradiente). DDmín \(= -|\nabla f|\) en sentido opuesto.</td></tr>
 </table>
 
+<h3 id="guia-vf-reales">★ V/F de Exámenes Reales — Con Respuesta Completa</h3>
+<div class="warnbox">
+  <div class="warnbox-label">⚠ Regla del examen</div>
+  <p>Sin justificación = 0 puntos aunque la V/F esté bien. La justificación debe citar un teorema, definición o contraejemplo concreto. Las respuestas de abajo son el nivel de detalle que espera el docente.</p>
+</div>
+
+<h4>📋 Final 27 de Febrero 2026</h4>
+<table class="vtable">
+  <tr><th style="width:42%">Afirmación</th><th style="width:8%">V/F</th><th>Justificación completa</th></tr>
+  <tr>
+    <td>"La ecuación característica surge a partir de plantear una posible solución particular de la EDO de 2do orden a coeficientes constantes homogénea."</td>
+    <td><strong style="color:#c0392b">F</strong></td>
+    <td>La ecuación característica \(ar^2+br+c=0\) surge de proponer \(y=e^{rx}\) como solución de la <em>ecuación homogénea</em> (no particular). Se sustituye \(y=e^{rx}\) en \(ay''+by'+cy=0\) y se factoriza el \(e^{rx}\neq 0\), obteniendo \(ar^2+br+c=0\). Las soluciones particulares se hallan por CI o VP, no por la ec. característica.</td>
+  </tr>
+  <tr>
+    <td>"Si una función \(f(x,y)\) es continua en una región, puede garantizarse que es diferenciable en dicha región."</td>
+    <td><strong style="color:#c0392b">F</strong></td>
+    <td>Continuidad <strong>no implica</strong> diferenciabilidad. Contraejemplo: \(f(x,y)=\sqrt{x^2+y^2}\) es continua en todo \(\mathbb{R}^2\) pero no es diferenciable en \((0,0)\) (no existe plano tangente allí). Para diferenciabilidad se requiere además que \(f_x\) y \(f_y\) sean continuas en un entorno del punto.</td>
+  </tr>
+  <tr>
+    <td>"Si el vector gradiente es no nulo en el punto \((x_0,y_0)\), el mismo es perpendicular a la curva de nivel que pasa por dicho punto."</td>
+    <td><strong style="color:#27ae60">V</strong></td>
+    <td>Si \(\mathbf{r}(t)\) es cualquier curva sobre la curva de nivel \(f(x,y)=c\), derivando por regla de cadena: \(\nabla f(\mathbf{r}(t))\cdot\mathbf{r}'(t)=0\). Como \(\mathbf{r}'(t)\) es tangente a la curva de nivel y el producto es cero, concluimos \(\nabla f\perp\) a la curva de nivel en ese punto.</td>
+  </tr>
+  <tr>
+    <td>"La solución de una EDO de segundo orden a coeficientes constantes completa siempre consta de término transitorio y permanente."</td>
+    <td><strong style="color:#c0392b">F</strong></td>
+    <td>Solo existe término permanente cuando la EDO es <em>no homogénea</em> (\(g(t)\neq 0\)) y el sistema está amortiguado (\(c\neq 0\)), de modo que \(y_H\to 0\) cuando \(t\to\infty\). Si la EDO es homogénea o si el sistema no está amortiguado, no hay separación en transitorio/permanente en ese sentido físico.</td>
+  </tr>
+</table>
+
+<h4>📋 Parcial de EDO — Tema 1</h4>
+<table class="vtable">
+  <tr><th style="width:42%">Afirmación</th><th style="width:8%">V/F</th><th>Justificación completa</th></tr>
+  <tr>
+    <td>"Una ecuación diferencial de primer orden siempre tiene una única solución que pasa por cualquier punto dado \((x_0,y_0)\) del plano."</td>
+    <td><strong style="color:#c0392b">F</strong></td>
+    <td>Según el <strong>Teorema de Picard (existencia y unicidad)</strong>: la solución única está garantizada solo si \(f(x,y)\) y \(\partial f/\partial y\) son continuas en alguna región \(R\) que contiene \((x_0,y_0)\). Contraejemplo: \(dy/dx = y^{1/3}\), \(y(0)=0\) — como \(\partial f/\partial y = \frac{1}{3}y^{-2/3}\) no es continua en \(y=0\), existen infinitas soluciones: \(y=0\) y \(y=\left(\frac{2}{3}x\right)^{3/2}\).</td>
+  </tr>
+  <tr>
+    <td>"Toda ecuación diferencial lineal de primer orden puede resolverse utilizando un factor integrante."</td>
+    <td><strong style="color:#27ae60">V</strong></td>
+    <td>Toda EDO lineal de 1er orden puede escribirse en forma estándar \(y'+P(x)y=Q(x)\). El factor integrante \(\mu(x)=e^{\int P(x)\,dx}\) siempre existe (la integral de una función continua existe), y multiplicando por \(\mu\) se obtiene \(\frac{d}{dx}[\mu y]=\mu Q\), que es directamente integrable.</td>
+  </tr>
+  <tr>
+    <td>"Si el Wronskiano de dos funciones es cero en un intervalo, entonces las funciones son necesariamente linealmente dependientes en ese intervalo."</td>
+    <td><strong style="color:#c0392b">F</strong></td>
+    <td>El recíproco del Teorema de Abel <strong>no vale para funciones arbitrarias</strong>. Contraejemplo: \(f_1=x^2\) y \(f_2=x|x|\) tienen \(W=0\) en todo \(\mathbb{R}\) pero son LI. Sí vale para soluciones de una EDO lineal homogénea: si \(y_1, y_2\) son soluciones y \(W=0\) en algún punto del intervalo, entonces \(W=0\) en todo el intervalo y son LD.</td>
+  </tr>
+  <tr>
+    <td>"En un modelo de crecimiento logístico, la tasa de crecimiento de la población disminuye a medida que la población se acerca a la 'capacidad de carga' del ecosistema."</td>
+    <td><strong style="color:#27ae60">V</strong></td>
+    <td>El modelo logístico es \(\frac{dP}{dt}=kP\left(1-\frac{P}{K}\right)\). Cuando \(P\to K\), el factor \((1-P/K)\to 0\), por lo que la tasa de crecimiento \(dP/dt\to 0\). La población crece más rápido cuando \(P=K/2\) y se estabiliza asintóticamente en \(P=K\) (capacidad de carga).</td>
+  </tr>
+</table>
+
+<h4>📋 Parcial de EDO — Tema 2</h4>
+<table class="vtable">
+  <tr><th style="width:42%">Afirmación</th><th style="width:8%">V/F</th><th>Justificación completa</th></tr>
+  <tr>
+    <td>"Una ecuación diferencial de segundo orden no homogénea tiene una solución general que es la suma de la solución de la ecuación homogénea asociada y una solución particular."</td>
+    <td><strong style="color:#27ae60">V</strong></td>
+    <td>Por el <strong>Principio de Superposición</strong>: si \(y_p\) es una solución particular de \(ay''+by'+cy=g(x)\) y \(y_H=C_1y_1+C_2y_2\) es la sol. gral. de la ec. homogénea asociada, entonces la sol. gral. de la completa es \(y=y_H+y_p\). Esto se verifica sustituyendo directamente.</td>
+  </tr>
+  <tr>
+    <td>"El método de coeficientes indeterminados es aplicable a cualquier ecuación diferencial lineal, sin importar la forma del término no homogéneo."</td>
+    <td><strong style="color:#c0392b">F</strong></td>
+    <td>El MCI solo aplica cuando \(g(x)\) es de <strong>forma admisible</strong>: polinomios, exponenciales \(e^{\alpha x}\), senos/cosenos \(\sin(\beta x)\), \(\cos(\beta x)\), o combinaciones/productos de estos. Para \(g(x)=\ln x\), \(\tan x\), \(1/x\), etc., se usa el método de <strong>Variación de Parámetros</strong> (que funciona siempre).</td>
+  </tr>
+  <tr>
+    <td>"En un sistema masa-resorte, el término de 'amortiguamiento' está asociado a la primera derivada de la posición respecto al tiempo."</td>
+    <td><strong style="color:#27ae60">V</strong></td>
+    <td>Por la Ley de Stokes, la fuerza de amortiguamiento es proporcional a la velocidad: \(F_a=-b\cdot v=-b\cdot y'(t)\), donde \(y'(t)=dy/dt\) es la <strong>primera derivada</strong> de la posición (= la velocidad instantánea). Por eso aparece \(by'\) en la ecuación \(my''+by'+ky=f(t)\).</td>
+  </tr>
+  <tr>
+    <td>"Si el Wronskiano es igual a cero en un intervalo, las funciones son linealmente dependientes."</td>
+    <td><strong style="color:#c0392b">F</strong></td>
+    <td>Igual que arriba: \(W=0\) no implica LD en general. Solo vale el recíproco para <em>soluciones</em> de una EDO lineal homogénea (Teorema de Abel). Para funciones arbitrarias, \(W=0\) es condición necesaria pero no suficiente de LD.</td>
+  </tr>
+</table>
+
+<h4>📋 Parcial de EDO — Tema 5</h4>
+<table class="vtable">
+  <tr><th style="width:42%">Afirmación</th><th style="width:8%">V/F</th><th>Justificación completa</th></tr>
+  <tr>
+    <td>"Según la Ley de Enfriamiento de Newton, la rapidez con la que cambia la temperatura de un cuerpo es proporcional a la temperatura del medio ambiente."</td>
+    <td><strong style="color:#c0392b">F</strong></td>
+    <td>La ley establece que la tasa de cambio es proporcional a la <strong>diferencia de temperaturas</strong> entre el cuerpo y el medio: \(\frac{dT}{dt}=k(T-T_m)\), donde \(T_m\) es la temperatura del medio. No es proporcional a \(T_m\) sino a \((T-T_m)\). Si \(T=T_m\) no hay intercambio de calor.</td>
+  </tr>
+  <tr>
+    <td>"En una ecuación diferencial lineal de segundo orden, si \(y_1\) es una solución de la ecuación homogénea asociada, entonces \(c_1y_1\) es una solución para cualquier constante \(c_1\)."</td>
+    <td><strong style="color:#27ae60">V</strong></td>
+    <td>Por el <strong>Principio de Superposición para ecuaciones homogéneas</strong>: si \(y_1\) satisface \(ay''+by'+cy=0\), entonces \(c_1y_1\) también lo satisface para todo escalar \(c_1\) (verificable sustituyendo y usando la linealidad del operador diferencial).</td>
+  </tr>
+  <tr>
+    <td>"Un problema con valores en la frontera (PVF) para una ecuación de segundo orden requiere que las condiciones se especifiquen en el mismo punto \(x_0\)."</td>
+    <td><strong style="color:#c0392b">F</strong></td>
+    <td>Eso describe un <strong>PVI (Problema de Valor Inicial)</strong>, no un PVF. En un <em>Problema de Valor en la Frontera</em>, las condiciones se especifican en <strong>dos puntos distintos</strong> \(x=a\) y \(x=b\) (los extremos del intervalo). Ej: \(y''=f\), \(y(a)=\alpha\), \(y(b)=\beta\).</td>
+  </tr>
+  <tr>
+    <td>"En un sistema de movimiento libre amortiguado, si el discriminante de la ecuación auxiliar es positivo, el sistema se describe como 'sobreamortiguado'."</td>
+    <td><strong style="color:#27ae60">V</strong></td>
+    <td>\(\Delta=b^2-4mk>0\) implica dos raíces reales distintas \(r_1,r_2\) (ambas negativas si \(b,m,k>0\)): \(y_H=C_1e^{r_1t}+C_2e^{r_2t}\to 0\) sin oscilar. Es el caso <strong>sobreamortiguado</strong>. El sistema regresa al equilibrio exponencialmente sin oscilaciones.</td>
+  </tr>
+</table>
+
+<h3 id="guia-preguntas-teoricas-reales">★ Preguntas Teóricas de Finales Reales — Respuestas Modelo</h3>
+<p style="color:var(--ink2);font-style:italic;font-size:14px;margin-bottom:1.2rem">Preguntas exactas extraídas de los finales del 13 Feb 2026, 27 Feb 2026 y parcial de EDO. Respuestas al nivel que exige el docente.</p>
+
+<div class="defbox">
+  <div class="defbox-label">Final 13/02/2026 — "Justifique teóricamente, en forma detallada, por qué esa dirección corresponde al descenso más rápido"</div>
+  <p>La derivada direccional de \(f\) en la dirección del vector unitario \(\mathbf{u}\) es \(D_{\mathbf{u}}f = \nabla f\cdot\mathbf{u} = |\nabla f|\cos\theta\), donde \(\theta\) es el ángulo entre \(\nabla f\) y \(\mathbf{u}\). Esta expresión es <strong>mínima cuando \(\cos\theta=-1\)</strong>, es decir, cuando \(\mathbf{u}\) apunta exactamente en la dirección <em>opuesta</em> al gradiente: \(\mathbf{u}^*=-\nabla f/|\nabla f|\). La tasa de descenso máxima vale \(-|\nabla f|\). Por lo tanto, para descender más rápido desde un punto, debemos movernos en la dirección \(-\nabla f\).</p>
+</div>
+
+<div class="defbox">
+  <div class="defbox-label">Final 13/02/2026 — "¿Cuál sería la ecuación de la curva? ¿Cómo se denomina? ¿Qué relación tiene con el gradiente? Demuestre analíticamente"</div>
+  <p>La curva se llama <strong>curva de nivel</strong> (o curva isovalor): es el conjunto de puntos \((x,y)\) del plano donde \(f(x,y)=c\) para alguna constante \(c\). Geométricamente, es la proyección sobre el plano \(xy\) de la intersección de la superficie \(z=f(x,y)\) con el plano horizontal \(z=c\).</p>
+  <p><strong>Relación con el gradiente — demostración:</strong> sea \(\mathbf{r}(t)=(x(t),y(t))\) cualquier curva contenida en la curva de nivel, es decir, \(f(x(t),y(t))=c\) para todo \(t\). Derivando respecto a \(t\) por regla de la cadena: \(\frac{\partial f}{\partial x}x'(t)+\frac{\partial f}{\partial y}y'(t)=0\), es decir, \(\nabla f\cdot\mathbf{r}'(t)=0\). Como \(\mathbf{r}'(t)\) es vector tangente a la curva de nivel, se concluye que \(\nabla f\perp\) curva de nivel en ese punto. \(\square\)</p>
+</div>
+
+<div class="defbox">
+  <div class="defbox-label">Final 13/02/2026 — "¿Qué tipo de función es \(\nabla\phi\)? Explique el significado físico del campo escalar respecto de su gradiente"</div>
+  <p>\(\nabla\phi\) es un <strong>campo vectorial</strong>: a cada punto del espacio le asigna un vector. Si \(\phi(x,y,z)\) es, por ejemplo, la presión atmosférica en cada punto del espacio, entonces \(\nabla\phi\) en ese punto indica la dirección y sentido de mayor aumento de presión, y su módulo indica la tasa de cambio máxima. El viento sopla aproximadamente en la dirección \(-\nabla p\) (de mayor a menor presión). Si \(\phi\) es temperatura, \(-\nabla\phi\) indica la dirección de flujo de calor.</p>
+</div>
+
+<div class="defbox">
+  <div class="defbox-label">Final 13/02/2026 — "Desarrolle el método de Lagrange, explicando la teoría que da sostén al cálculo" (Ej. 2c: diferencial total)</div>
+  <p>Si las cantidades óptimas cambian en \(\Delta a=0.05\) y \(\Delta b=0.03\), la cantidad exacta se calcula evaluando en el nuevo punto. La cantidad <strong>aproximada</strong> se obtiene con el diferencial total: \(dH=H_a\,da+H_b\,db\), que aproxima \(\Delta H\) para incrementos pequeños. <em>Justificación teórica:</em> si \(H\) es diferenciable en el punto, la linealización \(L(a,b)=H(P_0)+H_a(P_0)(a-a_0)+H_b(P_0)(b-b_0)\) es la mejor aproximación lineal de \(H\) cerca de \(P_0\), y \(dH=L(a_0+da,b_0+db)-H(P_0)\).</p>
+</div>
+
+<div class="defbox">
+  <div class="defbox-label">Final 27/02/2026 — "Explique el método utilizado para hallar extremos en el interior (teoría del Hessiano)"</div>
+  <p>Para hallar extremos locales en el interior del dominio, se aplica la <strong>condición necesaria</strong>: en un extremo interior, \(\nabla f=\mathbf{0}\) (punto crítico). Se resuelve el sistema \(f_x=0\), \(f_y=0\). Luego se clasifica cada punto crítico con el <strong>criterio de la segunda derivada</strong> (Hessiano): se computa \(H=f_{xx}f_{yy}-f_{xy}^2\). Si \(H>0\) y \(f_{xx}>0\): mínimo local; \(H>0\) y \(f_{xx}<0\): máximo local; \(H<0\): punto de silla (ni máximo ni mínimo); \(H=0\): el criterio no decide. El Hessiano es el determinante de la matriz de segundas derivadas y determina si la forma cuadrática asociada es definida positiva, negativa, o indefinida.</p>
+</div>
+
+<div class="defbox">
+  <div class="defbox-label">Final 27/02/2026 — "¿Qué métodos se utilizan para hallar extremos condicionados? Explique brevemente uno"</div>
+  <p>Los métodos para extremos condicionados son: <strong>(1) Multiplicadores de Lagrange</strong> y <strong>(2) Parametrización de la restricción</strong>. <em>Lagrange:</em> para extremar \(f(x,y)\) sujeto a \(g(x,y)=0\), se plantea \(\nabla f=\lambda\nabla g\), lo que significa que los gradientes son paralelos (las curvas de nivel de \(f\) y la curva restricción son tangentes en el punto óptimo). Se resuelve el sistema \(f_x=\lambda g_x\), \(f_y=\lambda g_y\), \(g=0\). No se puede usar el Hessiano ordinario porque el punto óptimo no es interior al dominio sino que está sobre la restricción.</p>
+</div>
+
+<div class="defbox">
+  <div class="defbox-label">Parcial EDO — "Describa cómo se usa una EDO de 1er orden para modelar el crecimiento poblacional (Malthus) y el enfriamiento de Newton"</div>
+  <p><strong>Crecimiento malthusiano:</strong> la tasa de cambio de la población es proporcional al tamaño actual: \(dP/dt=kP\). Es una EDO separable. Separando: \(dP/P=k\,dt\). Integrando: \(\ln P=kt+C\), entonces \(P(t)=P_0e^{kt}\). Si \(k>0\): crecimiento exponencial; si \(k<0\): decaimiento.</p>
+  <p><strong>Enfriamiento de Newton:</strong> la tasa de cambio de temperatura es proporcional a la diferencia entre la temperatura del cuerpo \(T\) y la del medio \(T_m\): \(dT/dt=k(T-T_m)\). Con la sustitución \(u=T-T_m\), queda \(du/dt=ku\), EDO separable. Solución: \(T(t)=T_m+(T_0-T_m)e^{kt}\). La temperatura se aproxima asintóticamente a \(T_m\).</p>
+</div>
+
+<div class="defbox">
+  <div class="defbox-label">Parcial EDO — "¿Cuándo conviene usar Variación de Parámetros en lugar de Coeficientes Indeterminados?"</div>
+  <p>Se prefiere <strong>Variación de Parámetros (VP)</strong> cuando el término no homogéneo \(g(x)\) <em>no es de tipo admisible</em> para MCI, es decir, cuando \(g(x)\) es del tipo \(\ln x\), \(\tan x\), \(\sec x\), \(1/x\), o cualquier función que no sea exponencial, polinomio, seno/coseno ni combinación de estos. VP siempre funciona (con la hipótesis de que la sol. homogénea sea conocida). MCI es más rápido cuando aplica, pero VP es más general.</p>
+</div>
 <h3 id="guia-ejercicios">★ Ejercicios Tipo Final — Los 4 Temas que Siempre Caen</h3>
 <div class="warnbox">
   <div class="warnbox-label">Patrón de los últimos 3 finales</div>
@@ -784,6 +936,10 @@ details>*:not(summary){padding:1rem 1.4rem;}
 </div>
 <h3 id="u2-limite">2.3 Límite Doble — Definición ε–δ</h3>
 <div class="defbox">
+  <div class="defbox-label">¿Qué significa realmente? — Límite de f(x,y)</div>
+  <p>El límite doble \(\lim_{(x,y)\to(a,b)}f(x,y)=L\) significa que <strong>no importa por qué camino te acerques al punto \((a,b)\)</strong>, el valor de \(f\) siempre se acerca al mismo número \(L\). Es más exigente que el límite de una variable, donde solo podés acercarte por dos lados (izquierda y derecha). Acá hay infinitos caminos posibles (rectas, parábolas, espirales…). Si dos caminos distintos dan resultados distintos → el límite no existe.</p>
+</div>
+<div class="defbox">
   <div class="defbox-label">Definición formal del límite doble</div>
   <div class="math-block">\[\lim_{(x,y)\to(a,b)}f(x,y)=L \iff \forall\varepsilon>0\;\exists\delta>0\text{ tal que si }(x,y)\in D\text{ y }0<\sqrt{(x-a)^2+(y-b)^2}<\delta \Rightarrow |f(x,y)-L|<\varepsilon\]</div>
   <p>El punto \((x,y)\) puede aproximarse a \((a,b)\) desde infinitas trayectorias (infinito de direcciones). La <strong>distancia</strong> entre el punto \((x,y)\) y \((a,b)\) no se refiere a la dirección de aproximación; la distancia desde \((x,y)\) a \((a,b)\) se puede hacer arbitrariamente pequeña haciendo la distancia desde \((x,y)\) a \((a,b)\) suficientemente pequeña pero no cero.</p>
@@ -917,6 +1073,10 @@ details>*:not(summary){padding:1rem 1.4rem;}
 
 <h3 id="u3-parciales">3.1 Derivadas Parciales</h3>
 <div class="defbox">
+  <div class="defbox-label">¿Qué significa realmente? — Derivada Parcial</div>
+  <p>La derivada parcial \(f_x(a,b)\) mide <strong>cómo cambia \(f\) si solo movés \(x\) y dejás \(y\) fija</strong>. Es literalmente la derivada de una variable pero "congelando" las demás. Geométricamente: si \(z=f(x,y)\) es una superficie, \(f_x(a,b)\) es la pendiente de la recta tangente en la dirección del eje \(x\) en el punto \((a,b,f(a,b))\). Lo mismo para \(f_y\) pero en dirección \(y\).</p>
+</div>
+<div class="defbox">
   <div class="defbox-label">Definición</div>
   <p>Si \(f\) es una función de 2 variables "x" e "y", solo hacemos variar "x" y mantenemos cte. a "y". Consideramos una función de una sola variable \(x \Rightarrow g(x) = f(x,y)\). Si \(g\) tiene derivada en un punto "a", entonces se denomina <strong>derivada parcial de \(f\) con respecto a \(x\) en \((a,y)\)</strong> y la denotamos \(f_x(a,y)\):</p>
   <div class="math-block">\[f_x(a,b) = g'(a) \text{ donde }g(x)=f(x,y),\quad y=b\]</div>
@@ -1004,6 +1164,11 @@ details>*:not(summary){padding:1rem 1.4rem;}
 <p>\(\ast\) Si la mano de obra y el capital se incrementan un factor m: \(P(mL,mK)=b(mL)^\alpha(mK)^\beta = m^{\alpha+\beta}bL^\alpha K^\beta = m^{\alpha+\beta}P(L,K)\). Si \(\alpha+\beta=1 \Rightarrow P(mL,mK)=mP(L,K)\) \(\Rightarrow\) la producción aumenta un factor de m.</p>
 
 <h3 id="u3-plano">3.5 Plano Tangente, Linealización y Diferenciabilidad</h3>
+<div class="defbox">
+  <div class="defbox-label">¿Qué significa realmente? — Diferenciabilidad</div>
+  <p>Una función \(f(x,y)\) es diferenciable en \(P_0\) si existe un <strong>plano que "toca bien" la superficie en ese punto</strong> — no solo la toca sino que la aproxima tan bien que el error va a cero más rápido que la distancia al punto. Pensalo así: si zoom-eás la superficie alrededor de \(P_0\), eventualmente parece un plano perfecto. Ese plano es el plano tangente. Si la superficie tiene un pliegue, arista o pico en \(P_0\), no hay plano tangente → no es diferenciable.</p>
+  <p><strong>La cadena de implicaciones:</strong> \(f_x\) y \(f_y\) continuas → \(f\) diferenciable → \(f\) continua → \(f\) tiene derivadas parciales. Las flechas NO se dan vuelta.</p>
+</div>
 <div class="defbox">
   <div class="defbox-label">Plano tangente a la superficie en P</div>
   <p>Si tenemos una superficie \(S\) \(z=f(x,y)\) donde las 1° derivadas parciales son continuas y sea \(P(x_0,y_0,z_0)\) un punto sobre \(S\). Sean \(C_1\) y \(C_2\) las curvas que intersecan los planos verticales \(y=y_0\) y \(x=x_0\) con la superficie \(S\). El punto \(P\) se encuentra entre \(C_1\) y \(C_2\). Sean \(T_1\) y \(T_2\) las rectas tangentes a las curvas \(C_1\) y \(C_2\) en el punto \(P\). El plano tangente a la superficie \(S\) en el punto \(P\) se define como el plano que contiene las rectas tg \(T_1\) y \(T_2\). Consiste de todas las tangentes posibles en \(P\) a curvas que quedan en \(S\) y pasan por \(P\). Plano tg en \(P\) es el que más se aproxima.</p>
@@ -1130,6 +1295,10 @@ details>*:not(summary){padding:1rem 1.4rem;}
 </div>
 <h3 id="u3-gradiente">3.9 Vector Gradiente</h3>
 <div class="defbox">
+  <div class="defbox-label">¿Qué significa realmente? — Gradiente</div>
+  <p>El gradiente \(\nabla f = (f_x, f_y)\) es simplemente <strong>el vector que apunta hacia donde \(f\) crece más rápido</strong>, y su longitud dice cuánto crece por unidad de distancia. Imaginá que \(f(x,y)\) es la altura de un terreno. El gradiente en cualquier punto es como una flecha en el suelo apuntando hacia la cuesta más empinada hacia arriba. Si querés subir lo más rápido posible, seguís el gradiente. Si querés bajar lo más rápido, seguís el gradiente negativo.</p>
+</div>
+<div class="defbox">
   <div class="defbox-label">Definición</div>
   <p>El vector gradiente de \(f(x,y)\) en un punto \((x_0,y_0)\) es el vector:</p>
   <div class="math-block">\[\nabla f = \frac{\partial f}{\partial x}\bar{i}+\frac{\partial f}{\partial y}\bar{j}\]</div>
@@ -1211,6 +1380,10 @@ details>*:not(summary){padding:1rem 1.4rem;}
 </div>
 
 <h3 id="u4-hessiano">4.2 Criterio del Hessiano (2° derivada)</h3>
+<div class="defbox">
+  <div class="defbox-label">¿Qué significa realmente? — Hessiano y Punto de Silla</div>
+  <p>El Hessiano \(H=f_{xx}f_{yy}-f_{xy}^2\) es como el "examen de forma" de la superficie cerca de un punto crítico. Pensalo con una montaña: en la cima, si te movés en cualquier dirección la altura baja → máximo. En el fondo de un valle, si te movés en cualquier dirección la altura sube → mínimo. Un punto de silla es como el punto más alto de un puerto de montaña: subés en una dirección, bajás en la dirección perpendicular. El Hessiano detecta exactamente esto: si \(H>0\) la superficie es cóncava (hacia arriba o abajo) en todas las direcciones → extremo. Si \(H<0\), hay direcciones de suba y baja → silla.</p>
+</div>
 <p><strong>2° derivada:</strong> \(f(x,y)\) y sus primeras y segundas derivadas parciales son continuas en un disco con centro en \((a,b)\) y que \(f_x(a,b) = f_y(a,b) = 0\). Entonces \(f_{xx}\neq 0 \Rightarrow\) llamamos Hessiano:</p>
 <div class="math-block">\[H(x,y) = f_{xx}(x,y)\cdot f_{yy}(x,y)-[f_{xy}(x,y)]^2 = \begin{vmatrix}f_{xx}&f_{xy}\\f_{xy}&f_{yy}\end{vmatrix}\]</div>
 
@@ -1273,6 +1446,10 @@ details>*:not(summary){padding:1rem 1.4rem;}
 </ul>
 
 <h3 id="u4-lagrange">4.4 Multiplicadores de Lagrange</h3>
+<div class="defbox">
+  <div class="defbox-label">¿Qué significa realmente? — Multiplicadores de Lagrange</div>
+  <p>Imaginá que querés llegar a la cima más alta de una montaña, pero estás obligado a seguir un sendero fijo (la restricción \(g=0\)). No podés ir en cualquier dirección. La "cima" del sendero no es donde \(\nabla f=0\) (eso sería el máximo sin restricción), sino donde las curvas de nivel de \(f\) y el sendero son <strong>tangentes entre sí</strong> — donde tocás el nivel más alto posible sin salirte del sendero. En ese punto, los gradientes de \(f\) y de \(g\) son paralelos: \(\nabla f = \lambda\nabla g\). El número \(\lambda\) (multiplicador) dice qué tan "inclinado" está el paisaje respecto al sendero.</p>
+</div>
 <div class="thmbox">
   <div class="thmbox-label">Teorema de Lagrange</div>
   <p>Si \(f(x,y)\) y \(g(x,y)\) son funciones de variable real con derivadas parciales continuas y sabemos que \(f\) tiene un valor extremo en el punto \((x_0,y_0)\) sobre la curva alisada (derivable) de ecuación \(g(x,y)=c\) (restricción del dominio), si no son nulas las derivadas parciales de \(g\) respecto de \(x\) e \(y\) en el punto \((x_0,y_0)\), entonces existe un n° \(\mathbb{R}\) \(\lambda\) que satisface:</p>
@@ -1423,6 +1600,10 @@ details>*:not(summary){padding:1rem 1.4rem;}
 <div class="content-area">
 
 <h3 id="u7-intro">7.1 Clasificación y Conceptos Fundamentales</h3>
+<div class="defbox">
+  <div class="defbox-label">¿Qué significa realmente? — Ecuación Diferencial</div>
+  <p>Una EDO es una ecuación donde la incógnita <strong>no es un número sino una función</strong>, y la ecuación relaciona esa función con sus propias derivadas. Por ejemplo, \(y'=2y\) dice "encontrá una función \(y(x)\) tal que su derivada sea el doble de ella misma." La respuesta es \(y=Ce^{2x}\). Resolver una EDO es encontrar todas las funciones que satisfacen esa relación. La solución general tiene constantes arbitrarias (una por cada orden de la EDO); la solución particular se obtiene al imponer condiciones iniciales.</p>
+</div>
 <div class="defbox">
   <div class="defbox-label">Ecuación Diferencial</div>
   <p>Una ED contiene una derivada (o derivadas) de una función desconocida de una o más variables independientes. Es <strong>ordinaria</strong> si todas las derivadas son respecto a una sola variable independiente y es <strong>parcial</strong> si hay derivadas respecto a 2 o más.</p>
@@ -1677,6 +1858,10 @@ details>*:not(summary){padding:1rem 1.4rem;}
 <div class="content-area">
 
 <h3 id="u8-mas">8.1 Movimiento Armónico Simple (MAS libre, no amortiguado)</h3>
+<div class="defbox">
+  <div class="defbox-label">¿Qué significa realmente? — MAS y Amortiguamiento</div>
+  <p>Imaginá una masa colgada de un resorte. Si la estirás y soltás sin nada más, oscila para siempre: eso es el <strong>MAS puro</strong> (\(my''+ky=0\)). Si le ponés un amortiguador (como el de un auto), la oscilación se va apagando: eso es el <strong>sistema amortiguado</strong> (\(my''+by'+ky=0\)). El tipo de apagado depende de qué tan fuerte sea el amortiguador: si es muy fuerte, la masa vuelve al equilibrio lentamente sin oscilar (sobreamortiguado). Si es moderado, oscila con amplitud decreciente (subamortiguado). Si es justo el valor límite, vuelve lo más rápido posible sin oscilar (críticamente amortiguado). La ecuación diferencial describe exactamente esta física.</p>
+</div>
 <div class="defbox">
   <div class="defbox-label">Modelo Físico</div>
   <p>Sistema constituido por un resorte unido por un extremo a un soporte fijo y suspendido en el otro por un cuerpo de masa "m". La fuerza impulsora que constituye la excitación del sist. que actúa en el cuerpo suspendido.</p>
