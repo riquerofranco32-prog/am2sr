@@ -1323,6 +1323,21 @@ details>*:not(summary){padding:1rem 1.4rem;}
   <p>Las derivadas parciales de orden 3 o superiores también se pueden definir y mediante el Teorema de Clairaut se puede demostrar que \(f_{xyy}=f_{yxy}=f_{yyx}\) son funciones continuas.</p>
 </div>
 
+<div class="example">
+  <div class="example-header">Ejemplo — Todas las derivadas de 2° orden de \(f(x,y)=x^3y^2+5xy\)</div>
+  <div class="example-body">
+    <p>Primero las derivadas de 1er orden:</p>
+    <p>\(f_x = 3x^2y^2+5y\) &nbsp;|&nbsp; \(f_y = 2x^3y+5x\)</p>
+    <p>Luego las cuatro de 2° orden:</p>
+    <ul class="props">
+      <li>\(f_{xx} = \frac{\partial}{\partial x}(3x^2y^2+5y) = 6xy^2\)</li>
+      <li>\(f_{yy} = \frac{\partial}{\partial y}(2x^3y+5x) = 2x^3\)</li>
+      <li>\(f_{xy} = \frac{\partial}{\partial y}(3x^2y^2+5y) = 6x^2y+5\)</li>
+      <li>\(f_{yx} = \frac{\partial}{\partial x}(2x^3y+5x) = 6x^2y+5\) ✓</li>
+    </ul>
+    <p><strong>Conclusión:</strong> \(f_{xy}=f_{yx}=6x^2y+5\) — el Teorema de Clairaut confirma que son iguales porque \(f\) es polinomial (y por lo tanto continua con sus derivadas en todo \(\mathbb{R}^2\)).</p>
+  </div>
+</div>
 <h3 id="u3-edp">3.3 Ecuaciones Diferenciales Parciales</h3>
 
 <div class="defbox">
@@ -1355,6 +1370,20 @@ details>*:not(summary){padding:1rem 1.4rem;}
 <div class="math-block">\[P(L,K) = bL^\alpha K^{1-\alpha}\]</div>
 <p>\(\ast\) Si la mano de obra y el capital se incrementan un factor m: \(P(mL,mK)=b(mL)^\alpha(mK)^\beta = m^{\alpha+\beta}bL^\alpha K^\beta = m^{\alpha+\beta}P(L,K)\). Si \(\alpha+\beta=1 \Rightarrow P(mL,mK)=mP(L,K)\) \(\Rightarrow\) la producción aumenta un factor de m.</p>
 
+<div class="defbox">
+  <div class="defbox-label">¿Qué significa realmente? — Cobb-Douglas</div>
+  <p>Imaginate una fábrica: \(L\) = horas de trabajo, \(K\) = capital (máquinas). La función \(P(L,K)=bL^\alpha K^{1-\alpha}\) dice cuánto producís en función de cuánta gente y cuánto capital tenés. Si \(\alpha=0.7\), la producción depende más del trabajo que del capital. La <strong>productividad marginal</strong> \(\partial P/\partial L\) es cuánto más producís si agregás 1 hora de trabajo extra.</p>
+</div>
+<div class="example">
+  <div class="example-header">Ejemplo — Calcular productividades marginales con Cobb-Douglas</div>
+  <div class="example-body">
+    <p>Sea \(P(L,K)=100\,L^{0.6}K^{0.4}\), con \(L=32\), \(K=1000\).</p>
+    <p>\(P(32,1000)=100\cdot 32^{0.6}\cdot 1000^{0.4}=100\cdot 8\cdot 15.85\approx 12\,680\) unidades.</p>
+    <p><strong>Productividad marginal del trabajo:</strong> \(\frac{\partial P}{\partial L}=100\cdot 0.6\cdot L^{-0.4}\cdot K^{0.4}=\frac{0.6\,P}{L}=\frac{0.6\times 12680}{32}\approx 238\) unid./hora.</p>
+    <p><strong>Productividad marginal del capital:</strong> \(\frac{\partial P}{\partial K}=100\cdot 0.4\cdot L^{0.6}\cdot K^{-0.6}=\frac{0.4\,P}{K}=\frac{0.4\times 12680}{1000}\approx 5.07\) unid. por unidad de capital.</p>
+    <p>Esto significa: si contratás 1 hora extra de trabajo, producís ~238 unidades más; si invertís 1 unidad extra de capital, producís ~5 unidades más.</p>
+  </div>
+</div>
 <h3 id="u3-plano">3.5 Plano Tangente, Linealización y Diferenciabilidad</h3>
 <div class="defbox">
   <div class="defbox-label">¿Qué significa realmente? — Diferenciabilidad</div>
@@ -2131,12 +2160,38 @@ details>*:not(summary){padding:1rem 1.4rem;}
 <p>\(z=f(x,y)\) tiene que estar definida y con derivadas parciales de 1° orden que sean continuas. \(A_S\approx\sum\Delta\sigma_k\) — a cada porción le corresponde un plano tangente:</p>
 <div class="math-block">\[A_S = \iint_R\sqrt{1+f_x(x,y)^2+f_y(x,y)^2}\,dA\]</div>
 
+<div class="defbox">
+  <div class="defbox-label">¿Qué significa realmente? — Área de Superficie</div>
+  <p>Si tenés una superficie curva \(z=f(x,y)\) sobre una región plana \(R\), la fórmula del área <strong>corrige</strong> el área plana de \(R\) por la inclinación de la superficie. Si la superficie fuera completamente horizontal (un plano a altura cte.), los factores \(f_x=f_y=0\) y el área sería simplemente \(\iint_R dA\). Cuanto más "empinada" la superficie, mayor es el factor \(\sqrt{1+f_x^2+f_y^2}>1\).</p>
+</div>
+<div class="example">
+  <div class="example-header">Ejemplo — Área de la superficie \(z=\sqrt{4-x^2-y^2}\) sobre el disco \(x^2+y^2\leq 1\)</div>
+  <div class="example-body">
+    <p>\(f_x = \frac{-x}{\sqrt{4-x^2-y^2}}\), \(f_y = \frac{-y}{\sqrt{4-x^2-y^2}}\)</p>
+    <p>\(1+f_x^2+f_y^2 = 1+\frac{x^2+y^2}{4-x^2-y^2} = \frac{4}{4-x^2-y^2}\)</p>
+    <p>Entonces: \(A_S = \iint_R \frac{2}{\sqrt{4-x^2-y^2}}\,dA\). En polares (\(r\) de 0 a 1):</p>
+    <div class="math-block">\[A_S = \int_0^{2\pi}\int_0^1 \frac{2}{\sqrt{4-r^2}}\,r\,dr\,d\theta = 2\pi\Big[-2\sqrt{4-r^2}\Big]_0^1 = 2\pi(4-2\sqrt{3}) \approx 6.84\]</div>
+  </div>
+</div>
 <h3 id="u5-triples">5.6 Integrales Triples</h3>
 <div class="defbox">
   <div class="defbox-label">Definición</div>
   <p>\(w=f(x,y,z)\) es una función definida en una región cerrada y acotada \(\Rightarrow\) integrable sobre \(D\). No tiene representación geométrica de la imagen. ① Partición con planos paralelos a los ejes coord. en n subregiones de volumen \(\Delta V_k = \Delta x_k\cdot\Delta y_k\cdot\Delta z_k\). ② \(\|P\|\to 0\), diagonal de mayor longitud. ③ Punto intermedio de coord. \((x_k^*, y_k^*, z_k^*) \to f(x_k^*,y_k^*,z_k^*)\). ④ \(\sum f(x_k^*,y_k^*,z_k^*)\Delta V_k\approx\iiint_D f(x,y,z)\,dV\). ⑤ Lím. si existe se define \(\iiint_D\).</p>
   <div class="math-block">\[\iiint_D f(x,y,z)\,dV = \lim_{\|P\|\to 0}\sum_{k=1}^n f(x_k^*,y_k^*,z_k^*)\Delta x_k\Delta y_k\Delta z_k\]</div>
   <p>\(\iiint_D f(x,y,z)\geq 0\) \(\to\) Volumen del sólido.</p>
+</div>
+<div class="defbox">
+  <div class="defbox-label">¿Qué significa realmente? — Integral Triple</div>
+  <p>La integral doble \(\iint_R f(x,y)\,dA\) suma valores de \(f\) sobre una región 2D. La integral triple \(\iiint_D f(x,y,z)\,dV\) hace lo mismo pero en 3D — suma los valores de \(f\) sobre un sólido 3D. Si \(f(x,y,z)=1\), el resultado es el <strong>volumen</strong> del sólido. Si \(f\) es densidad, el resultado es la <strong>masa total</strong>. En la práctica, se convierte en tres integrales iteradas: primero integrás en \(z\), luego en \(y\), luego en \(x\) (o cualquier orden por Fubini).</p>
+</div>
+<div class="example">
+  <div class="example-header">Ejemplo — Volumen del sólido \(0\leq z\leq 1-x-y\), \(0\leq y\leq 1-x\), \(0\leq x\leq 1\)</div>
+  <div class="example-body">
+    <p>Calculamos \(V = \iiint_D dV\):</p>
+    <div class="math-block">\[V = \int_0^1\int_0^{1-x}\int_0^{1-x-y} dz\,dy\,dx = \int_0^1\int_0^{1-x}(1-x-y)\,dy\,dx\]</div>
+    <div class="math-block">\[= \int_0^1\left[(1-x)y-\frac{y^2}{2}\right]_0^{1-x}dx = \int_0^1\frac{(1-x)^2}{2}\,dx = \frac{1}{6}\]</div>
+    <p>Es el tetraedro de vértices \((0,0,0)\), \((1,0,0)\), \((0,1,0)\), \((0,0,1)\) — su volumen es \(\frac{1}{6}\) de la caja unitaria.</p>
+  </div>
 </div>
 </div>
 
@@ -2515,6 +2570,20 @@ details>*:not(summary){padding:1rem 1.4rem;}
 <div class="math-block">\[y_2/y_1\neq k \;\Rightarrow\; y_2/y_1=\mu(x) \;\Rightarrow\; y_2=\mu(x)y_1(x)\]</div>
 <p>Método: Reducción de orden: solo hay que resolver una ec. lineal de 1er orden para determinar \(\mu\). \(\ast\) Falta la variable dependiente (autónoma). Las ec. dif. no lineales de 2do orden \(F(x,y,y')=0\) donde falta la variable dependiente \(y\) y donde falta la variable independiente \(A(y,y,y'')=0\) a veces se resuelven usando métodos de primer orden:</p>
 <div class="math-block">\[y_2=y_1(x)\int\frac{e^{-\int P\,dx}}{y_1^2(x)}\,dx\]</div>
+
+<div class="defbox">
+  <div class="defbox-label">¿Qué significa? — Reducción de Orden</div>
+  <p>Si ya conocés UNA solución \(y_1\) de una EDO lineal de 2° orden homogénea, podés encontrar la segunda solución \(y_2\) suponiendo que es de la forma \(y_2 = \mu(x)\,y_1(x)\). Al sustituir, la ecuación para \(\mu''\) desaparece (se "reduce" a orden 1), y podés resolver con separación de variables o el Factor Integrante.</p>
+</div>
+<div class="example">
+  <div class="example-header">Ejemplo — Hallar \(y_2\) dado que \(y_1=x\) resuelve \(x^2y''-xy'+y=0\)</div>
+  <div class="example-body">
+    <p>Proponemos \(y_2=\mu(x)\cdot x\). Entonces \(y_2'=\mu'x+\mu\), \(y_2''=\mu''x+2\mu'\).</p>
+    <p>Sustituyendo en la EDO (dividiendo antes por \(x^2\) para forma estándar):</p>
+    <div class="math-block">\[x^2(\mu''x+2\mu')-x(\mu'x+\mu)+(x\mu)=0 \;\Rightarrow\; x^3\mu''+x^2\mu'=0\]</div>
+    <p>Sea \(w=\mu'\): \(x^3w'+x^2w=0 \;\Rightarrow\; w'/w=-1/x \;\Rightarrow\; w=C/x \;\Rightarrow\; \mu=C\ln x\).</p>
+    <p>Tomando \(C=1\): \(y_2 = x\ln x\). Verificación: el Wronskiano \(W(x, x\ln x) = x\cdot(1+\ln x)-\ln x\cdot x = x \neq 0\) ✓</p>
+  </div>
 </div>
 
 <!-- ═══════════════════════════════════════════════════ UNIDAD VIII ═══ -->
@@ -2522,6 +2591,7 @@ details>*:not(summary){padding:1rem 1.4rem;}
   <div class="chapter-num">UNIDAD VIII — SMR. TEORÍA TALLER 10B</div>
   <h2>Movimiento Armónico Simple y Circuitos RLC</h2>
   <p class="chapter-intro">Modelo físico, hipótesis, leyes de Hooke y Newton, MAS libre, energía, asociaciones de resortes, movimiento amortiguado y forzado, resonancia y circuitos RLC en serie.</p>
+</div>
 </div>
 <div class="content-area">
 
