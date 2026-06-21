@@ -178,6 +178,13 @@ details>*:not(summary){padding:1rem 1.4rem;}
 <nav class="sidebar">
 <div class="sidebar-logo">AM II — Villegas<span>Apuntes completos · UTN</span></div>
 <div class="nav-unit">
+  <a class="nav-unit-header" href="#guia-final" style="color:#e74c3c;">★ Guia para el Final</a>
+  <a class="nav-link" href="#guia-vf">Como responder V/F</a>
+  <a class="nav-link" href="#guia-teoria">Justificacion teorica</a>
+  <a class="nav-link" href="#guia-preguntas">Preguntas frecuentes</a>
+  <a class="nav-link" href="#guia-conexiones">Conexiones entre temas</a>
+</div>
+<div class="nav-unit">
   <a class="nav-unit-header" href="#unidad0">0. Geometría Analítica</a>
   <a class="nav-link" href="#u0-coord">0.1 Sistema de coordenadas 3D</a>
   <a class="nav-link" href="#u0-prod">0.2 Producto cruz y productos triples</a>
@@ -268,6 +275,148 @@ details>*:not(summary){padding:1rem 1.4rem;}
 </nav>
 
 <main class="main-content">
+
+<!-- ═══════════════════════════════════════════════════ GUIA FINAL ═══ -->
+<div id="guia-final" class="chapter-cover" data-num="★" style="background:linear-gradient(135deg,#6b1a1a,#3d0a0a);">
+  <div class="chapter-num" style="color:#ff9999;">GUIA DE ESTUDIO</div>
+  <h2>Cómo Aprobar el Final de AM2</h2>
+  <p class="chapter-intro">Tips y estrategias para responder preguntas teóricas, V/F y ejercicios integrados. Basado en modelos reales de parciales y finales de la cátedra (incluyendo el final del 13 de Febrero 2026).</p>
+</div>
+<div class="content-area">
+
+<h3 id="guia-vf">★ Cómo responder preguntas Verdadero / Falso</h3>
+<div class="warnbox">
+  <div class="warnbox-label">REGLA DE ORO</div>
+  <p>Sin justificación correcta = 0 puntos, aunque la V/F esté bien marcada. Siempre citar el teorema, definición o contraejemplo que respalda la respuesta.</p>
+</div>
+<div class="defbox">
+  <div class="defbox-label">Estructura de respuesta correcta</div>
+  <p><strong>[V o F]</strong> + <strong>[por qué]</strong> = respuesta completa.</p>
+  <ul class="props">
+    <li>Si es <strong>VERDADERA</strong>: enunciar el teorema o definición que lo garantiza. Ej: "V — por el Teorema de existencia y unicidad: si \(f\) y \(\partial f/\partial y\) son continuas en \(R\), existe una única solución..."</li>
+    <li>Si es <strong>FALSA</strong>: dar un contraejemplo concreto O citar la condición que no se cumple. Ej: "F — contraejemplo: \(dy/dx = y^{1/3}\), \(y(0)=0\) tiene infinitas soluciones porque \(\partial f/\partial y\) no es continua en \(y=0\)."</li>
+    <li>Jamás escribir "porque sí" o "por definición" sin desarrollar la definición.</li>
+  </ul>
+</div>
+
+<h4>V/F más frecuentes en parciales de EDO</h4>
+<table class="vtable">
+  <tr><th>Afirmación</th><th>V/F</th><th>Justificación completa</th></tr>
+  <tr><td>"Una EDO de 1er orden siempre tiene una única solución que pasa por \((x_0,y_0)\)"</td><td><strong style="color:#c0392b">F</strong></td><td>Solo si \(f(x,y)\) y \(\partial f/\partial y\) son continuas en una región \(R\) que contiene \((x_0,y_0)\). Contraej: \(dy/dx = y^{1/3}\), \(y(0)=0\) → infinitas soluciones.</td></tr>
+  <tr><td>"Toda EDO lineal de 1er orden se puede resolver con factor integrante"</td><td><strong style="color:#27ae60">V</strong></td><td>Siempre se lleva a \(y' + P(x)y = Q(x)\) y se multiplica por \(\mu = e^{\int P\,dx}\).</td></tr>
+  <tr><td>"Si el Wronskiano de dos funciones es cero en un intervalo, son linealmente dependientes"</td><td><strong style="color:#c0392b">F</strong></td><td>El recíproco del Th. de Abel no es válido en general: \(W=0\) no implica dependencia lineal para funciones arbitrarias (sí lo implica para soluciones de EDO lineal homogénea).</td></tr>
+  <tr><td>"El método de coeficientes indeterminados es aplicable a cualquier EDO lineal"</td><td><strong style="color:#c0392b">F</strong></td><td>Solo para \(g(x)\) de tipo admisible: exponenciales, senos/cosenos, polinomios o combinaciones. Para \(g(x)=\ln x\) o \(\tan x\) se usa variación de parámetros.</td></tr>
+  <tr><td>"En sistema masa-resorte, el amortiguamiento está asociado a la 1ra derivada de la posición"</td><td><strong style="color:#27ae60">V</strong></td><td>Por Ley de Stokes: \(F_a = -b\cdot y'(t)\), proporcional a la velocidad (1ra derivada del desplazamiento).</td></tr>
+  <tr><td>"Si el discriminante de la ec. auxiliar es positivo, el sistema es sobreamortiguado"</td><td><strong style="color:#27ae60">V</strong></td><td>\(b^2-4mk>0\) → raíces reales distintas → \(y_H = C_1e^{r_1t}+C_2e^{r_2t}\). Retorna al equilibrio SIN oscilar.</td></tr>
+</table>
+
+<h4>V/F frecuentes de 1er Parcial (límites, derivadas, extremos)</h4>
+<table class="vtable">
+  <tr><th>Afirmación</th><th>V/F</th><th>Justificación</th></tr>
+  <tr><td>"La existencia de derivadas parciales en un punto garantiza diferenciabilidad"</td><td><strong style="color:#c0392b">F</strong></td><td>Las derivadas parciales pueden existir sin diferenciabilidad. La condición suficiente es que \(f_x\) y \(f_y\) sean <em>continuas</em> en un entorno del punto.</td></tr>
+  <tr><td>"Si los límites reiterados existen e iguales, el límite doble existe y vale ese valor"</td><td><strong style="color:#c0392b">F</strong></td><td>Condición necesaria pero no suficiente. El límite doble exige convergencia por CUALQUIER trayectoria, no solo ejes.</td></tr>
+  <tr><td>"Si \(f\) tiene un extremo local en \(P_0\), entonces \(\nabla f(P_0) = \mathbf{0}\)"</td><td><strong style="color:#27ae60">V</strong></td><td>Condición necesaria: en extremo interior, \(\nabla f = 0\) (punto crítico). El recíproco es falso: punto crítico puede ser punto de silla.</td></tr>
+  <tr><td>"La derivada direccional máxima de \(f\) en \(P_0\) es \(|\nabla f(P_0)|\)"</td><td><strong style="color:#27ae60">V</strong></td><td>\(DD_{\mathbf{u}}f = \nabla f\cdot\mathbf{u} = |\nabla f|\cos\theta\). Máx cuando \(\theta=0\) (paralelo al gradiente). DDmín \(= -|\nabla f|\) en sentido opuesto.</td></tr>
+</table>
+
+<h3 id="guia-teoria">★ Cómo justificar teóricamente (lo que el docente espera escuchar)</h3>
+<div class="defbox">
+  <div class="defbox-label">Estructura para preguntas tipo "Justifique / Explique / Desarrolle"</div>
+  <ol class="steps">
+    <li><strong>Definición formal:</strong> enunciar la definición matemática del concepto.</li>
+    <li><strong>Interpretación geométrica o física:</strong> qué significa en el mundo real o geométrico.</li>
+    <li><strong>Relación con el problema:</strong> vincular la teoría con los datos del ejercicio concreto.</li>
+    <li><strong>Conclusión:</strong> responder explícitamente la pregunta formulada.</li>
+  </ol>
+</div>
+
+<h4>Respuestas modelo para preguntas del Final Feb 2026</h4>
+
+<div class="defbox">
+  <div class="defbox-label">Q: "Justifique por qué esa dirección corresponde al descenso más rápido"</div>
+  <p>La derivada direccional de \(f\) en \(P_0\) en la dirección del vector unitario \(\mathbf{u}\) es:
+  \[DD_{\mathbf{u}}f(P_0) = \nabla f(P_0)\cdot\mathbf{u} = |\nabla f|\cos\theta\]
+  Esta expresión es mínima cuando \(\cos\theta = -1\), es decir, cuando \(\mathbf{u}\) apunta en la dirección <strong>opuesta</strong> al gradiente. Por lo tanto, la dirección de máximo descenso es \(\mathbf{u} = -\nabla f(P_0)/|\nabla f(P_0)|\) y la tasa de descenso máxima es \(-|\nabla f(P_0)|\).</p>
+</div>
+
+<div class="defbox">
+  <div class="defbox-label">Q: "¿Cómo se denomina la curva? ¿Qué relación tiene con el gradiente?"</div>
+  <p>Esa curva se llama <strong>curva de nivel</strong> (o curva isovalor): es el conjunto de puntos \((x,y)\) donde \(f(x,y)=c=\text{cte.}\) El gradiente \(\nabla f\) es <strong>perpendicular a las curvas de nivel</strong> en cada punto. <em>Demostración:</em> si \(\mathbf{r}(t)\) es una curva sobre la curva de nivel \(f(\mathbf{r}(t))=c\), derivando por regla de la cadena: \(\nabla f \cdot \mathbf{r}'(t) = 0\), lo que prueba la ortogonalidad.</p>
+</div>
+
+<div class="defbox">
+  <div class="defbox-label">Q: "¿Qué tipo de función es \(\nabla\phi\)? Explique el significado físico"</div>
+  <p>\(\nabla\phi\) es un <strong>campo vectorial</strong> (asigna un vector a cada punto del espacio). El campo escalar \(\phi(x,y,z)\) puede representar, por ejemplo, la temperatura en cada punto. El gradiente \(\nabla\phi\) indica la <strong>dirección y tasa de mayor crecimiento de la temperatura</strong>. Una partícula que difunde calor lo hace en la dirección \(-\nabla\phi\) (del caliente al frío). Si \(\nabla\phi=\mathbf{0}\) en un punto, ese punto es un extremo de la temperatura.</p>
+</div>
+
+<div class="defbox">
+  <div class="defbox-label">Q: "Explique el fenómeno de resonancia"</div>
+  <p>En un sistema forzado \(my''+ky = F_0\cos(\omega t)\), la frecuencia natural es \(\omega_0=\sqrt{k/m}\). Cuando <strong>\(\omega=\omega_0\)</strong> (resonancia), la solución particular es:
+  \[y_p = \frac{F_0}{2m\omega_0}\,t\sin(\omega_0 t)\]
+  El factor \(t\) hace que la amplitud crezca sin cota cuando \(t\to\infty\), destruyendo el sistema en la práctica. En sistemas amortiguados no hay resonancia pura, pero existe una frecuencia de resonancia práctica \(\omega_r = \sqrt{\omega_0^2 - 2\lambda^2}\) donde la amplitud estacionaria es máxima.</p>
+</div>
+
+<div class="defbox">
+  <div class="defbox-label">Q: "Desarrolle el método, explicando la teoría que da sostén al cálculo" (Lagrange)</div>
+  <p>Se usa <strong>Multiplicadores de Lagrange</strong> porque se busca extremo de \(f(x,y)\) sobre una curva \(g(x,y)=0\) (restricción). <em>Teoría:</em> en los puntos de extremo condicionado, \(\nabla f\) y \(\nabla g\) son paralelos: \(\nabla f = \lambda\cdot\nabla g\). Geométricamente, las curvas de nivel de \(f\) y la curva restricción son tangentes en ese punto. Se resuelve el sistema:
+  \[f_x = \lambda g_x,\quad f_y = \lambda g_y,\quad g(x,y)=0\]
+  No se puede usar el Hessiano ordinario porque el punto crítico NO es interior al dominio — está sobre la curva restricción.</p>
+</div>
+
+<div class="defbox">
+  <div class="defbox-label">Q: "Identifique el tipo de amortiguamiento y explique el significado físico de las soluciones"</div>
+  <p>El criterio es el discriminante de la ec. auxiliar \(mr^2+cr+k=0\), es decir \(\Delta = c^2-4mk\):</p>
+  <ul class="props">
+    <li><strong>Sobreamortiguado (\(\Delta>0\)):</strong> raíces reales distintas \(r_1, r_2\) → \(y_H = C_1e^{r_1t}+C_2e^{r_2t}\). El sistema retorna al equilibrio SIN oscilar, pasando por él a lo más una vez. Ejemplo: puerta con amortiguador fuerte.</li>
+    <li><strong>Críticamente amortiguado (\(\Delta=0\)):</strong> raíz real doble \(r=-c/2m\) → \(y_H=(C_1+C_2t)e^{rt}\). Retorno más rápido sin oscilar. Caso óptimo de diseño.</li>
+    <li><strong>Subamortiguado (\(\Delta&lt;0\)):</strong> raíces complejas \(r=\alpha\pm\beta i\) → \(y_H=e^{\alpha t}(C_1\cos\beta t+C_2\sin\beta t)\). Oscila con amplitud decreciente → cero. Ejemplo: resorte de auto con poca fricción.</li>
+  </ul>
+</div>
+
+<h3 id="guia-preguntas">★ Preguntas frecuentes por tema — lo que siempre cae</h3>
+<table class="vtable">
+  <tr><th>Tema</th><th>Pregunta típica</th><th>Clave de la respuesta</th></tr>
+  <tr><td><strong>Gradiente</strong></td><td>"Explique qué representa el gradiente geométrica y físicamente"</td><td>Vector perpendicular a curvas de nivel. Apunta hacia max crecimiento. Magnitud = tasa de cambio máx en esa dirección.</td></tr>
+  <tr><td><strong>Derivada Direccional</strong></td><td>"¿Por qué la DD máx es \(|\nabla f|\)?"</td><td>\(DD_{\mathbf{u}}f = \nabla f\cdot\mathbf{u} = |\nabla f|\cos\theta\). Max cuando \(\theta=0\) (paralelo al gradiente).</td></tr>
+  <tr><td><strong>Lagrange</strong></td><td>"¿Por qué no se usa el Hessiano ordinario?"</td><td>Porque buscamos extremos sobre una curva (restricción), no en el interior del dominio. Las condiciones de optimalidad son \(\nabla f = \lambda\nabla g\).</td></tr>
+  <tr><td><strong>Diferencial total</strong></td><td>"¿Qué aproxima \(dz\)?"</td><td>\(dz=f_x dx+f_y dy\) aproxima el incremento real \(\Delta z\) para \(dx,dy\) pequeños.</td></tr>
+  <tr><td><strong>Plano tangente</strong></td><td>"¿Qué relación tiene con la linealización?"</td><td>Son lo mismo: \(L(x,y)=f(P_0)+f_x(P_0)(x-x_0)+f_y(P_0)(y-y_0)\) es la ec. del plano tangente = aprox. lineal.</td></tr>
+  <tr><td><strong>Límite doble</strong></td><td>"¿Cómo demuestra que un límite NO existe?"</td><td>Basta mostrar dos trayectorias con distinto resultado. Típico: \(y=0\), luego \(y=x\), luego \(y=x^2\).</td></tr>
+  <tr><td><strong>Factor integrante</strong></td><td>"¿Cómo se obtiene \(\mu\) y por qué funciona?"</td><td>\(\mu=e^{\int P(x)dx}\). Hace que el LHS sea \(d(\mu y)/dx = \mu Q\), directamente integrable.</td></tr>
+  <tr><td><strong>MAS</strong></td><td>"Determine la ec. del movimiento desde el modelo físico"</td><td>DCL: \(\sum F = my''\). Fuerzas: \(mg - k(s+y) - by' + f(t) = my''\). Como \(ks=mg\): \(my''+by'+ky=f(t)\).</td></tr>
+  <tr><td><strong>Wronskiano</strong></td><td>"¿Para qué sirve el Wronskiano?"</td><td>\(W\neq 0\) en \(I\) ⟹ soluciones LI ⟹ forman conj. fundamental ⟹ sol. gral. es combinación lineal.</td></tr>
+  <tr><td><strong>Integrales polares</strong></td><td>"¿Por qué aparece \(r\) en \(dA=r\,dr\,d\theta\)?"</td><td>Es el Jacobiano: \(J=|{\partial(x,y)}/{\partial(r,\theta)}|=r\). El área diferencial en polares no es \(dr\,d\theta\).</td></tr>
+</table>
+
+<h3 id="guia-conexiones">★ Conexiones entre temas que el docente valora</h3>
+<div class="defbox">
+  <div class="defbox-label">Mapa de conexiones conceptuales</div>
+  <ul class="props">
+    <li><strong>Diferenciabilidad → Plano Tangente → Diferencial Total:</strong> \(f\) diferenciable en \(P_0\) \(\Leftrightarrow\) existe plano tangente en \(P_0\) \(\Leftrightarrow\) \(dz=f_x dx+f_y dy\) aproxima bien \(\Delta z\).</li>
+    <li><strong>Gradiente ↔ Derivada Direccional ↔ Curvas de Nivel:</strong> \(DD_{\mathbf{u}}f=\nabla f\cdot\mathbf{u}\). Max DD en dirección \(\nabla f\). \(\nabla f\perp\) curvas de nivel siempre.</li>
+    <li><strong>Punto crítico → Hessiano → Clasificación:</strong> \(\nabla f=0\) (CN) → \(H=f_{xx}f_{yy}-f_{xy}^2\) → \(H>0,f_{xx}>0\): mín; \(H>0,f_{xx}<0\): máx; \(H<0\): silla; \(H=0\): indet.</li>
+    <li><strong>Lagrange ↔ Curvas de nivel tangentes:</strong> \(\nabla f=\lambda\nabla g\) significa que la curva de nivel de \(f\) y la restricción son tangentes en el punto óptimo.</li>
+    <li><strong>EDO → Modelo físico → Solución:</strong> identificar variables → plantear desde ley física (Kirchhoff, Newton, Malthus, Newton enfriamiento) → clasificar tipo → elegir método → SPVI.</li>
+    <li><strong>MAS: ec. auxiliar → tipo de amortiguamiento → comportamiento:</strong> \(b^2-4mk\) determina todo el comportamiento físico del sistema.</li>
+    <li><strong>Integral doble ↔ coord. polares:</strong> conviene cambiar cuando la región es un disco/sector y/o el integrando tiene \(x^2+y^2\). El factor \(r\) del Jacobiano es fundamental.</li>
+  </ul>
+</div>
+
+<div class="warnbox">
+  <div class="warnbox-label">Lo que NUNCA hay que olvidar en el final</div>
+  <ul class="props">
+    <li>Poner el <strong>diagrama de cuerpo libre</strong> en problemas de MAS — el docente lo pide explícitamente.</li>
+    <li>Verificar que la solución particular no coincide con la homogénea — si coincide, es <strong>caso de resonancia</strong> y hay que multiplicar por \(t\).</li>
+    <li>En integrales dobles: <strong>graficar la región</strong> antes de plantear los límites.</li>
+    <li>En extremos condicionados: evaluar \(f\) en todos los puntos críticos hallados con Lagrange y <strong>comparar valores</strong>.</li>
+    <li>En límites dobles por polares: si \(|f(r,\theta)|\leq g(r)\) con \(g(r)\to 0\) cuando \(r\to 0\), entonces el límite <strong>existe y vale 0</strong>.</li>
+    <li>El Wronskiano en un punto: si \(W(x_0)\neq 0\) para algún \(x_0\in I\), las funciones son <strong>LI en todo \(I\)</strong>.</li>
+    <li>Para justificar Lagrange: siempre mencionar que \(\nabla f = \lambda\nabla g\) porque las curvas de nivel son <strong>tangentes</strong> en el óptimo.</li>
+  </ul>
+</div>
+
+</div>
+
 
 <!-- ═══════════════════════════════════════════════════ UNIDAD 0 ═══ -->
 <div id="unidad0" class="chapter-cover" data-num="0">
