@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html lang="es">
 <head>
 <meta charset="UTF-8">
@@ -184,6 +184,8 @@ details>*:not(summary){padding:1rem 1.4rem;}
   <a class="nav-link" href="#u0-rectas">0.3 Ecuaciones de rectas</a>
   <a class="nav-link" href="#u0-planos">0.4 Planos en el espacio</a>
   <a class="nav-link" href="#u0-cuadricas">0.5 Cilindros y superficies cuádricas</a>
+  <a class="nav-link" href="#u0-cosenos">0.6 Cosenos directores</a>
+  <a class="nav-link" href="#u0-cilindrica">0.7 Coord. cilíndricas y esféricas</a>
 </div>
 <div class="nav-unit">
   <a class="nav-unit-header" href="#unidad2">II. Límites y Continuidad</a>
@@ -192,6 +194,7 @@ details>*:not(summary){padding:1rem 1.4rem;}
   <a class="nav-link" href="#u2-limite">2.3 Límite doble — definición ε–δ</a>
   <a class="nav-link" href="#u2-metodos">2.4 Métodos de cálculo</a>
   <a class="nav-link" href="#u2-cont">2.5 Continuidad</a>
+  <a class="nav-link" href="#u2-discontinuidad">2.6 Discontinuidad evitable/no evitable</a>
 </div>
 <div class="nav-unit">
   <a class="nav-unit-header" href="#unidad3">III. Diferencial Multivariable</a>
@@ -234,6 +237,7 @@ details>*:not(summary){padding:1rem 1.4rem;}
 <div class="nav-unit">
   <a class="nav-unit-header" href="#unidad7">VII. Ecuaciones Diferenciales</a>
   <a class="nav-link" href="#u7-intro">7.1 Clasificación y conceptos</a>
+  <a class="nav-link" href="#u7-isoclinas">7.1b Campo de direcciones e isoclinas</a>
   <a class="nav-link" href="#u7-pvi">7.2 Problema de valor inicial</a>
   <a class="nav-link" href="#u7-separables">7.3 Variables separables</a>
   <a class="nav-link" href="#u7-lineales">7.4 Ec. lineales de 1er orden</a>
@@ -403,6 +407,42 @@ details>*:not(summary){padding:1rem 1.4rem;}
   <p class="fig-caption">Fig. del libro — Hiperboloide 2 hojas (4x²−y²+2z²+4=0) · Paraboloide desplazado</p>
 </div>
 <p class="footnote">Aplicaciones: los paraboloides circulares se usan para recolectar y reflejar luz, sonido y señales de radio y televisión (radiotelescopios, micrófonos, antenas de disco). Los hiperboloides se usan en torres de enfriamiento para reactores nucleares y en dientes de engranajes.</p>
+
+<h3 id="u0-cosenos">0.6 Cosenos Directores</h3>
+<div class="defbox">
+  <div class="defbox-label">Definicion</div>
+  <p>Los <strong>angulos directores</strong> de un vector \(\mathbf{a}=\langle a_1,a_2,a_3\rangle\) son los angulos \(\alpha,\beta,\gamma\in[0,\pi]\) que forma con los ejes positivos \(x,y,z\). Sus cosenos son:</p>
+  <div class="math-block">\[\cos\alpha = \frac{a_1}{|\mathbf{a}|},\quad \cos\beta = \frac{a_2}{|\mathbf{a}|},\quad \cos\gamma = \frac{a_3}{|\mathbf{a}|}\]</div>
+  <p>Identidad: \(\cos^2\!\alpha + \cos^2\!\beta + \cos^2\!\gamma = 1\). El versor de \(\mathbf{a}\) es \(\hat{\mathbf{a}} = \langle\cos\alpha,\cos\beta,\cos\gamma\rangle\).</p>
+</div>
+<ul class="props">
+  <li>\(a_1,a_2,a_3\) son los <strong>numeros directores</strong> (proporcionales a los cosenos directores).</li>
+  <li>Dos vectores son paralelos \(\Leftrightarrow\) tienen iguales cosenos directores (o exactamente los opuestos).</li>
+  <li>Para una recta con vector director \(\mathbf{v}=\langle a,b,c\rangle\): \(\cos\alpha=a/|\mathbf{v}|\), \(\cos\beta=b/|\mathbf{v}|\), \(\cos\gamma=c/|\mathbf{v}|\).</li>
+</ul>
+
+<h3 id="u0-cilindrica">0.7 Coordenadas Cilindricas y Esfericas</h3>
+<div class="defbox">
+  <div class="defbox-label">Coordenadas Cilindricas (r, theta, z)</div>
+  <p>Extension de coordenadas polares al espacio 3D. Utiles con simetria axial respecto al eje \(z\).</p>
+  <div class="math-block">\[x = r\cos\theta,\quad y = r\sin\theta,\quad z = z\]</div>
+  <div class="math-block">\[r = \sqrt{x^2+y^2},\quad \theta = \arctan\!\tfrac{y}{x},\quad z=z \qquad J=r \Rightarrow dV=r\,dr\,d\theta\,dz\]</div>
+  <ul class="props">
+    <li>\(r\geq 0\): distancia al eje \(z\). \(\theta\in[0,2\pi)\): angulo azimutal. \(z\in\mathbb{R}\): altura.</li>
+    <li>Superficie \(r=c\): cilindro de radio \(c\). Superficie \(\theta=c\): semiplano. Superficie \(z=c\): plano horizontal.</li>
+  </ul>
+</div>
+<div class="defbox">
+  <div class="defbox-label">Coordenadas Esfericas (rho, phi, theta)</div>
+  <p>Ideales para simetria esferica. \(\rho\geq 0\) distancia al origen, \(\phi\in[0,\pi]\) angulo cenital desde \(z^+\), \(\theta\in[0,2\pi)\) angulo azimutal.</p>
+  <div class="math-block">\[x = \rho\sin\phi\cos\theta,\quad y = \rho\sin\phi\sin\theta,\quad z = \rho\cos\phi\]</div>
+  <div class="math-block">\[\rho^2 = x^2+y^2+z^2,\quad r_{\mathrm{cil}}=\rho\sin\phi \qquad J=\rho^2\sin\phi \Rightarrow dV=\rho^2\sin\phi\,d\rho\,d\phi\,d\theta\]</div>
+</div>
+<table class="vtable">
+  <tr><th>Sistema</th><th>Parametros</th><th>De cartesianas</th><th>A cartesianas</th><th>dV</th></tr>
+  <tr><td>Cilindrico</td><td>\(r,\theta,z\)</td><td>\(r=\sqrt{x^2+y^2}\), \(\theta=\arctan(y/x)\)</td><td>\(x=r\cos\theta\), \(y=r\sin\theta\)</td><td>\(r\,dr\,d\theta\,dz\)</td></tr>
+  <tr><td>Esferico</td><td>\(\rho,\phi,\theta\)</td><td>\(\rho=\sqrt{x^2+y^2+z^2}\), \(\phi=\arccos(z/\rho)\)</td><td>\(x=\rho\sin\phi\cos\theta\), \(y=\rho\sin\phi\sin\theta\), \(z=\rho\cos\phi\)</td><td>\(\rho^2\sin\phi\,d\rho\,d\phi\,d\theta\)</td></tr>
+</table>
 </div>
 
 <!-- ═══════════════════════════════════════════════════ UNIDAD II ═══ -->
@@ -572,6 +612,20 @@ details>*:not(summary){padding:1rem 1.4rem;}
   <li>Cualquier \(f\) polinomial se puede conformar con las \(f\) simples mediante una multiplicación o adición \(\Rightarrow\) se infiere que todas las polinomiales son continuas sobre \(\mathbb{R}^2\).</li>
   <li>Cualquier \(f\) racional es continua sobre su dominio porq' es un cociente de funciones continuas.</li>
   <li><strong>Función compuesta</strong>: \(g(f(x,y)) = \text{arcctg}(y/x) = h(x,y)\) — continua excepto \(x=0\) (la gráfica muestra una grieta).</li>
+
+<h3 id="u2-discontinuidad">2.6 Discontinuidad Evitable e Inevitable</h3>
+<div class="defbox">
+  <div class="defbox-label">Tipos de discontinuidad en funciones de 2 variables</div>
+  <p>Una funcion \(f(x,y)\) tiene una <strong>discontinuidad evitable</strong> en \((a,b)\) si existe el limite pero es diferente al valor de la funcion (o la funcion no esta definida alli). Se puede "redefinir" \(f(a,b)=L\) para hacerla continua.</p>
+  <p>Una funcion \(f(x,y)\) tiene una <strong>discontinuidad no evitable (esencial)</strong> en \((a,b)\) si el limite no existe (el resultado depende de la trayectoria de aproximacion).</p>
+  <div class="math-block">\[\text{Evitable: }\lim_{(x,y)\to(a,b)}f(x,y) = L \neq f(a,b)\quad\text{ o }f\text{ no definida en }(a,b)\]</div>
+  <div class="math-block">\[\text{No evitable: }\lim_{(x,y)\to(a,b)}f(x,y)\text{ no existe}\]</div>
+</div>
+<ul class="props">
+  <li><strong>Estrategia de deteccion:</strong> probar con \(y=mx\): si el resultado depende de \(m\), la discontinuidad es no evitable.</li>
+  <li>Tambien verificar con curvas \(y=kx^2\), \(x=ay^2\), etc. Basta encontrar 2 trayectorias con limites distintos para concluir no existencia.</li>
+  <li>Si por todas las trayectorias el limite da el mismo \(L\), usar coordenadas polares para confirmar existencia.</li>
+</ul>
 </ul>
 </div>
 
@@ -1106,6 +1160,30 @@ details>*:not(summary){padding:1rem 1.4rem;}
   <li><strong>Campos de direcciones:</strong> conj. de cortos segmentos orientados que representa la recta tangente para un gran n° de puntos. Provee información respecto al comportamiento de la flia. de soluciones.</li>
   <li><strong>EDO de n-ésimo orden en forma general:</strong> \(F(x,y,y',\ldots,y^{(n)})=0\). Forma normal: \(dy/dx=f(x,y)\) y \(d^2y/dx^2=f(x,y,y')\).</li>
 </ul>
+
+<h3 id="u7-isoclinas">7.1b Campo de Direcciones e Isoclinas</h3>
+<div class="defbox">
+  <div class="defbox-label">Campo de Direcciones</div>
+  <p>Para una EDO de primer orden \(dy/dx = f(x,y)\), el <strong>campo de direcciones</strong> es la representacion grafica de los segmentos de pendiente \(f(x,y)\) en una grilla de puntos \((x,y)\). Cada segmento indica la direccion de la solucion que pasa por ese punto.</p>
+  <ul class="props">
+    <li>Permite visualizar el comportamiento cualitativo de las soluciones sin resolverlas.</li>
+    <li>Las curvas solucion son tangentes al campo de direcciones en cada punto.</li>
+    <li>Util para analizar estabilidad de puntos de equilibrio.</li>
+  </ul>
+</div>
+<div class="defbox">
+  <div class="defbox-label">Isoclinas</div>
+  <p>Una <strong>isoclina</strong> es el conjunto de puntos \((x,y)\) donde la pendiente \(f(x,y)\) toma el mismo valor \(c\). Es decir, la curva \(f(x,y) = c\).</p>
+  <div class="math-block">\[\text{Isoclina de pendiente }c:\quad f(x,y) = c\]</div>
+  <p><strong>Metodo de isoclinas para trazar el campo de direcciones:</strong></p>
+  <ol class="steps">
+    <li>Elegir varios valores de \(c\) (pendientes).</li>
+    <li>Trazar cada curva \(f(x,y)=c\) en el plano \(xy\).</li>
+    <li>Sobre cada isoclina, dibujar segmentos cortos con pendiente \(c\).</li>
+    <li>Las curvas solucion siguen la direccion de los segmentos.</li>
+  </ol>
+  <p><strong>Ejemplo:</strong> para \(dy/dx = x+y\), la isoclina \(c\) es la recta \(x+y=c\), es decir \(y=c-x\).</p>
+</div>
 
 <div class="thmbox">
   <div class="thmbox-label">Teorema de existencia y unicidad de las soluciones</div>
