@@ -864,44 +864,127 @@ details>*:not(summary){padding:1rem 1.4rem;}
 <div class="content-area">
 
 <h3 id="u2-funciones">2.1 Topología y Funciones de Varias Variables</h3>
+
 <div class="defbox">
-  <div class="defbox-label">Punto de acumulación (Rabuffetti)</div>
-  <p>"Si \(C\) es un conj. de puntos de la recta real, un punto 'a' es punto de acumulación de \(C\) si a todo entorno reducido de 'a' pertenece por lo menos un punto de \(C\). El punto 'a' puede pertenecer o no al conj. \(C\), pero la definición exige que en cualquier entorno del punto 'a' exista por lo menos un punto de \(C\) ≠ del punto \(a\)."</p>
+  <div class="defbox-label">¿Para qué sirve este tema?</div>
+  <p>Antes de hablar de límites y continuidad en varias variables, necesitás saber <strong>describir con precisión dónde vive una función y qué tipo de zona es esa</strong>. La topología te da el vocabulario para eso: ¿el punto está adentro, afuera, o en el borde del dominio? ¿El conjunto incluye sus bordes o no? Esas preguntas definen si los límites existen, si los extremos existen, etc.</p>
+</div>
+
+<h4>Entorno de un punto</h4>
+<div class="defbox">
+  <div class="defbox-label">¿Qué significa realmente? — Entorno</div>
+  <p>Un <strong>entorno</strong> de radio \(h\) centrado en un punto \(a\) es simplemente <strong>todos los puntos que están a menos de \(h\) de distancia de \(a\)</strong>. En la recta real es el intervalo abierto \((a-h, a+h)\). En el plano \(\mathbb{R}^2\) es un disco abierto de radio \(h\) centrado en \(a\). No incluye el borde — es un "espacio personal" alrededor del punto, sin incluirlo.</p>
+  <p>El <strong>entorno reducido</strong> \(E'(a)\) es lo mismo pero <strong>sin el punto central</strong>: \(0 < |x-a| < h\). Se usa cuando queremos hablar de "qué hay cerca de \(a\)" sin contar al propio \(a\) (importante para límites).</p>
+</div>
+<div class="math-block">\[E(a,h) = \{x \in \mathbb{R}^n : |x - a| < h\} \qquad E'(a,h) = \{x \in \mathbb{R}^n : 0 < |x - a| < h\}\]</div>
+
+<h4>Los 3 tipos de puntos respecto a un conjunto</h4>
+<div class="defbox">
+  <div class="defbox-label">¿Qué significa realmente? — Interior, Exterior y Frontera</div>
+  <p>Imaginá que el conjunto \(A\) es un país en un mapa. Cada punto del mapa es de exactamente uno de estos tipos:</p>
   <ul class="props">
-    <li>'a' es p.a. de \(C \Leftrightarrow \forall E'(a),\;\exists x/(x\in C \;\wedge\; x\in E'(a))\)</li>
-    <li>'a' es p.a. de \(C \Leftrightarrow \forall h>0,\;\exists x/(x\in C \;\wedge\; 0<|x-a|<h)\)</li>
-    <li>'a' es p.a. de \(C \Leftrightarrow \forall E'(a):\; E'(a)\cap C \neq \emptyset\)</li>
-    <li>Si el conj. \(C\) es un intervalo cerrado, todos sus puntos son de acumulación.</li>
-    <li>Si el conj. \(C\) es un intervalo abierto, todos sus puntos son de acumulación y también los extremos, aunque no pertenecen al conj.</li>
+    <li><strong>Interior:</strong> estás claramente <em>adentro</em> del país. Si dibujás un círculo pequeño alrededor tuyo, todo el círculo queda dentro del país. Podés "respirar" sin tocar el límite.</li>
+    <li><strong>Exterior:</strong> estás claramente <em>afuera</em>. Si dibujás un círculo pequeño alrededor tuyo, todo el círculo queda fuera del país.</li>
+    <li><strong>Frontera:</strong> estás en el <em>borde</em>. No importa qué tan pequeño sea el círculo que dibujés alrededor tuyo, siempre vas a tener puntos del país adentro Y puntos fuera del país. Puede estar o no dentro del conjunto.</li>
   </ul>
 </div>
 
+<div class="two-col">
 <div class="defbox">
-  <div class="defbox-label">Punto interior</div>
-  <p>Un punto 'a' perteneciente a un conj. \(C\) es un punto interior al mismo si y solo si existe un entorno de 'a' totalmente incluido en \(C\):</p>
-  <div class="math-block">\[a\in C \;\wedge\; \exists E(a)/E(a)\subseteq C\]</div>
+  <div class="defbox-label">Punto interior — definición formal</div>
+  <p>\(a\) es punto interior de \(A\) si existe un entorno de \(a\) completamente contenido en \(A\):</p>
+  <div class="math-block">\[a \in A \;\wedge\; \exists h > 0 : E(a,h) \subseteq A\]</div>
+  <p><em>Ejemplo:</em> \(a=0.5\) es interior de \((0,1)\) porque el entorno \(E(0.5,\,0.3)=(0.2, 0.8)\subseteq(0,1)\). \(a=0\) NO es interior porque cualquier entorno de \(0\) incluye negativos.</p>
+</div>
+<div class="defbox">
+  <div class="defbox-label">Punto exterior — definición formal</div>
+  <p>\(a\) es exterior a \(A\) si existe un entorno de \(a\) sin ningún punto de \(A\):</p>
+  <div class="math-block">\[\exists h > 0 : E(a,h) \cap A = \emptyset\]</div>
+  <p><em>Ejemplo:</em> \(a=2\) es exterior de \((0,1)\) porque el entorno \(E(2,\,0.5)=(1.5,\,2.5)\) no intersecta \((0,1)\).</p>
+</div>
 </div>
 
 <div class="defbox">
-  <div class="defbox-label">Punto exterior</div>
-  <p>Un punto 'a' es exterior a un conj. \(C\) si y solo si existe un entorno del mismo al cual no pertenece ningún punto del conj. \(C\):</p>
-  <div class="math-block">\[\exists E(a)/E(a)\cap C = \emptyset\]</div>
+  <div class="defbox-label">Punto frontera — definición formal</div>
+  <p>\(a\) es frontera de \(A\) si en todo entorno de \(a\), sin importar lo pequeño, hay puntos de \(A\) Y puntos fuera de \(A\):</p>
+  <div class="math-block">\[\forall h > 0: \quad E(a,h)\cap A \neq \emptyset \quad \wedge \quad E(a,h)\cap \bar{A}\neq\emptyset\]</div>
+  <p><em>Ejemplo:</em> \(a=0\) y \(a=1\) son ambos frontera de \((0,1)\). En cualquier entorno de \(0\) hay puntos negativos (fuera) y positivos pequeños (dentro). Lo importante: <strong>el punto frontera puede o no pertenecer al conjunto.</strong> En \((0,1)\) los extremos \(0\) y \(1\) son frontera pero NO pertenecen al conjunto.</p>
 </div>
 
+<h4>Punto de acumulación</h4>
 <div class="defbox">
-  <div class="defbox-label">Punto frontera</div>
-  <p>Un punto es frontera cuando no es exterior ni interior al conj. considerado. El punto 'a' es punto frontera del conj. \(A\) si y solo si en todo entorno del punto 'a' hay algún punto que pertenece al conj. \(A\) y hay algún punto que pertenece a su complemento:</p>
-  <div class="math-block">\[\forall E(a):\;(E(a)\cap A \neq \emptyset \;\wedge\; E(a)\cap \bar{A}\neq\emptyset)\]</div>
-  <p>Un punto frontera puede o no pertenecer al conj. — es un punto aislado.</p>
+  <div class="defbox-label">¿Qué significa realmente? — Punto de acumulación</div>
+  <p>Un punto \(a\) es de acumulación de un conjunto \(C\) si <strong>siempre hay puntos de \(C\) arbitrariamente cerca de \(a\)</strong> (distintos de \(a\) mismo). No importa qué tan pequeña sea la "lupa" con que mires alrededor de \(a\), siempre vas a encontrar algún punto del conjunto — sin contar al propio \(a\). Dicho de otro modo: los puntos de \(C\) se "acumulan" alrededor de \(a\).</p>
+  <p><strong>\(a\) puede o no pertenecer a \(C\)</strong>. Lo único que importa es que los vecinos de \(a\) dentro de \(C\) existen.</p>
+</div>
+<div class="math-block">\[a \text{ es punto de acumulación de } C \;\Leftrightarrow\; \forall h>0,\; \exists\, x\in C : 0 < |x-a| < h\]</div>
+<div class="defbox">
+  <div class="defbox-label">Ejemplos concretos de punto de acumulación</div>
+  <ul class="props">
+    <li>En el intervalo abierto \((0,1)\): todos los puntos internos y también \(0\) y \(1\) son de acumulación (los puntos del intervalo se "acumulan" cerca de \(0\) y \(1\), aunque esos extremos no estén en el intervalo).</li>
+    <li>En el conjunto \(\{1, 1/2, 1/3, 1/4, \ldots\}\): el punto \(0\) es de acumulación (los términos se acercan a \(0\)) aunque \(0\) no esté en el conjunto.</li>
+    <li>En \(\mathbb{Z}\) (enteros): ningún punto es de acumulación, porque entre dos enteros consecutivos no hay otros enteros — no se "acumulan".</li>
+  </ul>
 </div>
 
-<ul class="props">
-  <li><strong>Conjunto abierto</strong> \(\Rightarrow\) si todos sus puntos son interiores (no le pertenecen sus puntos frontera). Un conj. \(A\) es abierto si y solo si todos sus puntos son interiores. Un intervalo abierto \((a,b)\) es abierto. El conj. \(\mathbb{R}\) y vacío \(\emptyset\) es un conj. abierto y cerrado.</li>
-  <li><strong>Conjunto cerrado</strong> \(\Rightarrow\) le pertenecen todos los puntos de acumulación. Un conj. al cual le pertenecen todos sus puntos de acumulación se denomina cerrado. Un conj. cerrado si y solo si le pertenecen todos sus puntos de acumulación. \(\forall a, a\in C\). Ej: conj. \(\mathbb{R}\), intervalo cerrado, un conj. sin puntos de acumulación es cerrado, \(\emptyset\).</li>
-  <li><strong>Conjunto acotado</strong> \(\Rightarrow\) si puede ser incluido en un entorno con centro en el origen y de radio finito. El conj. \(C\) incluido en \(\mathbb{R}^n\) está acotado si y solo si existe un n° real positivo \(K\) tal que \(\forall\bar{x}:(x\in C \Rightarrow |\bar{x}|<K)\). Observe que \(|\bar{x}| = |\bar{x}-\bar{0}| = \sqrt{x_1^2+x_2^2+\cdots+x_n^2}\). Un conj. en \(\mathbb{R}^n\) está acotado si y solo si puede incluirse en un entorno con centro en el origen.</li>
-  <li><strong>Entorno</strong> \(\Rightarrow\) intervalo abierto (no incluye su frontera).</li>
-</ul>
+<h4>Tipos de conjuntos: abierto, cerrado, acotado</h4>
+<div class="defbox">
+  <div class="defbox-label">¿Qué significa realmente? — Abierto vs Cerrado vs Acotado</div>
+  <p>Estos tres conceptos son independientes. Un conjunto puede ser cualquier combinación. La forma más fácil de entenderlos:</p>
+  <ul class="props">
+    <li><strong>Abierto:</strong> "no incluye su borde." Todos sus puntos son interiores. Podés alejarte un poco de cualquier punto y seguir dentro. Ej: \((0,1)\), el disco \(x^2+y^2 &lt; 1\).</li>
+    <li><strong>Cerrado:</strong> "incluye su borde." Contiene todos sus puntos de acumulación (y por ende todos sus puntos frontera). Ej: \([0,1]\), el disco \(x^2+y^2 \leq 1\).</li>
+    <li><strong>Acotado:</strong> "tiene tamaño finito." Cabe dentro de alguna bola/disco de radio finito. Ej: \([0,1]\) es acotado. \(\mathbb{R}\) no es acotado.</li>
+  </ul>
+  <p><strong>Ojo:</strong> un conjunto puede ser abierto Y cerrado a la vez (\(\mathbb{R}\) y \(\emptyset\)). O no ser ni abierto ni cerrado (\([0,1)\) — incluye el borde izquierdo pero no el derecho).</p>
+</div>
 
+<table class="vtable">
+  <tr><th>Conjunto</th><th>¿Abierto?</th><th>¿Cerrado?</th><th>¿Acotado?</th><th>Por qué</th></tr>
+  <tr><td>\((0,1)\)</td><td>✓ Sí</td><td>✗ No</td><td>✓ Sí</td><td>No incluye extremos · Los extremos \(0,1\) son p. de acum. pero no pertenecen al conj.</td></tr>
+  <tr><td>\([0,1]\)</td><td>✗ No</td><td>✓ Sí</td><td>✓ Sí</td><td>Incluye extremos · Contiene todos sus p. de acumulación</td></tr>
+  <tr><td>\([0,1)\)</td><td>✗ No</td><td>✗ No</td><td>✓ Sí</td><td>Ni abierto (el \(0\) no es interior) ni cerrado (el \(1\) es p. de acum. y no está)</td></tr>
+  <tr><td>\(\mathbb{R}^2\)</td><td>✓ Sí</td><td>✓ Sí</td><td>✗ No</td><td>Todos sus puntos son interiores · Contiene todos sus p. de acum. · No cabe en ningún disco finito</td></tr>
+  <tr><td>\(x^2+y^2 &lt; 4\)</td><td>✓ Sí</td><td>✗ No</td><td>✓ Sí</td><td>Disco abierto de radio 2 · La circunferencia borde no pertenece al conjunto</td></tr>
+  <tr><td>\(x^2+y^2 \leq 4\)</td><td>✗ No</td><td>✓ Sí</td><td>✓ Sí</td><td>Disco cerrado de radio 2 · Incluye la circunferencia borde</td></tr>
+</table>
+
+<div class="warnbox">
+  <div class="warnbox-label">⚠ Confusión típica — Cerrado ≠ No abierto</div>
+  <p>En matemática, "cerrado" y "abierto" <strong>no son opuestos</strong>. Un conjunto puede ser los dos a la vez (\(\mathbb{R}\), \(\emptyset\)) o no ser ninguno de los dos (\([0,1)\)). La confusión viene del lenguaje cotidiano donde "abierto" y "cerrado" sí son opuestos. Acá no funcionan así.</p>
+</div>
+
+<h4>Funciones de Varias Variables</h4>
+<div class="defbox">
+  <div class="defbox-label">¿Qué significa realmente? — Función de 2 Variables</div>
+  <p>Una función \(f(x,y)\) es una "máquina" que recibe <strong>dos números</strong> \((x,y)\) y devuelve <strong>un número</strong> \(z=f(x,y)\). Geométricamente, si graficás todos los puntos \((x, y, f(x,y))\) en el espacio 3D, obtenés una <strong>superficie</strong>. Por eso en cálculo de varias variables trabajamos con superficies en lugar de curvas.</p>
+  <p><strong>Dominio:</strong> todos los pares \((x,y)\) para los que la expresión tiene sentido (no hay división por cero, no hay raíz de negativo, etc.). El dominio es una región en el plano \(xy\). <strong>Imagen:</strong> todos los valores \(z\) que puede tomar \(f\).</p>
+</div>
+
+<div class="example">
+  <div class="example-header">Ejemplo — Determinar dominio e imagen de \(f(x,y) = \sqrt{9-x^2-y^2}\)</div>
+  <div class="example-body">
+    <p>Para que la raíz cuadrada exista: \(9-x^2-y^2 \geq 0 \;\Rightarrow\; x^2+y^2 \leq 9\).</p>
+    <p><strong>Dominio:</strong> \(D_f = \{(x,y)\in\mathbb{R}^2 : x^2+y^2 \leq 9\}\) — disco cerrado de radio 3 centrado en el origen.</p>
+    <ul class="props">
+      <li>¿Abierto o cerrado? <strong>Cerrado</strong> (incluye la circunferencia borde \(x^2+y^2=9\) donde \(f=0\)).</li>
+      <li>¿Acotado? <strong>Sí</strong> — cabe dentro del disco de radio 3.</li>
+    </ul>
+    <p><strong>Imagen:</strong> el valor máximo de \(f\) es \(\sqrt{9}=3\) (en el origen) y el mínimo es \(0\) (en el borde). Por lo tanto \(\text{Im}(f)=[0,3]\).</p>
+    <p><strong>Geométricamente:</strong> la superficie es la semiesfera superior de radio 3 centrada en el origen.</p>
+  </div>
+</div>
+
+<div class="exambox">
+  <div class="exambox-label">★ En el examen te preguntan: "Grafique la región y describa si es abierta, cerrada, acotada"</div>
+  <p>Estrategia en 3 pasos:</p>
+  <ul class="props" style="color:#d5f5e3">
+    <li><strong>1. Encontrá la frontera:</strong> igualá las desigualdades. Ej: si la condición es \(x^2+y^2 \leq 4\), la frontera es la circunferencia \(x^2+y^2=4\).</li>
+    <li><strong>2. Determiná si la frontera pertenece al conjunto:</strong> si la desigualdad es \(\leq\) o \(\geq\) → la frontera pertenece → <strong>cerrado</strong>. Si es \(&lt;\) o \(&gt;\) → frontera no pertenece → <strong>abierto</strong>.</li>
+    <li><strong>3. Verificá si es acotado:</strong> ¿puede meterse en un disco de radio finito? Si la región se extiende al infinito en alguna dirección → no acotado.</li>
+  </ul>
+  <p><strong>Ejemplo modelo de respuesta:</strong> "La región es el disco \(x^2+y^2\leq 4\). Es <strong>cerrada</strong> porque la desigualdad es \(\leq\) (incluye la circunferencia borde). Es <strong>acotada</strong> porque toda la región cabe dentro del disco de radio 2. Es <strong>conexa</strong> porque es un disco (no tiene "agujeros"). Su interior es el conjunto abierto \(x^2+y^2&lt;4\)."</p>
+</div>
 <h3 id="u2-curvas">2.2 Funciones de Varias Variables y Curvas de Nivel</h3>
 <div class="defbox">
   <div class="defbox-label">Función de 2 variables</div>
