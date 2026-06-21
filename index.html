@@ -1022,38 +1022,61 @@ details>*:not(summary){padding:1rem 1.4rem;}
   <p>Imaginá que la función \(f(x,y)\) es la altura del terreno en el punto \((x,y)\). Una curva de nivel \(f(x,y)=k\) es simplemente <strong>todos los puntos del suelo que están a la misma altura \(k\)</strong> — exactamente como las curvas de un mapa topográfico. Si las curvas están muy juntas → terreno empinado. Si están separadas → terreno suave.</p>
 </div>
 <div style="margin:1.5rem 0;">
-<svg viewBox="0 0 520 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto;background:var(--paper2);border:1px solid var(--rule);border-radius:6px;">
+<svg viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:560px;display:block;margin:0 auto;background:#faf7f0;border:1px solid #d4c5a0;border-radius:8px;">
   <defs>
-    <marker id="arr1" markerWidth="6" markerHeight="6" refX="3" refY="3" orient="auto">
-      <path d="M0,0 L6,3 L0,6 Z" fill="#b8860b"/>
-    </marker>
+    <marker id="axc1" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#888"/></marker>
+    <marker id="axc2" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#888"/></marker>
   </defs>
-  <!-- Grid lines -->
-  <line x1="40" y1="260" x2="480" y2="260" stroke="#ccc" stroke-width="1"/>
-  <line x1="40" y1="260" x2="40" y2="20" stroke="#ccc" stroke-width="1"/>
-  <!-- Axes labels -->
-  <text x="485" y="264" font-size="13" fill="#555" font-family="serif" font-style="italic">x</text>
-  <text x="35" y="15" font-size="13" fill="#555" font-family="serif" font-style="italic">y</text>
-  <text x="245" y="290" font-size="11" fill="#888" font-family="sans-serif">Plano xy (dominio)</text>
-  <!-- Level curves: f(x,y) = x²+y² = k, centered at (260,150) -->
-  <ellipse cx="260" cy="150" rx="30" ry="30" fill="none" stroke="#1a3a5c" stroke-width="2"/>
-  <text x="268" y="127" font-size="10" fill="#1a3a5c" font-family="monospace">k=1</text>
-  <ellipse cx="260" cy="150" rx="60" ry="60" fill="none" stroke="#1a3a5c" stroke-width="2"/>
-  <text x="298" y="97" font-size="10" fill="#1a3a5c" font-family="monospace">k=4</text>
-  <ellipse cx="260" cy="150" rx="100" ry="100" fill="none" stroke="#1a3a5c" stroke-width="2"/>
-  <text x="338" y="57" font-size="10" fill="#1a3a5c" font-family="monospace">k=9</text>
-  <ellipse cx="260" cy="150" rx="140" ry="105" fill="none" stroke="#1a3a5c" stroke-width="1.5" stroke-dasharray="4,3"/>
-  <text x="378" y="52" font-size="10" fill="#1a3a5c" font-family="monospace">k=16</text>
-  <!-- Gradient arrows (perpendicular to circles = radially outward) -->
-  <line x1="260" y1="150" x2="282" y2="128" stroke="#b8860b" stroke-width="2" marker-end="url(#arr1)"/>
-  <line x1="260" y1="150" x2="295" y2="150" stroke="#b8860b" stroke-width="2" marker-end="url(#arr1)"/>
-  <line x1="260" y1="150" x2="260" y2="117" stroke="#b8860b" stroke-width="2" marker-end="url(#arr1)"/>
+  <!-- TITLE -->
+  <text x="280" y="18" font-size="12" fill="#3d2e14" font-family="sans-serif" font-weight="bold" text-anchor="middle">Curvas de nivel de f(x,y) = x² + y²</text>
+  <!-- LEFT PANEL: curvas en plano xy -->
+  <text x="130" y="36" font-size="10" fill="#555" font-family="sans-serif" text-anchor="middle">Plano xy (dominio)</text>
+  <!-- Axes -->
+  <line x1="40" y1="170" x2="240" y2="170" stroke="#888" stroke-width="1.5" marker-end="url(#axc1)"/>
+  <line x1="130" y1="270" x2="130" y2="45" stroke="#888" stroke-width="1.5" marker-end="url(#axc2)"/>
+  <text x="244" y="174" font-size="11" fill="#888" font-family="serif" font-style="italic">x</text>
+  <text x="122" y="43" font-size="11" fill="#888" font-family="serif" font-style="italic">y</text>
+  <!-- Concentric circles with color gradient (brighter = higher value) -->
+  <circle cx="130" cy="170" r="28" fill="rgba(26,58,92,0.18)" stroke="#1a3a5c" stroke-width="2"/>
+  <text x="152" y="147" font-size="10" fill="#1a3a5c" font-family="monospace" font-weight="bold">k=1</text>
+  <circle cx="130" cy="170" r="56" fill="rgba(26,74,46,0.10)" stroke="#1a4a2e" stroke-width="1.8"/>
+  <text x="180" y="118" font-size="10" fill="#1a4a2e" font-family="monospace" font-weight="bold">k=4</text>
+  <circle cx="130" cy="170" r="84" fill="rgba(184,134,11,0.08)" stroke="#b8860b" stroke-width="1.5"/>
+  <text x="205" y="95" font-size="10" fill="#b8860b" font-family="monospace" font-weight="bold">k=9</text>
+  <circle cx="130" cy="170" r="112" fill="none" stroke="#c0392b" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <text x="225" y="70" font-size="10" fill="#c0392b" font-family="monospace" font-weight="bold">k=16</text>
+  <!-- Center point -->
+  <circle cx="130" cy="170" r="4" fill="#c0392b"/>
+  <text x="134" y="163" font-size="10" fill="#c0392b" font-family="monospace">(0,0)</text>
+  <!-- Axis ticks -->
+  <line x1="158" y1="166" x2="158" y2="174" stroke="#888" stroke-width="1"/>
+  <text x="158" y="183" font-size="9" fill="#888" font-family="monospace" text-anchor="middle">1</text>
+  <line x1="186" y1="166" x2="186" y2="174" stroke="#888" stroke-width="1"/>
+  <text x="186" y="183" font-size="9" fill="#888" font-family="monospace" text-anchor="middle">2</text>
+  <!-- ARROW divider -->
+  <text x="253" y="175" font-size="20" fill="#b8860b" text-anchor="middle">≡</text>
+  <!-- RIGHT PANEL: intuición 3D -->
+  <text x="410" y="36" font-size="10" fill="#555" font-family="sans-serif" text-anchor="middle">Vista 3D: z = x²+y² (paraboloide)</text>
+  <!-- Simplified 3D paraboloid perspective -->
+  <!-- Base ellipse (ground) -->
+  <ellipse cx="410" cy="240" rx="110" ry="35" fill="none" stroke="#ccc" stroke-width="1" stroke-dasharray="4,3"/>
+  <!-- Vertical axis -->
+  <line x1="410" y1="240" x2="410" y2="55" stroke="#888" stroke-width="1.5" marker-end="url(#axc2)"/>
+  <text x="402" y="52" font-size="10" fill="#888" font-family="serif" font-style="italic">z</text>
+  <!-- Paraboloid curves (approximate) -->
+  <path d="M310,225 Q360,60 410,50 Q460,60 510,225" fill="rgba(26,58,92,0.06)" stroke="#1a3a5c" stroke-width="1.5"/>
+  <path d="M340,230 Q375,100 410,90 Q445,100 480,230" fill="none" stroke="#1a4a2e" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <path d="M370,236 Q392,145 410,138 Q428,145 450,236" fill="none" stroke="#b8860b" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <!-- Horizontal slices = level curves -->
+  <ellipse cx="410" cy="50" rx="5" ry="2" fill="none" stroke="#1a3a5c" stroke-width="1.5"/>
+  <ellipse cx="410" cy="90" rx="38" ry="12" fill="none" stroke="#1a4a2e" stroke-width="1.2" stroke-dasharray="3,2"/>
+  <ellipse cx="410" cy="138" rx="68" ry="22" fill="none" stroke="#b8860b" stroke-width="1.2" stroke-dasharray="3,2"/>
   <!-- Labels -->
-  <text x="300" y="140" font-size="11" fill="#b8860b" font-family="sans-serif" font-weight="bold">∇f</text>
-  <text x="258" y="154" font-size="8" fill="#666" font-family="monospace">P₀</text>
-  <circle cx="260" cy="150" r="3" fill="#c0392b"/>
-  <!-- Caption -->
-  <text x="130" y="290" font-size="11" fill="#555" font-family="sans-serif">Las curvas de nivel de f(x,y)=x²+y² son círculos · ∇f apunta perpendicular a ellas</text>
+  <text x="449" y="48" font-size="9" fill="#1a3a5c" font-family="monospace">z=1</text>
+  <text x="453" y="88" font-size="9" fill="#1a4a2e" font-family="monospace">z=4</text>
+  <text x="483" y="136" font-size="9" fill="#b8860b" font-family="monospace">z=9</text>
+  <!-- Key insight -->
+  <text x="280" y="285" font-size="10" fill="#555" font-family="sans-serif" text-anchor="middle">Las curvas de nivel son los "anillos" que ves si mirás la montaña desde arriba</text>
 </svg>
 </div>
 <div class="example">
@@ -1339,6 +1362,10 @@ details>*:not(summary){padding:1rem 1.4rem;}
   </div>
 </div>
 <h3 id="u3-edp">3.3 Ecuaciones Diferenciales Parciales</h3>
+<div class="defbox">
+  <div class="defbox-label">¿Qué significa realmente? — EDP</div>
+  <p>Una <strong>Ecuación Diferencial Parcial (EDP)</strong> es como una EDO pero con varias variables independientes. En una EDO tenés \(y(t)\) y sus derivadas respecto a \(t\). En una EDP tenés \(u(x,y)\) o \(u(x,t)\) y sus <strong>derivadas parciales</strong>. Aparecen para modelar fenómenos donde algo cambia en más de una dirección (temperatura en una placa, vibración de una cuerda, campo eléctrico en el espacio). No se resuelven con una fórmula única — se verifican proposiendo una función y comprobando que satisface la ecuación.</p>
+</div>
 
 <div class="defbox">
   <div class="defbox-label">Ecuación de Laplace 2D</div>
@@ -1521,52 +1548,63 @@ details>*:not(summary){padding:1rem 1.4rem;}
 
 <h3 id="u3-direccional">3.8 Derivada Direccional</h3>
 <div style="margin:1.5rem 0;">
-<svg viewBox="0 0 520 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto;background:var(--paper2);border:1px solid var(--rule);border-radius:6px;">
+<svg viewBox="0 0 560 300" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:560px;display:block;margin:0 auto;background:#faf7f0;border:1px solid #d4c5a0;border-radius:8px;">
   <defs>
-    <marker id="arrd" markerWidth="7" markerHeight="7" refX="3" refY="3.5" orient="auto">
-      <path d="M0,0 L7,3.5 L0,7 Z" fill="#b8860b"/>
-    </marker>
-    <marker id="arru" markerWidth="7" markerHeight="7" refX="3" refY="3.5" orient="auto">
-      <path d="M0,0 L7,3.5 L0,7 Z" fill="#1a4a2e"/>
-    </marker>
-    <marker id="arrb" markerWidth="7" markerHeight="7" refX="3" refY="3.5" orient="auto">
-      <path d="M0,0 L7,3.5 L0,7 Z" fill="#8b1a1a"/>
-    </marker>
+    <marker id="arrd1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#b8860b"/></marker>
+    <marker id="arrd2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#1a4a2e"/></marker>
+    <marker id="arrd3" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#8b1a1a"/></marker>
+    <marker id="axd" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#888"/></marker>
   </defs>
-  <!-- Level curves ellipses -->
-  <ellipse cx="200" cy="150" rx="40" ry="25" fill="none" stroke="#1a3a5c" stroke-width="1.5"/>
-  <ellipse cx="200" cy="150" rx="80" ry="50" fill="none" stroke="#1a3a5c" stroke-width="1.5"/>
-  <ellipse cx="200" cy="150" rx="120" ry="75" fill="none" stroke="#1a3a5c" stroke-width="1.5"/>
-  <text x="170" y="130" font-size="10" fill="#1a3a5c" font-family="monospace">k=1</text>
-  <text x="130" y="105" font-size="10" fill="#1a3a5c" font-family="monospace">k=4</text>
-  <text x="90" y="80" font-size="10" fill="#1a3a5c" font-family="monospace">k=9</text>
-  <!-- Point P0 -->
-  <circle cx="200" cy="150" r="4" fill="#c0392b"/>
-  <text x="205" y="148" font-size="11" fill="#c0392b" font-family="monospace">P₀</text>
-  <!-- Gradient vector (perpendicular to level curve = outward) -->
-  <line x1="200" y1="150" x2="255" y2="118" stroke="#b8860b" stroke-width="2.5" marker-end="url(#arrd)"/>
-  <text x="258" y="113" font-size="12" fill="#b8860b" font-family="serif" font-weight="bold">∇f (máx)</text>
-  <!-- Direction u1 (not max, some angle) -->
-  <line x1="200" y1="150" x2="240" y2="130" stroke="#1a4a2e" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#arru)"/>
-  <text x="242" y="127" font-size="10" fill="#1a4a2e" font-family="monospace">u</text>
-  <!-- Angle theta label -->
-  <path d="M 220,145 A 20,20 0 0,0 213,131" fill="none" stroke="#555" stroke-width="1"/>
-  <text x="222" y="138" font-size="10" fill="#555" font-family="serif" font-style="italic">θ</text>
-  <!-- -grad direction -->
-  <line x1="200" y1="150" x2="145" y2="182" stroke="#8b1a1a" stroke-width="2" stroke-dasharray="4,3" marker-end="url(#arrb)"/>
-  <text x="100" y="195" font-size="11" fill="#8b1a1a" font-family="serif">−∇f (mín)</text>
-  <!-- Right panel: formula explanation -->
-  <rect x="340" y="60" width="160" height="160" fill="rgba(26,58,92,0.07)" rx="6"/>
-  <text x="350" y="85" font-size="11" fill="#1a3a5c" font-family="monospace" font-weight="bold">D_u f = ∇f · u</text>
-  <text x="350" y="105" font-size="10" fill="#555" font-family="monospace">       = |∇f| cos θ</text>
-  <line x1="350" y1="115" x2="490" y2="115" stroke="#ccc" stroke-width="1"/>
-  <text x="350" y="132" font-size="10" fill="#b8860b" font-family="sans-serif">θ=0 → cos=1</text>
-  <text x="350" y="147" font-size="10" fill="#b8860b" font-family="sans-serif">DD máx = |∇f|</text>
-  <text x="350" y="167" font-size="10" fill="#8b1a1a" font-family="sans-serif">θ=π → cos=-1</text>
-  <text x="350" y="182" font-size="10" fill="#8b1a1a" font-family="sans-serif">DD mín = -|∇f|</text>
-  <text x="350" y="202" font-size="10" fill="#555" font-family="sans-serif">θ=π/2 → DD=0</text>
-  <!-- Caption -->
-  <text x="20" y="270" font-size="11" fill="#555" font-family="sans-serif">La DD en dir. u es la proyección de ∇f sobre u. Máxima en la dirección del gradiente.</text>
+  <text x="280" y="18" font-size="12" fill="#3d2e14" font-family="sans-serif" font-weight="bold" text-anchor="middle">Derivada Direccional: Dᵤf = ∇f · u</text>
+  <!-- LEFT: Level curves with direction vector -->
+  <text x="140" y="35" font-size="10" fill="#555" font-family="sans-serif" text-anchor="middle">Vista desde arriba (plano xy)</text>
+  <line x1="30" y1="210" x2="255" y2="210" stroke="#888" stroke-width="1.2" marker-end="url(#axd)"/>
+  <line x1="130" y1="280" x2="130" y2="30" stroke="#888" stroke-width="1.2" marker-end="url(#axd)"/>
+  <text x="258" y="214" font-size="10" fill="#888" font-family="serif" font-style="italic">x</text>
+  <text x="122" y="28" font-size="10" fill="#888" font-family="serif" font-style="italic">y</text>
+  <!-- Level curves (ellipses) -->
+  <ellipse cx="160" cy="155" rx="32" ry="20" fill="rgba(26,58,92,0.15)" stroke="#1a3a5c" stroke-width="1.8"/>
+  <ellipse cx="160" cy="155" rx="64" ry="40" fill="rgba(26,58,92,0.07)" stroke="#1a3a5c" stroke-width="1.4"/>
+  <ellipse cx="160" cy="155" rx="96" ry="60" fill="none" stroke="#1a3a5c" stroke-width="1" stroke-dasharray="4,2"/>
+  <text x="188" y="138" font-size="9" fill="#1a3a5c" font-family="monospace">f=3</text>
+  <text x="218" y="118" font-size="9" fill="#1a3a5c" font-family="monospace">f=2</text>
+  <text x="248" y="98" font-size="9" fill="#1a3a5c" font-family="monospace">f=1</text>
+  <!-- Point P0 on level curve f=2 -->
+  <circle cx="207" cy="120" r="5" fill="#c0392b"/>
+  <text x="213" y="115" font-size="11" fill="#c0392b" font-family="monospace">P₀</text>
+  <!-- Gradient vector (perpendicular to level curve, toward higher f) -->
+  <line x1="207" y1="120" x2="240" y2="88" stroke="#b8860b" stroke-width="2.5" marker-end="url(#arrd1)"/>
+  <text x="240" y="82" font-size="10" fill="#b8860b" font-family="monospace">∇f</text>
+  <!-- Direction vector u -->
+  <line x1="207" y1="120" x2="242" y2="100" stroke="#1a4a2e" stroke-width="2" marker-end="url(#arrd2)"/>
+  <text x="244" y="100" font-size="10" fill="#1a4a2e" font-family="monospace">u</text>
+  <!-- Angle label -->
+  <path d="M219,109 Q224,108 222,100" fill="none" stroke="#555" stroke-width="1"/>
+  <text x="224" y="110" font-size="9" fill="#555" font-family="monospace">θ</text>
+  <!-- RIGHT: Cross-section view (slope interpretation) -->
+  <text x="405" y="35" font-size="10" fill="#555" font-family="sans-serif" text-anchor="middle">Corte vertical en dirección u</text>
+  <line x1="280" y1="230" x2="545" y2="230" stroke="#888" stroke-width="1.2" marker-end="url(#axd)"/>
+  <line x1="300" y1="260" x2="300" y2="50" stroke="#888" stroke-width="1.2" marker-end="url(#axd)"/>
+  <text x="548" y="234" font-size="10" fill="#888" font-family="serif" font-style="italic">s</text>
+  <text x="292" y="48" font-size="10" fill="#888" font-family="serif" font-style="italic">f</text>
+  <!-- Surface cross-section curve -->
+  <path d="M305,210 Q360,185 405,155 Q440,130 490,110" fill="none" stroke="#1a3a5c" stroke-width="2"/>
+  <!-- Point on curve -->
+  <circle cx="405" cy="155" r="5" fill="#c0392b"/>
+  <!-- Tangent line at point -->
+  <line x1="355" y1="180" x2="460" y2="130" stroke="#b8860b" stroke-width="2" stroke-dasharray="5,3"/>
+  <!-- Slope triangle -->
+  <line x1="380" y1="167" x2="440" y2="167" stroke="#8b1a1a" stroke-width="1.5"/>
+  <line x1="440" y1="167" x2="440" y2="142" stroke="#8b1a1a" stroke-width="1.5"/>
+  <text x="408" y="178" font-size="10" fill="#8b1a1a" font-family="monospace">Δs</text>
+  <text x="443" y="158" font-size="10" fill="#8b1a1a" font-family="monospace">Δf</text>
+  <!-- Labels -->
+  <text x="405" y="148" font-size="10" fill="#c0392b" font-family="monospace">P₀</text>
+  <text x="320" y="70" font-size="10" fill="#b8860b" font-family="sans-serif">Dᵤf = pendiente de</text>
+  <text x="320" y="83" font-size="10" fill="#b8860b" font-family="sans-serif">la tangente = ∇f·u</text>
+  <text x="320" y="96" font-size="10" fill="#555" font-family="sans-serif">= |∇f| cos θ</text>
+  <!-- Key insight -->
+  <text x="280" y="285" font-size="10" fill="#555" font-family="sans-serif" text-anchor="middle">Dᵤf es máxima cuando u = ∇f/|∇f| (dirección del gradiente)</text>
 </svg>
 </div>
 <div class="example">
@@ -1609,49 +1647,65 @@ details>*:not(summary){padding:1rem 1.4rem;}
 </div>
 <h3 id="u3-gradiente">3.9 Vector Gradiente</h3>
 <div style="margin:1.5rem 0;">
-<svg viewBox="0 0 520 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto;background:var(--paper2);border:1px solid var(--rule);border-radius:6px;">
+<svg viewBox="0 0 560 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:560px;display:block;margin:0 auto;background:#faf7f0;border:1px solid #d4c5a0;border-radius:8px;">
   <defs>
-    <marker id="arrg" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-      <path d="M0,0 L6,3 L0,6 Z" fill="#b8860b"/>
-    </marker>
+    <marker id="arrg1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#b8860b"/></marker>
+    <marker id="axg" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#888"/></marker>
   </defs>
-  <!-- Level curves (ellipses = curvas de nivel de f) -->
-  <ellipse cx="190" cy="140" rx="35" ry="22" fill="rgba(26,58,92,0.06)" stroke="#1a3a5c" stroke-width="1.8"/>
-  <ellipse cx="190" cy="140" rx="70" ry="44" fill="none" stroke="#1a3a5c" stroke-width="1.5"/>
-  <ellipse cx="190" cy="140" rx="105" ry="66" fill="none" stroke="#1a3a5c" stroke-width="1.2"/>
-  <text x="205" y="125" font-size="10" fill="#1a3a5c" font-family="monospace">f=c₁</text>
-  <text x="240" y="100" font-size="10" fill="#1a3a5c" font-family="monospace">f=c₂</text>
-  <text x="275" y="77" font-size="10" fill="#1a3a5c" font-family="monospace">f=c₃</text>
-  <!-- Several gradient vectors at different points on level curves -->
-  <!-- Point 1: right side -->
-  <circle cx="225" cy="140" r="3" fill="#c0392b"/>
-  <line x1="225" y1="140" x2="265" y2="140" stroke="#b8860b" stroke-width="2.2" marker-end="url(#arrg)"/>
-  <!-- Point 2: top -->
-  <circle cx="190" cy="118" r="3" fill="#c0392b"/>
-  <line x1="190" y1="118" x2="190" y2="78" stroke="#b8860b" stroke-width="2.2" marker-end="url(#arrg)"/>
-  <!-- Point 3: top-right -->
-  <circle cx="214" cy="122" r="3" fill="#c0392b"/>
-  <line x1="214" y1="122" x2="244" y2="98" stroke="#b8860b" stroke-width="2.2" marker-end="url(#arrg)"/>
-  <!-- Point 4: bottom-left -->
-  <circle cx="163" cy="156" r="3" fill="#c0392b"/>
-  <line x1="163" y1="156" x2="133" y2="178" stroke="#b8860b" stroke-width="2.2" marker-end="url(#arrg)"/>
-  <!-- Perpendicularity mark at point 1 -->
-  <rect x="225" y="132" width="7" height="7" fill="none" stroke="#b8860b" stroke-width="1.5"/>
-  <!-- Labels -->
-  <text x="268" y="137" font-size="12" fill="#b8860b" font-family="serif" font-weight="bold">∇f</text>
-  <text x="192" y="72" font-size="12" fill="#b8860b" font-family="serif" font-weight="bold">∇f</text>
-  <!-- Right explanation panel -->
-  <rect x="330" y="50" width="175" height="155" fill="rgba(26,74,46,0.08)" rx="6"/>
-  <text x="340" y="73" font-size="11" fill="#1a4a2e" font-family="sans-serif" font-weight="bold">Propiedades de ∇f:</text>
-  <text x="340" y="93" font-size="10.5" fill="#333" font-family="sans-serif">① Perpendicular a</text>
-  <text x="344" y="108" font-size="10.5" fill="#333" font-family="sans-serif">   curvas de nivel</text>
-  <text x="340" y="128" font-size="10.5" fill="#333" font-family="sans-serif">② Apunta hacia f creciente</text>
-  <text x="340" y="148" font-size="10.5" fill="#333" font-family="sans-serif">③ |∇f| = tasa de cambio</text>
-  <text x="344" y="163" font-size="10.5" fill="#333" font-family="sans-serif">   máxima</text>
-  <text x="340" y="183" font-size="10.5" fill="#333" font-family="sans-serif">④ Campo vectorial:</text>
-  <text x="344" y="198" font-size="10.5" fill="#333" font-family="sans-serif">   un vector por punto</text>
-  <!-- Caption -->
-  <text x="20" y="248" font-size="11" fill="#555" font-family="sans-serif">Los vectores ∇f son perpendiculares a cada curva de nivel y apuntan hacia valores mayores de f.</text>
+  <text x="280" y="18" font-size="12" fill="#3d2e14" font-family="sans-serif" font-weight="bold" text-anchor="middle">Vector Gradiente ∇f — 3 propiedades clave</text>
+  <!-- Axes -->
+  <line x1="40" y1="190" x2="260" y2="190" stroke="#888" stroke-width="1.2" marker-end="url(#axg)"/>
+  <line x1="140" y1="265" x2="140" y2="35" stroke="#888" stroke-width="1.2" marker-end="url(#axg)"/>
+  <text x="264" y="194" font-size="10" fill="#888" font-family="serif" font-style="italic">x</text>
+  <text x="132" y="32" font-size="10" fill="#888" font-family="serif" font-style="italic">y</text>
+  <!-- Level curves with different fills (contour map feel) -->
+  <ellipse cx="140" cy="160" rx="25" ry="16" fill="rgba(26,58,92,0.30)" stroke="#1a3a5c" stroke-width="2"/>
+  <ellipse cx="140" cy="160" rx="55" ry="35" fill="rgba(26,58,92,0.15)" stroke="#1a3a5c" stroke-width="1.8"/>
+  <ellipse cx="140" cy="160" rx="90" ry="57" fill="rgba(26,58,92,0.06)" stroke="#1a3a5c" stroke-width="1.4"/>
+  <text x="158" y="148" font-size="9" fill="#fff" font-family="monospace" font-weight="bold">f=9</text>
+  <text x="172" y="128" font-size="9" fill="#1a3a5c" font-family="monospace" font-weight="bold">f=6</text>
+  <text x="215" y="106" font-size="9" fill="#1a3a5c" font-family="monospace" font-weight="bold">f=3</text>
+  <!-- Gradient vectors at several points — all pointing OUTWARD (toward higher f) -->
+  <!-- Point A (right of inner ellipse) -->
+  <circle cx="165" cy="160" r="3" fill="#c0392b"/>
+  <line x1="165" y1="160" x2="208" y2="160" stroke="#b8860b" stroke-width="2.5" marker-end="url(#arrg1)"/>
+  <!-- Point B (top) -->
+  <circle cx="140" cy="125" r="3" fill="#c0392b"/>
+  <line x1="140" y1="125" x2="140" y2="82" stroke="#b8860b" stroke-width="2.5" marker-end="url(#arrg1)"/>
+  <!-- Point C (top-right, on outer ellipse) -->
+  <circle cx="210" cy="130" r="3" fill="#c0392b"/>
+  <line x1="210" y1="130" x2="243" y2="100" stroke="#b8860b" stroke-width="2" marker-end="url(#arrg1)"/>
+  <!-- Point D (bottom-left) -->
+  <circle cx="82" cy="185" r="3" fill="#c0392b"/>
+  <line x1="82" y1="185" x2="48" y2="208" stroke="#b8860b" stroke-width="2" marker-end="url(#arrg1)"/>
+  <!-- Right angle marks (perpendicularity to level curve) -->
+  <rect x="166" y="153" width="6" height="6" fill="none" stroke="#555" stroke-width="1"/>
+  <text x="200" y="145" font-size="9" fill="#555" font-family="monospace">⊥</text>
+  <!-- Label for gradient vectors -->
+  <text x="215" y="155" font-size="11" fill="#b8860b" font-family="monospace" font-weight="bold">∇f</text>
+  <!-- RIGHT PANEL: 3 properties -->
+  <rect x="278" y="35" width="270" height="225" fill="rgba(0,0,0,0.02)" rx="6" stroke="#d4c5a0" stroke-width="1"/>
+  <text x="413" y="55" font-size="11" fill="#3d2e14" font-family="sans-serif" font-weight="bold" text-anchor="middle">Propiedades de ∇f</text>
+  <!-- Property 1 -->
+  <circle cx="296" cy="80" r="8" fill="#1a3a5c"/>
+  <text x="296" y="84" font-size="10" fill="#fff" font-family="monospace" text-anchor="middle">1</text>
+  <text x="312" y="76" font-size="10" fill="#3d2e14" font-family="sans-serif" font-weight="bold">Perpendicular a curvas de nivel</text>
+  <text x="312" y="89" font-size="9" fill="#555" font-family="sans-serif">∇f ⊥ curva f=k en cada punto</text>
+  <!-- Property 2 -->
+  <circle cx="296" cy="130" r="8" fill="#1a4a2e"/>
+  <text x="296" y="134" font-size="10" fill="#fff" font-family="monospace" text-anchor="middle">2</text>
+  <text x="312" y="126" font-size="10" fill="#3d2e14" font-family="sans-serif" font-weight="bold">Dirección de máximo crecimiento</text>
+  <text x="312" y="139" font-size="9" fill="#555" font-family="sans-serif">Dᵤf es máxima en dir. de ∇f</text>
+  <text x="312" y="150" font-size="9" fill="#555" font-family="sans-serif">y vale |∇f|</text>
+  <!-- Property 3 -->
+  <circle cx="296" cy="185" r="8" fill="#8b1a1a"/>
+  <text x="296" y="189" font-size="10" fill="#fff" font-family="monospace" text-anchor="middle">3</text>
+  <text x="312" y="181" font-size="10" fill="#3d2e14" font-family="sans-serif" font-weight="bold">Fórmula</text>
+  <text x="312" y="194" font-size="10" fill="#1a3a5c" font-family="monospace">∇f = (fx, fy)</text>
+  <text x="312" y="207" font-size="9" fill="#555" font-family="sans-serif">= ∂f/∂x î + ∂f/∂y ĵ</text>
+  <!-- Bottom note -->
+  <text x="413" y="245" font-size="9" fill="#888" font-family="sans-serif" text-anchor="middle">Mnemónico: gradiente apunta "cuesta arriba"</text>
+  <text x="280" y="272" font-size="10" fill="#555" font-family="sans-serif" text-anchor="middle">Ejemplo: f=x²+y² → ∇f=(2x,2y) apunta radialmente hacia afuera (creciente)</text>
 </svg>
 </div>
 <div class="defbox">
@@ -1726,40 +1780,56 @@ details>*:not(summary){padding:1rem 1.4rem;}
 
 <h3 id="u4-locales">4.1 Extremos Locales / Relativos</h3>
 <div style="margin:1.5rem 0;">
-<svg viewBox="0 0 520 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto;background:var(--paper2);border:1px solid var(--rule);border-radius:6px;">
-  <!-- Three panels: max, min, saddle -->
-  <!-- MAX panel -->
-  <rect x="10" y="10" width="155" height="195" fill="rgba(26,58,92,0.04)" rx="6" stroke="#1a3a5c" stroke-width="1"/>
-  <text x="65" y="30" font-size="12" fill="#1a3a5c" font-family="sans-serif" font-weight="bold" text-anchor="middle">MÁXIMO</text>
-  <!-- Inverted parabola shape (mountain) -->
-  <path d="M25,180 Q65,60 88,50 Q111,60 155,180" fill="rgba(26,58,92,0.12)" stroke="#1a3a5c" stroke-width="2"/>
-  <circle cx="88" cy="52" r="5" fill="#c0392b"/>
-  <text x="88" y="45" font-size="9" fill="#c0392b" font-family="monospace" text-anchor="middle">P*</text>
-  <text x="88" y="200" font-size="10" fill="#555" font-family="sans-serif" text-anchor="middle">H&gt;0, f_xx&lt;0</text>
-  <!-- Level curves (concentric) below -->
-  <ellipse cx="88" cy="52" rx="18" ry="8" fill="none" stroke="rgba(26,58,92,0.3)" stroke-width="1" stroke-dasharray="3,2"/>
-  <ellipse cx="88" cy="52" rx="35" ry="16" fill="none" stroke="rgba(26,58,92,0.2)" stroke-width="1" stroke-dasharray="3,2"/>
-  <!-- MIN panel -->
-  <rect x="178" y="10" width="155" height="195" fill="rgba(26,74,46,0.04)" rx="6" stroke="#1a4a2e" stroke-width="1"/>
-  <text x="255" y="30" font-size="12" fill="#1a4a2e" font-family="sans-serif" font-weight="bold" text-anchor="middle">MÍNIMO</text>
-  <!-- Upward parabola shape (valley) -->
-  <path d="M193,50 Q233,170 255,180 Q277,170 318,50" fill="rgba(26,74,46,0.12)" stroke="#1a4a2e" stroke-width="2"/>
-  <circle cx="255" cy="178" r="5" fill="#c0392b"/>
-  <text x="255" y="194" font-size="9" fill="#c0392b" font-family="monospace" text-anchor="middle">P*</text>
-  <text x="255" y="207" font-size="10" fill="#555" font-family="sans-serif" text-anchor="middle">H&gt;0, f_xx&gt;0</text>
-  <!-- SADDLE panel -->
-  <rect x="346" y="10" width="160" height="195" fill="rgba(139,26,26,0.04)" rx="6" stroke="#8b1a1a" stroke-width="1"/>
-  <text x="426" y="30" font-size="12" fill="#8b1a1a" font-family="sans-serif" font-weight="bold" text-anchor="middle">SILLA</text>
-  <!-- Saddle shape: goes up in one direction, down in another -->
-  <path d="M360,110 Q395,75 426,115 Q457,75 490,110" fill="rgba(139,26,26,0.08)" stroke="#8b1a1a" stroke-width="2"/>
-  <path d="M360,110 Q393,145 426,115 Q459,145 490,110" fill="rgba(139,26,26,0.06)" stroke="#8b1a1a" stroke-width="1.5" stroke-dasharray="5,3"/>
-  <circle cx="426" cy="115" r="5" fill="#c0392b"/>
-  <text x="426" y="108" font-size="9" fill="#c0392b" font-family="monospace" text-anchor="middle">P*</text>
-  <text x="426" y="207" font-size="10" fill="#555" font-family="sans-serif" text-anchor="middle">H &lt; 0</text>
-  <!-- Down arrows on saddle -->
-  <text x="360" y="155" font-size="18" fill="#8b1a1a" opacity="0.5">↑</text>
-  <text x="476" y="155" font-size="18" fill="#8b1a1a" opacity="0.5">↑</text>
-  <text x="418" y="75" font-size="18" fill="#8b1a1a" opacity="0.5">↓</text>
+<svg viewBox="0 0 580 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:580px;display:block;margin:0 auto;background:#faf7f0;border:1px solid #d4c5a0;border-radius:8px;">
+  <!-- TITLE -->
+  <text x="290" y="17" font-size="12" fill="#3d2e14" font-family="sans-serif" font-weight="bold" text-anchor="middle">Criterio del Hessiano: clasificación de puntos críticos</text>
+  <!-- === MÁXIMO === -->
+  <rect x="8" y="24" width="175" height="205" fill="rgba(26,58,92,0.04)" rx="6" stroke="#1a3a5c" stroke-width="1.5"/>
+  <text x="95" y="40" font-size="12" fill="#1a3a5c" font-family="sans-serif" font-weight="bold" text-anchor="middle">MÁXIMO LOCAL</text>
+  <path d="M20,210 Q58,90 95,68 Q132,90 170,210" fill="rgba(26,58,92,0.13)" stroke="#1a3a5c" stroke-width="2.5"/>
+  <circle cx="95" cy="70" r="6" fill="#c0392b"/>
+  <text x="95" y="64" font-size="9" fill="#c0392b" font-family="monospace" text-anchor="middle">P*</text>
+  <!-- Level curves around max (top view inset) -->
+  <ellipse cx="95" cy="165" rx="20" ry="10" fill="rgba(26,58,92,0.25)" stroke="#1a3a5c" stroke-width="1.2"/>
+  <ellipse cx="95" cy="165" rx="38" ry="19" fill="rgba(26,58,92,0.12)" stroke="#1a3a5c" stroke-width="1"/>
+  <ellipse cx="95" cy="165" rx="55" ry="27" fill="none" stroke="#1a3a5c" stroke-width="0.8" stroke-dasharray="3,2"/>
+  <!-- Criteria box -->
+  <rect x="18" y="195" width="157" height="28" fill="#1a3a5c" rx="4"/>
+  <text x="97" y="206" font-size="9" fill="#fff" font-family="monospace" text-anchor="middle">H = det(Hess) &gt; 0</text>
+  <text x="97" y="218" font-size="9" fill="#fff" font-family="monospace" text-anchor="middle">f_xx &lt; 0 (concava ↓)</text>
+  <!-- === MÍNIMO === -->
+  <rect x="203" y="24" width="175" height="205" fill="rgba(26,74,46,0.04)" rx="6" stroke="#1a4a2e" stroke-width="1.5"/>
+  <text x="290" y="40" font-size="12" fill="#1a4a2e" font-family="sans-serif" font-weight="bold" text-anchor="middle">MÍNIMO LOCAL</text>
+  <path d="M215,80 Q253,190 290,210 Q327,190 365,80" fill="rgba(26,74,46,0.13)" stroke="#1a4a2e" stroke-width="2.5"/>
+  <circle cx="290" cy="208" r="6" fill="#c0392b"/>
+  <text x="290" y="202" font-size="9" fill="#c0392b" font-family="monospace" text-anchor="middle">P*</text>
+  <!-- Level curves around min -->
+  <ellipse cx="290" cy="135" rx="20" ry="10" fill="rgba(26,74,46,0.25)" stroke="#1a4a2e" stroke-width="1.2"/>
+  <ellipse cx="290" cy="135" rx="38" ry="19" fill="rgba(26,74,46,0.12)" stroke="#1a4a2e" stroke-width="1"/>
+  <ellipse cx="290" cy="135" rx="55" ry="27" fill="none" stroke="#1a4a2e" stroke-width="0.8" stroke-dasharray="3,2"/>
+  <!-- Criteria box -->
+  <rect x="213" y="195" width="157" height="28" fill="#1a4a2e" rx="4"/>
+  <text x="292" y="206" font-size="9" fill="#fff" font-family="monospace" text-anchor="middle">H = det(Hess) &gt; 0</text>
+  <text x="292" y="218" font-size="9" fill="#fff" font-family="monospace" text-anchor="middle">f_xx &gt; 0 (concava ↑)</text>
+  <!-- === PUNTO DE SILLA === -->
+  <rect x="398" y="24" width="175" height="205" fill="rgba(139,26,26,0.04)" rx="6" stroke="#8b1a1a" stroke-width="1.5"/>
+  <text x="485" y="40" font-size="12" fill="#8b1a1a" font-family="sans-serif" font-weight="bold" text-anchor="middle">PUNTO DE SILLA</text>
+  <!-- Saddle surface: up in one dir, down in other -->
+  <path d="M410,130 Q448,60 485,115 Q522,60 560,130" fill="rgba(139,26,26,0.10)" stroke="#8b1a1a" stroke-width="2.5"/>
+  <path d="M410,130 Q449,178 485,115 Q521,178 560,130" fill="rgba(184,134,11,0.10)" stroke="#b8860b" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <circle cx="485" cy="115" r="6" fill="#c0392b"/>
+  <text x="485" y="109" font-size="9" fill="#c0392b" font-family="monospace" text-anchor="middle">P*</text>
+  <!-- Arrows showing "goes up in one dir, down in other" -->
+  <text x="418" y="85" font-size="16" fill="#1a4a2e">↑</text>
+  <text x="548" y="85" font-size="16" fill="#1a4a2e">↑</text>
+  <text x="485" y="178" font-size="16" fill="#8b1a1a" text-anchor="middle">↓</text>
+  <!-- Hyperbola-like level curves -->
+  <path d="M415,140 Q450,120 460,80" fill="none" stroke="#8b1a1a" stroke-width="0.8" stroke-dasharray="3,2"/>
+  <path d="M555,140 Q520,120 510,80" fill="none" stroke="#8b1a1a" stroke-width="0.8" stroke-dasharray="3,2"/>
+  <!-- Criteria box -->
+  <rect x="408" y="195" width="157" height="28" fill="#8b1a1a" rx="4"/>
+  <text x="487" y="206" font-size="9" fill="#fff" font-family="monospace" text-anchor="middle">H = det(Hess) &lt; 0</text>
+  <text x="487" y="218" font-size="9" fill="#fff" font-family="monospace" text-anchor="middle">máx en una dir, mín en otra</text>
 </svg>
 </div>
 <p>Función de 1 variable \(\Rightarrow\) puntos donde la gráfica tiene una recta tg horizontal. La derivada 1° e.relativos — que pueden ser máximos, mínimos o puntos de inflexión. Función de 2 variables \(\Rightarrow\) puntos donde la superficie \(z=f(x,y)\) tiene un plano tg horizontal (máximos o mínimos locales o puntos de silla).</p>
@@ -1858,45 +1928,67 @@ details>*:not(summary){padding:1rem 1.4rem;}
 
 <h3 id="u4-lagrange">4.4 Multiplicadores de Lagrange</h3>
 <div style="margin:1.5rem 0;">
-<svg viewBox="0 0 520 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto;background:var(--paper2);border:1px solid var(--rule);border-radius:6px;">
+<svg viewBox="0 0 560 290" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:560px;display:block;margin:0 auto;background:#faf7f0;border:1px solid #d4c5a0;border-radius:8px;">
   <defs>
-    <marker id="arrl" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-      <path d="M0,0 L6,3 L0,6 Z" fill="#8b1a1a"/>
-    </marker>
-    <marker id="arrlg" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
-      <path d="M0,0 L6,3 L0,6 Z" fill="#1a4a2e"/>
-    </marker>
+    <marker id="arrl1" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#b8860b"/></marker>
+    <marker id="arrl2" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 Z" fill="#1a4a2e"/></marker>
+    <marker id="axl" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#888"/></marker>
   </defs>
-  <!-- Level curves of f (concentric ellipses) -->
-  <ellipse cx="220" cy="140" rx="30" ry="20" fill="rgba(26,58,92,0.06)" stroke="#1a3a5c" stroke-width="1.2" stroke-dasharray="6,3"/>
-  <ellipse cx="220" cy="140" rx="65" ry="43" fill="none" stroke="#1a3a5c" stroke-width="1.2" stroke-dasharray="6,3"/>
-  <ellipse cx="220" cy="140" rx="100" ry="67" fill="none" stroke="#1a3a5c" stroke-width="1.4" stroke-dasharray="6,3"/>
-  <text x="260" y="86" font-size="10" fill="#1a3a5c" font-family="monospace">Curvas de nivel de f</text>
-  <!-- Constraint curve g(x,y)=0 -->
-  <path d="M100,60 Q170,80 250,130 Q310,165 380,200" fill="none" stroke="#8b1a1a" stroke-width="2.5"/>
-  <text x="340" y="215" font-size="11" fill="#8b1a1a" font-family="monospace">g(x,y)=0</text>
-  <!-- Optimal point (tangency) -->
-  <circle cx="248" cy="132" r="6" fill="#b8860b"/>
-  <text x="256" y="128" font-size="10" fill="#b8860b" font-family="monospace">P* (óptimo)</text>
+  <text x="280" y="17" font-size="12" fill="#3d2e14" font-family="sans-serif" font-weight="bold" text-anchor="middle">Lagrange: en P* las curvas de nivel de f y g son TANGENTES</text>
+  <!-- Axes -->
+  <line x1="30" y1="220" x2="300" y2="220" stroke="#888" stroke-width="1.2" marker-end="url(#axl)"/>
+  <line x1="120" y1="280" x2="120" y2="35" stroke="#888" stroke-width="1.2" marker-end="url(#axl)"/>
+  <text x="304" y="224" font-size="10" fill="#888" font-family="serif" font-style="italic">x</text>
+  <text x="112" y="32" font-size="10" fill="#888" font-family="serif" font-style="italic">y</text>
+  <!-- Level curves of f (dashed, concentric ellipses) -->
+  <ellipse cx="140" cy="155" rx="22" ry="14" fill="none" stroke="#1a3a5c" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <ellipse cx="140" cy="155" rx="50" ry="32" fill="none" stroke="#1a3a5c" stroke-width="1.4" stroke-dasharray="5,3"/>
+  <ellipse cx="140" cy="155" rx="85" ry="54" fill="rgba(26,58,92,0.05)" stroke="#1a3a5c" stroke-width="1.6" stroke-dasharray="5,3"/>
+  <text x="225" y="100" font-size="9" fill="#1a3a5c" font-family="monospace">f=c₃ (máx posible)</text>
+  <text x="200" y="125" font-size="9" fill="#1a3a5c" font-family="monospace">f=c₂</text>
+  <text x="175" y="145" font-size="9" fill="#1a3a5c" font-family="monospace">f=c₁</text>
+  <!-- Constraint curve g(x,y)=0 (solid red curve) -->
+  <path d="M55,70 Q100,100 175,145 Q220,170 260,210" fill="none" stroke="#8b1a1a" stroke-width="2.8"/>
+  <text x="250" y="225" font-size="11" fill="#8b1a1a" font-family="monospace" font-weight="bold">g(x,y)=0</text>
+  <!-- Points where constraint intersects level curves (non-tangent) -->
+  <circle cx="100" cy="113" r="4" fill="#888"/>
+  <text x="82" y="110" font-size="8" fill="#888" font-family="sans-serif">no óptimo</text>
+  <!-- Optimal point P* where constraint is TANGENT to level curve f=c₃ -->
+  <circle cx="175" cy="145" r="7" fill="#b8860b"/>
+  <text x="183" y="140" font-size="11" fill="#b8860b" font-family="monospace" font-weight="bold">P*</text>
+  <!-- Tangent line at P* (shared tangent) -->
+  <line x1="130" y1="118" x2="220" y2="172" stroke="#555" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <text x="125" y="113" font-size="9" fill="#555" font-family="sans-serif">recta tangente</text>
+  <text x="125" y="123" font-size="9" fill="#555" font-family="sans-serif">común en P*</text>
   <!-- Gradient of f at P* -->
-  <line x1="248" y1="132" x2="278" y2="105" stroke="#1a4a2e" stroke-width="2.2" marker-end="url(#arrlg)"/>
-  <text x="281" y="101" font-size="11" fill="#1a4a2e" font-family="monospace">∇f</text>
-  <!-- Gradient of g at P* (same direction, parallel) -->
-  <line x1="248" y1="132" x2="270" y2="109" stroke="#8b1a1a" stroke-width="2.2" stroke-dasharray="4,2" marker-end="url(#arrl)"/>
-  <text x="272" y="107" font-size="10" fill="#8b1a1a" font-family="monospace">λ∇g</text>
-  <!-- Tangent line to both at P* -->
-  <line x1="200" y1="158" x2="295" y2="107" stroke="#b8860b" stroke-width="1.5" stroke-dasharray="5,3"/>
-  <text x="168" y="162" font-size="10" fill="#b8860b" font-family="monospace">tangente común</text>
-  <!-- Explanation box -->
-  <rect x="330" y="40" width="175" height="120" fill="rgba(139,26,26,0.06)" rx="6"/>
-  <text x="340" y="60" font-size="11" fill="#8b1a1a" font-family="sans-serif" font-weight="bold">En el óptimo:</text>
-  <text x="340" y="78" font-size="10.5" fill="#333" font-family="sans-serif">• Las curvas de nivel de f</text>
-  <text x="344" y="93" font-size="10.5" fill="#333" font-family="sans-serif">  y la restricción son</text>
-  <text x="344" y="108" font-size="10.5" fill="#333" font-family="sans-serif">  tangentes entre sí</text>
-  <text x="340" y="128" font-size="10.5" fill="#333" font-family="sans-serif">• ∇f ∥ ∇g → ∇f = λ∇g</text>
-  <text x="340" y="148" font-size="10.5" fill="#333" font-family="sans-serif">• λ es el multiplicador</text>
-  <!-- Caption -->
-  <text x="20" y="248" font-size="11" fill="#555" font-family="sans-serif">Lagrange: en el óptimo, las curvas de nivel de f "rozan" la restricción — no la cruzan.</text>
+  <line x1="175" y1="145" x2="218" y2="110" stroke="#b8860b" stroke-width="2.5" marker-end="url(#arrl1)"/>
+  <text x="221" y="107" font-size="10" fill="#b8860b" font-family="monospace">∇f</text>
+  <!-- Gradient of g at P* (parallel to ∇f) -->
+  <line x1="175" y1="145" x2="209" y2="117" stroke="#1a4a2e" stroke-width="2" stroke-dasharray="4,2" marker-end="url(#arrl2)"/>
+  <text x="207" y="112" font-size="10" fill="#1a4a2e" font-family="monospace">∇g</text>
+  <!-- "Parallel" annotation -->
+  <text x="235" y="85" font-size="10" fill="#555" font-family="sans-serif">∇f ∥ ∇g en P*</text>
+  <text x="235" y="97" font-size="10" fill="#555" font-family="monospace">⟹ ∇f = λ∇g</text>
+  <!-- RIGHT: 3-step summary -->
+  <rect x="310" y="35" width="238" height="230" fill="rgba(0,0,0,0.02)" rx="6" stroke="#d4c5a0" stroke-width="1"/>
+  <text x="429" y="55" font-size="11" fill="#3d2e14" font-family="sans-serif" font-weight="bold" text-anchor="middle">Pasos del método</text>
+  <circle cx="328" cy="80" r="9" fill="#b8860b"/>
+  <text x="328" y="84" font-size="11" fill="#fff" font-family="monospace" text-anchor="middle">1</text>
+  <text x="345" y="76" font-size="10" fill="#3d2e14" font-family="sans-serif">Plantear sistema:</text>
+  <text x="345" y="88" font-size="9" fill="#555" font-family="monospace">fx=λgx, fy=λgy, g=0</text>
+  <circle cx="328" cy="125" r="9" fill="#b8860b"/>
+  <text x="328" y="129" font-size="11" fill="#fff" font-family="monospace" text-anchor="middle">2</text>
+  <text x="345" y="121" font-size="10" fill="#3d2e14" font-family="sans-serif">Resolver para</text>
+  <text x="345" y="133" font-size="9" fill="#555" font-family="monospace">x, y, λ (3 incógnitas)</text>
+  <circle cx="328" cy="170" r="9" fill="#b8860b"/>
+  <text x="328" y="174" font-size="11" fill="#fff" font-family="monospace" text-anchor="middle">3</text>
+  <text x="345" y="166" font-size="10" fill="#3d2e14" font-family="sans-serif">Evaluar f en los</text>
+  <text x="345" y="178" font-size="9" fill="#555" font-family="sans-serif">puntos críticos y comparar</text>
+  <rect x="318" y="198" width="220" height="55" fill="rgba(184,134,11,0.08)" rx="4" stroke="#b8860b" stroke-width="1"/>
+  <text x="428" y="212" font-size="9" fill="#3d2e14" font-family="sans-serif" text-anchor="middle" font-weight="bold">¿Por qué NO usamos el Hessiano?</text>
+  <text x="428" y="224" font-size="9" fill="#555" font-family="sans-serif" text-anchor="middle">El Hessiano clasifica extremos donde</text>
+  <text x="428" y="236" font-size="9" fill="#555" font-family="sans-serif" text-anchor="middle">∇f=0 (interior). Aquí ∇f ≠ 0 en P*,</text>
+  <text x="428" y="248" font-size="9" fill="#555" font-family="sans-serif" text-anchor="middle">el óptimo está sobre la restricción.</text>
 </svg>
 </div>
 <div class="example">
@@ -1998,52 +2090,73 @@ details>*:not(summary){padding:1rem 1.4rem;}
   <p>Cuando la región no es un rectángulo, los límites de integración de la integral interior dependen de la variable exterior. <strong>Tipo I</strong> = recorrés \(x\) de izquierda a derecha (fijo), y para cada \(x\) la \(y\) va de una curva inferior a una superior. <strong>Tipo II</strong> = recorrés \(y\) de abajo hacia arriba (fijo), y para cada \(y\) la \(x\) va de una curva izquierda a una derecha. La clave es <strong>graficar la región primero</strong> y elegir el orden que tenga límites más simples.</p>
 </div>
 <div style="margin:1.5rem 0;">
-<svg viewBox="0 0 520 230" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto;background:var(--paper2);border:1px solid var(--rule);border-radius:6px;">
+<svg viewBox="0 0 580 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:580px;display:block;margin:0 auto;background:#faf7f0;border:1px solid #d4c5a0;border-radius:8px;">
   <defs>
-    <marker id="ax1" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#555"/></marker>
-    <marker id="ax2" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#555"/></marker>
+    <marker id="axr1" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#888"/></marker>
+    <marker id="axr2" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#888"/></marker>
   </defs>
+  <text x="290" y="16" font-size="12" fill="#3d2e14" font-family="sans-serif" font-weight="bold" text-anchor="middle">Regiones Tipo I vs Tipo II — misma región, distinto orden de integración</text>
   <!-- TIPO I panel -->
-  <text x="10" y="18" font-size="12" fill="#1a3a5c" font-family="sans-serif" font-weight="bold">Tipo I: integrar en y primero</text>
+  <rect x="8" y="24" width="273" height="225" fill="rgba(26,74,46,0.03)" rx="6" stroke="#1a4a2e" stroke-width="1.5"/>
+  <text x="145" y="40" font-size="11" fill="#1a4a2e" font-family="sans-serif" font-weight="bold" text-anchor="middle">TIPO I — integrar y primero (x fijo)</text>
   <!-- Axes -->
-  <line x1="30" y1="195" x2="230" y2="195" stroke="#555" stroke-width="1.5" marker-end="url(#ax1)"/>
-  <line x1="30" y1="195" x2="30" y2="25" stroke="#555" stroke-width="1.5" marker-end="url(#ax2)"/>
-  <text x="235" y="198" font-size="11" fill="#555" font-family="serif" font-style="italic">x</text>
-  <text x="24" y="22" font-size="11" fill="#555" font-family="serif" font-style="italic">y</text>
-  <!-- Region (between y=x and y=x^2, x in [0,1], scaled) -->
-  <path d="M60,195 Q110,115 160,55" fill="none" stroke="#1a4a2e" stroke-width="2"/>
-  <text x="158" y="48" font-size="10" fill="#1a4a2e" font-family="monospace">y=√x</text>
-  <path d="M60,195 L160,55" fill="none" stroke="#8b1a1a" stroke-width="2"/>
-  <text x="153" y="65" font-size="10" fill="#8b1a1a" font-family="monospace">y=x</text>
-  <!-- Fill region -->
-  <path d="M60,195 Q110,115 160,55 L60,195 Z" fill="rgba(26,74,46,0.15)"/>
-  <!-- Vertical strip (fixed x) -->
-  <line x1="110" y1="158" x2="110" y2="115" stroke="#b8860b" stroke-width="2.5" stroke-dasharray="0"/>
-  <text x="113" y="165" font-size="9" fill="#b8860b" font-family="monospace">g₁(x)</text>
-  <text x="113" y="112" font-size="9" fill="#b8860b" font-family="monospace">g₂(x)</text>
-  <text x="55" y="210" font-size="9" fill="#555" font-family="monospace">a</text>
-  <text x="155" y="210" font-size="9" fill="#555" font-family="monospace">b</text>
-  <line x1="60" y1="193" x2="60" y2="197" stroke="#555" stroke-width="1"/>
-  <line x1="160" y1="193" x2="160" y2="197" stroke="#555" stroke-width="1"/>
-  <text x="40" y="220" font-size="10" fill="#1a3a5c" font-family="monospace">∫ₐᵇ ∫_{g₁(x)}^{g₂(x)} f dy dx</text>
+  <line x1="35" y1="200" x2="268" y2="200" stroke="#888" stroke-width="1.2" marker-end="url(#axr1)"/>
+  <line x1="55" y1="225" x2="55" y2="45" stroke="#888" stroke-width="1.2" marker-end="url(#axr1)"/>
+  <text x="272" y="204" font-size="10" fill="#888" font-family="serif" font-style="italic">x</text>
+  <text x="48" y="43" font-size="10" fill="#888" font-family="serif" font-style="italic">y</text>
+  <!-- Region: between y=x² (bottom) and y=2x (top), x in [0,2] -->
+  <!-- y=x²: x=0→y=0, x=2→y=4 (scaled: 55+80=135, y=200-80=120 at x=2) -->
+  <!-- Scale: x-axis: 55+t*70 for t∈[0,2]; y-axis: 200-s*40 for s∈[0,4] -->
+  <!-- y=x²: points at (55,200),(90,200-10=190),(125,200-40=160),(160,200-90=110),(195,200-160=40) -->
+  <path d="M55,200 Q90,193 125,172 Q160,138 195,42" fill="none" stroke="#8b1a1a" stroke-width="2"/>
+  <text x="197" y="38" font-size="10" fill="#8b1a1a" font-family="monospace">y=x²</text>
+  <!-- y=2x: at x=0→y=0, x=2→y=4; points (55,200),(195,40) -->
+  <line x1="55" y1="200" x2="195" y2="40" stroke="#1a4a2e" stroke-width="2"/>
+  <text x="180" y="36" font-size="10" fill="#1a4a2e" font-family="monospace">y=2x</text>
+  <!-- Fill region between curves -->
+  <path d="M55,200 Q90,193 125,172 Q160,138 195,42 L55,200 Z" fill="rgba(26,74,46,0.15)"/>
+  <!-- Vertical strip (fixed x, integrate y) -->
+  <line x1="140" y1="115" x2="140" y2="160" stroke="#b8860b" stroke-width="3"/>
+  <text x="143" y="142" font-size="9" fill="#b8860b" font-family="monospace">↑</text>
+  <!-- Bracket showing integration range for y -->
+  <text x="145" y="110" font-size="8" fill="#b8860b" font-family="sans-serif">g₂(x)</text>
+  <text x="145" y="165" font-size="8" fill="#b8860b" font-family="sans-serif">g₁(x)</text>
+  <!-- x limits -->
+  <line x1="55" y1="200" x2="55" y2="205" stroke="#555" stroke-width="1"/>
+  <text x="55" y="215" font-size="9" fill="#555" font-family="monospace" text-anchor="middle">a</text>
+  <line x1="195" y1="200" x2="195" y2="205" stroke="#555" stroke-width="1"/>
+  <text x="195" y="215" font-size="9" fill="#555" font-family="monospace" text-anchor="middle">b</text>
+  <!-- Formula -->
+  <text x="145" y="240" font-size="10" fill="#1a4a2e" font-family="monospace" text-anchor="middle">∫ₐᵇ ∫_{g₁(x)}^{g₂(x)} f dy dx</text>
   <!-- TIPO II panel -->
-  <text x="275" y="18" font-size="12" fill="#8b1a1a" font-family="sans-serif" font-weight="bold">Tipo II: integrar en x primero</text>
-  <line x1="295" y1="195" x2="495" y2="195" stroke="#555" stroke-width="1.5" marker-end="url(#ax1)"/>
-  <line x1="295" y1="195" x2="295" y2="25" stroke="#555" stroke-width="1.5" marker-end="url(#ax2)"/>
-  <text x="498" y="198" font-size="11" fill="#555" font-family="serif" font-style="italic">x</text>
-  <text x="289" y="22" font-size="11" fill="#555" font-family="serif" font-style="italic">y</text>
-  <!-- Region type II (between x=y² and x=y+2) -->
-  <path d="M295,55 Q350,95 370,155 Q360,185 345,195" fill="none" stroke="#1a3a5c" stroke-width="2"/>
-  <text x="368" y="52" font-size="10" fill="#1a3a5c" font-family="monospace">x=h₁(y)</text>
-  <path d="M370,55 L345,195" fill="none" stroke="#b8860b" stroke-width="2"/>
-  <text x="355" y="45" font-size="10" fill="#b8860b" font-family="monospace">x=h₂(y)</text>
-  <!-- Fill -->
-  <path d="M295,55 Q350,95 370,155 Q360,185 345,195 L370,55 Z" fill="rgba(139,26,26,0.12)"/>
-  <!-- Horizontal strip -->
-  <line x1="322" y1="115" x2="362" y2="115" stroke="#1a4a2e" stroke-width="2.5"/>
-  <text x="310" y="112" font-size="9" fill="#1a4a2e" font-family="monospace">h₁</text>
-  <text x="364" y="112" font-size="9" fill="#1a4a2e" font-family="monospace">h₂</text>
-  <text x="302" y="220" font-size="10" fill="#8b1a1a" font-family="monospace">∫_{c}^{d} ∫_{h₁(y)}^{h₂(y)} f dx dy</text>
+  <rect x="302" y="24" width="273" height="225" fill="rgba(26,58,92,0.03)" rx="6" stroke="#1a3a5c" stroke-width="1.5"/>
+  <text x="438" y="40" font-size="11" fill="#1a3a5c" font-family="sans-serif" font-weight="bold" text-anchor="middle">TIPO II — integrar x primero (y fijo)</text>
+  <!-- Axes -->
+  <line x1="325" y1="200" x2="562" y2="200" stroke="#888" stroke-width="1.2" marker-end="url(#axr2)"/>
+  <line x1="345" y1="225" x2="345" y2="45" stroke="#888" stroke-width="1.2" marker-end="url(#axr2)"/>
+  <text x="565" y="204" font-size="10" fill="#888" font-family="serif" font-style="italic">x</text>
+  <text x="338" y="43" font-size="10" fill="#888" font-family="serif" font-style="italic">y</text>
+  <!-- Same region, expressed as x=h₁(y) to x=h₂(y), y in [0,4] -->
+  <!-- x=y/2 (from y=2x): y=0→x=0, y=4→x=2; points (345,200),(485,40) -->
+  <line x1="345" y1="200" x2="485" y2="40" stroke="#1a4a2e" stroke-width="2"/>
+  <text x="488" y="36" font-size="10" fill="#1a4a2e" font-family="monospace">x=y/2</text>
+  <!-- x=√y (from y=x²): y=0→x=0, y=4→x=2; points (345,200),(485,40) roughly -->
+  <path d="M345,200 Q380,190 415,170 Q450,140 485,40" fill="none" stroke="#8b1a1a" stroke-width="2"/>
+  <text x="487" y="52" font-size="10" fill="#8b1a1a" font-family="monospace">x=√y</text>
+  <!-- Fill region -->
+  <path d="M345,200 Q380,190 415,170 Q450,140 485,40 L345,200 Z" fill="rgba(26,58,92,0.15)"/>
+  <!-- Horizontal strip (fixed y, integrate x) -->
+  <line x1="400" y1="148" x2="437" y2="148" stroke="#b8860b" stroke-width="3"/>
+  <text x="418" y="145" font-size="9" fill="#b8860b" font-family="monospace">→</text>
+  <text x="396" y="143" font-size="8" fill="#b8860b" font-family="sans-serif">h₁</text>
+  <text x="440" y="143" font-size="8" fill="#b8860b" font-family="sans-serif">h₂</text>
+  <!-- y limits -->
+  <line x1="340" y1="200" x2="345" y2="200" stroke="#555" stroke-width="1"/>
+  <text x="332" y="203" font-size="9" fill="#555" font-family="monospace">0</text>
+  <line x1="340" y1="40" x2="345" y2="40" stroke="#555" stroke-width="1"/>
+  <text x="332" y="43" font-size="9" fill="#555" font-family="monospace">4</text>
+  <!-- Formula -->
+  <text x="438" y="240" font-size="10" fill="#1a3a5c" font-family="monospace" text-anchor="middle">∫ₒ⁴ ∫_{h₁(y)}^{h₂(y)} f dx dy</text>
 </svg>
 </div>
 <div class="example">
@@ -2088,42 +2201,56 @@ details>*:not(summary){padding:1rem 1.4rem;}
 
 <h3 id="u5-polar">5.4 Coordenadas Polares y Jacobiano</h3>
 <div style="margin:1.5rem 0;">
-<svg viewBox="0 0 520 250" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto;background:var(--paper2);border:1px solid var(--rule);border-radius:6px;">
+<svg viewBox="0 0 580 280" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:580px;display:block;margin:0 auto;background:#faf7f0;border:1px solid #d4c5a0;border-radius:8px;">
   <defs>
-    <marker id="axp" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#555"/></marker>
+    <marker id="axp1" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#888"/></marker>
   </defs>
-  <!-- LEFT: Cartesian region (disk) -->
-  <text x="20" y="20" font-size="11" fill="#1a3a5c" font-family="sans-serif" font-weight="bold">Región en coordenadas cartesianas</text>
-  <line x1="30" y1="135" x2="210" y2="135" stroke="#555" stroke-width="1.5" marker-end="url(#axp)"/>
-  <line x1="120" y1="215" x2="120" y2="35" stroke="#555" stroke-width="1.5" marker-end="url(#axp)"/>
-  <text x="212" y="138" font-size="10" fill="#555">x</text>
-  <text x="114" y="32" font-size="10" fill="#555">y</text>
-  <!-- Disk x²+y²≤R² -->
-  <circle cx="120" cy="135" r="75" fill="rgba(26,58,92,0.12)" stroke="#1a3a5c" stroke-width="2"/>
-  <text x="125" y="138" font-size="10" fill="#1a3a5c" font-family="monospace">x²+y²≤R²</text>
-  <!-- R label -->
-  <line x1="120" y1="135" x2="173" y2="83" stroke="#b8860b" stroke-width="1.5" stroke-dasharray="4,2"/>
-  <text x="148" y="103" font-size="11" fill="#b8860b" font-family="monospace">R</text>
-  <text x="60" y="228" font-size="10" fill="#555" font-family="monospace">x: -R a R, y: -√(R²-x²) a √(R²-x²)   ← DIFÍCIL</text>
-  <!-- ARROW -->
-  <text x="222" y="130" font-size="24" fill="#b8860b">→</text>
-  <!-- RIGHT: Polar region (rectangle in r,θ space) -->
-  <text x="270" y="20" font-size="11" fill="#1a4a2e" font-family="sans-serif" font-weight="bold">Región en coordenadas polares</text>
-  <line x1="270" y1="195" x2="500" y2="195" stroke="#555" stroke-width="1.5" marker-end="url(#axp)"/>
-  <line x1="280" y1="210" x2="280" y2="40" stroke="#555" stroke-width="1.5" marker-end="url(#axp)"/>
-  <text x="502" y="198" font-size="10" fill="#555" font-family="serif" font-style="italic">r</text>
-  <text x="274" y="37" font-size="10" fill="#555" font-family="serif" font-style="italic">θ</text>
-  <!-- Rectangle [0,R]×[0,2π] in polar space -->
-  <rect x="280" y="70" width="150" height="120" fill="rgba(26,74,46,0.15)" stroke="#1a4a2e" stroke-width="2"/>
-  <text x="316" y="133" font-size="11" fill="#1a4a2e" font-family="monospace">0≤r≤R</text>
-  <text x="290" y="65" font-size="9" fill="#555" font-family="monospace">2π</text>
-  <text x="290" y="193" font-size="9" fill="#555" font-family="monospace">0</text>
-  <text x="423" y="193" font-size="9" fill="#555" font-family="monospace">R</text>
-  <line x1="430" y1="192" x2="430" y2="197" stroke="#555" stroke-width="1"/>
-  <!-- dA = r dr dθ annotation -->
-  <rect x="290" y="105" width="30" height="15" fill="rgba(184,134,11,0.3)" stroke="#b8860b" stroke-width="1.5"/>
-  <text x="328" y="116" font-size="10" fill="#b8860b" font-family="monospace">dA = r·dr·dθ</text>
-  <text x="276" y="228" font-size="10" fill="#555" font-family="monospace">r: 0 a R,  θ: 0 a 2π   ← SIMPLE</text>
+  <text x="290" y="16" font-size="12" fill="#3d2e14" font-family="sans-serif" font-weight="bold" text-anchor="middle">Cambio a Coordenadas Polares: x=r cosθ, y=r sinθ, dA=r dr dθ</text>
+  <!-- LEFT: Cartesian disk -->
+  <text x="118" y="35" font-size="10" fill="#555" font-family="sans-serif" text-anchor="middle">Región cartesiana (complicada)</text>
+  <line x1="30" y1="155" x2="220" y2="155" stroke="#888" stroke-width="1.2" marker-end="url(#axp1)"/>
+  <line x1="120" y1="240" x2="120" y2="45" stroke="#888" stroke-width="1.2" marker-end="url(#axp1)"/>
+  <text x="223" y="159" font-size="10" fill="#888" font-family="serif" font-style="italic">x</text>
+  <text x="112" y="43" font-size="10" fill="#888" font-family="serif" font-style="italic">y</text>
+  <!-- Disk -->
+  <circle cx="120" cy="155" r="80" fill="rgba(26,58,92,0.15)" stroke="#1a3a5c" stroke-width="2.5"/>
+  <!-- Complicated limits annotation -->
+  <text x="120" y="158" font-size="9" fill="#1a3a5c" font-family="monospace" text-anchor="middle">x²+y²≤R²</text>
+  <!-- R label with arrow -->
+  <line x1="120" y1="155" x2="174" y2="101" stroke="#b8860b" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <text x="150" y="122" font-size="11" fill="#b8860b" font-family="monospace" font-weight="bold">R</text>
+  <!-- Limits note (messy) -->
+  <text x="118" y="253" font-size="8" fill="#8b1a1a" font-family="monospace" text-anchor="middle">x: -R a R</text>
+  <text x="118" y="264" font-size="8" fill="#8b1a1a" font-family="monospace" text-anchor="middle">y: -√(R²-x²) a √(R²-x²)</text>
+  <!-- Big arrow -->
+  <rect x="230" y="140" width="100" height="30" fill="rgba(184,134,11,0.1)" rx="5" stroke="#b8860b" stroke-width="1.5"/>
+  <text x="280" y="153" font-size="11" fill="#b8860b" font-family="monospace" text-anchor="middle">x=r cosθ</text>
+  <text x="280" y="165" font-size="11" fill="#b8860b" font-family="monospace" text-anchor="middle">y=r sinθ</text>
+  <text x="280" y="135" font-size="14" fill="#b8860b" text-anchor="middle">→</text>
+  <!-- RIGHT: Polar rectangle -->
+  <text x="440" y="35" font-size="10" fill="#555" font-family="sans-serif" text-anchor="middle">Región polar (un rectángulo)</text>
+  <line x1="330" y1="240" x2="565" y2="240" stroke="#888" stroke-width="1.2" marker-end="url(#axp1)"/>
+  <line x1="345" y1="255" x2="345" y2="45" stroke="#888" stroke-width="1.2" marker-end="url(#axp1)"/>
+  <text x="568" y="244" font-size="10" fill="#888" font-family="serif" font-style="italic">r</text>
+  <text x="337" y="43" font-size="10" fill="#888" font-family="serif" font-style="italic">θ</text>
+  <!-- Polar rectangle: r from 0 to R, theta from 0 to 2π -->
+  <rect x="345" y="70" width="190" height="155" fill="rgba(26,74,46,0.20)" stroke="#1a4a2e" stroke-width="2.5"/>
+  <!-- r axis labels -->
+  <line x1="535" y1="240" x2="535" y2="243" stroke="#555" stroke-width="1"/>
+  <text x="535" y="252" font-size="10" fill="#555" font-family="monospace" text-anchor="middle">R</text>
+  <line x1="345" y1="240" x2="345" y2="243" stroke="#555" stroke-width="1"/>
+  <text x="345" y="252" font-size="10" fill="#555" font-family="monospace" text-anchor="middle">0</text>
+  <!-- theta axis labels -->
+  <line x1="342" y1="70" x2="345" y2="70" stroke="#555" stroke-width="1"/>
+  <text x="328" y="73" font-size="9" fill="#555" font-family="monospace">2π</text>
+  <line x1="342" y1="225" x2="345" y2="225" stroke="#555" stroke-width="1"/>
+  <text x="330" y="228" font-size="9" fill="#555" font-family="monospace">0</text>
+  <!-- Clean limits annotation -->
+  <text x="440" y="155" font-size="10" fill="#1a4a2e" font-family="monospace" text-anchor="middle" font-weight="bold">0 ≤ r ≤ R</text>
+  <text x="440" y="168" font-size="10" fill="#1a4a2e" font-family="monospace" text-anchor="middle" font-weight="bold">0 ≤ θ ≤ 2π</text>
+  <!-- Jacobian label -->
+  <rect x="335" y="263" width="235" height="15" fill="rgba(184,134,11,0.08)" rx="3"/>
+  <text x="453" y="274" font-size="9" fill="#b8860b" font-family="monospace" text-anchor="middle">Jacobiano: dA = dx dy → r dr dθ</text>
 </svg>
 </div>
 <div class="math-block">\[x=r\cos\theta,\quad y=r\sin\theta,\quad x^2+y^2=r^2\]</div>
@@ -2209,53 +2336,79 @@ details>*:not(summary){padding:1rem 1.4rem;}
   <p>Una ecuación diferencial ordinaria es una ecuación donde la incógnita <strong>es una función</strong> y la ecuación involucra a esa función y sus derivadas. Resolver una EDO es encontrar todas las funciones que satisfacen la ecuación. La "solución general" tiene constantes libres (una por cada orden); la "solución particular" fija esas constantes con condiciones iniciales.</p>
 </div>
 <div style="margin:1.5rem 0;">
-<svg viewBox="0 0 520 270" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto;background:var(--paper2);border:1px solid var(--rule);border-radius:6px;">
-  <!-- Decision tree / flowchart for EDO classification -->
-  <text x="260" y="22" font-size="13" fill="#1a1208" font-family="sans-serif" font-weight="bold" text-anchor="middle">¿Qué tipo de EDO es?</text>
-  <!-- Root box -->
-  <rect x="160" y="32" width="200" height="32" rx="6" fill="#1a3a5c" opacity="0.85"/>
-  <text x="260" y="53" font-size="11" fill="#fff" font-family="monospace" text-anchor="middle">¿Es lineal en y y sus derivadas?</text>
-  <!-- Yes branch -->
-  <line x1="210" y1="64" x2="140" y2="95" stroke="#555" stroke-width="1.5"/>
-  <text x="155" y="82" font-size="9" fill="#1a4a2e" font-family="sans-serif">SÍ</text>
-  <!-- No branch -->
-  <line x1="310" y1="64" x2="380" y2="95" stroke="#555" stroke-width="1.5"/>
-  <text x="365" y="82" font-size="9" fill="#8b1a1a" font-family="sans-serif">NO</text>
-  <!-- Lineal box -->
-  <rect x="60" y="95" width="155" height="28" rx="5" fill="#1a4a2e" opacity="0.8"/>
-  <text x="137" y="114" font-size="10.5" fill="#fff" font-family="monospace" text-anchor="middle">LINEAL</text>
-  <!-- No lineal box -->
-  <rect x="330" y="95" width="155" height="28" rx="5" fill="#8b1a1a" opacity="0.7"/>
-  <text x="407" y="114" font-size="10.5" fill="#fff" font-family="monospace" text-anchor="middle">NO LINEAL</text>
-  <text x="407" y="135" font-size="9" fill="#8b1a1a" font-family="sans-serif" text-anchor="middle">(métodos numéricos)</text>
-  <!-- Lineal branches: 1er orden vs 2do orden -->
-  <line x1="137" y1="123" x2="90" y2="158" stroke="#555" stroke-width="1.5"/>
-  <line x1="137" y1="123" x2="185" y2="158" stroke="#555" stroke-width="1.5"/>
-  <text x="85" y="148" font-size="9" fill="#555">1er orden</text>
-  <text x="160" y="148" font-size="9" fill="#555">2do orden</text>
-  <!-- 1er orden branches -->
-  <rect x="20" y="158" width="128" height="24" rx="4" fill="rgba(26,74,46,0.12)" stroke="#1a4a2e" stroke-width="1.2"/>
-  <text x="84" y="174" font-size="9.5" fill="#1a4a2e" font-family="monospace" text-anchor="middle">¿Separable?</text>
-  <line x1="45" y1="182" x2="35" y2="210" stroke="#555" stroke-width="1"/>
-  <line x1="100" y1="182" x2="108" y2="210" stroke="#555" stroke-width="1"/>
-  <text x="10" y="205" font-size="8" fill="#555">SÍ→sep.</text>
-  <text x="92" y="205" font-size="8" fill="#555">NO→FI</text>
-  <rect x="6" y="210" width="55" height="22" rx="3" fill="#b8860b" opacity="0.7"/>
-  <text x="33" y="225" font-size="8" fill="#fff" font-family="monospace" text-anchor="middle">Separar vars</text>
-  <rect x="75" y="210" width="72" height="22" rx="3" fill="#b8860b" opacity="0.7"/>
-  <text x="111" y="225" font-size="8" fill="#fff" font-family="monospace" text-anchor="middle">Factor integrante</text>
-  <!-- 2do orden branches -->
-  <rect x="155" y="158" width="135" height="24" rx="4" fill="rgba(26,74,46,0.12)" stroke="#1a4a2e" stroke-width="1.2"/>
-  <text x="222" y="174" font-size="9.5" fill="#1a4a2e" font-family="monospace" text-anchor="middle">¿Homogénea?</text>
-  <line x1="185" y1="182" x2="175" y2="210" stroke="#555" stroke-width="1"/>
-  <line x1="260" y1="182" x2="270" y2="210" stroke="#555" stroke-width="1"/>
-  <text x="152" y="205" font-size="8" fill="#555">SÍ→r²+br+c=0</text>
-  <text x="255" y="205" font-size="8" fill="#555">NO</text>
-  <rect x="148" y="210" width="55" height="22" rx="3" fill="#b8860b" opacity="0.7"/>
-  <text x="175" y="225" font-size="8" fill="#fff" font-family="monospace" text-anchor="middle">Ec. auxiliar</text>
-  <rect x="252" y="210" width="55" height="22" rx="3" fill="#b8860b" opacity="0.7"/>
-  <text x="279" y="222" font-size="8" fill="#fff" font-family="monospace" text-anchor="middle">CI o</text>
-  <text x="279" y="232" font-size="8" fill="#fff" font-family="monospace" text-anchor="middle">Var. Param.</text>
+<svg viewBox="0 0 580 310" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:580px;display:block;margin:0 auto;background:#faf7f0;border:1px solid #d4c5a0;border-radius:8px;">
+  <text x="290" y="18" font-size="12" fill="#3d2e14" font-family="sans-serif" font-weight="bold" text-anchor="middle">Árbol de decisión — ¿Qué método usar?</text>
+  <!-- ROOT -->
+  <rect x="165" y="28" width="250" height="34" rx="6" fill="#3d2e14" opacity="0.9"/>
+  <text x="290" y="44" font-size="11" fill="#fff" font-family="sans-serif" text-anchor="middle" font-weight="bold">¿La EDO es LINEAL en y e y', y'', ...?</text>
+  <text x="290" y="56" font-size="9" fill="#ddd" font-family="monospace" text-anchor="middle">a_n(x)y^(n) + ... + a_1y' + a_0y = g(x)</text>
+  <!-- Branch lines -->
+  <line x1="230" y1="62" x2="120" y2="98" stroke="#1a4a2e" stroke-width="2"/>
+  <text x="155" y="86" font-size="10" fill="#1a4a2e" font-family="sans-serif" font-weight="bold">SÍ</text>
+  <line x1="350" y1="62" x2="460" y2="98" stroke="#8b1a1a" stroke-width="2"/>
+  <text x="430" y="86" font-size="10" fill="#8b1a1a" font-family="sans-serif" font-weight="bold">NO</text>
+  <!-- LINEAL node -->
+  <rect x="30" y="98" width="175" height="30" rx="5" fill="#1a4a2e"/>
+  <text x="117" y="118" font-size="11" fill="#fff" font-family="sans-serif" text-anchor="middle" font-weight="bold">LINEAL</text>
+  <!-- NO LINEAL node -->
+  <rect x="373" y="98" width="175" height="30" rx="5" fill="#8b1a1a"/>
+  <text x="460" y="118" font-size="11" fill="#fff" font-family="sans-serif" text-anchor="middle" font-weight="bold">NO LINEAL</text>
+  <text x="460" y="143" font-size="9" fill="#8b1a1a" font-family="sans-serif" text-anchor="middle">→ Métodos numéricos</text>
+  <text x="460" y="154" font-size="9" fill="#8b1a1a" font-family="sans-serif" text-anchor="middle">o casos especiales</text>
+  <!-- Lineal branches: homogénea vs no homogénea -->
+  <line x1="80" y1="128" x2="60" y2="163" stroke="#1a4a2e" stroke-width="1.5"/>
+  <text x="50" y="152" font-size="9" fill="#1a4a2e" font-family="sans-serif">g=0</text>
+  <line x1="155" y1="128" x2="175" y2="163" stroke="#b8860b" stroke-width="1.5"/>
+  <text x="162" y="152" font-size="9" fill="#b8860b" font-family="sans-serif">g≠0</text>
+  <!-- HOMOGÉNEA -->
+  <rect x="8" y="163" width="100" height="28" rx="4" fill="#1a4a2e" opacity="0.7"/>
+  <text x="58" y="181" font-size="10" fill="#fff" font-family="monospace" text-anchor="middle">HOMOGÉNEA</text>
+  <!-- NO HOMOGÉNEA -->
+  <rect x="120" y="163" width="120" height="28" rx="4" fill="#b8860b" opacity="0.8"/>
+  <text x="180" y="181" font-size="10" fill="#fff" font-family="monospace" text-anchor="middle">NO HOMOGÉNEA</text>
+  <!-- Homogénea branches -->
+  <line x1="40" y1="191" x2="30" y2="218" stroke="#1a4a2e" stroke-width="1.5"/>
+  <line x1="75" y1="191" x2="90" y2="218" stroke="#1a4a2e" stroke-width="1.5"/>
+  <!-- 1er orden -->
+  <rect x="5" y="218" width="52" height="38" rx="3" fill="rgba(26,74,46,0.12)" stroke="#1a4a2e" stroke-width="1"/>
+  <text x="31" y="231" font-size="8" fill="#1a4a2e" font-family="sans-serif" text-anchor="middle">1er orden</text>
+  <text x="31" y="243" font-size="7" fill="#555" font-family="monospace" text-anchor="middle">Variables</text>
+  <text x="31" y="252" font-size="7" fill="#555" font-family="monospace" text-anchor="middle">Separables</text>
+  <!-- 2do orden -->
+  <rect x="65" y="218" width="55" height="38" rx="3" fill="rgba(26,74,46,0.12)" stroke="#1a4a2e" stroke-width="1"/>
+  <text x="92" y="231" font-size="8" fill="#1a4a2e" font-family="sans-serif" text-anchor="middle">2do orden</text>
+  <text x="92" y="243" font-size="7" fill="#555" font-family="monospace" text-anchor="middle">Ec. auxiliar</text>
+  <text x="92" y="252" font-size="7" fill="#555" font-family="monospace" text-anchor="middle">ar²+br+c=0</text>
+  <!-- No homogénea branches -->
+  <line x1="150" y1="191" x2="135" y2="218" stroke="#b8860b" stroke-width="1.5"/>
+  <line x1="210" y1="191" x2="220" y2="218" stroke="#b8860b" stroke-width="1.5"/>
+  <!-- Factor integrante -->
+  <rect x="112" y="218" width="48" height="38" rx="3" fill="rgba(184,134,11,0.12)" stroke="#b8860b" stroke-width="1"/>
+  <text x="136" y="230" font-size="7" fill="#b8860b" font-family="sans-serif" text-anchor="middle">1er orden</text>
+  <text x="136" y="241" font-size="7" fill="#555" font-family="monospace" text-anchor="middle">Factor</text>
+  <text x="136" y="250" font-size="7" fill="#555" font-family="monospace" text-anchor="middle">Integrante</text>
+  <!-- Variación de parámetros -->
+  <rect x="170" y="218" width="75" height="38" rx="3" fill="rgba(184,134,11,0.12)" stroke="#b8860b" stroke-width="1"/>
+  <text x="207" y="230" font-size="7" fill="#b8860b" font-family="sans-serif" text-anchor="middle">2do orden</text>
+  <text x="207" y="241" font-size="7" fill="#555" font-family="monospace" text-anchor="middle">Coef. indetermin.</text>
+  <text x="207" y="250" font-size="7" fill="#555" font-family="monospace" text-anchor="middle">o Var. Param.</text>
+  <!-- Special 1st order methods box -->
+  <rect x="8" y="268" width="238" height="35" fill="rgba(26,58,92,0.05)" rx="4" stroke="#1a3a5c" stroke-width="1" stroke-dasharray="4,2"/>
+  <text x="127" y="280" font-size="9" fill="#1a3a5c" font-family="sans-serif" text-anchor="middle" font-weight="bold">Métodos especiales 1er orden:</text>
+  <text x="127" y="292" font-size="8" fill="#555" font-family="monospace" text-anchor="middle">Exactas | Bernoulli | Euler</text>
+  <text x="127" y="302" font-size="8" fill="#555" font-family="monospace" text-anchor="middle">Lineal con Factor Integrante</text>
+  <!-- Legend / quick ref -->
+  <rect x="260" y="163" width="305" height="140" fill="rgba(0,0,0,0.02)" rx="6" stroke="#d4c5a0" stroke-width="1"/>
+  <text x="413" y="178" font-size="10" fill="#3d2e14" font-family="sans-serif" font-weight="bold" text-anchor="middle">Referencia rápida</text>
+  <text x="268" y="195" font-size="9" fill="#1a4a2e" font-family="sans-serif">● Sep. variables: M(y)dy = N(x)dx</text>
+  <text x="268" y="207" font-size="9" fill="#555" font-family="monospace">  → integrar ambos lados</text>
+  <text x="268" y="220" font-size="9" fill="#1a4a2e" font-family="sans-serif">● Lineal 1er orden: y' + P(x)y = Q(x)</text>
+  <text x="268" y="232" font-size="9" fill="#555" font-family="monospace">  → μ=e^∫P dx, luego (μy)'=μQ</text>
+  <text x="268" y="245" font-size="9" fill="#1a4a2e" font-family="sans-serif">● Ec. auxiliar 2do orden:</text>
+  <text x="268" y="257" font-size="9" fill="#555" font-family="monospace">  Δ&gt;0: reales distintas → C₁e^r₁x+C₂e^r₂x</text>
+  <text x="268" y="269" font-size="9" fill="#555" font-family="monospace">  Δ=0: raíz doble → (C₁+C₂x)e^rx</text>
+  <text x="268" y="281" font-size="9" fill="#555" font-family="monospace">  Δ&lt;0: complejas → e^αx(C₁cosβx+C₂sinβx)</text>
+  <text x="268" y="295" font-size="9" fill="#b8860b" font-family="monospace">  No hom: y=yH+yp (particular)</text>
 </svg>
 </div>
 <div class="defbox">
@@ -2409,6 +2562,20 @@ details>*:not(summary){padding:1rem 1.4rem;}
 </div>
 <h3 id="u7-exactas">7.5 Ecuaciones Exactas</h3>
 <div class="defbox">
+  <div class="defbox-label">¿Qué significa realmente? — Ecuación Exacta</div>
+  <p>Una EDO exacta es una ecuación que en realidad está "disfrazada" de derivada total. Si \(M\,dx + N\,dy = 0\) y resulta que \(M=f_x\) y \(N=f_y\) para alguna función \(f(x,y)\), entonces la ecuación dice simplemente \(df=0\), es decir \(f(x,y)=\text{cte}\). La solución es esa función \(f\). El truco está en <strong>detectar</strong> que es exacta (con el test \(M_y = N_x\)) y luego <strong>reconstruir</strong> la \(f\) integrando.</p>
+</div>
+<div class="example">
+  <div class="example-header">Ejemplo paso a paso — Resolver \((2xy+3)\,dx + (x^2-4y)\,dy = 0\)</div>
+  <div class="example-body">
+    <p><strong>Paso 1 — Identificar M y N:</strong> \(M=2xy+3\), \(N=x^2-4y\).</p>
+    <p><strong>Paso 2 — Test de exactitud:</strong> \(M_y = 2x\), \(N_x = 2x\). Como \(M_y = N_x\) → <strong>la ecuación es exacta</strong>.</p>
+    <p><strong>Paso 3 — Encontrar f:</strong> \(f = \int M\,dx = \int(2xy+3)\,dx = x^2y + 3x + g(y)\).</p>
+    <p><strong>Paso 4 — Determinar g(y):</strong> \(f_y = x^2 + g'(y) = N = x^2-4y \;\Rightarrow\; g'(y)=-4y \;\Rightarrow\; g(y)=-2y^2\).</p>
+    <p><strong>Solución implícita:</strong> \(f(x,y) = x^2y + 3x - 2y^2 = C\).</p>
+  </div>
+</div>
+<div class="defbox">
   <div class="defbox-label">Ecuación exacta</div>
   <p>\(y\,dx+x\,dy=0 \Rightarrow y\,dx+x\,dy = d(xy) = 0\) — Ec. diferencial exacta. Integro ambos lados obteniendo una sol. implícita: \(xy=c\).</p>
   <p>Una expresión diferencial \(M(x,y)dx+N(x,y)dy\) es diferencial exacta en una región \(R\) del plano \(xy\) si se corresponde a la diferencial de alguna función \(f(x,y)\). Una ecuación diferencial de primer orden \(M(x,y)dx+N(x,y)dy=0\) es una ec. exacta si la expresión de la izq. es diferencial exacta.</p>
@@ -2423,6 +2590,10 @@ details>*:not(summary){padding:1rem 1.4rem;}
 </div>
 
 <h3 id="u7-modelos">7.6 Modelos Matemáticos</h3>
+<div class="defbox">
+  <div class="defbox-label">¿Qué significa realmente? — Modelos Matemáticos con EDO</div>
+  <p>Muchos fenómenos físicos se describen diciendo <em>"la tasa de cambio de algo es proporcional a algo"</em>. Esa frase se traduce directamente en una EDO. Por ejemplo: "la temperatura de un cuerpo baja a una tasa proporcional a la diferencia con el ambiente" → \(dT/dt = k(T-T_\infty)\). La EDO captura la ley física; resolverla da la predicción. El modelo es tan útil como sus hipótesis: si asumís que la tasa de contagio depende del producto sanos×infectados, obtenés el modelo SIR de epidemias.</p>
+</div>
 <p>Descripción matemática de un sist./fenómeno y se forma con ciertos objetivos en mente. La formulación de un modelo matemático de un sist. se inicia: ① Identificación de las variables causantes del cambio del sist.; ② Establecemos un conj. de hipótesis razonables — las cuales incluyen todas las leyes empíricas aplicables al sistema; ③ Construcción de modelos (hipótesis \(\to\) expresar las hipótesis en términos de ec. diferenciales \(\to\) formulación matemática \(\to\) resolver las ec. diferenciales \(\to\) obtener soluciones \(\to\) mostrar las predicciones del modelo \(\to\) comprobarlas con hechos \(\to\) modificar o aumentar resolución del modelo).</p>
 
 <h4>Desintegración Radioactiva</h4>
@@ -2714,58 +2885,61 @@ details>*:not(summary){padding:1rem 1.4rem;}
 
 <h3 id="u8-amortiguado">8.4 SMR Amortiguado y Libre</h3>
 <div style="margin:1.5rem 0;">
-<svg viewBox="0 0 520 290" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto;background:var(--paper2);border:1px solid var(--rule);border-radius:6px;">
-  <!-- Title -->
-  <text x="260" y="20" font-size="12" fill="#1a1208" font-family="sans-serif" font-weight="bold" text-anchor="middle">Comportamiento de y(t) según el tipo de amortiguamiento (my''+by'+ky=0)</text>
-  <!-- Shared axis setup: 3 panels stacked -->
-  <!-- PANEL 1: Sobreamortiguado -->
-  <text x="10" y="45" font-size="11" fill="#8b1a1a" font-family="sans-serif" font-weight="bold">① Sobreamortiguado (b²-4mk &gt; 0) — raíces reales distintas</text>
-  <line x1="30" y1="85" x2="300" y2="85" stroke="#aaa" stroke-width="1"/>
-  <line x1="30" y1="55" x2="30" y2="90" stroke="#aaa" stroke-width="1"/>
-  <text x="302" y="88" font-size="9" fill="#555" font-family="monospace">t</text>
-  <text x="20" y="60" font-size="9" fill="#555" font-family="monospace">y</text>
-  <!-- Decaying curve, no oscillation: starts high, decays to 0 monotonically -->
-  <path d="M30,60 Q60,62 100,72 Q160,80 250,84 Q280,85 300,85" fill="none" stroke="#8b1a1a" stroke-width="2.5"/>
-  <text x="155" y="50" font-size="10" fill="#8b1a1a" font-family="monospace">y = C₁e^{r₁t} + C₂e^{r₂t} — regresa SIN oscilar (lento)</text>
-  <!-- PANEL 2: Criticamente amortiguado -->
-  <text x="10" y="120" font-size="11" fill="#b8860b" font-family="sans-serif" font-weight="bold">② Críticamente amortiguado (b²-4mk = 0) — raíz doble</text>
-  <line x1="30" y1="165" x2="300" y2="165" stroke="#aaa" stroke-width="1"/>
-  <line x1="30" y1="132" x2="30" y2="170" stroke="#aaa" stroke-width="1"/>
-  <text x="302" y="168" font-size="9" fill="#555" font-family="monospace">t</text>
-  <text x="20" y="136" font-size="9" fill="#555" font-family="monospace">y</text>
-  <!-- Decays faster than case 1 -->
-  <path d="M30,138 Q55,140 85,150 Q130,160 210,164 Q260,165 300,165" fill="none" stroke="#b8860b" stroke-width="2.5"/>
-  <text x="155" y="128" font-size="10" fill="#b8860b" font-family="monospace">y = (C₁+C₂t)e^{rt} — regresa MÁS RÁPIDO sin oscilar</text>
-  <!-- PANEL 3: Subamortiguado -->
-  <text x="10" y="198" font-size="11" fill="#1a4a2e" font-family="sans-serif" font-weight="bold">③ Subamortiguado (b²-4mk &lt; 0) — raíces complejas</text>
-  <line x1="30" y1="260" x2="300" y2="260" stroke="#aaa" stroke-width="1"/>
-  <line x1="30" y1="205" x2="30" y2="265" stroke="#aaa" stroke-width="1"/>
-  <text x="302" y="263" font-size="9" fill="#555" font-family="monospace">t</text>
-  <text x="20" y="210" font-size="9" fill="#555" font-family="monospace">y</text>
-  <!-- Damped oscillation -->
-  <path d="M30,217 Q50,210 65,230 Q80,248 100,240 Q120,232 135,246 Q150,258 170,253 Q190,248 205,254 Q220,259 240,257 Q270,260 300,260" fill="none" stroke="#1a4a2e" stroke-width="2.5"/>
-  <!-- Envelope -->
-  <path d="M30,217 Q100,215 200,248 Q260,258 300,260" fill="none" stroke="#1a4a2e" stroke-width="1" stroke-dasharray="5,3" opacity="0.5"/>
-  <path d="M30,243 Q100,255 200,263 Q260,263 300,262" fill="none" stroke="#1a4a2e" stroke-width="1" stroke-dasharray="5,3" opacity="0.4"/>
-  <text x="155" y="195" font-size="10" fill="#1a4a2e" font-family="monospace">y = e^{αt}(C₁cos βt + C₂sin βt) — OSCILA con amplitud → 0</text>
-  <!-- Right panel: comparison -->
-  <rect x="320" y="35" width="185" height="240" fill="rgba(26,26,26,0.03)" rx="6" stroke="var(--rule)" stroke-width="1"/>
-  <text x="412" y="55" font-size="11" fill="#555" font-family="sans-serif" font-weight="bold" text-anchor="middle">Criterio Δ = b²−4mk</text>
-  <line x1="330" y1="63" x2="495" y2="63" stroke="var(--rule)" stroke-width="1"/>
-  <text x="330" y="80" font-size="10" fill="#8b1a1a" font-family="sans-serif">Δ &gt; 0 → <tspan font-weight="bold">Sobre</tspan></text>
-  <text x="330" y="97" font-size="9" fill="#777">2 raíces reales distintas</text>
-  <text x="330" y="110" font-size="9" fill="#777">Regresa lento, sin oscilar</text>
-  <line x1="330" y1="120" x2="495" y2="120" stroke="var(--rule)" stroke-width="1"/>
-  <text x="330" y="137" font-size="10" fill="#b8860b" font-family="sans-serif">Δ = 0 → <tspan font-weight="bold">Crítico</tspan></text>
-  <text x="330" y="154" font-size="9" fill="#777">1 raíz doble real</text>
-  <text x="330" y="167" font-size="9" fill="#777">Regreso más rápido posible</text>
-  <text x="330" y="180" font-size="9" fill="#777">sin oscilar (caso óptimo)</text>
-  <line x1="330" y1="190" x2="495" y2="190" stroke="var(--rule)" stroke-width="1"/>
-  <text x="330" y="207" font-size="10" fill="#1a4a2e" font-family="sans-serif">Δ &lt; 0 → <tspan font-weight="bold">Sub</tspan></text>
-  <text x="330" y="224" font-size="9" fill="#777">Raíces complejas α±βi</text>
-  <text x="330" y="237" font-size="9" fill="#777">Oscila, amplitud → 0</text>
-  <text x="330" y="250" font-size="9" fill="#777">Cuasifrecuencia = β/2π</text>
-  <text x="330" y="263" font-size="9" fill="#777">Ejemplo: resorte auto</text>
+<svg viewBox="0 0 580 320" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:580px;display:block;margin:0 auto;background:#faf7f0;border:1px solid #d4c5a0;border-radius:8px;">
+  <defs>
+    <marker id="axa1" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#888"/></marker>
+  </defs>
+  <text x="290" y="17" font-size="12" fill="#3d2e14" font-family="sans-serif" font-weight="bold" text-anchor="middle">my'' + by' + ky = 0 — Tipos de amortiguamiento (Δ = b²−4mk)</text>
+  <!-- === PANEL 1: Sobreamortiguado === -->
+  <text x="14" y="36" font-size="10" fill="#8b1a1a" font-family="sans-serif" font-weight="bold">① Sobreamortiguado  Δ &gt; 0  (b grande — amortiguador muy fuerte)</text>
+  <line x1="15" y1="95" x2="380" y2="95" stroke="#bbb" stroke-width="1" marker-end="url(#axa1)"/>
+  <line x1="15" y1="50" x2="15" y2="100" stroke="#bbb" stroke-width="1"/>
+  <text x="382" y="98" font-size="9" fill="#888" font-family="serif" font-style="italic">t</text>
+  <text x="8" y="52" font-size="9" fill="#888" font-family="serif" font-style="italic">y</text>
+  <!-- Equilibrium line -->
+  <line x1="15" y1="95" x2="375" y2="95" stroke="#ddd" stroke-width="0.8" stroke-dasharray="6,3"/>
+  <text x="60" y="90" font-size="8" fill="#bbb" font-family="monospace">equilibrio y=0</text>
+  <!-- Curve: starts high, decays exponentially to 0 WITHOUT oscillating -->
+  <path d="M15,55 Q40,57 70,65 Q110,76 160,84 Q220,90 300,93 Q340,94 375,95" fill="none" stroke="#8b1a1a" stroke-width="2.5"/>
+  <!-- Exponential envelope (dashed) -->
+  <path d="M15,55 Q80,70 200,88 Q300,93 375,95" fill="none" stroke="#8b1a1a" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+  <text x="390" y="65" font-size="9" fill="#8b1a1a" font-family="sans-serif">y=C₁e^r₁t+C₂e^r₂t</text>
+  <text x="390" y="76" font-size="9" fill="#8b1a1a" font-family="sans-serif">r₁,r₂ &lt; 0 reales</text>
+  <text x="390" y="87" font-size="9" fill="#555" font-family="sans-serif">Regresa SIN oscilar</text>
+  <text x="390" y="98" font-size="9" fill="#555" font-family="sans-serif">(movimiento lento)</text>
+  <!-- === PANEL 2: Críticamente amortiguado === -->
+  <line x1="0" y1="110" x2="580" y2="110" stroke="#d4c5a0" stroke-width="0.5"/>
+  <text x="14" y="126" font-size="10" fill="#b8860b" font-family="sans-serif" font-weight="bold">② Críticamente amortiguado  Δ = 0  (b óptimo — regreso más rápido posible)</text>
+  <line x1="15" y1="190" x2="380" y2="190" stroke="#bbb" stroke-width="1" marker-end="url(#axa1)"/>
+  <line x1="15" y1="138" x2="15" y2="195" stroke="#bbb" stroke-width="1"/>
+  <text x="382" y="193" font-size="9" fill="#888" font-family="serif" font-style="italic">t</text>
+  <text x="8" y="140" font-size="9" fill="#888" font-family="serif" font-style="italic">y</text>
+  <line x1="15" y1="190" x2="375" y2="190" stroke="#ddd" stroke-width="0.8" stroke-dasharray="6,3"/>
+  <!-- Curve: decays faster than sobreamortiguado, still no oscillation -->
+  <path d="M15,145 Q30,148 55,158 Q90,173 140,183 Q200,188 280,190 Q330,190 375,190" fill="none" stroke="#b8860b" stroke-width="2.5"/>
+  <text x="390" y="155" font-size="9" fill="#b8860b" font-family="sans-serif">y=(C₁+C₂t)e^rt</text>
+  <text x="390" y="166" font-size="9" fill="#b8860b" font-family="sans-serif">r=-b/2m (doble)</text>
+  <text x="390" y="177" font-size="9" fill="#555" font-family="sans-serif">Regreso más rápido</text>
+  <text x="390" y="188" font-size="9" fill="#555" font-family="sans-serif">sin oscilar</text>
+  <!-- === PANEL 3: Subamortiguado === -->
+  <line x1="0" y1="204" x2="580" y2="204" stroke="#d4c5a0" stroke-width="0.5"/>
+  <text x="14" y="218" font-size="10" fill="#1a4a2e" font-family="sans-serif" font-weight="bold">③ Subamortiguado  Δ &lt; 0  (b pequeño — oscila con amplitud decreciente)</text>
+  <line x1="15" y1="285" x2="380" y2="285" stroke="#bbb" stroke-width="1" marker-end="url(#axa1)"/>
+  <line x1="15" y1="228" x2="15" y2="290" stroke="#bbb" stroke-width="1"/>
+  <text x="382" y="288" font-size="9" fill="#888" font-family="serif" font-style="italic">t</text>
+  <text x="8" y="230" font-size="9" fill="#888" font-family="serif" font-style="italic">y</text>
+  <line x1="15" y1="285" x2="375" y2="285" stroke="#ddd" stroke-width="0.8" stroke-dasharray="6,3"/>
+  <!-- Decaying oscillation -->
+  <path d="M15,243 Q32,237 48,258 Q64,278 80,262 Q96,247 112,257 Q128,268 144,261 Q160,254 176,260 Q192,266 208,263 Q224,260 240,262 Q256,264 280,263 Q320,283 375,285" fill="none" stroke="#1a4a2e" stroke-width="2.5"/>
+  <!-- Exponential envelope (upper and lower) -->
+  <path d="M15,243 Q80,248 160,262 Q240,270 375,284" fill="none" stroke="#1a4a2e" stroke-width="1" stroke-dasharray="5,3" opacity="0.6"/>
+  <path d="M15,266 Q80,270 160,275 Q240,280 375,285" fill="none" stroke="#1a4a2e" stroke-width="1" stroke-dasharray="5,3" opacity="0.6"/>
+  <text x="390" y="248" font-size="9" fill="#1a4a2e" font-family="sans-serif">y=e^αt(C₁cosβt+C₂sinβt)</text>
+  <text x="390" y="259" font-size="9" fill="#1a4a2e" font-family="sans-serif">α=−b/2m &lt; 0</text>
+  <text x="390" y="270" font-size="9" fill="#555" font-family="sans-serif">Oscila y se apaga</text>
+  <text x="390" y="281" font-size="9" fill="#555" font-family="sans-serif">(como péndulo en agua)</text>
+  <!-- Bottom note -->
+  <text x="290" y="308" font-size="9" fill="#888" font-family="sans-serif" text-anchor="middle">El tipo de amortiguamiento depende solo del signo de Δ = b²−4mk</text>
 </svg>
 </div>
 <div class="defbox">
@@ -2809,34 +2983,43 @@ details>*:not(summary){padding:1rem 1.4rem;}
   <p>Cuando un sistema masa-resorte sin amortiguamiento es forzado a la <strong>misma frecuencia</strong> que su frecuencia natural \(\omega_0=\sqrt{k/m}\), cada empuje del forzado llega siempre "en fase" con el movimiento del sistema — siempre lo empuja en la misma dirección que ya va. El resultado es que la amplitud crece sin límite con el tiempo. En la práctica los materiales se rompen antes de llegar al infinito (puente de Tacoma, 1940).</p>
 </div>
 <div style="margin:1.5rem 0;">
-<svg viewBox="0 0 520 200" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:520px;display:block;margin:0 auto;background:var(--paper2);border:1px solid var(--rule);border-radius:6px;">
-  <!-- Two panels: normal and resonance -->
-  <!-- Left: normal forced (γ≠ω₀) -->
-  <text x="120" y="18" font-size="11" fill="#1a3a5c" font-family="sans-serif" font-weight="bold" text-anchor="middle">Forzado normal (γ ≠ ω₀)</text>
-  <line x1="15" y1="105" x2="230" y2="105" stroke="#aaa" stroke-width="1"/>
-  <line x1="15" y1="25" x2="15" y2="110" stroke="#aaa" stroke-width="1"/>
-  <text x="232" y="108" font-size="9" fill="#555">t</text>
-  <text x="8" y="22" font-size="9" fill="#555">y</text>
-  <!-- Bounded oscillation -->
-  <path d="M15,75 Q30,55 45,75 Q60,95 75,75 Q90,55 105,75 Q120,95 135,75 Q150,55 165,75 Q180,95 195,75 Q210,55 225,75" fill="none" stroke="#1a3a5c" stroke-width="2"/>
-  <line x1="15" y1="55" x2="225" y2="55" stroke="#1a3a5c" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
-  <line x1="15" y1="95" x2="225" y2="95" stroke="#1a3a5c" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
-  <text x="120" y="175" font-size="10" fill="#1a3a5c" font-family="monospace" text-anchor="middle">Amplitud constante y acotada</text>
-  <!-- Right: resonance (γ=ω₀) -->
-  <text x="380" y="18" font-size="11" fill="#8b1a1a" font-family="sans-serif" font-weight="bold" text-anchor="middle">Resonancia (γ = ω₀)</text>
-  <line x1="265" y1="105" x2="510" y2="105" stroke="#aaa" stroke-width="1"/>
-  <line x1="265" y1="185" x2="265" y2="15" stroke="#aaa" stroke-width="1"/>
-  <text x="512" y="108" font-size="9" fill="#555">t</text>
-  <text x="258" y="12" font-size="9" fill="#555">y</text>
-  <!-- Growing oscillation with envelope t -->
-  <path d="M265,105 Q278,96 291,105 Q304,120 317,100 Q330,80 343,105 Q356,135 369,100 Q382,63 395,105 Q408,155 421,95 Q434,30 447,108 Q460,180 470,100" fill="none" stroke="#8b1a1a" stroke-width="2"/>
-  <!-- Envelope lines: y = ±A·t -->
-  <line x1="265" y1="105" x2="510" y2="15" stroke="#8b1a1a" stroke-width="1.2" stroke-dasharray="6,3" opacity="0.6"/>
-  <line x1="265" y1="105" x2="510" y2="190" stroke="#8b1a1a" stroke-width="1.2" stroke-dasharray="6,3" opacity="0.6"/>
-  <text x="440" y="22" font-size="9" fill="#8b1a1a" font-family="monospace">envolvente ∝ t</text>
-  <text x="380" y="175" font-size="10" fill="#8b1a1a" font-family="monospace" text-anchor="middle">Amplitud crece sin límite → ∞</text>
-  <!-- Dividing line -->
-  <line x1="248" y1="10" x2="248" y2="195" stroke="#ccc" stroke-width="1.5"/>
+<svg viewBox="0 0 580 230" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:580px;display:block;margin:0 auto;background:#faf7f0;border:1px solid #d4c5a0;border-radius:8px;">
+  <defs>
+    <marker id="axres" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#888"/></marker>
+  </defs>
+  <text x="290" y="17" font-size="12" fill="#3d2e14" font-family="sans-serif" font-weight="bold" text-anchor="middle">Resonancia: qué pasa cuando la frecuencia forzada = frecuencia natural</text>
+  <!-- LEFT: Normal forced oscillation (γ ≠ ω₀) -->
+  <rect x="8" y="25" width="268" height="190" fill="rgba(26,58,92,0.03)" rx="5" stroke="#1a3a5c" stroke-width="1.2"/>
+  <text x="142" y="40" font-size="10" fill="#1a3a5c" font-family="sans-serif" font-weight="bold" text-anchor="middle">Forzado normal  γ ≠ ω₀</text>
+  <line x1="20" y1="125" x2="265" y2="125" stroke="#bbb" stroke-width="1" marker-end="url(#axres)"/>
+  <line x1="20" y1="185" x2="20" y2="50" stroke="#bbb" stroke-width="1" marker-end="url(#axres)"/>
+  <text x="267" y="128" font-size="9" fill="#888" font-family="serif" font-style="italic">t</text>
+  <text x="12" y="48" font-size="9" fill="#888" font-family="serif" font-style="italic">y</text>
+  <!-- Bounded oscillation with constant amplitude -->
+  <path d="M20,100 Q35,78 50,100 Q65,122 80,100 Q95,78 110,100 Q125,122 140,100 Q155,78 170,100 Q185,122 200,100 Q215,78 230,100 Q245,122 260,100" fill="none" stroke="#1a3a5c" stroke-width="2.2"/>
+  <!-- Amplitude envelope (constant) -->
+  <line x1="20" y1="78" x2="260" y2="78" stroke="#1a3a5c" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+  <line x1="20" y1="122" x2="260" y2="122" stroke="#1a3a5c" stroke-width="1" stroke-dasharray="4,3" opacity="0.5"/>
+  <text x="142" y="170" font-size="9" fill="#1a3a5c" font-family="monospace" text-anchor="middle">Amplitud constante A</text>
+  <text x="142" y="182" font-size="9" fill="#555" font-family="sans-serif" text-anchor="middle">Solución acotada — sistema estable</text>
+  <!-- RIGHT: Resonance (γ = ω₀) -->
+  <rect x="302" y="25" width="270" height="190" fill="rgba(139,26,26,0.03)" rx="5" stroke="#8b1a1a" stroke-width="1.5"/>
+  <text x="437" y="40" font-size="10" fill="#8b1a1a" font-family="sans-serif" font-weight="bold" text-anchor="middle">Resonancia  γ = ω₀  ← PELIGRO</text>
+  <line x1="315" y1="135" x2="560" y2="135" stroke="#bbb" stroke-width="1" marker-end="url(#axres)"/>
+  <line x1="315" y1="215" x2="315" y2="35" stroke="#bbb" stroke-width="1" marker-end="url(#axres)"/>
+  <text x="562" y="138" font-size="9" fill="#888" font-family="serif" font-style="italic">t</text>
+  <text x="307" y="33" font-size="9" fill="#888" font-family="serif" font-style="italic">y</text>
+  <!-- Growing oscillation -->
+  <path d="M315,135 Q322,129 329,135 Q336,144 343,135 Q352,122 361,135 Q372,152 381,135 Q393,114 403,135 Q416,162 428,135 Q443,102 456,135 Q472,174 486,135 Q504,88 520,135 Q538,190 554,130" fill="none" stroke="#8b1a1a" stroke-width="2.5"/>
+  <!-- Growing envelope: ±C·t -->
+  <line x1="315" y1="135" x2="554" y2="80" stroke="#8b1a1a" stroke-width="1.2" stroke-dasharray="5,3" opacity="0.6"/>
+  <line x1="315" y1="135" x2="554" y2="192" stroke="#8b1a1a" stroke-width="1.2" stroke-dasharray="5,3" opacity="0.6"/>
+  <text x="510" y="75" font-size="9" fill="#8b1a1a" font-family="monospace">+Ct</text>
+  <text x="510" y="197" font-size="9" fill="#8b1a1a" font-family="monospace">-Ct</text>
+  <text x="437" y="180" font-size="9" fill="#8b1a1a" font-family="monospace" text-anchor="middle">y = Ct·sin(ω₀t)</text>
+  <text x="437" y="192" font-size="9" fill="#555" font-family="sans-serif" text-anchor="middle">Amplitud → ∞ — sistema COLAPSA</text>
+  <!-- Bottom comparison note -->
+  <text x="290" y="222" font-size="9" fill="#888" font-family="sans-serif" text-anchor="middle">Ejemplo real: Puente Tacoma (1940) — viento en resonancia con la frecuencia natural del puente → colapso</text>
 </svg>
 </div>
 <div class="defbox">
