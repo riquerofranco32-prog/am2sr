@@ -2579,6 +2579,35 @@ details>*:not(summary){padding:1rem 1.4rem;}
     <li>Siempre verificar el PVI al final sustituyendo en la ec. original</li>
   </ul>
 </div>
+<h3 id="u7-homogenea">7.3b EDO Homogénea de Grado Cero</h3>
+<div class="defbox">
+  <div class="defbox-label">¿Qué significa? — EDO Homogénea de grado cero</div>
+  <p>Una EDO de 1er orden es homogénea de grado cero si puede escribirse como \(y' = f(y/x)\), es decir, la función solo depende del cociente \(y/x\). El truco es la <strong>sustitución \(v = y/x\)</strong>, equivalentemente \(y = vx\). Al derivar: \(y' = v + xv'\). Esto convierte la EDO en una de variables separables en \(v\) y \(x\), que ya sabés resolver. Al final, deshacés el cambio con \(v = y/x\).</p>
+</div>
+<div class="thmbox">
+  <div class="thmbox-label">Procedimiento — Sustitución v = y/x</div>
+  <ol class="props">
+    <li>Identificar que la EDO es de la forma \(y' = f(y/x)\) — todos los términos son del mismo grado en \(x\) e \(y\).</li>
+    <li>Sustituir \(v = y/x\) → \(y = vx\) → \(y' = v + xv'\).</li>
+    <li>La EDO queda \(v + xv' = f(v)\) → \(xv' = f(v) - v\) → separar variables: \(\dfrac{dv}{f(v)-v} = \dfrac{dx}{x}\).</li>
+    <li>Integrar ambos lados. Deshacer la sustitución con \(v = y/x\).</li>
+  </ol>
+</div>
+<div class="example">
+  <div class="example-header">Ejemplo — Resolver \((x^2+y^2)\,dx - 2xy\,dy = 0\)</div>
+  <div class="example-body">
+    <p>Reescribir: \(y' = \dfrac{x^2+y^2}{2xy}\). Dividiendo por \(x^2\): \(y' = \dfrac{1+(y/x)^2}{2(y/x)} = f(y/x)\) ✓ es homogénea.</p>
+    <p><strong>Sustitución</strong> \(v=y/x\), \(y'=v+xv'\):</p>
+    <div class="math-block">\[v + xv' = \frac{1+v^2}{2v} \;\Rightarrow\; xv' = \frac{1-v^2}{2v}\]</div>
+    <p><strong>Separar variables:</strong> \(\dfrac{2v\,dv}{1-v^2} = \dfrac{dx}{x}\). Integrar: \(-\ln|1-v^2| = \ln|x| + C_1\).</p>
+    <p><strong>Solución:</strong> deshaciendo \(v=y/x\): \(\boxed{x^2-y^2 = Cx}\)</p>
+  </div>
+</div>
+<div class="tipbox">
+  <div class="tipbox-label">¿Cómo reconocer una EDO homogénea de grado cero?</div>
+  <p>Sustituís \(x\to tx\), \(y\to ty\) en \(f(x,y)\). Si la \(t\) se cancela completamente → es homogénea de grado cero. Ej: \(f(x,y)=\dfrac{x^2+y^2}{xy}\), entonces \(f(tx,ty)=\dfrac{t^2(x^2+y^2)}{t^2xy}=\dfrac{x^2+y^2}{xy}\) ✓.</p>
+</div>
+
 <h3 id="u7-lineales">7.4 Ecuaciones Lineales de 1er Orden</h3>
 <div class="defbox">
   <div class="defbox-label">¿Qué significa? — EDO Lineal de 1er Orden y Factor Integrante</div>
@@ -2682,6 +2711,25 @@ details>*:not(summary){padding:1rem 1.4rem;}
   <li><strong>Familia de trayectorias ortogonales:</strong> cuando todas las curvas de una flia. \(G(x,y,c)=0\) intersecan ortogonalmente todas las curvas de una flia. \(H(x,y,c)=0\), se dice que las flias. son trayectorias ortogonales entre sí. Si \(dy/dx=f(x,y)\) es la ec. dif. de la flia., entonces la ec. diferencial para las trayectorias ortogonales de esta familias es: \(H' \;\;dy/dx=-1/f(x,y)\).</li>
 </ul>
 
+<div class="defbox">
+  <div class="defbox-label">Trayectorias Ortogonales — método paso a paso</div>
+  <p>Dos familias de curvas son <strong>trayectorias ortogonales</strong> si cada curva de una es perpendicular a cada curva de la otra en sus intersecciones. Aparecen en física: líneas equipotenciales ⊥ líneas de campo; isotermas ⊥ flujos de calor.</p>
+  <ol class="props">
+    <li>Obtener la EDO de la familia dada: derivar y eliminar la constante \(C\). Obtenés \(y'=f(x,y)\).</li>
+    <li>La EDO de las trayectorias ortogonales es \(y'=-\dfrac{1}{f(x,y)}\) (pendiente negativa recíproca).</li>
+    <li>Resolver esta nueva EDO.</li>
+  </ol>
+</div>
+<div class="example">
+  <div class="example-header">Ejemplo — Trayectorias ortogonales de \(y = cx^2\)</div>
+  <div class="example-body">
+    <p><strong>Paso 1:</strong> \(y'=2cx\). Elimino \(c=y/x^2\): \(y'=2y/x\). EDO de la familia.</p>
+    <p><strong>Paso 2:</strong> EDO ortogonales: \(y'=-x/(2y)\).</p>
+    <p><strong>Paso 3:</strong> \(2y\,dy=-x\,dx\) → \(y^2=-x^2/2+K\) → \(\boxed{\dfrac{x^2}{2}+y^2=K}\) — elipses.</p>
+    <p>Las parábolas \(y=cx^2\) son ortogonales a las elipses \(x^2/2+y^2=K\).</p>
+  </div>
+</div>
+
 <h4>Ley de enfriamiento de Newton</h4>
 <p>Respecto al enfriamiento de un obj. expresa la velocidad de variación de la temperatura del cuerpo es directamente proporcional a la diferencia de temperatura entre la temperatura del cuerpo y la temperatura del medio que lo rodea (la que se considera cte.):</p>
 <div class="math-block">\[\frac{dT(t)}{dt} = -k(T-T_m) \;\Rightarrow\; T-T_m = Ce^{-kt}\]</div>
@@ -2778,6 +2826,45 @@ details>*:not(summary){padding:1rem 1.4rem;}
 
 <h5>Métodos Simbólicos (Operadores diferenciales)</h5>
 <p>\(D_y = dy/dx\) — transforma una función diferenciable en otra. \(d^ny/dx^n = D^ny\). Operador diferencial de orden "n": \(L=a_n(x)D^n+a_{n-1}(x)D^{n-1}+\cdots+a_1(x)D+a_0(x)\). \(L\) tiene prop. de linealidad; \(L\) opera sobre una combl. lineal de 2 funciones diferenciables. Toda ec. diferencial lineal se expresa por \(D\): \(L(y)=0\), \(L(y)=g(x)\).</p>
+
+<div class="defbox">
+  <div class="defbox-label">¿Qué significa? — yg = yH + yp (solución completa)</div>
+  <p>Para una EDO completa \(ay''+by'+cy=g(t)\), la solución general es: <strong>solución homogénea</strong> \(y_H\) (de la misma EDO con \(g=0\)) + <strong>solución particular</strong> \(y_p\) (cualquier función que satisfaga la completa). \(y_H\) describe el comportamiento natural del sistema; \(y_p\) describe la respuesta a la fuerza externa \(g(t)\).</p>
+  <div class="math-block">\[y_G = y_H + y_p \qquad y_H = C_1y_1+C_2y_2 \;\text{(de ec. auxiliar)}\quad y_p \;\text{(coef. ind. o var. param.)}\]</div>
+</div>
+
+<div class="defbox">
+  <div class="defbox-label">Coeficientes Indeterminados — tabla de ensayos para yp</div>
+  <p>Según el tipo de \(g(t)\), se ensaya una \(y_p\) de la misma familia y se sustituye para determinar los coeficientes:</p>
+  <table class="vtable" style="margin:0.8rem 0">
+    <tr><th>\(g(t)\)</th><th>Se ensaya \(y_p =\)</th></tr>
+    <tr><td>Constante \(k\)</td><td>\(A\)</td></tr>
+    <tr><td>Polinomio grado \(n\)</td><td>\(A_nt^n+\cdots+A_1t+A_0\) (completo de grado \(n\))</td></tr>
+    <tr><td>\(ke^{\alpha t}\)</td><td>\(Ae^{\alpha t}\)</td></tr>
+    <tr><td>\(k\sin(\beta t)\) o \(k\cos(\beta t)\)</td><td>\(A\sin(\beta t)+B\cos(\beta t)\) (¡siempre ambos!)</td></tr>
+    <tr><td>\(ke^{\alpha t}\sin(\beta t)\) o \(ke^{\alpha t}\cos(\beta t)\)</td><td>\(e^{\alpha t}(A\sin(\beta t)+B\cos(\beta t))\)</td></tr>
+    <tr><td>Suma de funciones</td><td>Suma de los ensayos</td></tr>
+  </table>
+  <div class="warnbox" style="margin-top:0.5rem;padding:0.5rem 0.8rem">
+    <strong>Caso duplicación:</strong> si el ensayo \(y_p\) coincide con algún término de \(y_H\), multiplicar el ensayo por \(t\) (o \(t^2\) si sigue duplicándose). Ej: si \(g=e^{-2t}\) y \(e^{-2t}\in y_H\), ensayar \(y_p=Ate^{-2t}\).
+  </div>
+</div>
+
+<div class="defbox">
+  <div class="defbox-label">Variación de Parámetros — fórmulas y limitación</div>
+  <p>Sirve cuando \(g(t)\) no encaja en la tabla (ej: \(\tan t\), \(1/t\), \(\ln t\)). Dadas \(y_1,y_2\) del CFS, se construye \(y_p=u_1y_1+u_2y_2\) donde:</p>
+  <div class="math-block">\[u_1' = \frac{-y_2\,g(t)}{W(y_1,y_2)},\quad u_2' = \frac{y_1\,g(t)}{W(y_1,y_2)} \qquad W = y_1y_2'-y_2y_1'\]</div>
+  <p>Luego \(u_1=\int u_1'\,dt\) y \(u_2=\int u_2'\,dt\). <strong>Limitación:</strong> si las integrales no tienen primitiva elemental, el método no da solución cerrada.</p>
+</div>
+<div class="example">
+  <div class="example-header">Ejemplo — Coef. indeterminados: \(y''-3y'-4y=3e^{2t}\)</div>
+  <div class="example-body">
+    <p><strong>yH:</strong> ec. auxiliar \(r^2-3r-4=0\Rightarrow(r-4)(r+1)=0\Rightarrow r_1=4,r_2=-1\). \(y_H=C_1e^{4t}+C_2e^{-t}\).</p>
+    <p><strong>yp:</strong> \(g=3e^{2t}\), ensayo \(y_p=Ae^{2t}\). No está en \(y_H\) ✓. Sustituir: \(y_p'=2Ae^{2t}\), \(y_p''=4Ae^{2t}\).</p>
+    <div class="math-block">\[4Ae^{2t}-3(2Ae^{2t})-4(Ae^{2t})=3e^{2t} \;\Rightarrow\; (4-6-4)A=3 \;\Rightarrow\; A=-\tfrac{1}{2}\]</div>
+    <p><strong>Solución general:</strong> \(y_G = C_1e^{4t}+C_2e^{-t}-\dfrac{1}{2}e^{2t}\)</p>
+  </div>
+</div>
 
 <h3 id="u7-wronskiano">7.8 Wronskiano e Independencia Lineal</h3>
 <div class="defbox">
