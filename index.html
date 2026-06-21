@@ -689,6 +689,11 @@ details>*:not(summary){padding:1rem 1.4rem;}
 
 <h3 id="u0-coord">0.1 Sistema de Coordenadas Tridimensionales</h3>
 <div class="defbox">
+  <div class="defbox-label">¿Qué significa? — Sistema de Coordenadas 3D</div>
+  <p>En 2D un punto se ubica con dos números \((x,y)\). En 3D necesitás tres: \((x,y,z)\). Pensalo así: para describir dónde está una mosca en la habitación necesitás decir cuánto está a la derecha, cuánto al fondo y cuánto arriba. Esos son \(x\), \(y\) y \(z\). Los tres <strong>planos coordenados</strong> (xy, xz, yz) dividen el espacio en 8 octantes, igual que los ejes del plano dividen el plano en 4 cuadrantes.</p>
+  <p><strong>Ejemplo de distancia:</strong> la distancia entre \(A(1,2,3)\) y \(B(4,6,3)\) es \(\sqrt{(4-1)^2+(6-2)^2+(3-3)^2}=\sqrt{9+16+0}=5\) — igual a la distancia 2D en el plano \(z=3\).</p>
+</div>
+<div class="defbox">
   <div class="defbox-label">Sistema de mano derecha</div>
   <p>Orientando el pulgar de la mano derecha en dirección al eje \(\oplus z\) y los demás dedos a 90°, al rotar, se llega al eje \(\oplus x\) para coincidir con el eje \(\oplus y\). Mirando el plano \(xy\) desde la dirección \(\oplus\) del eje \(z\), los ángulos \(\oplus\) se miden en sentido contrario a las manecillas del reloj.</p>
 </div>
@@ -712,6 +717,19 @@ details>*:not(summary){padding:1rem 1.4rem;}
 <div class="math-block">\[|P_1P_2| = \sqrt{(x_2-x_1)^2+(y_2-y_1)^2+(z_2-z_1)^2}\]</div>
 
 <h3 id="u0-prod">0.2 Producto Cruz y Productos Triples</h3>
+<div class="defbox">
+  <div class="defbox-label">¿Qué significa? — Producto Cruz vs. Producto Punto</div>
+  <p>El <strong>producto punto</strong> \(\mathbf{a}\cdot\mathbf{b}\) da un <em>número</em> que dice cuánto "van en la misma dirección" los dos vectores. El <strong>producto cruz</strong> \(\mathbf{a}\times\mathbf{b}\) da un <em>vector</em> perpendicular a los dos, cuya magnitud es el área del paralelogramo que forman. Se usa para: encontrar normales a planos, calcular torques, y determinar si dos vectores son paralelos (\(\mathbf{a}\times\mathbf{b}=\mathbf{0}\) si son paralelos).</p>
+</div>
+<div class="example">
+  <div class="example-header">Ejemplo — Calcular \(\mathbf{a}\times\mathbf{b}\) con \(\mathbf{a}=(1,2,3)\), \(\mathbf{b}=(4,5,6)\)</div>
+  <div class="example-body">
+    <div class="math-block">\[\mathbf{a}\times\mathbf{b} = \begin{vmatrix}\mathbf{i}&\mathbf{j}&\mathbf{k}\\1&2&3\\4&5&6\end{vmatrix} = \mathbf{i}(2\cdot6-3\cdot5)-\mathbf{j}(1\cdot6-3\cdot4)+\mathbf{k}(1\cdot5-2\cdot4)\]</div>
+    <div class="math-block">\[= \mathbf{i}(12-15)-\mathbf{j}(6-12)+\mathbf{k}(5-8) = (-3,\,6,\,-3)\]</div>
+    <p><strong>Verificación de perpendicularidad:</strong> \((-3,6,-3)\cdot(1,2,3)=-3+12-9=0\;\checkmark\) y \((-3,6,-3)\cdot(4,5,6)=-12+30-18=0\;\checkmark\)</p>
+    <p><strong>Área del paralelogramo:</strong> \(|\mathbf{a}\times\mathbf{b}|=\sqrt{9+36+9}=\sqrt{54}=3\sqrt{6}\)</p>
+  </div>
+</div>
 <div class="defbox">
   <div class="defbox-label">Producto Cruz (producto vectorial)</div>
   <div class="math-block">\[\mathbf{a}\times\mathbf{b} = \begin{vmatrix}\mathbf{i}&\mathbf{j}&\mathbf{k}\\a_1&a_2&a_3\\b_1&b_2&b_3\end{vmatrix}\]</div>
@@ -782,6 +800,11 @@ details>*:not(summary){padding:1rem 1.4rem;}
 <div class="math-block">\[D = \frac{|ax_1+by_1+cz_1+d|}{\sqrt{a^2+b^2+c^2}} \qquad (P_0 \text{ yace en el plano} \Rightarrow ax_0+by_0+cz_0+d=0)\]</div>
 
 <h3 id="u0-cuadricas">0.5 Cilindros y Superficies Cuádricas</h3>
+<div class="defbox">
+  <div class="defbox-label">¿Qué significa? — Superficies Cuádricas</div>
+  <p>Las cuádricas son las superficies 3D equivalentes a las cónicas 2D (elipse, hipérbola, parábola). Para identificar cuál es cuál, el truco es mirar las <strong>trazas</strong>: cortás la superficie con planos horizontales y verticales y mirás qué curva aparece. Si en horizontal obtenés elipses y en vertical parábolas → paraboloide elíptico. Si en horizontal obtenés elipses y en vertical hipérbolas → hiperboloide. La tabla de formas estándar te da la ecuación y las trazas de cada tipo.</p>
+  <p><strong>Regla rápida de identificación:</strong> contá los términos con signo negativo en la forma reducida. Cero negativos → elipsoide (cerrado). Un negativo → hiperboloide de 1 hoja (conectado). Dos negativos → hiperboloide de 2 hojas (separado). Variable sin cuadrado → paraboloide.</p>
+</div>
 <p><strong>Trazas:</strong> curvas de intersección de la superficie con planos paralelos a los planos coordenados — también llamadas secciones transversales.</p>
 <p><strong>Cilindros:</strong> superficie que consiste de todas las líneas rectas (generatrices) que son paralelas a una recta dada y pasan por una curva plana dada.</p>
 <p><strong>Superficies cuádricas</strong> \(\Rightarrow\) es la gráfica de una ecuación de 2do grado en 3 variables \((x,y,z)\). Son las contrapartes en 3 dimensiones de las secciones cónicas en el plano.</p>
@@ -819,6 +842,11 @@ details>*:not(summary){padding:1rem 1.4rem;}
 <p class="footnote">Aplicaciones: los paraboloides circulares se usan para recolectar y reflejar luz, sonido y señales de radio y televisión (radiotelescopios, micrófonos, antenas de disco). Los hiperboloides se usan en torres de enfriamiento para reactores nucleares y en dientes de engranajes.</p>
 
 <h3 id="u0-cosenos">0.6 Cosenos Directores</h3>
+<div class="defbox">
+  <div class="defbox-label">¿Qué significa? — Cosenos Directores</div>
+  <p>Los cosenos directores te dicen <strong>qué tanto apunta un vector hacia cada eje</strong>. Si \(\cos\alpha=1\) (y los otros dos son 0), el vector apunta exactamente en la dirección \(x\). Si \(\cos\alpha=\cos\beta=\cos\gamma=1/\sqrt{3}\), el vector apunta por igual hacia los tres ejes (diagonal del cubo). La identidad \(\cos^2\alpha+\cos^2\beta+\cos^2\gamma=1\) es simplemente el teorema de Pitágoras aplicado al versor unitario.</p>
+  <p><strong>Ejemplo:</strong> el vector \(\mathbf{v}=(1,2,2)\) tiene \(|\mathbf{v}|=3\). Sus cosenos: \(\cos\alpha=1/3\approx19.5°\), \(\cos\beta=2/3\approx48.2°\), \(\cos\gamma=2/3\approx48.2°\). El versor es \(\hat{\mathbf{v}}=(1/3,\,2/3,\,2/3)\) — verificá: \((1/3)^2+(2/3)^2+(2/3)^2=1/9+4/9+4/9=1\;\checkmark\)</p>
+</div>
 <div class="defbox">
   <div class="defbox-label">Definicion</div>
   <p>Los <strong>angulos directores</strong> de un vector \(\mathbf{a}=\langle a_1,a_2,a_3\rangle\) son los angulos \(\alpha,\beta,\gamma\in[0,\pi]\) que forma con los ejes positivos \(x,y,z\). Sus cosenos son:</p>
@@ -1768,6 +1796,21 @@ details>*:not(summary){padding:1rem 1.4rem;}
   <div class="thmbox-label">Polinomio de Taylor de 2° grado de f en (a,b) — Aproximación cuadrática</div>
   <div class="math-block">\[Q(x,y) = f(a,b)+f_x(a,b)(x-a)+f_y(a,b)(y-b)+\frac{1}{2}\left[f_{xx}(a,b)(x-a)^2+2f_{xy}(a,b)(x-a)(y-b)+f_{yy}(a,b)(y-b)^2\right]\]</div>
 </div>
+<div class="defbox">
+  <div class="defbox-label">¿Qué significa? — Taylor Multivariable</div>
+  <p>En 1D, la serie de Taylor aproxima una curva con un polinomio cerca de un punto. En 2D, aproxima una <strong>superficie</strong> con un polinomio cerca de un punto \((a,b)\). El polinomio de 2° grado \(Q(x,y)\) es una paraboloide que "abraza" la superficie en ese punto: coincide en el valor \(f(a,b)\), en las pendientes \(f_x, f_y\), y en la curvatura \(f_{xx}, f_{xy}, f_{yy}\). Es mejor que el plano tangente (que solo captura las pendientes) porque también captura la <strong>curvatura</strong> de la superficie.</p>
+</div>
+<div class="example">
+  <div class="example-header">Ejemplo — Taylor de 2° grado de \(f(x,y)=e^x\cos y\) en \((0,0)\)</div>
+  <div class="example-body">
+    <p>Calculamos todas las derivadas evaluadas en \((0,0)\):</p>
+    <p>\(f(0,0)=1\). \(f_x=e^x\cos y \Rightarrow f_x(0,0)=1\). \(f_y=-e^x\sin y \Rightarrow f_y(0,0)=0\).</p>
+    <p>\(f_{xx}=e^x\cos y \Rightarrow f_{xx}(0,0)=1\). \(f_{xy}=-e^x\sin y \Rightarrow f_{xy}(0,0)=0\). \(f_{yy}=-e^x\cos y \Rightarrow f_{yy}(0,0)=-1\).</p>
+    <p><strong>Polinomio cuadrático:</strong></p>
+    <div class="math-block">\[Q(x,y)=1+1\cdot x+0\cdot y+\frac{1}{2}\left[1\cdot x^2+0+(-1)\cdot y^2\right]=1+x+\frac{x^2-y^2}{2}\]</div>
+    <p><strong>Verificación:</strong> en \((0.1, 0.1)\), función real: \(e^{0.1}\cos(0.1)\approx 1.0953\). Aproximación: \(1+0.1+(0.01-0.01)/2=1.1\). Error menor a 1%.</p>
+  </div>
+</div>
 </div>
 
 <!-- ═══════════════════════════════════════════════════ UNIDAD IV ═══ -->
@@ -1897,6 +1940,20 @@ details>*:not(summary){padding:1rem 1.4rem;}
   </ul>
 </div>
 <h3 id="u4-absolutos">4.3 Extremos Absolutos o Globales</h3>
+<div class="defbox">
+  <div class="defbox-label">¿Qué significa? — Extremos Absolutos vs. Relativos</div>
+  <p>Un <strong>extremo relativo</strong> es un máximo/mínimo comparado con los puntos cercanos (como la cima de una colina que puede tener otras colinas más altas). Un <strong>extremo absoluto</strong> es el mayor/menor de TODA la región de estudio (la montaña más alta de todo el mapa). Para buscarlo en una región cerrada y acotada: hay que revisar tanto el interior (puntos críticos con \(\nabla f=0\)) como el borde de la región (usando sustitución o Lagrange sobre la frontera). El valor más grande de todos es el máximo absoluto.</p>
+</div>
+<div class="example">
+  <div class="example-header">Ejemplo — Extremos absolutos de \(f(x,y)=x^2+y^2-2x\) en el disco \(x^2+y^2\leq 4\)</div>
+  <div class="example-body">
+    <p><strong>Paso 1 — Interior:</strong> \(f_x=2x-2=0,\;f_y=2y=0 \;\Rightarrow\; (x,y)=(1,0)\). \(f(1,0)=1+0-2=-1\).</p>
+    <p><strong>Paso 2 — Frontera</strong> \(x^2+y^2=4\): parametrizamos \(x=2\cos t\), \(y=2\sin t\). \(f=4-4\cos t\). Derivando: \(4\sin t=0 \;\Rightarrow\; t=0,\pi\).</p>
+    <p>En \(t=0\): \((2,0)\), \(f=4-4=0\). En \(t=\pi\): \((-2,0)\), \(f=4+4=8\).</p>
+    <p><strong>Comparar todos los valores:</strong> \(f(1,0)=-1\), \(f(2,0)=0\), \(f(-2,0)=8\).</p>
+    <p><strong>Mínimo absoluto:</strong> \(-1\) en \((1,0)\). <strong>Máximo absoluto:</strong> \(8\) en \((-2,0)\).</p>
+  </div>
+</div>
 <div class="defbox">
   <div class="defbox-label">Definición — Extremos absolutos</div>
   <p>Dada una función de 2 variables independientes de la forma \(z=f(x,y)\) y considerando un punto genérico \(P(x,y)\) se definen extremos absolutos a los valores \(f(P_0)\) tales que: si \(\forall P\in\text{dominio de }f: f(P_0)\geq f(P) \Rightarrow f(P_0)\) es un máximo absoluto; si \(f(P_0)\leq f(P) \Rightarrow f(P_0)\) es un mínimo absoluto.</p>
@@ -2524,6 +2581,21 @@ details>*:not(summary){padding:1rem 1.4rem;}
 </div>
 <h3 id="u7-lineales">7.4 Ecuaciones Lineales de 1er Orden</h3>
 <div class="defbox">
+  <div class="defbox-label">¿Qué significa? — EDO Lineal de 1er Orden y Factor Integrante</div>
+  <p>Una EDO lineal de 1er orden es de la forma \(y' + P(x)y = Q(x)\). El lado izquierdo "casi" parece la derivada de un producto \((u\cdot v)'=u'v+uv'\). El truco del <strong>factor integrante</strong> \(\mu(x)=e^{\int P\,dx}\) es multiplicar ambos lados por \(\mu\) para que el LHS se convierta <em>exactamente</em> en \((\mu\,y)'\). Entonces solo hay que integrar ambos lados. Es como "completar el cuadrado" pero para EDOs: transformás la ecuación en algo integrable directamente.</p>
+</div>
+<div class="example">
+  <div class="example-header">Ejemplo — Resolver \(y' + \dfrac{2}{x}y = x^2\) (con \(x>0\))</div>
+  <div class="example-body">
+    <p>Está en forma estándar con \(P(x)=2/x\), \(Q(x)=x^2\).</p>
+    <p><strong>Factor integrante:</strong> \(\mu = e^{\int 2/x\,dx} = e^{2\ln x} = x^2\).</p>
+    <p><strong>Multiplicar por \(\mu=x^2\):</strong> \(x^2y' + 2xy = x^4\). El LHS es \((x^2y)'\).</p>
+    <p><strong>Integrar:</strong> \(x^2y = \int x^4\,dx = \dfrac{x^5}{5}+C\).</p>
+    <p><strong>Solución general:</strong> \(y = \dfrac{x^3}{5}+\dfrac{C}{x^2}\).</p>
+    <p><strong>Verificación rápida:</strong> si \(C=0\), \(y=x^3/5\), \(y'=3x^2/5\), y \(y'+\frac{2}{x}\cdot\frac{x^3}{5}=\frac{3x^2}{5}+\frac{2x^2}{5}=x^2\;\checkmark\)</p>
+  </div>
+</div>
+<div class="defbox">
   <div class="defbox-label">Forma estándar y propiedad</div>
   <p>Una ec. dif. de 1er orden de la forma \(a_1(x)dy/dx+a_0(x)y=g(x)\) se dice que es una ec. lineal en la variable dependiente \(y\). Familia amigable de las ec. diferenciables de cualquier orden para determinar soluciones. ED de 1er orden en la variable dependiente \(y\) y en todos sus derivadas: \(a_1(x)dy/dx+a_0(x)y=g(x)\) es lineal. Si \(g(x)=0\): la ec. lineal es homogénea; si \(g(x)\neq 0\): no homogénea.</p>
   <p>Propiedad: la solución de una ed tiene la propiedad que su solución es la suma de 2 soluciones: \(y=y_c+y_p\) donde \(y_c\) es una solución de la ec. homogénea asociada \(dy/dx+P(x)y=0\).</p>
@@ -2855,6 +2927,11 @@ details>*:not(summary){padding:1rem 1.4rem;}
   </ul>
 </div>
 <h3 id="u8-energia">8.2 Energía de un Oscilador Armónico Simple</h3>
+<div class="defbox">
+  <div class="defbox-label">¿Qué significa? — Energía del Oscilador Armónico</div>
+  <p>En un sistema resorte-masa sin amortiguamiento, la energía total \(E_t = E_c + E_p\) se <strong>conserva</strong>: la energía cinética (\(E_c = \frac{1}{2}mv^2\)) y la potencial elástica (\(E_p = \frac{1}{2}ky^2\)) se intercambian continuamente, pero su suma es siempre la misma. En el punto de máxima elongación (amplitud \(A\)), la velocidad es cero: toda la energía es potencial (\(E_t = \frac{1}{2}kA^2\)). En el punto de equilibrio, el desplazamiento es cero: toda la energía es cinética.</p>
+  <p><strong>Ejemplo numérico:</strong> masa \(m=0.5\,\text{kg}\), constante \(k=8\,\text{N/m}\), amplitud \(A=0.1\,\text{m}\). Energía total: \(E_t=\frac{1}{2}(8)(0.1)^2=0.04\,\text{J}\). Velocidad máxima (en equilibrio): \(v_{\max}=\sqrt{2E_t/m}=\sqrt{0.08/0.5}=0.4\,\text{m/s}\).</p>
+</div>
 <p>Sist. conservativo (la energía total permanece cte.): \(E_t = E_c+E_p\).</p>
 <div class="math-block">\[E_c = \frac{1}{2}mv^2 = \frac{1}{2}m(y'(t))^2\]</div>
 <p>Si el mov. es horizontal \(\to\) la energía potencial elástica almacenada en el resorte para cualquier elongación: \(E_p = \frac{1}{2}ky^2 = \frac{1}{2}k(y(t))^2\). \(E_{p_{\max}} = \frac{1}{2}kA^2\) cuando \(E_c=0\).</p>
@@ -2961,6 +3038,15 @@ details>*:not(summary){padding:1rem 1.4rem;}
 
 <h3 id="u8-forzado">8.5 Movimiento Forzado y No Amortiguado</h3>
 <div class="defbox">
+  <div class="defbox-label">¿Qué significa? — Movimiento Forzado</div>
+  <p>Un sistema forzado es aquel donde una <strong>fuerza externa periódica</strong> actúa sobre la masa además del resorte. Si antes la ecuación era \(my''+ky=0\) (libre), ahora es \(my''+ky=F_0\sin(\gamma t)\) donde \(\gamma\) es la frecuencia de la fuerza externa. La solución tiene dos partes:</p>
+  <ul class="props">
+    <li><strong>Solución homogénea \(y_H\):</strong> la oscilación natural del sistema a frecuencia \(\omega_0=\sqrt{k/m}\). Se llama "transitorio" porque si hay algo de amortiguamiento, decae con el tiempo.</li>
+    <li><strong>Solución particular \(y_p\):</strong> la respuesta al forzamiento, oscila a la frecuencia \(\gamma\) de la fuerza externa. Se llama "estado estable".</li>
+  </ul>
+  <p>La situación peligrosa es cuando \(\gamma=\omega_0\): la frecuencia externa coincide con la natural → <strong>resonancia</strong>: la amplitud crece sin límite.</p>
+</div>
+<div class="defbox">
   <div class="defbox-label">EC. DIFERENCIAL MOV. FORZADO Y NO AMORTIGUADO</div>
   <p>Cuando se ejerce una fuerza periódica y no hay fuerza de amortiguamiento, no hay parte transitoria. \(F_H=C_1\cos(wt)\); \(F_p=A\cos(\bar{\gamma}t)+B\sin(\bar\gamma t)\):</p>
   <div class="math-block">\[x_p''+ w^2x_p = A(w^2-\bar\gamma^2)\cos(\bar\gamma t)+B(w^2-\bar\gamma^2)\sin(\bar\gamma t) = F_0\sin(\bar\gamma t)\]</div>
@@ -3033,6 +3119,20 @@ details>*:not(summary){padding:1rem 1.4rem;}
 </div>
 
 <h3 id="u8-rlc">8.7 Circuitos RLC en Serie</h3>
+<div class="defbox">
+  <div class="defbox-label">¿Qué significa? — Circuito RLC como análogo del resorte</div>
+  <p>La ecuación del circuito RLC es matemáticamente idéntica a la del resorte amortiguado. Cada elemento eléctrico tiene su análogo mecánico:</p>
+  <table class="vtable" style="margin:0.8rem 0">
+    <tr><th>Mecánico (resorte)</th><th>Eléctrico (RLC)</th></tr>
+    <tr><td>Masa \(m\)</td><td>Inductancia \(L\)</td></tr>
+    <tr><td>Amortiguador \(b\)</td><td>Resistencia \(R\)</td></tr>
+    <tr><td>Constante resorte \(k\)</td><td>Recíproco capacitancia \(1/C\)</td></tr>
+    <tr><td>Desplazamiento \(y(t)\)</td><td>Carga \(q(t)\)</td></tr>
+    <tr><td>Velocidad \(y'(t)\)</td><td>Corriente \(i(t)=q'(t)\)</td></tr>
+    <tr><td>Fuerza externa \(F(t)\)</td><td>Voltaje \(E(t)\)</td></tr>
+  </table>
+  <p>Esto significa que todos los conceptos del resorte (sobreamortiguado, subamortiguado, resonancia) se aplican directamente al circuito eléctrico.</p>
+</div>
 <div class="defbox">
   <div class="defbox-label">Ecuación diferencial del circuito RLC</div>
   <p>Describimos con una EDO lineal de 2do orden. \(i(t)\) representa la corriente en el circuito eléctrico en serie RLC; las caídas de voltaje a través del inductor, resistor y capacitor. De acuerdo a la 2da ley de Kirchhoff, \(L+R+1/C=\text{Voltaje }E(t)\) aplicado al circuito:</p>
