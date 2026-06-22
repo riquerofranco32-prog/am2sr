@@ -507,6 +507,72 @@ details>*:not(summary){padding:1rem 1.4rem;}
   </tr>
 </table>
 
+<h4>📋 Parcial de EDO — Tema 3</h4>
+<div class="exambox" style="margin-bottom:1rem">
+  <div class="exambox-label">Pregunta 1 — Justificación teórica (1p)</div>
+  <p><strong>¿Cómo se utiliza el Wronskiano para verificar la independencia lineal de dos soluciones de una EDO de segundo orden?</strong></p>
+  <p><strong>Respuesta:</strong> Dadas dos soluciones \(y_1\) e \(y_2\) de una EDO lineal homogénea de 2° orden en un intervalo \(I\), se forma el <strong>Wronskiano</strong>: \(W(y_1,y_2)=\begin{vmatrix}y_1 & y_2 \\ y_1' & y_2'\end{vmatrix}=y_1y_2'-y_2y_1'\). Por el <strong>Teorema de Abel</strong>: si \(W(x_0)\neq 0\) para algún \(x_0\in I\), entonces \(W(x)\neq 0\) para todo \(x\in I\), y las soluciones son <strong>linealmente independientes</strong>, formando un conjunto fundamental de soluciones. La solución general es entonces \(y_H=C_1y_1+C_2y_2\). Si \(W=0\) en todo \(I\), son linealmente dependientes y no forman conjunto fundamental.</p>
+</div>
+<table class="vtable">
+  <tr><th style="width:42%">Afirmación</th><th style="width:8%">V/F</th><th>Justificación completa</th></tr>
+  <tr>
+    <td>"Según el principio de superposición para EDO no homogéneas, la solución general es \(y_g=y_c+y_p\), donde \(y_c\) anula la parte homogénea e \(y_p\) satisface la igualdad con \(R(x)\)."</td>
+    <td><strong style="color:#27ae60">V</strong></td>
+    <td>Es el <strong>Teorema de Estructura de la Solución General</strong>: la solución general de \(ay''+by'+cy=R(x)\) es \(y_g=y_c+y_p\), donde \(y_c=C_1y_1+C_2y_2\) (combinación lineal de las soluciones de la homogénea asociada) e \(y_p\) es cualquier solución particular de la ecuación completa. \(y_c\) "absorbe" las condiciones iniciales; \(y_p\) anula el término \(R(x)\).</td>
+  </tr>
+  <tr>
+    <td>"Una EDO es lineal si la variable dependiente y todas sus derivadas son de primer grado y sus coeficientes dependen solo de \(x\)."</td>
+    <td><strong style="color:#27ae60">V</strong></td>
+    <td>Definición exacta de EDO lineal: \(a_n(x)y^{(n)}+\ldots+a_1(x)y'+a_0(x)y=g(x)\). Condiciones: (1) \(y,y',\ldots,y^{(n)}\) aparecen a la primera potencia (grado 1), (2) no hay productos entre \(y\) y sus derivadas, (3) los coeficientes \(a_i(x)\) dependen solo de \(x\). Contraejemplos no lineales: \(yy'=x\) (producto), \((y')^2=1\) (grado 2).</td>
+  </tr>
+  <tr>
+    <td>"El método de Variación de Parámetros no puede aplicarse si la EDO es homogénea."</td>
+    <td><strong style="color:#27ae60">V</strong></td>
+    <td>El método de <strong>Variación de Parámetros</strong> está diseñado para hallar una <em>solución particular</em> \(y_p\) de la ecuación <em>no homogénea</em> \(y''+Py'+Qy=f(x)\). Si \(f(x)=0\) (EDO homogénea), la solución general ya es \(y_H=C_1y_1+C_2y_2\), y no hay necesidad de buscar \(y_p\): el método no tiene sentido aplicarlo porque \(f\equiv 0\) haría \(y_p\equiv 0\).</td>
+  </tr>
+  <tr>
+    <td>"En un modelo de enfriamiento de Newton, la tasa de cambio de la temperatura es <em>inversamente</em> proporcional a la diferencia entre el objeto y el medio."</td>
+    <td><strong style="color:#c0392b">F</strong></td>
+    <td>La Ley de Enfriamiento de Newton establece que la tasa de cambio es <strong>directamente</strong> proporcional a la diferencia: \(\frac{dT}{dt}=k(T-T_m)\). Si fuera inversamente proporcional, al aumentar la diferencia el enfriamiento sería más lento, lo cual contradice la experiencia física. La afirmación invierte el signo de la proporcionalidad.</td>
+  </tr>
+</table>
+
+<h4>📋 Parcial de EDO — Tema 4</h4>
+<div class="exambox" style="margin-bottom:1rem">
+  <div class="exambox-label">Pregunta 1 — Justificación teórica (1p)</div>
+  <p><strong>Para una EDO lineal homogénea de segundo orden con coeficientes constantes, explique cómo la naturaleza de las raíces de la ecuación auxiliar determina la forma de la solución general.</strong></p>
+  <p><strong>Respuesta:</strong> Dada \(ay''+by'+cy=0\), se propone \(y=e^{rx}\) y se obtiene la <strong>ecuación auxiliar</strong> \(ar^2+br+c=0\), con discriminante \(\Delta=b^2-4ac\). Tres casos:</p>
+  <ul style="color:var(--ink2);font-size:15px;line-height:1.7">
+    <li><strong>\(\Delta>0\):</strong> dos raíces reales distintas \(r_1\neq r_2\) → \(y_H=C_1e^{r_1x}+C_2e^{r_2x}\) (sistema sobreamortiguado si \(r_1,r_2<0\)).</li>
+    <li><strong>\(\Delta=0\):</strong> raíz real repetida \(r_1=r_2=r\) → \(y_H=(C_1+C_2x)e^{rx}\) (se usa reducción de orden para obtener la segunda solución LI \(xe^{rx}\)).</li>
+    <li><strong>\(\Delta<0\):</strong> raíces complejas conjugadas \(r=\alpha\pm\beta i\) → \(y_H=e^{\alpha x}(C_1\cos\beta x+C_2\sin\beta x)\) (oscilación amortiguada si \(\alpha<0\), pura si \(\alpha=0\)).</li>
+  </ul>
+  <p>La naturaleza de las raíces determina si el sistema oscila, decae exponencialmente o presenta una combinación de ambos comportamientos.</p>
+</div>
+<table class="vtable">
+  <tr><th style="width:42%">Afirmación</th><th style="width:8%">V/F</th><th>Justificación completa</th></tr>
+  <tr>
+    <td>"El método de variables separables solo es aplicable si la ecuación diferencial es lineal."</td>
+    <td><strong style="color:#c0392b">F</strong></td>
+    <td>El método de <strong>variables separables</strong> aplica a EDO de la forma \(\frac{dy}{dx}=g(x)h(y)\), independientemente de si la EDO es lineal o no. Contraejemplo no lineal: \(\frac{dy}{dx}=xy^2\) es separable (\(g(x)=x\), \(h(y)=y^2\)) pero no lineal (por el término \(y^2\)). La linealidad no es un requisito del método.</td>
+  </tr>
+  <tr>
+    <td>"En el modelado de sistemas resorte/masa, el movimiento se define como 'libre' cuando no existen fuerzas externas \(f(t)\) actuando sobre el sistema."</td>
+    <td><strong style="color:#27ae60">V</strong></td>
+    <td>En la ecuación de movimiento \(m\ddot{x}+c\dot{x}+kx=f(t)\), se llama <strong>movimiento libre</strong> cuando \(f(t)=0\) (sin fuerza externa): el sistema oscila por sus condiciones iniciales. Si \(f(t)\neq 0\) es <strong>movimiento forzado</strong>. El amortiguamiento (\(c\)) es independiente: puede haber movimiento libre amortiguado o libre no amortiguado.</td>
+  </tr>
+  <tr>
+    <td>"Un sistema de ecuaciones diferenciales de primer orden se considera homogéneo si el término constante o la función de entrada es el vector cero."</td>
+    <td><strong style="color:#27ae60">V</strong></td>
+    <td>Para el sistema \(\mathbf{X}'=A\mathbf{X}+\mathbf{F}(t)\), es <strong>homogéneo</strong> cuando \(\mathbf{F}(t)=\mathbf{0}\) (vector de funciones forzantes nulo), quedando \(\mathbf{X}'=A\mathbf{X}\). Es análogo al caso escalar: la "función de entrada" (término no homogéneo) debe ser el vector cero para que el sistema sea homogéneo.</td>
+  </tr>
+  <tr>
+    <td>"Si dos funciones son linealmente independientes en un intervalo, su Wronskiano no puede ser cero en ningún punto de dicho intervalo."</td>
+    <td><strong style="color:#c0392b">F</strong></td>
+    <td>Esto es válido <strong>solo para soluciones de una EDO lineal homogénea</strong> (Teorema de Abel): si \(y_1,y_2\) son soluciones LI, entonces \(W\neq 0\) en todo el intervalo. Pero para <em>funciones arbitrarias</em>, la implicación no vale: funciones LI pueden tener \(W=0\) en algún punto sin ser LD. El recíproco general del Wronskiano no es válido.</td>
+  </tr>
+</table>
+
 <h3 id="guia-preguntas-teoricas-reales">★ Preguntas Teóricas de Finales Reales — Respuestas Modelo</h3>
 <p style="color:var(--ink2);font-style:italic;font-size:14px;margin-bottom:1.2rem">Preguntas exactas extraídas de los finales del 13 Feb 2026, 27 Feb 2026 y parcial de EDO. Respuestas al nivel que exige el docente.</p>
 
