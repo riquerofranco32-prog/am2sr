@@ -1,0 +1,641 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Práctica Final — Análisis Matemático II</title>
+<script>
+  window.MathJax = {
+    tex: { inlineMath: [['\\(','\\)'], ['$','$']], displayMath: [['\\[','\\]'], ['$$','$$']] },
+    startup: { typeset: true }
+  };
+</script>
+<script src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml.js" defer></script>
+<style>
+  :root {
+    --naranja: #c0392b;
+    --azul: #1a5276;
+    --verde: #1e8449;
+    --violeta: #6c3483;
+    --gris-texto: #1a1a2e;
+    --gris-claro: #f4f6f8;
+    --borde: #d5d8dc;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: 'Segoe UI', Arial, sans-serif;
+    font-size: 11.5pt;
+    color: var(--gris-texto);
+    background: #fff;
+    padding: 0;
+  }
+
+  /* ── PORTADA ── */
+  .portada {
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    padding: 3rem;
+    border-bottom: 4px solid var(--azul);
+    page-break-after: always;
+  }
+  .portada .inst {
+    font-size: 10pt;
+    color: #555;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 0.5rem;
+  }
+  .portada h1 {
+    font-size: 28pt;
+    color: var(--azul);
+    font-weight: 700;
+    margin-bottom: 0.3rem;
+  }
+  .portada h2 {
+    font-size: 16pt;
+    color: var(--naranja);
+    font-weight: 400;
+    margin-bottom: 2rem;
+  }
+  .portada .tags {
+    display: flex;
+    gap: 0.8rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-bottom: 2.5rem;
+  }
+  .portada .tag {
+    background: var(--azul);
+    color: #fff;
+    padding: 0.3rem 0.9rem;
+    border-radius: 20px;
+    font-size: 9.5pt;
+    font-weight: 600;
+  }
+  .portada .info-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    text-align: left;
+    background: var(--gris-claro);
+    border: 1px solid var(--borde);
+    border-radius: 8px;
+    padding: 1.5rem 2rem;
+    max-width: 480px;
+    font-size: 10.5pt;
+  }
+  .portada .info-grid strong { color: var(--azul); }
+
+  /* ── SECCIONES ── */
+  .seccion {
+    padding: 1.8rem 2.5rem 1.2rem;
+    page-break-inside: avoid;
+  }
+  .sec-header {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    margin-bottom: 1rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--borde);
+  }
+  .sec-num {
+    width: 32px; height: 32px;
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-weight: 700; font-size: 12pt; color: #fff;
+    flex-shrink: 0;
+  }
+  .sec-title { font-size: 13pt; font-weight: 700; }
+  .sec-sub { font-size: 9pt; color: #666; font-style: italic; margin-top: 0.1rem; }
+
+  /* Colores por sección */
+  .s1 .sec-num { background: var(--azul); }
+  .s1 .sec-title { color: var(--azul); }
+  .s2 .sec-num { background: var(--verde); }
+  .s2 .sec-title { color: var(--verde); }
+  .s3 .sec-num { background: var(--violeta); }
+  .s3 .sec-title { color: var(--violeta); }
+  .s4 .sec-num { background: var(--naranja); }
+  .s4 .sec-title { color: var(--naranja); }
+  .s5 .sec-num { background: #117a65; }
+  .s5 .sec-title { color: #117a65; }
+
+  /* ── EJERCICIOS ── */
+  .ejercicio {
+    border: 1px solid var(--borde);
+    border-radius: 6px;
+    margin-bottom: 1.1rem;
+    overflow: hidden;
+    page-break-inside: avoid;
+  }
+  .ej-header {
+    padding: 0.45rem 0.9rem;
+    font-size: 9pt;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .s1 .ej-header { background: #d6eaf8; color: var(--azul); }
+  .s2 .ej-header { background: #d5f5e3; color: var(--verde); }
+  .s3 .ej-header { background: #e8daef; color: var(--violeta); }
+  .s4 .ej-header { background: #fadbd8; color: var(--naranja); }
+  .s5 .ej-header { background: #d1f2eb; color: #117a65; }
+
+  .ej-body { padding: 0.9rem 1rem; }
+  .ej-body p { line-height: 1.65; margin-bottom: 0.5rem; }
+  .ej-body ul, .ej-body ol { padding-left: 1.4rem; line-height: 1.7; }
+  .ej-body li { margin-bottom: 0.2rem; }
+
+  .pts { font-size: 9pt; color: #888; font-weight: 400; font-style: italic; }
+
+  /* ── ESPACIO RESPUESTA ── */
+  .respuesta {
+    border-top: 1px dashed #ccc;
+    padding: 0.5rem 1rem;
+    min-height: 2.8rem;
+    background: #fafafa;
+  }
+  .respuesta-label {
+    font-size: 8.5pt;
+    color: #aaa;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+  }
+
+  /* ── BLOQUE MATEMÁTICO ── */
+  .math-display {
+    background: var(--gris-claro);
+    border-left: 3px solid #aaa;
+    padding: 0.5rem 1rem;
+    margin: 0.5rem 0;
+    border-radius: 0 4px 4px 0;
+    font-size: 11pt;
+    overflow-x: auto;
+  }
+
+  /* ── NOTA/HINT ── */
+  .hint {
+    background: #fffbec;
+    border-left: 3px solid #f39c12;
+    padding: 0.4rem 0.8rem;
+    margin-top: 0.5rem;
+    border-radius: 0 4px 4px 0;
+    font-size: 10pt;
+    color: #7d6608;
+  }
+
+  /* ── TABLA PUNTAJE ── */
+  .puntaje-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 10pt;
+    margin: 1rem 0;
+  }
+  .puntaje-table th, .puntaje-table td {
+    border: 1px solid var(--borde);
+    padding: 0.4rem 0.7rem;
+    text-align: center;
+  }
+  .puntaje-table th { background: var(--gris-claro); font-weight: 700; }
+
+  /* ── SEPARADOR DE PÁGINA ── */
+  .page-break { page-break-before: always; }
+
+  /* ── FOOTER ── */
+  .footer-nota {
+    margin: 0.5rem 2.5rem 1.5rem;
+    font-size: 8.5pt;
+    color: #999;
+    border-top: 1px solid var(--borde);
+    padding-top: 0.4rem;
+  }
+
+  /* ── PRINT ── */
+  @media print {
+    body { font-size: 10.5pt; }
+    .portada { height: auto; min-height: 95vh; }
+    .seccion { padding: 1.2rem 1.8rem 0.8rem; }
+    .no-print { display: none; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ══════════════════════════════ PORTADA ══════════════════════════════ -->
+<div class="portada">
+  <div class="inst">Universidad Tecnológica Nacional · Facultad Regional San Rafael</div>
+  <h1>Análisis Matemático II</h1>
+  <h2>Práctica Integral — Estilo Final</h2>
+  <div class="tags">
+    <span class="tag">Derivada Direccional</span>
+    <span class="tag">Integrales Polares</span>
+    <span class="tag">Extremos & Lagrange</span>
+    <span class="tag">Masa-Resorte</span>
+    <span class="tag">Modelado EDO</span>
+  </div>
+  <div class="info-grid">
+    <div><strong>Dificultad:</strong><br>Nivel final real</div>
+    <div><strong>Ejercicios:</strong><br>20 (4 por tema)</div>
+    <div><strong>Temas:</strong><br>5 unidades</div>
+    <div><strong>Puntaje total:</strong><br>20 puntos</div>
+  </div>
+
+  <div style="margin-top:2rem;font-size:9pt;color:#888">
+    Basado en los finales del 13/02/2026, 27/02/2026 y modelos de parcial EDO (Temas 1–5) · UTN FRSR
+  </div>
+
+  <table class="puntaje-table" style="max-width:460px;margin-top:2rem">
+    <tr>
+      <th>Sección</th>
+      <th>Tema</th>
+      <th>Pts. c/u</th>
+      <th>Total</th>
+    </tr>
+    <tr><td>1</td><td>Derivada Direccional / Gradiente</td><td>1 p</td><td>4 p</td></tr>
+    <tr><td>2</td><td>Integrales con Cambio a Polares</td><td>1 p</td><td>4 p</td></tr>
+    <tr><td>3</td><td>Extremos y Multiplicadores de Lagrange</td><td>1 p</td><td>4 p</td></tr>
+    <tr><td>4</td><td>Sistema Masa-Resorte (MAS)</td><td>1 p</td><td>4 p</td></tr>
+    <tr><td>5</td><td>Modelado con EDO de 1° Orden</td><td>1 p</td><td>4 p</td></tr>
+  </table>
+</div>
+
+<!-- ══════════════════════════════ S1: DERIV DIRECCIONAL ══════════════════════════════ -->
+<div class="seccion s1">
+  <div class="sec-header">
+    <div class="sec-num">1</div>
+    <div>
+      <div class="sec-title">Derivada Direccional y Gradiente</div>
+      <div class="sec-sub">Gradiente · Derivada en dirección dada · Dirección de máximo crecimiento · Curvas de nivel</div>
+    </div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-header">Ejercicio 1.1 <span class="pts">1 punto</span></div>
+    <div class="ej-body">
+      <p>Sea \(f(x,y) = x^2 y + 3xy^2 - 2y\).</p>
+      <ol type="a">
+        <li>Calcule \(\nabla f\) en el punto \(P = (1, -1)\). <em>(0,4p)</em></li>
+        <li>Halle la derivada direccional de \(f\) en \(P\) en la dirección del vector \(\vec{v} = (3, 4)\). <em>(0,3p)</em></li>
+        <li>Indique la dirección en que \(f\) crece más rápidamente en \(P\) y calcule el valor de ese máximo crecimiento. <em>(0,3p)</em></li>
+      </ol>
+    </div>
+    <div class="respuesta"><div class="respuesta-label">Respuesta</div></div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-header">Ejercicio 1.2 <span class="pts">1 punto</span></div>
+    <div class="ej-body">
+      <p>La temperatura en una placa metálica está dada por \(T(x,y) = 100 - 3x^2 - 5y^2\) (en °C).</p>
+      <ol type="a">
+        <li>Encuentre el gradiente de \(T\) en el punto \((2, 1)\). ¿En qué dirección debe moverse un insecto ubicado en ese punto para calentarse más rápido? <em>(0,4p)</em></li>
+        <li>Calcule la tasa de cambio de la temperatura en la dirección del vector \(\vec{u} = \left(-\frac{1}{\sqrt{2}}, \frac{1}{\sqrt{2}}\right)\). <em>(0,3p)</em></li>
+        <li>¿En qué dirección la tasa de cambio de \(T\) es cero en ese punto? Justifique geométricamente. <em>(0,3p)</em></li>
+      </ol>
+    </div>
+    <div class="respuesta"><div class="respuesta-label">Respuesta</div></div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-header">Ejercicio 1.3 <span class="pts">1 punto</span></div>
+    <div class="ej-body">
+      <p>Sea \(f(x,y,z) = x^2 + yz - xz^2\).</p>
+      <ol type="a">
+        <li>Calcule \(\nabla f\) en \(P = (1, 2, -1)\). <em>(0,3p)</em></li>
+        <li>Halle la derivada direccional de \(f\) en \(P\) en dirección del vector \(\vec{v} = (2, -1, 2)\). <em>(0,4p)</em></li>
+        <li>Encuentre la tasa de cambio mínima de \(f\) en \(P\) (dirección de máximo descenso) y su valor. <em>(0,3p)</em></li>
+      </ol>
+    </div>
+    <div class="respuesta"><div class="respuesta-label">Respuesta</div></div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-header">Ejercicio 1.4 <span class="pts">1 punto</span></div>
+    <div class="ej-body">
+      <p>El potencial eléctrico en una región del plano es \(V(x,y) = e^{-x}\cos(y)\).</p>
+      <ol type="a">
+        <li>Calcule \(\nabla V\) en el punto \(P = \left(0, \frac{\pi}{3}\right)\). <em>(0,3p)</em></li>
+        <li>¿Cuánto vale la derivada direccional de \(V\) en \(P\) en la dirección de \(\vec{w} = (1, \sqrt{3})\)? <em>(0,4p)</em></li>
+        <li>Determine el ángulo entre \(\nabla V(P)\) y el vector \(\vec{w}\). <em>(0,3p)</em></li>
+      </ol>
+      <div class="hint">💡 Recordar: \(D_{\hat{u}}f = \nabla f \cdot \hat{u}\), donde \(\hat{u} = \vec{u}/|\vec{u}|\). La derivada es máxima en la dirección de \(\nabla f\) y su valor es \(|\nabla f|\).</div>
+    </div>
+    <div class="respuesta"><div class="respuesta-label">Respuesta</div></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ S2: INTEGRALES POLARES ══════════════════════════════ -->
+<div class="seccion s2 page-break">
+  <div class="sec-header">
+    <div class="sec-num">2</div>
+    <div>
+      <div class="sec-title">Integrales con Cambio a Coordenadas Polares</div>
+      <div class="sec-sub">Jacobiano \(r\) · Límites en \(r\) y \(\theta\) · Identificar región · Conversión de cartesianas</div>
+    </div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-header">Ejercicio 2.1 <span class="pts">1 punto</span></div>
+    <div class="ej-body">
+      <p>Calcule la integral doble convirtiendo a coordenadas polares:</p>
+      <div class="math-display">\[\iint_R \sqrt{x^2 + y^2}\; dA\]</div>
+      <p>donde \(R\) es el disco de radio 3 centrado en el origen: \(x^2 + y^2 \leq 9\).</p>
+    </div>
+    <div class="respuesta"><div class="respuesta-label">Respuesta</div></div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-header">Ejercicio 2.2 <span class="pts">1 punto</span></div>
+    <div class="ej-body">
+      <p>Evalúe la siguiente integral cambiando el orden de integración y pasando a polares:</p>
+      <div class="math-display">\[\int_0^2 \int_0^{\sqrt{4-x^2}} e^{x^2+y^2}\; dy\; dx\]</div>
+      <ol type="a">
+        <li>Identifique y grafique la región de integración. <em>(0,3p)</em></li>
+        <li>Convierta a polares y evalúe. <em>(0,7p)</em></li>
+      </ol>
+    </div>
+    <div class="respuesta"><div class="respuesta-label">Respuesta</div></div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-header">Ejercicio 2.3 <span class="pts">1 punto</span></div>
+    <div class="ej-body">
+      <p>Calcule el área de la región encerrada por la curva polar \(r = 2\cos\theta\) (circunferencia) intersectada con la región interior al círculo \(r = 1\).</p>
+      <ol type="a">
+        <li>Determine los puntos de intersección de las curvas. <em>(0,3p)</em></li>
+        <li>Plantee y evalúe la integral para el área de la intersección. <em>(0,7p)</em></li>
+      </ol>
+      <div class="hint">💡 La curva \(r=2\cos\theta\) es una circunferencia de radio 1 centrada en \((1,0)\) en el plano cartesiano.</div>
+    </div>
+    <div class="respuesta"><div class="respuesta-label">Respuesta</div></div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-header">Ejercicio 2.4 <span class="pts">1 punto</span></div>
+    <div class="ej-body">
+      <p>Calcule el volumen del sólido acotado superiormente por el paraboloide \(z = 9 - x^2 - y^2\) e inferiormente por el plano \(z = 0\), dentro de la región \(x^2 + y^2 \leq 4\).</p>
+      <ol type="a">
+        <li>Plantee la integral doble en coordenadas polares. <em>(0,4p)</em></li>
+        <li>Evalúe. <em>(0,6p)</em></li>
+      </ol>
+      <div class="hint">💡 El volumen es \(V = \iint_R f(x,y)\,dA\). Jacobiano: \(dA = r\,dr\,d\theta\). Siempre distribuir el \(r\) antes de integrar.</div>
+    </div>
+    <div class="respuesta"><div class="respuesta-label">Respuesta</div></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ S3: EXTREMOS ══════════════════════════════ -->
+<div class="seccion s3 page-break">
+  <div class="sec-header">
+    <div class="sec-num">3</div>
+    <div>
+      <div class="sec-title">Extremos y Multiplicadores de Lagrange</div>
+      <div class="sec-sub">Puntos críticos · Criterio del Hessiano · Extremos condicionados · \(\nabla f = \lambda \nabla g\)</div>
+    </div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-header">Ejercicio 3.1 — Extremos libres <span class="pts">1 punto</span></div>
+    <div class="ej-body">
+      <p>Encuentre todos los puntos críticos de \(f(x,y) = x^3 - 3xy + y^3\) y clasifíquelos usando el criterio del Hessiano.</p>
+      <ol type="a">
+        <li>Halle los puntos críticos resolviendo \(f_x=0\) y \(f_y=0\). <em>(0,4p)</em></li>
+        <li>Calcule \(D = f_{xx}f_{yy} - (f_{xy})^2\) en cada punto crítico y clasifique: máximo, mínimo o silla. <em>(0,4p)</em></li>
+        <li>Enuncie el valor extremo (si existe). <em>(0,2p)</em></li>
+      </ol>
+    </div>
+    <div class="respuesta"><div class="respuesta-label">Respuesta</div></div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-header">Ejercicio 3.2 — Extremos libres <span class="pts">1 punto</span></div>
+    <div class="ej-body">
+      <p>Halle los valores máximo y mínimo de \(f(x,y) = 4x^2 - 2y^2 + 4xy - 6x + 2y + 3\) y clasifíquelos.</p>
+      <ol type="a">
+        <li>Calcule las derivadas parciales e iguale a cero. <em>(0,4p)</em></li>
+        <li>Determine el discriminante \(D\) en el punto crítico encontrado y clasifíquelo. <em>(0,4p)</em></li>
+        <li>¿Tiene la función máximo o mínimo global? Justifique. <em>(0,2p)</em></li>
+      </ol>
+    </div>
+    <div class="respuesta"><div class="respuesta-label">Respuesta</div></div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-header">Ejercicio 3.3 — Multiplicadores de Lagrange <span class="pts">1 punto</span></div>
+    <div class="ej-body">
+      <p>Una caja rectangular sin tapa debe tener un volumen de <strong>32 m³</strong>. Determine las dimensiones que minimizan el área superficial total.</p>
+      <p><em>Área superficial sin tapa:</em> \(S = xy + 2xz + 2yz\). <em>Restricción:</em> \(xyz = 32\).</p>
+      <ol type="a">
+        <li>Plantee el sistema de ecuaciones \(\nabla S = \lambda \nabla g\) con \(g = xyz - 32\). <em>(0,4p)</em></li>
+        <li>Resuelva el sistema. <em>(0,4p)</em></li>
+        <li>Enuncie las dimensiones óptimas y el área mínima. <em>(0,2p)</em></li>
+      </ol>
+    </div>
+    <div class="respuesta"><div class="respuesta-label">Respuesta</div></div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-header">Ejercicio 3.4 — Multiplicadores de Lagrange <span class="pts">1 punto</span></div>
+    <div class="ej-body">
+      <p>Halle los valores extremos de \(f(x,y) = x^2 + y^2\) sujeto a la restricción \(g(x,y) = x + 2y - 5 = 0\).</p>
+      <ol type="a">
+        <li>Plantee \(\nabla f = \lambda \nabla g\) y el sistema de ecuaciones. <em>(0,3p)</em></li>
+        <li>Resuelva para hallar el punto extremo. <em>(0,4p)</em></li>
+        <li>¿Es máximo o mínimo? Interprete geométricamente: ¿qué representa minimizar \(x^2+y^2\) sobre una recta? <em>(0,3p)</em></li>
+      </ol>
+      <div class="hint">💡 Interpretación: el mínimo de \(x^2+y^2\) sobre la recta \(x+2y=5\) es el cuadrado de la distancia del origen a esa recta.</div>
+    </div>
+    <div class="respuesta"><div class="respuesta-label">Respuesta</div></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ S4: MASA-RESORTE ══════════════════════════════ -->
+<div class="seccion s4 page-break">
+  <div class="sec-header">
+    <div class="sec-num">4</div>
+    <div>
+      <div class="sec-title">Sistema Masa-Resorte (MAS)</div>
+      <div class="sec-sub">Ecuación \(mx''+cx'+kx=f(t)\) · Libre/forzado · No amortiguado / subamortiguado / críticamente amortiguado / sobreamortiguado</div>
+    </div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-header">Ejercicio 4.1 — Movimiento libre no amortiguado <span class="pts">1 punto</span></div>
+    <div class="ej-body">
+      <p>Un resorte se alarga <strong>6 pulgadas</strong> al colgarle un peso de <strong>16 libras</strong>. La masa se libera desde <strong>2 pulgadas por debajo</strong> de la posición de equilibrio con una <strong>velocidad inicial hacia arriba de 4 pies/s</strong>.</p>
+      <ol type="a">
+        <li>Plantee y resuelva la ecuación de movimiento. <em>(0,5p)</em></li>
+        <li>Exprese la solución en la forma \(x(t) = A\sin(\omega t + \phi)\). Calcule amplitud, período y frecuencia. <em>(0,3p)</em></li>
+        <li>¿En qué instante la masa pasa por primera vez por la posición de equilibrio? <em>(0,2p)</em></li>
+      </ol>
+      <div class="hint">💡 \(k = W/s\). En el sistema anglosajón: \(m = W/32\) slugs. \(s = 6\text{ in} = 0{,}5\text{ ft}\).</div>
+    </div>
+    <div class="respuesta"><div class="respuesta-label">Respuesta</div></div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-header">Ejercicio 4.2 — Movimiento libre subamortiguado <span class="pts">1 punto</span></div>
+    <div class="ej-body">
+      <p>Una masa de <strong>2 kg</strong> está unida a un resorte con constante \(k = 8\text{ N/m}\). El amortiguamiento del medio es de \(c = 4\text{ N·s/m}\). La masa parte del reposo desde <strong>1 m por encima</strong> de la posición de equilibrio.</p>
+      <ol type="a">
+        <li>Determine el tipo de movimiento (subamortiguado, críticamente amortiguado o sobreamortiguado) calculando el discriminante. <em>(0,3p)</em></li>
+        <li>Plantee y resuelva la ecuación de movimiento con las condiciones iniciales dadas. <em>(0,5p)</em></li>
+        <li>¿La masa cruza la posición de equilibrio? Si sí, ¿cuándo ocurre por primera vez? <em>(0,2p)</em></li>
+      </ol>
+    </div>
+    <div class="respuesta"><div class="respuesta-label">Respuesta</div></div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-header">Ejercicio 4.3 — Movimiento críticamente amortiguado <span class="pts">1 punto</span></div>
+    <div class="ej-body">
+      <p>Una masa de <strong>0,5 kg</strong> está unida a un resorte con constante \(k = 50\text{ N/m}\). El coeficiente de amortiguamiento es tal que el movimiento es <strong>críticamente amortiguado</strong>. La masa se suelta desde <strong>0,1 m por debajo del equilibrio</strong> con velocidad inicial <strong>nula</strong>.</p>
+      <ol type="a">
+        <li>Encuentre el valor de \(c\) para que el sistema sea críticamente amortiguado. <em>(0,2p)</em></li>
+        <li>Resuelva la ecuación de movimiento y exprese \(x(t)\). <em>(0,5p)</em></li>
+        <li>Determine el desplazamiento máximo desde el equilibrio y el instante en que ocurre. <em>(0,3p)</em></li>
+      </ol>
+    </div>
+    <div class="respuesta"><div class="respuesta-label">Respuesta</div></div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-header">Ejercicio 4.4 — Movimiento forzado (resonancia) <span class="pts">1 punto</span></div>
+    <div class="ej-body">
+      <p>Un resorte de constante \(k = 4\text{ N/m}\) tiene una masa de <strong>1 kg</strong> sin amortiguamiento. Se aplica una fuerza externa \(f(t) = 3\cos(2t)\) N. Condiciones iniciales: \(x(0) = 0\), \(x'(0) = 0\).</p>
+      <ol type="a">
+        <li>Calcule la frecuencia natural del sistema \(\omega_0\) y compárela con la frecuencia de la fuerza forzante. ¿Hay resonancia? <em>(0,3p)</em></li>
+        <li>Resuelva la ecuación completa \(x''+4x = 3\cos(2t)\) con el método adecuado dado el resultado anterior. <em>(0,5p)</em></li>
+        <li>¿Qué ocurre físicamente con la amplitud de la oscilación a medida que \(t\to\infty\)? <em>(0,2p)</em></li>
+      </ol>
+      <div class="hint">💡 Cuando la frecuencia forzante coincide con \(\omega_0\), hay resonancia: usar \(y_p = t(A\cos\omega_0 t + B\sin\omega_0 t)\).</div>
+    </div>
+    <div class="respuesta"><div class="respuesta-label">Respuesta</div></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ S5: MODELADO ══════════════════════════════ -->
+<div class="seccion s5 page-break">
+  <div class="sec-header">
+    <div class="sec-num">5</div>
+    <div>
+      <div class="sec-title">Modelado con EDO de 1° Orden</div>
+      <div class="sec-sub">Crecimiento/decaimiento exponencial · Enfriamiento de Newton · Mezclas · Ley de Newton (Malthus)</div>
+    </div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-header">Ejercicio 5.1 — Crecimiento logístico <span class="pts">1 punto</span></div>
+    <div class="ej-body">
+      <p>Una reserva forestal tiene una capacidad de carga estimada de <strong>10.000 árboles</strong>. En el año 2010 había <strong>1.000 árboles</strong> y la tasa de crecimiento neta era de <strong>18% anual</strong> sobre la cantidad presente. Modele la evolución con la ecuación logística:</p>
+      <div class="math-display">\[\frac{dP}{dt} = kP\!\left(1-\frac{P}{K}\right)\]</div>
+      <ol type="a">
+        <li>Identifique \(k\) y \(K\). Resuelva la EDO separable para hallar \(P(t)\). <em>(0,5p)</em></li>
+        <li>¿Cuántos árboles habrá en 2030 (año 20)? <em>(0,3p)</em></li>
+        <li>¿En qué año la reserva alcanzará 8.000 árboles? <em>(0,2p)</em></li>
+      </ol>
+      <div class="hint">💡 Solución logística: \(P(t) = \dfrac{K}{1 + \left(\frac{K-P_0}{P_0}\right)e^{-kt}}\).</div>
+    </div>
+    <div class="respuesta"><div class="respuesta-label">Respuesta</div></div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-header">Ejercicio 5.2 — Decaimiento radiactivo y vida media <span class="pts">1 punto</span></div>
+    <div class="ej-body">
+      <p>La vida media del Carbono-14 es de aproximadamente <strong>5730 años</strong>. Se analiza un resto orgánico y se determina que contiene el <strong>35%</strong> de la cantidad original de C-14.</p>
+      <ol type="a">
+        <li>Modele con \(\dfrac{dA}{dt} = kA\) y halle \(k\) usando la vida media. <em>(0,3p)</em></li>
+        <li>Determine la edad aproximada del resto orgánico. <em>(0,5p)</em></li>
+        <li>Si la muestra original contenía 200 mg, ¿cuántos miligramos quedan en el objeto analizado? ¿Cuántos habrá en 10.000 años más? <em>(0,2p)</em></li>
+      </ol>
+    </div>
+    <div class="respuesta"><div class="respuesta-label">Respuesta</div></div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-header">Ejercicio 5.3 — Mezcla de tanque <span class="pts">1 punto</span></div>
+    <div class="ej-body">
+      <p>Un tanque contiene inicialmente <strong>100 litros de agua pura</strong>. Entra una solución salina con concentración <strong>2 g/L</strong> a un caudal de <strong>3 L/min</strong>, y la mezcla (bien agitada) sale al mismo caudal.</p>
+      <ol type="a">
+        <li>Plantee la EDO lineal de 1° orden para \(Q(t)\) (cantidad de sal en el tanque en el instante \(t\)). <em>(0,3p)</em></li>
+        <li>Resuelva la EDO con la condición inicial \(Q(0)=0\). <em>(0,5p)</em></li>
+        <li>¿Cuánta sal hay en el tanque a los 30 minutos? ¿Cuál es la concentración límite cuando \(t\to\infty\)? <em>(0,2p)</em></li>
+      </ol>
+      <div class="hint">💡 Tasa de entrada: \(3 \cdot 2 = 6\text{ g/min}\). Tasa de salida: \(\frac{Q}{100}\cdot 3\text{ g/min}\) (volumen constante). EDO: \(Q' = 6 - \frac{3Q}{100}\).</div>
+    </div>
+    <div class="respuesta"><div class="respuesta-label">Respuesta</div></div>
+  </div>
+
+  <div class="ejercicio">
+    <div class="ej-header">Ejercicio 5.4 — Ley de Newton del enfriamiento (aplicación inversa) <span class="pts">1 punto</span></div>
+    <div class="ej-body">
+      <p>A las 22:00 hs se descubre un cadáver en una habitación con temperatura constante de <strong>20 °C</strong>. La temperatura corporal en ese momento es de <strong>32 °C</strong>. A las 23:00 hs la temperatura bajó a <strong>29 °C</strong>. La temperatura normal del cuerpo humano es <strong>37 °C</strong>.</p>
+      <ol type="a">
+        <li>Modele con la Ley de Enfriamiento de Newton y halle la constante \(k\). <em>(0,4p)</em></li>
+        <li>Determine la hora de fallecimiento (es decir, el tiempo antes de las 22:00 hs en que la temperatura era 37 °C). <em>(0,4p)</em></li>
+        <li>¿Cuál será la temperatura del cadáver a las 02:00 hs del día siguiente? <em>(0,2p)</em></li>
+      </ol>
+      <div class="hint">💡 \(T(t) = T_m + (T_0 - T_m)e^{kt}\). Tomar \(t=0\) en las 22:00 hs. Hallar \(k\) con \(T(1)=29\). Para la hora de muerte, resolver \(T(t^*)=37\) con \(t^*<0\).</div>
+    </div>
+    <div class="respuesta"><div class="respuesta-label">Respuesta</div></div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════ RESPUESTAS ══════════════════════════════ -->
+<div class="seccion page-break" style="padding-bottom:2rem">
+  <div class="sec-header">
+    <div class="sec-num" style="background:#555">R</div>
+    <div>
+      <div class="sec-title" style="color:#333">Respuestas de Verificación</div>
+      <div class="sec-sub">Solo el resultado final — el proceso de resolución es parte del aprendizaje</div>
+    </div>
+  </div>
+
+  <table style="width:100%;border-collapse:collapse;font-size:10pt">
+    <tr style="background:#f4f6f8">
+      <th style="border:1px solid #ddd;padding:0.4rem 0.7rem;text-align:left;width:14%">Ejercicio</th>
+      <th style="border:1px solid #ddd;padding:0.4rem 0.7rem;text-align:left">Resultado clave</th>
+    </tr>
+    <tr><td style="border:1px solid #ddd;padding:0.35rem 0.7rem"><strong>1.1</strong></td><td style="border:1px solid #ddd;padding:0.35rem 0.7rem">\(\nabla f(1,-1)=(-1,-6)\). \(D_{\hat{v}}f=\frac{-1\cdot3+(-6)\cdot4}{5}=\frac{-27}{5}=-5{,}4\). Máx. crecimiento: dirección \((-1,-6)\), valor \(|\nabla f|=\sqrt{37}\approx6{,}08\).</td></tr>
+    <tr><td style="border:1px solid #ddd;padding:0.35rem 0.7rem"><strong>1.2</strong></td><td style="border:1px solid #ddd;padding:0.35rem 0.7rem">\(\nabla T(2,1)=(-12,-10)\). \(D_{\hat{u}}T=\frac{(-12)(-1)+(-10)(1)}{\sqrt{2}}=\frac{2}{\sqrt{2}}=\sqrt{2}\). Tasa cero: dirección perpendicular a \(\nabla T\), p.ej. \((-10,12)\) normalizado.</td></tr>
+    <tr><td style="border:1px solid #ddd;padding:0.35rem 0.7rem"><strong>1.3</strong></td><td style="border:1px solid #ddd;padding:0.35rem 0.7rem">\(\nabla f(1,2,-1)=(3,{-1},{-1})\). \(D_{\hat{v}}f=\frac{6+1-2}{3}=\frac{5}{3}\). Mín: dirección \((-3,1,1)\), valor \(-\sqrt{11}\).</td></tr>
+    <tr><td style="border:1px solid #ddd;padding:0.35rem 0.7rem"><strong>1.4</strong></td><td style="border:1px solid #ddd;padding:0.35rem 0.7rem">\(\nabla V(0,\pi/3)=(-1/2,-\sqrt{3}/2)\). \(D_{\hat{w}}V=\frac{-1/2-3/2}{2}=\frac{-2}{2}=-1\). \(\cos\theta=D_{\hat{w}}V/|\nabla V|=-1/1=-1\), \(\theta=\pi\).</td></tr>
+    <tr style="background:#f9f9f9"><td style="border:1px solid #ddd;padding:0.35rem 0.7rem"><strong>2.1</strong></td><td style="border:1px solid #ddd;padding:0.35rem 0.7rem">\(\int_0^{2\pi}\int_0^3 r\cdot r\,dr\,d\theta = 2\pi\cdot\left[\frac{r^3}{3}\right]_0^3=2\pi\cdot9=18\pi\).</td></tr>
+    <tr><td style="border:1px solid #ddd;padding:0.35rem 0.7rem"><strong>2.2</strong></td><td style="border:1px solid #ddd;padding:0.35rem 0.7rem">Región: semicírculo superior radio 2. En polares: \(\int_0^{\pi}\int_0^2 e^{r^2}r\,dr\,d\theta=\pi\cdot\frac{e^4-1}{2}\).</td></tr>
+    <tr style="background:#f9f9f9"><td style="border:1px solid #ddd;padding:0.35rem 0.7rem"><strong>2.3</strong></td><td style="border:1px solid #ddd;padding:0.35rem 0.7rem">Intersección: \(r=1\) y \(r=2\cos\theta\) en \(\cos\theta=1/2\Rightarrow\theta=\pm\pi/3\). Área de intersección \(=\frac{2\pi}{3}-\frac{\sqrt{3}}{2}\approx0{,}544\).</td></tr>
+    <tr><td style="border:1px solid #ddd;padding:0.35rem 0.7rem"><strong>2.4</strong></td><td style="border:1px solid #ddd;padding:0.35rem 0.7rem">\(\int_0^{2\pi}\int_0^2(9-r^2)r\,dr\,d\theta=2\pi\left[9\cdot\frac{r^2}{2}-\frac{r^4}{4}\right]_0^2=2\pi(18-4)=28\pi\).</td></tr>
+    <tr style="background:#f9f9f9"><td style="border:1px solid #ddd;padding:0.35rem 0.7rem"><strong>3.1</strong></td><td style="border:1px solid #ddd;padding:0.35rem 0.7rem">Puntos críticos: \((0,0)\) y \((1,1)\). En \((0,0)\): \(D=-9<0\) → silla. En \((1,1)\): \(D=27>0\), \(f_{xx}=6>0\) → mínimo local. \(f(1,1)=-1\).</td></tr>
+    <tr><td style="border:1px solid #ddd;padding:0.35rem 0.7rem"><strong>3.2</strong></td><td style="border:1px solid #ddd;padding:0.35rem 0.7rem">Punto crítico: \((\frac{1}{2}, \frac{1}{2})\). \(D = f_{xx}f_{yy}-(f_{xy})^2 = 8\cdot(-4)-16=-48<0\) → punto silla. La función no tiene extremos.</td></tr>
+    <tr style="background:#f9f9f9"><td style="border:1px solid #ddd;padding:0.35rem 0.7rem"><strong>3.3</strong></td><td style="border:1px solid #ddd;padding:0.35rem 0.7rem">Solución: \(x=y=2z\Rightarrow x=y=4\), \(z=2\). Área mínima: \(S=4\cdot4+2\cdot4\cdot2+2\cdot4\cdot2=16+16+16=48\text{ m}^2\).</td></tr>
+    <tr><td style="border:1px solid #ddd;padding:0.35rem 0.7rem"><strong>3.4</strong></td><td style="border:1px solid #ddd;padding:0.35rem 0.7rem">Sistema: \(2x=\lambda\), \(2y=2\lambda\) → \(y=2x\). Con restricción: \(x+2(2x)=5\Rightarrow x=1\), \(y=2\). Mínimo: \(f(1,2)=5\). (Distancia al origen: \(\sqrt{5}\)).</td></tr>
+    <tr style="background:#f9f9f9"><td style="border:1px solid #ddd;padding:0.35rem 0.7rem"><strong>4.1</strong></td><td style="border:1px solid #ddd;padding:0.35rem 0.7rem">\(k=32\text{ lb/ft}\), \(m=1/2\text{ slug}\). \(x''+64x=0\), \(\omega=8\). CI: \(x(0)=1/6\text{ ft}\), \(x'(0)=-4\text{ ft/s}\). \(x(t)=\frac{1}{6}\cos8t-\frac{1}{2}\sin8t\). Amplitud \(A=\frac{\sqrt{10}}{6}\text{ ft}\).</td></tr>
+    <tr><td style="border:1px solid #ddd;padding:0.35rem 0.7rem"><strong>4.2</strong></td><td style="border:1px solid #ddd;padding:0.35rem 0.7rem">\(\Delta=16-64<0\) → subamortiguado. \(\alpha=-1\), \(\beta=\sqrt{7}\). \(x(t)=e^{-t}(-\cos\sqrt{7}t-\frac{1}{\sqrt{7}}\sin\sqrt{7}t)\). Cruza equilibrio cuando \(\tan(\sqrt{7}t_1)=-\sqrt{7}\).</td></tr>
+    <tr style="background:#f9f9f9"><td style="border:1px solid #ddd;padding:0.35rem 0.7rem"><strong>4.3</strong></td><td style="border:1px solid #ddd;padding:0.35rem 0.7rem">\(c_{\text{crítico}}=2\sqrt{mk}=2\sqrt{0{,}5\cdot50}=10\text{ N·s/m}\). \(r=-10\) (doble). \(x(t)=(0{,}1+t)e^{-10t}\). Máx en \(t=0\) (parte desde allí sin velocidad).</td></tr>
+    <tr><td style="border:1px solid #ddd;padding:0.35rem 0.7rem"><strong>4.4</strong></td><td style="border:1px solid #ddd;padding:0.35rem 0.7rem">\(\omega_0=2\text{ rad/s}\) = frecuencia forzante → resonancia. \(y_p=\frac{3}{4}t\sin(2t)\). Amplitud crece ilimitadamente (\(\propto t\)).</td></tr>
+    <tr style="background:#f9f9f9"><td style="border:1px solid #ddd;padding:0.35rem 0.7rem"><strong>5.1</strong></td><td style="border:1px solid #ddd;padding:0.35rem 0.7rem">\(P(t)=\frac{10000}{1+9e^{-0{,}18t}}\). \(P(20)\approx\frac{10000}{1+9e^{-3{,}6}}\approx2388\). Para \(P=8000\): \(t=\frac{\ln(36)}{0{,}18}\approx19{,}9\) años → 2030.</td></tr>
+    <tr><td style="border:1px solid #ddd;padding:0.35rem 0.7rem"><strong>5.2</strong></td><td style="border:1px solid #ddd;padding:0.35rem 0.7rem">\(k=\frac{-\ln2}{5730}\approx-1{,}21\times10^{-4}\)/año. Edad: \(t=\frac{\ln(0{,}35)}{k}\approx8680\) años. Quedan \(200\times0{,}35=70\text{ mg}\).</td></tr>
+    <tr style="background:#f9f9f9"><td style="border:1px solid #ddd;padding:0.35rem 0.7rem"><strong>5.3</strong></td><td style="border:1px solid #ddd;padding:0.35rem 0.7rem">\(Q(t)=200(1-e^{-3t/100})\). \(Q(30)=200(1-e^{-0{,}9})\approx118{,}8\text{ g}\). Concentración límite: \(200/100=2\text{ g/L}\) (igual a la entrada, coherente).</td></tr>
+    <tr><td style="border:1px solid #ddd;padding:0.35rem 0.7rem"><strong>5.4</strong></td><td style="border:1px solid #ddd;padding:0.35rem 0.7rem">\(T(t)=20+12e^{kt}\). \(k=\ln(3/4)\approx-0{,}288\)/h. Hora de muerte: \(t^*=\frac{\ln(17/12)}{k}\approx-1{,}17\text{ h}\) → ~20:50 hs. \(T(\text{02:00})=20+12e^{-0{,}288\cdot4}\approx24{,}0\)°C.</td></tr>
+  </table>
+</div>
+
+<div class="footer-nota">
+  Práctica Integral AMII — UTN Facultad Regional San Rafael · Basada en modelos reales de finales 2026 y parciales EDO Temas 1–5 · Para imprimir: Ctrl+P → Guardar como PDF
+</div>
+
+<!-- Botón solo en pantalla -->
+<div class="no-print" style="text-align:center;padding:2rem;background:#1a1a2e">
+  <button onclick="window.print()" style="background:#2980b9;color:#fff;border:none;padding:0.8rem 2rem;border-radius:6px;font-size:12pt;cursor:pointer;margin-right:1rem">🖨️ Guardar como PDF</button>
+  <span style="color:#aaa;font-size:10pt">Ctrl+P → Destino: Guardar como PDF · Márgenes: Predeterminados</span>
+</div>
+
+</body>
+</html>
