@@ -1,0 +1,656 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:var(--font-sans)}
+.nav{display:flex;gap:6px;padding:1rem 0 1.25rem;border-bottom:0.5px solid var(--color-border-tertiary);margin-bottom:1.25rem;flex-wrap:wrap}
+.navbtn{padding:6px 16px;font-size:13px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);cursor:pointer;background:transparent;color:var(--color-text-secondary);font-weight:400;transition:all .15s;display:flex;align-items:center;gap:6px}
+.navbtn.active{background:var(--color-background-secondary);color:var(--color-text-primary);border-color:var(--color-border-primary);font-weight:500}
+.navbtn .badge{font-size:10px;padding:1px 6px;border-radius:10px;background:var(--color-background-info);color:var(--color-text-info)}
+.taller{display:none}.taller.active{display:block}
+.tabs{display:flex;gap:5px;flex-wrap:wrap;padding:.75rem 0 0;margin-bottom:1.25rem}
+.tab{padding:5px 12px;font-size:12.5px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);cursor:pointer;background:transparent;color:var(--color-text-secondary)}
+.tab.active{background:var(--color-background-secondary);color:var(--color-text-primary);border-color:var(--color-border-primary);font-weight:500}
+.sec{display:none}.sec.active{display:block}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin-bottom:.75rem}
+.card h3{font-size:13.5px;font-weight:500;margin-bottom:.65rem;color:var(--color-text-primary)}
+.f{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.4rem .75rem;font-family:var(--font-mono);font-size:12px;margin:.35rem 0;color:var(--color-text-primary);line-height:1.6;white-space:pre-wrap}
+.row2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:.75rem}
+.step{border-left:2px solid var(--color-border-secondary);padding-left:.75rem;margin:.35rem 0;font-size:13px;color:var(--color-text-secondary);line-height:1.55}
+.step b{color:var(--color-text-primary)}
+.note{font-size:12px;color:var(--color-text-secondary);margin-top:.4rem;line-height:1.5}
+.pill{display:inline-block;font-size:11px;padding:2px 8px;border-radius:var(--border-radius-md);margin:2px}
+.p-teal{background:#E1F5EE;color:#085041}
+.p-amber{background:#FAEEDA;color:#633806}
+.p-coral{background:#FAECE7;color:#712B13}
+.p-purple{background:#EEEDFE;color:#3C3489}
+.p-blue{background:#E6F1FB;color:#0C447C}
+.warn{background:#FAEEDA;border-radius:var(--border-radius-md);padding:.5rem .75rem;font-size:12.5px;color:#633806;margin:.4rem 0;border-left:2px solid #EF9F27}
+.ok{background:#E1F5EE;border-radius:var(--border-radius-md);padding:.5rem .75rem;font-size:12.5px;color:#085041;margin:.4rem 0;border-left:2px solid #1D9E75}
+.tog{display:inline-block;margin-top:.5rem;padding:4px 12px;font-size:12px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);cursor:pointer;background:transparent;color:var(--color-text-secondary)}
+.tog:hover{background:var(--color-background-secondary)}
+.xtra{display:none;margin-top:.6rem;background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.6rem .8rem;font-size:12.5px;color:var(--color-text-secondary);line-height:1.7}
+.xtra b{color:var(--color-text-primary)}
+.xtra.open{display:block}
+table{width:100%;font-size:12px;border-collapse:collapse;margin-top:.5rem}
+td,th{padding:5px 8px;border:0.5px solid var(--color-border-tertiary);text-align:left;line-height:1.5}
+th{font-weight:500;background:var(--color-background-secondary);color:var(--color-text-primary)}
+td{color:var(--color-text-secondary)}
+.toggle-btn{display:inline-block;margin-top:.5rem;padding:4px 12px;font-size:12px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);cursor:pointer;background:transparent;color:var(--color-text-secondary)}
+.toggle-btn:hover{background:var(--color-background-secondary)}
+.extra{display:none;margin-top:.6rem;background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.6rem .8rem;font-size:12.5px;color:var(--color-text-secondary);line-height:1.7}
+.extra.open{display:block}
+.taller-header{font-size:11px;color:var(--color-text-tertiary);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.4rem;font-weight:500}
+</style>
+
+<h2 class="sr-only">Talleres AM2 — EDO de primer orden, dependencia lineal y MAS. Tres prácticos unificados con pestañas navegables.</h2>
+
+<div class="nav">
+  <button class="navbtn active" onclick="swTaller('t10',this)">
+    <span>Taller 10</span>
+    <span class="badge">EDO 1° orden</span>
+  </button>
+  <button class="navbtn" onclick="swTaller('t11',this)">
+    <span>Taller 11</span>
+    <span class="badge">Orden superior</span>
+  </button>
+  <button class="navbtn" onclick="swTaller('t12',this)">
+    <span>Taller 12</span>
+    <span class="badge">MAS + RLC</span>
+  </button>
+</div>
+
+<!-- TALLER 10 -->
+<div class="taller active" id="t10">
+  <div class="taller-header">Taller 10 — Teoría completa de EDO de primer orden</div>
+  <div class="tabs">
+    <button class="tab active" onclick="swSec('t10','def',this)">Definiciones</button>
+    <button class="tab" onclick="swSec('t10','metodos',this)">Métodos</button>
+    <button class="tab" onclick="swSec('t10','model',this)">Modelación</button>
+    <button class="tab" onclick="swSec('t10','circuitos',this)">Circuitos</button>
+    <button class="tab" onclick="swSec('t10','extra',this)">Extras del libro</button>
+  </div>
+
+  <div class="sec active" id="t10-def">
+    <div class="card">
+      <h3>¿Qué es una EDO?</h3>
+      <div class="step">Contiene una función desconocida de <b>una sola variable independiente</b> y sus derivadas. Si hay derivadas respecto a 2 o más variables, es una EDP.</div>
+      <div class="step"><b>Orden:</b> la derivada de mayor orden que aparece. <span class="pill p-teal">y'' - 3y = 5x³ → orden 2</span></div>
+      <div class="step"><b>Grado:</b> el exponente al que está elevada la derivada de mayor orden. <span class="pill p-amber">y'' + 3y' = x⁵ → grado 5</span></div>
+      <div class="step"><b>Linealidad:</b> los exponentes de y y sus derivadas deben ser 1. Las funciones coeficiente dependen solo de x.</div>
+    </div>
+    <div class="row2">
+      <div class="card">
+        <h3>Homogénea vs completa</h3>
+        <div class="step"><b>Homogénea:</b> f(x) = 0 → no hay término independiente</div>
+        <div class="step"><b>Completa:</b> f(x) ≠ 0 → hay término independiente</div>
+        <div class="note">También: incompleta / completa</div>
+      </div>
+      <div class="card">
+        <h3>Tipos de solución</h3>
+        <div class="step"><b>General (SG):</b> contiene constante arbitraria C</div>
+        <div class="step"><b>Particular (SP):</b> C determinada por cond. inicial</div>
+        <div class="step"><b>Singular (SS):</b> verifica la EDO pero no pertenece a la SG. Al graficar es la <b>envolvente</b> de la SG.</div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Familia de curvas → EDO</h3>
+      <div class="step">Derivar y eliminar la constante c. La EDO no contiene c.</div>
+      <div class="f">y(x) = cx² → y' = 2cx → como c = y/x² → EDO: y' = 2y/x</div>
+      <div class="note">Este proceso siempre tiene tantas constantes irreducibles como sea el orden de la ecuación.</div>
+    </div>
+    <div class="card">
+      <h3>Campo de direcciones e isóclinas</h3>
+      <div class="step"><b>Campo de direcciones:</b> en cada punto se traza un segmento orientado que representa la pendiente de la tangente.</div>
+      <div class="step"><b>Isóclinas:</b> curvas donde la pendiente es constante k. Para y' = 2y/x → isóclinas: y = kx/2</div>
+      <div class="step"><b>Trayectorias ortogonales:</b> se invierte y cambia de signo la pendiente. Si la familia tiene y' = f(x,y), las ortogonales tienen y' = -1/f(x,y)</div>
+      <div class="f">Flia y' = 2y/x → ortogonales: y' = -x/(2y)</div>
+    </div>
+    <div class="card">
+      <h3>Problema de Valor Inicial (PVI)</h3>
+      <div class="step">La curva solución es la gráfica de la solución en el intervalo de definición. Puede diferir del dominio de la función.</div>
+      <div class="step">El <b>PVI</b> agrega condiciones iniciales a la EDO para obtener la SP.</div>
+      <div class="step"><b>Teorema de existencia y unicidad:</b> si f(x,y) y ∂f/∂y son continuas en una región R, existe una única solución.</div>
+    </div>
+  </div>
+
+  <div class="sec" id="t10-metodos">
+    <div class="card">
+      <h3>Separación de variables — EDO homogénea (f(x) = 0)</h3>
+      <div class="step">Para: y'(x) + p(x)·y(x) = 0</div>
+      <div class="f">dy/dx = -p(x)·y → dy/y = -p(x)dx</div>
+      <div class="step">Integrar ambos miembros:</div>
+      <div class="f">ln|y| = -∫p(x)dx + C</div>
+      <div class="f">y(x) = C₀ · e^(-∫p(x)dx)</div>
+      <div class="warn">Al separar variables, los divisores podrían ser cero → puede aparecer la solución singular.</div>
+    </div>
+    <div class="card">
+      <h3>Factor integrante — EDO completa (f(x) ≠ 0)</h3>
+      <div class="step">Para: y' + P(x)·y = f(x)</div>
+      <div class="step">1. Llevar a forma estándar (dividir por el coeficiente de y')</div>
+      <div class="step">2. Calcular el factor integrante μ:</div>
+      <div class="f">μ(x) = e^(∫P(x)dx)</div>
+      <div class="step">3. Multiplicar ambos lados por μ. El miembro izquierdo se convierte en derivada del producto:</div>
+      <div class="f">d(μ·y)/dx = f(x)·μ</div>
+      <div class="step">4. Integrar y despejar y:</div>
+      <div class="f">y(x) = (1/μ) · (∫f(x)·μ dx + C)</div>
+      <div class="ok">Solución general: y = yc + yp (complementaria + particular)</div>
+    </div>
+    <div class="card">
+      <h3>Ecuaciones exactas</h3>
+      <div class="step">M(x,y)dx + N(x,y)dy = 0 es exacta si <b>∂M/∂y = ∂N/∂x</b></div>
+      <div class="step">1. Verificar la condición de simetría ∂M/∂y = ∂N/∂x</div>
+      <div class="step">2. Integrar M(x,y) respecto a x → f(x,y) = ∫M dx + φ(y)</div>
+      <div class="step">3. Derivar respecto a y e igualar a N → hallar φ'(y)</div>
+      <div class="step">4. Integrar φ'(y). Solución implícita: f(x,y) = C</div>
+    </div>
+    <div class="card">
+      <h3>Ecuación autónoma</h3>
+      <div class="f">dy/dx = f(y) — la variable x no aparece explícitamente</div>
+      <div class="step"><b>Puntos críticos:</b> valores c donde f(c) = 0. También llamados puntos de equilibrio.</div>
+      <div class="note">Ejemplo: dP/dt = P(a-bP), a,b > 0. Puntos críticos: P(t)=0 y P(t)=a/b</div>
+    </div>
+    <div class="card">
+      <h3>¿Cuándo usar cada método?</h3>
+      <table>
+        <tr><th>Condición</th><th>Método</th></tr>
+        <tr><td>f(x) = 0 y variables separables</td><td>Separación de variables</td></tr>
+        <tr><td>f(x) ≠ 0, lineal de 1er orden</td><td>Factor integrante</td></tr>
+        <tr><td>∂M/∂y = ∂N/∂x</td><td>Ecuación exacta</td></tr>
+        <tr><td>x no aparece explícitamente</td><td>Ecuación autónoma</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="sec" id="t10-model">
+    <div class="card">
+      <h3>Desintegración radiactiva</h3>
+      <div class="f">dn/dt = -kn → n(t) = n₀·e^(-kt)</div>
+      <div class="step">k > 0 es la constante de decaimiento. k = 0,0001216 para C14, T½ = 5730 años</div>
+      <div class="f">Modelo vida media: M(t) = M₀·e^(-t·ln2/T)</div>
+      <div class="step">Para hallar edad: t = ln(c_reliquia/c_actual) / (-k)</div>
+      <div class="toggle-btn" onclick="togE('d1',this)">Ejemplo resuelto ↓</div>
+      <div class="extra" id="d1">Cráneo con 1/6 del C14 original → M(t) = (1/6)M₀<br>e^(-t·ln2/5730) = 1/6 → t = 5730·ln6/ln2 = <b>14.811,84 años</b></div>
+    </div>
+    <div class="card">
+      <h3>Crecimiento poblacional — modelo de Malthus</h3>
+      <div class="f">dP/dt = kP → P(t) = P₀·e^(kt)</div>
+      <div class="step">k > 0: crecimiento. k < 0: decaimiento.</div>
+      <div class="step"><b>Modelo logístico:</b> medio ambiente con capacidad de sustento K (capacidad de carga)</div>
+      <div class="f">P(t) = C·a / (e^(-at) + C·b)</div>
+      <div class="toggle-btn" onclick="togE('d2',this)">Ejemplo bacteria ↓</div>
+      <div class="extra" id="d2">P₀=1000, se duplica en 1h → P(1)=2000<br>1000·e^k = 2000 → k = ln2<br>P(1.5) = 1000·e^(1.0397) = <b>2828 bacterias</b><br>P(t)=4000 → t = ln4/ln2 = <b>2 horas</b></div>
+    </div>
+    <div class="card">
+      <h3>Eliminación de medicamentos</h3>
+      <div class="f">x'(t) = -kx → x(t) = x₀·e^(-kt)</div>
+      <div class="step">Vida media: tiempo en que x se reduce a la mitad. t = 1/k</div>
+      <div class="toggle-btn" onclick="togE('d3',this)">Ejemplo pentobarbitol ↓</div>
+      <div class="extra" id="d3">Vida media 5h → e^(-5k) = 1/2 → k = 0,13863<br>Perro 50kg, dosis mín = 45mg/kg × 50 = 2250mg en t=1<br>2250 = x₀·e^(-0,13863) → x₀ = <b>2584,57 mg</b></div>
+    </div>
+    <div class="card">
+      <h3>Ley de enfriamiento de Newton</h3>
+      <div class="f">dT/dt = -k(T - Tₘ) → T(t) = C₁·e^(kt) + Tₘ</div>
+      <div class="step">Tₘ = temperatura del medio (constante). La velocidad de variación de T es proporcional a la diferencia T_cuerpo − T_ambiente.</div>
+      <div class="toggle-btn" onclick="togE('d4',this)">Ejemplo taza ↓</div>
+      <div class="extra" id="d4">T(0)=75°C, Tₘ=24°C, T(3)=61°C → C₁=51<br>61 = 24 + 51·e^(3k) → k = ln(37/51)/3 = -0,1069<br>T(18) = 24 + 51·e^(-0,1069×18) = <b>31,44°C</b><br>¿Cuándo T=56°C? → t = ln(32/51)/(-0,106) = <b>4,40 min</b></div>
+    </div>
+  </div>
+
+  <div class="sec" id="t10-circuitos">
+    <div class="card">
+      <h3>Leyes de Kirchhoff</h3>
+      <div class="step"><b>Ley de corriente:</b> suma algebraica de corrientes en un nodo = 0</div>
+      <div class="step"><b>Ley de voltaje:</b> suma algebraica de caídas de voltaje = tensión total suministrada</div>
+      <div class="row2" style="margin-top:.5rem">
+        <div>
+          <div class="note" style="font-weight:500;margin-bottom:4px;color:var(--color-text-primary)">Elementos y sus caídas</div>
+          <div class="step">Resistencia R → Vᴿ = R·i</div>
+          <div class="step">Inductancia L → Vʟ = L·di/dt</div>
+          <div class="step">Capacitor C → Vᴄ = (1/C)·q</div>
+        </div>
+        <div>
+          <div class="note" style="font-weight:500;margin-bottom:4px;color:var(--color-text-primary)">Unidades</div>
+          <div class="step">E(t) → voltios (V)</div>
+          <div class="step">R → ohms (Ω)</div>
+          <div class="step">L → henrios (H)</div>
+          <div class="step">C → faradios (F)</div>
+        </div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Circuito RL — 1er orden</h3>
+      <div class="step">Kirchhoff: L·di/dt + R·i = E(t) → EDO 1er orden completa</div>
+      <div class="f">di/dt + (R/L)·i = E(t)/L</div>
+      <div class="f">μ = e^(Rt/L)  →  i(t) = V/R + k·e^(-Rt/L)</div>
+      <div class="toggle-btn" onclick="togE('c1',this)">Ejemplo V=8V, R=10Ω, L=2H ↓</div>
+      <div class="extra" id="c1">i(0)=5 → 5 = 8/10 + k → k = 4,2<br>i(t) = 0,8 + 4,2·e^(-5t)<br>i(2) ≈ <b>0,8 A</b></div>
+    </div>
+    <div class="card">
+      <h3>Circuito RC — 1er orden</h3>
+      <div class="step">Kirchhoff: R·dq/dt + q/C = V → EDO 1er orden completa</div>
+      <div class="f">dq/dt + q/(RC) = V/R</div>
+      <div class="f">q(t) = VC + k·e^(-t/RC)</div>
+      <div class="toggle-btn" onclick="togE('c2',this)">Ejemplo R=20Ω, C=3×10⁻³F, V=100V ↓</div>
+      <div class="extra" id="c2">dq/dt + q/0,06 = 5<br>q(t) = 0,015 + k·e^(-t/0,06)</div>
+    </div>
+  </div>
+
+  <div class="sec" id="t10-extra">
+    <div class="card">
+      <h3>Solución explícita vs implícita</h3>
+      <div class="step"><b>Explícita:</b> y se expresa directamente en términos de x. Ej: y = e^(x²)</div>
+      <div class="step"><b>Implícita:</b> relación G(x,y)=0 que contiene al menos una función que satisface la EDO. Ej: x²+y²=25</div>
+    </div>
+    <div class="card">
+      <h3>Problema de Valor Inicial — procedimiento completo</h3>
+      <div class="f">dy/dx = f(x,y) , y(x₀) = y₀</div>
+      <div class="step">1) Hallar la familia n-paramétrica de soluciones</div>
+      <div class="step">2) Usar la condición inicial para determinar las constantes</div>
+    </div>
+    <div class="card">
+      <h3>Modelo logístico — Malthus mejorado</h3>
+      <div class="f">P'(t) = P(a - bP) , a,b > 0</div>
+      <div class="step">Capacidad de sustento del medio: K = a/b</div>
+      <div class="step">Puntos críticos: P(t)=0 y P(t)=a/b</div>
+      <div class="f">A medida que t→∞, P(t)→a/b (población límite)</div>
+    </div>
+    <div class="card">
+      <h3>Trayectorias ortogonales — procedimiento completo</h3>
+      <div class="step">1. Obtener la EDO de la familia de curvas G(x,y,c)=0</div>
+      <div class="step">2. Aplicar la condición de perpendicularidad: nueva EDO es y' = -1/f(x,y)</div>
+      <div class="step">3. Resolver esa nueva EDO → familia de trayectorias ortogonales</div>
+      <div class="f">Flia y = cx² → y' = 2y/x → ortogonales: y' = -x/(2y)</div>
+      <div class="note">Aparecen en electrostática, flujo de calor, mapas topográficos.</div>
+    </div>
+  </div>
+</div>
+
+<!-- TALLER 11 -->
+<div class="taller" id="t11">
+  <div class="taller-header">Taller 11 — Dependencia lineal, Wronskiano y reducción de orden</div>
+  <div class="tabs">
+    <button class="tab active" onclick="swSec('t11','li',this)">Dep. e indep. lineal</button>
+    <button class="tab" onclick="swSec('t11','wron',this)">Wronskiano</button>
+    <button class="tab" onclick="swSec('t11','conj',this)">Conj. fundamental</button>
+    <button class="tab" onclick="swSec('t11','red',this)">Reducción de orden</button>
+    <button class="tab" onclick="swSec('t11','nhom',this)">No homogéneas</button>
+  </div>
+
+  <div class="sec active" id="t11-li">
+    <div class="card">
+      <h3>Dependencia e independencia lineal de funciones</h3>
+      <div class="step">Un conjunto {f₁(x), ..., fₙ(x)} es <b>linealmente dependiente (LD)</b> en I si existen constantes c₁,...,cₙ no todas cero tales que:</div>
+      <div class="f">c₁f₁(x) + c₂f₂(x) + ... + cₙfₙ(x) = 0  para todo x en I</div>
+      <div class="step">Si el conjunto <b>no</b> es LD, se dice <b>linealmente independiente (LI)</b>:</div>
+      <div class="f">c₁f₁(x) + ... + cₙfₙ(x) = 0  →  c₁ = c₂ = ... = cₙ = 0</div>
+      <div class="ok">Caso de 2 funciones: LI si y solo si una NO es múltiplo constante de la otra.</div>
+    </div>
+    <div class="row2">
+      <div class="card">
+        <h3>Ejemplos LI</h3>
+        <div class="step">f₁ = senx, f₂ = cosx → LI</div>
+        <div class="step">f₁ = x², f₂ = x³ → LI en cualquier intervalo</div>
+        <div class="step">f₁ = eˣ, f₂ = e²ˣ → LI</div>
+      </div>
+      <div class="card">
+        <h3>Ejemplos LD</h3>
+        <div class="step">f₁ = 2x, f₂ = 6x → LD porque f₂ = 3·f₁</div>
+        <div class="step">f₁ = senx, f₂ = 5senx → LD</div>
+        <div class="step">f₁ = x², f₂ = 3x², f₃ = x²+1 → LD</div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Relación con EDO lineal homogénea de orden n</h3>
+      <div class="step">Una EC diferencial lineal homogénea siempre tiene la <b>solución trivial</b> y = 0.</div>
+      <div class="step">La <b>superposición</b> de 2 o más soluciones también es solución. Si y₁,...,yₖ son soluciones en I:</div>
+      <div class="f">y = C₁y₁(x) + C₂y₂(x) + ... + Cₖyₖ(x)  también es solución en I</div>
+    </div>
+  </div>
+
+  <div class="sec" id="t11-wron">
+    <div class="card">
+      <h3>Wronskiano — definición</h3>
+      <div class="step">Dado {f₁(x),...,fₙ(x)} con al menos n-1 derivadas, el <b>Wronskiano</b> es el determinante:</div>
+      <div class="f">W(f₁,...,fₙ) = |f₁   f₂   ... fₙ |
+                     |f₁'  f₂'  ... fₙ'|
+                     |...          ...|
+                     |f₁⁽ⁿ⁻¹⁾ ... fₙ⁽ⁿ⁻¹⁾|</div>
+      <div class="step">Para 2 funciones:</div>
+      <div class="f">W(u₁, u₂) = u₁(x)·u₂'(x) − u₁'(x)·u₂(x)</div>
+    </div>
+    <div class="card">
+      <h3>Criterio del Wronskiano</h3>
+      <div class="ok">W ≠ 0 en todo punto de I → las funciones son LI en I</div>
+      <div class="warn">W = 0 en todo punto de I → las funciones son LD en I</div>
+      <div class="step">Si y₁ e y₂ son soluciones de la EC lineal homogénea de orden 2 en I, entonces: o bien W=0 para todo x en I, o bien W≠0 para todo x en I.</div>
+      <div class="note">No puede ocurrir que W sea cero en algunos puntos y no cero en otros dentro del mismo intervalo.</div>
+    </div>
+    <div class="card">
+      <h3>Cálculo del Wronskiano — ejemplos</h3>
+      <div class="tog" onclick="togX('w1',this)">Ej 1: y₁=e^(r₁x), y₂=e^(r₂x) ↓</div>
+      <div class="xtra" id="w1">W = e^(r₁x)·r₂e^(r₂x) − r₁e^(r₁x)·e^(r₂x)<br>W = e^((r₁+r₂)x)·(r₂ − r₁)<br>Si r₁ ≠ r₂ → W ≠ 0 → son <b>LI</b></div>
+      <div class="tog" onclick="togX('w2',this)">Ej 2: y₁=senx, y₂=cosx ↓</div>
+      <div class="xtra" id="w2">W = senx·(-senx) − cosx·cosx<br>W = -sen²x − cos²x = -1 ≠ 0<br>→ son <b>LI</b></div>
+      <div class="tog" onclick="togX('w3',this)">Ej 3: y₁=x², y₂=x³ ↓</div>
+      <div class="xtra" id="w3">W = x²·3x² − 2x·x³ = 3x⁴ − 2x⁴ = x⁴<br>W ≠ 0 para x ≠ 0 → LI en cualquier intervalo que no contenga 0</div>
+    </div>
+  </div>
+
+  <div class="sec" id="t11-conj">
+    <div class="card">
+      <h3>Conjunto fundamental de soluciones</h3>
+      <div class="step">Sea una EC lineal homogénea de orden n. Un <b>conjunto fundamental de soluciones</b> es un conjunto de n soluciones LI {y₁,...,yₙ} en I.</div>
+      <div class="step"><b>Teorema de existencia:</b> siempre existe un conjunto fundamental.</div>
+      <div class="step"><b>Solución general:</b> si {y₁,...,yₙ} es un conjunto fundamental en I, entonces:</div>
+      <div class="f">yₘ(x) = C₁y₁(x) + C₂y₂(x) + ... + Cₙyₙ(x)</div>
+    </div>
+    <div class="card">
+      <h3>Condición para que sea conjunto fundamental</h3>
+      <div class="step">Si y₁,...,yₙ son n soluciones de la EC homogénea en I, el conjunto es <b>fundamental</b> si y solo si:</div>
+      <div class="f">W(y₁, y₂, ..., yₙ) ≠ 0  para todo x en I</div>
+      <div class="ok">En la práctica: calcular el Wronskiano. Si W ≠ 0 → son LI → forman conjunto fundamental.</div>
+    </div>
+    <div class="card">
+      <h3>EC no homogénea — estructura de la solución general</h3>
+      <div class="step">Para la EC completa L(y) = g(x), la solución general es:</div>
+      <div class="f">y = yc + yp</div>
+      <div class="step"><b>yc</b> = función complementaria = SG de la EC homogénea asociada L(y) = 0</div>
+      <div class="step"><b>yp</b> = solución particular = cualquier solución libre de parámetros arbitrarios</div>
+      <div class="note">Al imponer condiciones iniciales sobre la SG se obtiene la SP (PVI).</div>
+    </div>
+  </div>
+
+  <div class="sec" id="t11-red">
+    <div class="card">
+      <h3>Reducción de orden — idea central</h3>
+      <div class="step">Si se conoce una solución no trivial y₁(x) de la EC homogénea de orden 2, se puede hallar una segunda solución y₂ LI con y₁.</div>
+      <div class="step">Se supone y₂(x) = u(x)·y₁(x) con u(x) incógnita. Como y₂/y₁ ≠ constante → y₂ e y₁ son LI.</div>
+    </div>
+    <div class="card">
+      <h3>Caso 1 — variable dependiente ausente</h3>
+      <div class="step">EC de la forma: F(x, y', y'') = 0, donde falta y explícitamente.</div>
+      <div class="step">Sustitución: <b>u = y'</b>, entonces u' = y''</div>
+      <div class="f">F(x, u, u') = 0  →  EDO de 1er orden en u</div>
+      <div class="step">Se resuelve para u(x), luego se integra: y = ∫u dx + C</div>
+      <div class="tog" onclick="togX('r1',this)">Ejemplo: xy'' + y' = 0 ↓</div>
+      <div class="xtra" id="r1">Sea u = y' → xu' + u = 0<br>du/u = -dx/x → ln|u| = -ln|x| + C<br>u = C₁/x → y' = C₁/x<br>y = C₁·ln|x| + C₂</div>
+    </div>
+    <div class="card">
+      <h3>Caso 2 — hallar y₂ a partir de y₁ conocida</h3>
+      <div class="step">EC estándar: y'' + P(x)y' + Q(x)y = 0, con y₁ conocida</div>
+      <div class="step">Se propone y₂ = u(x)·y₁(x) → se define w = u' → EC de 1er orden en w</div>
+      <div class="step">Fórmula directa para y₂:</div>
+      <div class="f">y₂ = y₁(x) · ∫ [e^(-∫P(x)dx) / y₁²(x)] dx</div>
+      <div class="ok">Con C₁=1 y C₂=0 se obtiene la segunda solución independiente limpia.</div>
+      <div class="tog" onclick="togX('r2',this)">Ejemplo: y₁ = eˣ, EC: y'' - y = 0 ↓</div>
+      <div class="xtra" id="r2">P(x) = 0 → e^(-∫0 dx) = 1<br>y₂ = eˣ · ∫e^(-2x) dx = eˣ · (-½e^(-2x))<br>y₂ = e^(-x)<br>SG: y = C₁eˣ + C₂e^(-x)</div>
+    </div>
+    <div class="card">
+      <h3>Cómo identificar el caso</h3>
+      <table>
+        <tr><th>Situación</th><th>Método</th></tr>
+        <tr><td>Falta y explícitamente: F(x, y', y'')=0</td><td>Caso 1: u = y'</td></tr>
+        <tr><td>Se conoce y₁, buscar y₂ LI</td><td>Caso 2: y₂ = u·y₁, fórmula directa</td></tr>
+        <tr><td>Falta x: F(y, y', y'')=0</td><td>u = y', luego u' = u·du/dy</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="sec" id="t11-nhom">
+    <div class="card">
+      <h3>Método de coeficientes indeterminados</h3>
+      <div class="step">Para hallar yp cuando g(x) tiene forma particular. Se ensaya yp según el tipo de g(x):</div>
+      <table>
+        <tr><th>g(x)</th><th>yp a ensayar</th></tr>
+        <tr><td>Polinomial: a₀ + a₁x + ... + aₙxⁿ</td><td>Aₙxⁿ + ... + A₁x + A₀</td></tr>
+        <tr><td>Exponencial: aeᵐˣ (m no es raíz)</td><td>Aeᵐˣ</td></tr>
+        <tr><td>m es raíz simple de ec. aux.</td><td>Axeᵐˣ</td></tr>
+        <tr><td>m es raíz doble</td><td>Ax²eᵐˣ</td></tr>
+        <tr><td>a·cos(δx) o a·sen(δx)</td><td>A·cos(δx) + B·sen(δx)</td></tr>
+        <tr><td>Combinación de los anteriores</td><td>Suma de los yp correspondientes</td></tr>
+      </table>
+      <div class="note">Se sustituye yp en la EC y se igualan coeficientes para determinar A, B, ...</div>
+    </div>
+    <div class="card">
+      <h3>Términos TET y TEP</h3>
+      <div class="step"><b>TET (estado transitorio):</b> parte que tiende a 0 cuando t → ∞. Generalmente exponenciales decrecientes.</div>
+      <div class="step"><b>TEP (estado permanente):</b> parte que permanece cuando t → ∞. Generalmente funciones trigonométricas o constantes.</div>
+      <div class="f">y = yc + yp  →  yc = TET (desaparece),  yp = TEP (permanece)</div>
+    </div>
+    <div class="card">
+      <h3>Operadores diferenciales</h3>
+      <div class="step">El operador D transforma una función diferenciable en su derivada: Dy = dy/dx</div>
+      <div class="f">D²y = d²y/dx²  →  Dⁿy = dⁿy/dxⁿ</div>
+      <div class="step">L tiene propiedad de linealidad: L(αf + βg) = αL(f) + βL(g)</div>
+      <div class="step">EC lineal en notación compacta: L(y) = 0 (homogénea), L(y) = g(x) (completa)</div>
+      <div class="tog" onclick="togX('op1',this)">Ejemplo: y'' + 5y' + 6y = 5x - 3 ↓</div>
+      <div class="xtra" id="op1">En notación de operadores: D²y + 5Dy + 6y = 5x - 3<br>→ (D² + 5D + 6)y = 5x - 3<br>→ L(y) = 5x - 3 donde L = D² + 5D + 6</div>
+    </div>
+  </div>
+</div>
+
+<!-- TALLER 12 -->
+<div class="taller" id="t12">
+  <div class="taller-header">Taller 12 — Movimiento Armónico Simple, amortiguamiento y circuito RLC</div>
+  <div class="tabs">
+    <button class="tab active" onclick="swSec('t12','mas',this)">MAS libre</button>
+    <button class="tab" onclick="swSec('t12','amort',this)">Amortiguado</button>
+    <button class="tab" onclick="swSec('t12','forz',this)">Forzado</button>
+    <button class="tab" onclick="swSec('t12','rlc',this)">Circuito RLC</button>
+    <button class="tab" onclick="swSec('t12','res',this)">Resonancia</button>
+  </div>
+
+  <div class="sec active" id="t12-mas">
+    <div class="card">
+      <h3>Movimiento Armónico Simple — modelo físico</h3>
+      <div class="step">Sistema: resorte + masa "m". La fuerza impulsora actúa sobre la masa.</div>
+      <div class="step"><b>Ley de Hooke:</b> el resorte ejerce una fuerza de restitución proporcional al alargamiento:</div>
+      <div class="f">F = −k·s</div>
+      <div class="step"><b>2da Ley de Newton:</b></div>
+      <div class="f">W = mg = ks  →  my''(t) + ky(t) = 0</div>
+    </div>
+    <div class="card">
+      <h3>Ecuación auxiliar y solución general</h3>
+      <div class="step">Raíces complejas conjugadas (m, k positivos):</div>
+      <div class="f">r² + ω² = 0  →  r₁,₂ = ±ωi  donde  ω = √(k/m)</div>
+      <div class="f">y(t) = C₁cos(ωt) + C₂sen(ωt)</div>
+      <div class="ok">Condición inicial: C₁ = y(0),  C₂ = y'(0)/ω</div>
+    </div>
+    <div class="row2">
+      <div class="card">
+        <h3>Magnitudes del MAS</h3>
+        <div class="f">ω = √(k/m)  [frecuencia angular]</div>
+        <div class="f">T = 2π/ω  [período]</div>
+        <div class="f">f = 1/T = ω/2π  [frecuencia]</div>
+      </div>
+      <div class="card">
+        <h3>Forma alternativa</h3>
+        <div class="f">y(t) = A·sen(ωt + φ)</div>
+        <div class="f">A = √(C₁² + C₂²)</div>
+        <div class="f">tan(φ) = C₁/C₂</div>
+        <div class="note">φ = ángulo de fase. Elegir cuadrante según signos de C₁ y C₂.</div>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Ángulo de fase — cuadrante correcto</h3>
+      <table>
+        <tr><th>C₁</th><th>C₂</th><th>Cuadrante</th><th>φ correcto</th></tr>
+        <tr><td>> 0</td><td>> 0</td><td>1°</td><td>φ_calc (calculadora)</td></tr>
+        <tr><td>< 0</td><td>< 0</td><td>3°</td><td>φ_calc + π</td></tr>
+        <tr><td>> 0</td><td>< 0</td><td>2°</td><td>φ_calc + π</td></tr>
+        <tr><td>< 0</td><td>> 0</td><td>4°</td><td>φ_calc (correcto)</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h3>Resortes y energía</h3>
+      <div class="row2">
+        <div>
+          <div class="step"><b>En paralelo:</b></div>
+          <div class="f">k_eq = k₁ + k₂</div>
+          <div class="step"><b>En serie:</b></div>
+          <div class="f">1/k_eq = 1/k₁ + 1/k₂</div>
+        </div>
+        <div>
+          <div class="step"><b>Energía:</b></div>
+          <div class="f">Ec = ½m·(y')²</div>
+          <div class="f">Ep = ½k·y²</div>
+          <div class="f">Ep_máx = ½kA²</div>
+        </div>
+      </div>
+      <div class="tog" onclick="togX('ej1',this)">Ejemplo: m=2 kg, k=50 N/m ↓</div>
+      <div class="xtra" id="ej1">ω = √(50/2) = 5 rad/s<br>x₀ = −1 m, v₀ = 2 m/s → C₁ = −1, C₂ = 0.4<br>x(t) = −cos(5t) + 0.4·sen(5t)<br>Amplitud A = √(1 + 0.16) ≈ <b>1.08 m</b><br>Período T = 2π/5 ≈ <b>1.26 s</b></div>
+    </div>
+  </div>
+
+  <div class="sec" id="t12-amort">
+    <div class="card">
+      <h3>Movimiento amortiguado y libre</h3>
+      <div class="step">En sistemas reales actúan fuerzas disipativas que retardan el movimiento.</div>
+      <div class="f">my''(t) + by'(t) + ky(t) = 0</div>
+      <div class="f">EC auxiliar: mr² + br + k = 0</div>
+      <div class="f">r₁,₂ = (−b ± √(b²−4km)) / 2m</div>
+    </div>
+    <div class="card">
+      <h3>Tres casos según el discriminante</h3>
+      <table>
+        <tr><th>Sistema</th><th>Condición</th><th>Raíces</th><th>Solución general</th></tr>
+        <tr><td><span class="pill p-coral">Sobreamortiguado</span></td><td>b²−4km > 0</td><td>r₁ ≠ r₂ ∈ ℝ</td><td>C₁eʳ¹ᵗ + C₂eʳ²ᵗ</td></tr>
+        <tr><td><span class="pill p-amber">Críticamente amortiguado</span></td><td>b²−4km = 0</td><td>r₁ = r₂ ∈ ℝ</td><td>C₁eʳᵗ + C₂t·eʳᵗ</td></tr>
+        <tr><td><span class="pill p-teal">Subamortiguado</span></td><td>b²−4km < 0</td><td>α ± βi</td><td>eᵅᵗ(C₁cos(βt) + C₂sen(βt))</td></tr>
+      </table>
+      <div class="note">λ = b/2m, ω = √(k/m) → λ²−ω² &gt; 0: sobre | = 0: crítico | &lt; 0: sub</div>
+    </div>
+    <div class="card">
+      <h3>Forma alternativa — subamortiguado</h3>
+      <div class="f">y(t) = A·e^(αt)·sen(√(ω²−λ²)·t + φ)</div>
+      <div class="step"><b>Amplitud amortiguada:</b> A·e^(αt) → 0 cuando t → ∞</div>
+      <div class="step"><b>Cuasiperiodo:</b> 2π/√(ω²−λ²)</div>
+      <div class="step"><b>Cuasifrecuencia:</b> √(ω²−λ²) / 2π</div>
+      <div class="note">La curva admite asíntota horizontal y = 0 (posición de equilibrio).</div>
+    </div>
+  </div>
+
+  <div class="sec" id="t12-forz">
+    <div class="card">
+      <h3>Movimiento amortiguado y forzado</h3>
+      <div class="step">Se agrega una fuerza externa de excitación f(t) al sistema:</div>
+      <div class="f">my''(t) + by'(t) + ky(t) = f(t)</div>
+      <div class="f">Yg(t) = Yh(t) + Yp(t)</div>
+      <div class="step">Yh = función complementaria | Yp = solución particular</div>
+    </div>
+    <div class="card">
+      <h3>Términos transitorio y permanente</h3>
+      <div class="step"><b>TET:</b> parte que tiende a 0 cuando t → ∞. Son las exponenciales decrecientes (Yh si λ > 0).</div>
+      <div class="step"><b>TEP:</b> parte que permanece cuando t → ∞. Son las funciones trigonométricas (generalmente Yp).</div>
+      <div class="f">y = Yh + Yp  →  Yh = TET,  Yp = TEP</div>
+    </div>
+    <div class="card">
+      <h3>Coeficientes indeterminados — Yp a ensayar</h3>
+      <table>
+        <tr><th>f(t)</th><th>Yp a ensayar</th></tr>
+        <tr><td>Polinomial</td><td>Aₙtⁿ + ... + A₁t + A₀</td></tr>
+        <tr><td>aeᵐᵗ (m no es raíz)</td><td>Aeᵐᵗ</td></tr>
+        <tr><td>m es raíz simple</td><td>Ateᵐᵗ</td></tr>
+        <tr><td>m es raíz doble</td><td>At²eᵐᵗ</td></tr>
+        <tr><td>a·cos(δt) o a·sen(δt)</td><td>A·cos(δt) + B·sen(δt)</td></tr>
+      </table>
+    </div>
+    <div class="card">
+      <h3>Mov. forzado NO amortiguado</h3>
+      <div class="step">Sin amortiguamiento (b=0) y con f(t) = F₀sen(γt), si γ ≠ ω:</div>
+      <div class="f">Yp(t) = F₀/(ω²−γ²) · sen(γt)</div>
+      <div class="f">X(t) = C₁cos(ωt) + C₂sen(ωt) + F₀/(ω²−γ²)·sen(γt)</div>
+    </div>
+  </div>
+
+  <div class="sec" id="t12-rlc">
+    <div class="card">
+      <h3>Circuito RLC en serie — modelo</h3>
+      <div class="step">Por la 2da Ley de Kirchhoff:</div>
+      <div class="f">L·di/dt + Ri + (1/C)·q = E(t)</div>
+      <div class="step">Como i = dq/dt → i' = q'':</div>
+      <div class="f">L·q'' + R·q' + (1/C)·q = E(t)</div>
+      <div class="f">Solución: q(t) = qh(t) + qp(t)</div>
+    </div>
+    <div class="card">
+      <h3>Analogía mecánico-eléctrica</h3>
+      <table>
+        <tr><th>Mecánica</th><th>Eléctrica</th></tr>
+        <tr><td>masa m</td><td>inductancia L [H]</td></tr>
+        <tr><td>amort. b</td><td>resistencia R [Ω]</td></tr>
+        <tr><td>constante k</td><td>1/capacitancia 1/C</td></tr>
+        <tr><td>fuerza f(t)</td><td>voltaje E(t) [V]</td></tr>
+        <tr><td>posición y(t)</td><td>carga q(t) [C]</td></tr>
+        <tr><td>velocidad y'(t)</td><td>corriente i(t) [A]</td></tr>
+      </table>
+      <div class="note">Misma estructura → mismos 3 casos (sobre/crítico/sub) según R²−4L/C.</div>
+    </div>
+    <div class="card">
+      <h3>Vibraciones eléctricas — estado estable</h3>
+      <div class="f">EC auxiliar: Lm² + Rm + 1/C = 0</div>
+      <div class="step">R ≠ 0 → Yh es solución transitoria | Yp es solución de estado estable</div>
+      <div class="step">Cuando E(t) es periódica:</div>
+      <div class="f">Reactancia: X = Lγ − 1/(Cγ)</div>
+      <div class="f">Impedancia: Z = √(X² + R²)</div>
+    </div>
+    <div class="card">
+      <h3>Caídas de voltaje</h3>
+      <table>
+        <tr><th>Elemento</th><th>Caída de voltaje</th></tr>
+        <tr><td>Resistencia R</td><td>E_R = R·i</td></tr>
+        <tr><td>Inductancia L</td><td>E_L = L·di/dt</td></tr>
+        <tr><td>Capacitor C</td><td>E_C = (1/C)·q</td></tr>
+      </table>
+    </div>
+  </div>
+
+  <div class="sec" id="t12-res">
+    <div class="card">
+      <h3>Resonancia pura (γ → ω, sin amortiguamiento)</h3>
+      <div class="step">Cuando γ → ω, la amplitud crece sin límite. Aplicando L'Hôpital:</div>
+      <div class="f">x(t) = F₀/(2ω²) · (−sen(ωt) + ωt·cos(ωt))</div>
+      <div class="step">Cuando t → ∞, los desplazamientos crecen sin límite.</div>
+      <div class="warn">Sintonización de frecuencias: la frecuencia impulsora γ coincide con la natural ω → resonancia.</div>
+    </div>
+    <div class="card">
+      <h3>Resonancia con amortiguamiento</h3>
+      <div class="step">La amplitud de Yp depende de γ:</div>
+      <div class="f">Amplitud Yp = F₀ / √((ω²-γ²)² + (2λγ)²)</div>
+      <div class="step">Se maximiza derivando respecto a γ e igualando a 0:</div>
+      <div class="f">γ_resonante = √(ω² − 2λ²)</div>
+      <div class="note">Solo existe γ_resonante real si ω² > 2λ² (sistema subamortiguado suficientemente débil).</div>
+    </div>
+    <div class="card">
+      <h3>Pulsación y modulación</h3>
+      <div class="step"><b>Pulsación:</b> fenómeno cuando 2 frecuencias son próximas entre sí. La amplitud oscila lentamente.</div>
+      <div class="step"><b>Modulación de amplitud:</b> mismo fenómeno en electrónica, utilizado para afinar instrumentos.</div>
+      <div class="ok">Sistema subamortiguado → grandes oscilaciones cuando frecuencia del rozamiento ≥ resonancia del sistema.</div>
+    </div>
+  </div>
+</div>
+
+<script>
+function swTaller(id, btn) {
+  document.querySelectorAll('.taller').forEach(t => t.classList.remove('active'));
+  document.querySelectorAll('.navbtn').forEach(b => b.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  btn.classList.add('active');
+}
+function swSec(taller, id, btn) {
+  const t = document.getElementById(taller);
+  t.querySelectorAll('.sec').forEach(s => s.classList.remove('active'));
+  t.querySelectorAll('.tab').forEach(b => b.classList.remove('active'));
+  document.getElementById(taller + '-' + id).classList.add('active');
+  btn.classList.add('active');
+}
+function togX(id, btn) {
+  const el = document.getElementById(id);
+  el.classList.toggle('open');
+  btn.textContent = el.classList.contains('open') ? btn.textContent.replace('↓','↑') : btn.textContent.replace('↑','↓');
+}
+function togE(id, btn) {
+  const el = document.getElementById(id);
+  el.classList.toggle('open');
+  btn.textContent = el.classList.contains('open') ? btn.textContent.replace('↓','↑') : btn.textContent.replace('↑','↓');
+}
+</script>

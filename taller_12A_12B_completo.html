@@ -1,0 +1,552 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.wrap{font-family:var(--font-sans);padding:1rem 0}
+.tabs{display:flex;gap:6px;margin-bottom:1rem;flex-wrap:wrap}
+.tab{padding:6px 18px;font-size:13px;font-weight:500;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:transparent;color:var(--color-text-secondary);cursor:pointer;transition:all 0.15s}
+.tab.active{background:var(--color-background-secondary);color:var(--color-text-primary);border-color:var(--color-border-primary)}
+.tab:hover:not(.active){background:var(--color-background-secondary)}
+.taller{display:none}.taller.active{display:block}
+.subnav{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:1rem;padding-bottom:0.75rem;border-bottom:0.5px solid var(--color-border-tertiary)}
+.snbtn{padding:4px 10px;font-size:12px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:transparent;color:var(--color-text-secondary);cursor:pointer;transition:all 0.12s}
+.snbtn.active{background:#EEEDFE;color:#3C3489;border-color:#534AB7;font-weight:500}
+.snbtn:hover:not(.active){background:var(--color-background-secondary)}
+.prob{display:none}.prob.active{display:block}
+.ph{margin-bottom:0.75rem;padding-bottom:0.6rem;border-bottom:0.5px solid var(--color-border-tertiary)}
+.pt{font-size:14px;font-weight:500;color:var(--color-text-primary);margin-bottom:2px}
+.ps{font-size:12px;color:var(--color-text-secondary)}
+.cards{display:grid;grid-template-columns:repeat(auto-fit,minmax(110px,1fr));gap:7px;margin-bottom:0.75rem}
+.card{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:8px 10px}
+.cl{font-size:11px;color:var(--color-text-tertiary);margin-bottom:2px}
+.cv{font-size:16px;font-weight:500;color:var(--color-text-primary)}
+.cu{font-size:11px;color:var(--color-text-tertiary)}
+.sec{font-size:11px;font-weight:500;color:var(--color-text-secondary);text-transform:uppercase;letter-spacing:0.06em;margin:0.85rem 0 6px}
+.formula{background:var(--color-background-secondary);border-left:3px solid #534AB7;border-radius:0 var(--border-radius-md) var(--border-radius-md) 0;padding:7px 10px;font-family:var(--font-mono);font-size:12px;color:var(--color-text-primary);margin-bottom:5px}
+.step{display:flex;gap:7px;align-items:flex-start;margin-bottom:6px}
+.sn{width:18px;height:18px;border-radius:50%;background:#EEEDFE;color:#534AB7;font-size:10px;font-weight:500;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px}
+.st{font-size:13px;color:var(--color-text-primary);line-height:1.6}
+.st code{font-family:var(--font-mono);font-size:11px;background:var(--color-background-secondary);padding:1px 4px;border-radius:3px}
+.ans{background:#E1F5EE;border-radius:var(--border-radius-md);padding:7px 10px;font-size:12px;color:#085041;font-weight:500;margin-top:5px}
+.warn{background:#FAEEDA;border-radius:var(--border-radius-md);padding:7px 10px;font-size:12px;color:#633806;margin-top:5px}
+.divl{border:none;border-top:0.5px solid var(--color-border-tertiary);margin:0.75rem 0}
+.g2{display:grid;grid-template-columns:1fr 1fr;gap:7px}
+.inst{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:7px;text-align:center;font-size:12px}
+.inst .t{color:var(--color-text-secondary);margin-bottom:1px}
+.inst .y{font-weight:500;font-size:13px;color:var(--color-text-primary)}
+.badge{display:inline-block;font-size:11px;padding:2px 8px;border-radius:var(--border-radius-md);margin-right:5px;margin-bottom:4px}
+.badge-a{background:#EEEDFE;color:#3C3489}
+.badge-b{background:#E1F5EE;color:#085041}
+.section-header{font-size:13px;font-weight:500;color:var(--color-text-primary);padding:6px 10px;background:var(--color-background-secondary);border-radius:var(--border-radius-md);margin-bottom:8px}
+</style>
+
+<div class="wrap">
+<h2 class="sr-only">Talleres 12A y 12B — Análisis Matemático II — Movimiento Vibratorio</h2>
+
+<div class="tabs">
+  <button class="tab active" onclick="switchTaller('a')">Taller 12A — MAS no amortiguado</button>
+  <button class="tab" onclick="switchTaller('b')">Taller 12B — Modelos vibratorios & RLC</button>
+</div>
+
+<div id="taller-a" class="taller active">
+  <div class="subnav" id="nav-a"></div>
+  <div id="probs-a"></div>
+</div>
+
+<div id="taller-b" class="taller" id="taller-b">
+  <div class="subnav" id="nav-b"></div>
+  <div id="probs-b"></div>
+</div>
+</div>
+
+<script>
+const dataA = [
+  {id:'p1', label:'P1', title:'MAS vertical básico', sub:'m=200g · K=5 N/m · y₀=10cm · V₀=0',
+   content:`<div class="cards">
+    <div class="card"><div class="cl">Masa</div><div class="cv">0,2</div><div class="cu">kg</div></div>
+    <div class="card"><div class="cl">K</div><div class="cv">5</div><div class="cu">N/m</div></div>
+    <div class="card"><div class="cl">y(0)</div><div class="cv">0,1</div><div class="cu">m</div></div>
+    <div class="card"><div class="cl">y′(0)</div><div class="cv">0</div><div class="cu">m/s</div></div>
+   </div>
+   <div class="sec">a) Período</div>
+   <div class="step"><div class="sn">1</div><div class="st"><code>ω = √(k/m) = √(5/0,2) = √25 = 5 rad/s</code></div></div>
+   <div class="step"><div class="sn">2</div><div class="st"><code>T = 2π/ω = 2π/5 ≈ 1,26 s</code></div></div>
+   <div class="ans">✓ ω = 5 rad/s · T ≈ 1,26 s</div>
+   <hr class="divl">
+   <div class="sec">b) EDO del sistema</div>
+   <div class="step"><div class="sn">1</div><div class="st">Posición medida desde el PE → gravedad cancela</div></div>
+   <div class="formula">m·y″ + k·y = 0 → 0,2y″ + 5y = 0 → y″ + 25y = 0</div>
+   <div class="step"><div class="sn">2</div><div class="st">Ec. característica: <code>r² + 25 = 0 → r = ±5i</code> → raíces imaginarias puras = MAS</div></div>
+   <hr class="divl">
+   <div class="sec">c) Velocidad y aceleración máximas</div>
+   <div class="step"><div class="sn">1</div><div class="st">Con CIs: <code>y(t) = 0,1·cos(5t)</code> → A = 0,1 m</div></div>
+   <div class="step"><div class="sn">2</div><div class="st"><code>v_max = ω·A = 5 × 0,1 = 0,5 m/s</code></div></div>
+   <div class="step"><div class="sn">3</div><div class="st"><code>a_max = ω²·A = 25 × 0,1 = 2,5 m/s²</code></div></div>
+   <div class="ans">✓ v_max = 0,5 m/s · a_max = 2,5 m/s²</div>`
+  },
+  {id:'p2', label:'P2', title:'Sistema imperial (slugs/lb/ft)', sub:'P=2lb · s_eq=6in · y(0)=8in debajo PE · y′(0)=−4/3 pies/s',
+   content:`<div class="warn">⚠ Sistema imperial: masa = P/g = lb/32 → slugs. Distancias siempre en pies (1ft=12in).</div>
+   <div class="cards" style="margin-top:8px">
+    <div class="card"><div class="cl">m = P/g</div><div class="cv">1/16</div><div class="cu">slug</div></div>
+    <div class="card"><div class="cl">s_eq = 6in</div><div class="cv">0,5</div><div class="cu">pies</div></div>
+    <div class="card"><div class="cl">y(0)=8in</div><div class="cv">2/3</div><div class="cu">pies</div></div>
+    <div class="card"><div class="cl">y′(0)</div><div class="cv">−4/3</div><div class="cu">ft/s ↑</div></div>
+   </div>
+   <div class="sec">a) Hallar y(t)</div>
+   <div class="step"><div class="sn">1</div><div class="st">Equilibrio: <code>k = P/s = 2/0,5 = 4 lb/ft</code></div></div>
+   <div class="step"><div class="sn">2</div><div class="st">EDO: <code>(1/16)y″ + 4y = 0 → y″ + 64y = 0</code></div></div>
+   <div class="step"><div class="sn">3</div><div class="st">Raíces: <code>r² + 64 = 0 → r = ±8i → ω = 8 rad/s</code></div></div>
+   <div class="step"><div class="sn">4</div><div class="st">Sol. general: <code>y = C₁cos(8t) + C₂sen(8t)</code></div></div>
+   <div class="step"><div class="sn">5</div><div class="st">CIs: <code>C₁ = 2/3 · C₂ = −4/3 / 8 = −1/6</code></div></div>
+   <div class="formula">y(t) = (2/3)cos(8t) − (1/6)sen(8t)</div>
+   <hr class="divl">
+   <div class="sec">b) Frecuencia, amplitud y primer cruce por PE</div>
+   <div class="step"><div class="sn">1</div><div class="st"><code>A = √((2/3)²+(1/6)²) = √(17/36) = √17/6 ≈ 0,687 ft</code></div></div>
+   <div class="step"><div class="sn">2</div><div class="st"><code>T = 2π/8 = π/4 s ≈ 0,785 s · f = 4/π ≈ 1,27 Hz</code></div></div>
+   <div class="step"><div class="sn">3</div><div class="st">Primer cruce por PE: n=1 → <code>t ≈ 0,15 s</code></div></div>
+   <hr class="divl">
+   <div class="sec">c) Energía total</div>
+   <div class="ans">✓ E_T ≈ 1,42 J (constante en todo el movimiento)</div>`
+  },
+  {id:'p3', label:'P3', title:'Influencia de la velocidad inicial', sub:'MAS no forzado · m=1 · k=16 · analizar CIs',
+   content:`<div class="cards">
+    <div class="card"><div class="cl">ω=√(k/m)</div><div class="cv">4</div><div class="cu">rad/s</div></div>
+    <div class="card"><div class="cl">T</div><div class="cv">π/2</div><div class="cu">≈1,57 s</div></div>
+    <div class="card"><div class="cl">C₁=y(0)</div><div class="cv">10</div><div class="cu">m</div></div>
+    <div class="card"><div class="cl">C₂=y′(0)/ω</div><div class="cv">0</div><div class="cu">V₀=0</div></div>
+   </div>
+   <div class="sec">Resolución</div>
+   <div class="step"><div class="sn">1</div><div class="st">EDO: <code>y″+16y=0 → r=±4i → y(t)=C₁cos(4t)+C₂sen(4t)</code></div></div>
+   <div class="step"><div class="sn">2</div><div class="st">Con C₁=10, C₂=0: <code>y(t) = 10·cos(4t)</code></div></div>
+   <div class="step"><div class="sn">3</div><div class="st">Primer cruce por PE: <code>cos(4t)=0 → t=π/8 ≈ 0,785 s</code></div></div>
+   <div class="ans">✓ y(t)=10·cos(4t) · primer cruce: t≈0,785 s</div>
+   <hr class="divl">
+   <div class="sec">Conclusiones sobre las condiciones iniciales</div>
+   <div class="step"><div class="sn">→</div><div class="st">Cambiar C₁ (posición) cambia la <strong>amplitud</strong> pero no el período.</div></div>
+   <div class="step"><div class="sn">→</div><div class="st">Cambiar C₂ (velocidad) cambia amplitud y ángulo de fase, no el período.</div></div>
+   <div class="step"><div class="sn">→</div><div class="st"><code>T = 2π/ω = 2π/√(k/m)</code> depende solo del sistema, nunca de las CIs.</div></div>`
+  },
+  {id:'p4', label:'P4', title:'Posición en instantes dados', sub:'P=20lb · s=6 pulg · y(0)=0,5ft debajo PE · y′(0)=0',
+   content:`<div class="sec">Planteo</div>
+   <div class="step"><div class="sn">1</div><div class="st"><code>m = 20/32 = 5/8 slug</code></div></div>
+   <div class="step"><div class="sn">2</div><div class="st"><code>k = P/s = 20/0,5 = 40 lb/ft</code></div></div>
+   <div class="step"><div class="sn">3</div><div class="st">EDO: <code>(5/8)y″+40y=0 → y″+64y=0 → ω=8 rad/s</code></div></div>
+   <div class="step"><div class="sn">4</div><div class="st">CIs: C₁=1/2, C₂=0</div></div>
+   <div class="formula">y(t) = (1/2)·cos(8t)</div>
+   <div class="sec">a) Posición en los instantes pedidos</div>
+   <div style="display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:8px">
+    <div class="inst"><div class="t">t=π/12</div><div class="y">y=−1/4 ft</div></div>
+    <div class="inst"><div class="t">t=π/8</div><div class="y">y=−1/2 ft</div></div>
+    <div class="inst"><div class="t">t=π/6</div><div class="y">y=−1/4 ft</div></div>
+    <div class="inst"><div class="t">t=π/4</div><div class="y">y=+1/2 ft</div></div>
+    <div class="inst"><div class="t">t=9π/32</div><div class="y">y≈+0,354 ft</div></div>
+   </div>
+   <hr class="divl">
+   <div class="sec">b) Velocidad en t=3π/16 y dirección</div>
+   <div class="step"><div class="sn">1</div><div class="st"><code>y′(t) = −4·sen(8t)</code></div></div>
+   <div class="step"><div class="sn">2</div><div class="st"><code>y′(3π/16) = 4 ft/s → hacia abajo ✓</code></div></div>
+   <hr class="divl">
+   <div class="sec">c) Primer paso por el PE</div>
+   <div class="step"><div class="sn">1</div><div class="st"><code>y(t)=0 → cos(8t)=0 → 8t=π/2+nπ</code></div></div>
+   <div class="step"><div class="sn">2</div><div class="st">n=0: <code>t=π/16 ≈ 0,196 s</code></div></div>
+   <div class="ans">✓ Primer cruce: t=π/16 ≈ 0,196 s</div>`
+  },
+  {id:'p5', label:'P5', title:'Motor a 3600 rpm', sub:'A=±5cm · m=2kg · motor a 3600 rpm',
+   content:`<div class="sec">Conversión rpm → rad/s</div>
+   <div class="step"><div class="sn">1</div><div class="st"><code>3600 rev/min × 1/60 = 60 rev/s = 60 Hz</code></div></div>
+   <div class="step"><div class="sn">2</div><div class="st"><code>ω = 2πf = 120π rad/s</code></div></div>
+   <div class="step"><div class="sn">3</div><div class="st"><code>k = mω² = 2·(120π)² = 28800π² ≈ 284.132 N/m</code></div></div>
+   <div class="cards" style="margin-top:8px">
+    <div class="card"><div class="cl">ω</div><div class="cv">120π</div><div class="cu">≈377 rad/s</div></div>
+    <div class="card"><div class="cl">v_max=ωA</div><div class="cv">6π</div><div class="cu">≈18,85 m/s</div></div>
+    <div class="card"><div class="cl">a_max=ω²A</div><div class="cv">7200π²</div><div class="cu">≈7106 m/s²</div></div>
+   </div>
+   <div class="ans">✓ v_max≈18,85 m/s · a_max≈7106 m/s² (altísimas por las 3600 rpm)</div>`
+  },
+  {id:'p6', label:'P6', title:'Análisis completo (h, e, f, g)', sub:'P=64lb · s=0,32ft · y(0)=−2/3ft · V₀=5ft/s↓',
+   content:`<div class="sec">Planteo</div>
+   <div class="step"><div class="sn">1</div><div class="st"><code>m=64/32=2 slugs · k=64/0,32=200 lb/ft</code></div></div>
+   <div class="step"><div class="sn">2</div><div class="st">EDO: <code>2y″+200y=0 → y″+100y=0 → ω=10 rad/s</code></div></div>
+   <div class="step"><div class="sn">3</div><div class="st">CIs: <code>C₁=−2/3 · C₂=1/2</code></div></div>
+   <div class="formula">y(t) = −(2/3)cos(10t) + (1/2)sen(10t)</div>
+   <div class="sec">b) Amplitud y período</div>
+   <div class="step"><div class="sn">1</div><div class="st"><code>A=√((2/3)²+(1/2)²)=√(25/36)=5/6 ft≈0,833 ft</code></div></div>
+   <div class="step"><div class="sn">2</div><div class="st"><code>T=2π/10=π/5 s≈0,628 s</code></div></div>
+   <div class="ans">✓ A=5/6 ft · T=π/5 s</div>
+   <hr class="divl">
+   <div class="sec">c) Oscilaciones en 3π segundos</div>
+   <div class="step"><div class="sn">1</div><div class="st"><code>N=3π/(π/5)=15 oscilaciones</code></div></div>
+   <div class="ans">✓ 15 oscilaciones completas</div>
+   <hr class="divl">
+   <div class="sec">d) 2da vez que pasa por PE hacia abajo</div>
+   <div class="step"><div class="sn">1</div><div class="st">Forma alternativa: <code>y(t)=(5/6)·sen(10t−0,93)</code></div></div>
+   <div class="step"><div class="sn">2</div><div class="st">n=1: t≈0,41s · n=2: <code>t≈0,72 s</code></div></div>
+   <div class="ans">✓ 2da vez: t≈0,72 s</div>
+   <hr class="divl">
+   <div class="sec">e) Instantes de desplazamiento extremo</div>
+   <div class="step"><div class="sn">1</div><div class="st"><code>y′(t)=0 → cos(10t−0,93)=0</code></div></div>
+   <div class="step"><div class="sn">2</div><div class="st">n=1:t≈0,56s · n=2:t≈0,87s · n=3:t≈1,19s</div></div>
+   <hr class="divl">
+   <div class="sec">f) Posición, velocidad y aceleración en t=3s</div>
+   <div class="step"><div class="sn">1</div><div class="st">y(3)≈−0,6 ft · y′(3)≈−5,83 ft/s · y″(3)≈46,66 ft/s²</div></div>
+   <hr class="divl">
+   <div class="sec">g) Velocidad cuando pasa por PE</div>
+   <div class="ans">✓ Velocidad en PE = ±ωA = ±(10)(5/6) = ±8,33 pies/s</div>
+   <hr class="divl">
+   <div class="sec">h) Instante en que está 5 pulg debajo del PE</div>
+   <div class="step"><div class="sn">1</div><div class="st"><code>5 pulg=5/12 ft≈0,42 ft</code></div></div>
+   <div class="step"><div class="sn">2</div><div class="st"><code>(5/6)sen(10t−0,93)=0,42 → t≈0,15 s</code></div></div>
+   <div class="ans">✓ t≈0,15 s</div>`
+  },
+  {id:'p7', label:'P7', title:'Dos resortes en paralelo', sub:'P=20lb · k₁(s₁=6in) · k₂(s₂=2in) · V₀=2ft/s',
+   content:`<div class="warn">⚠ Resortes en paralelo: k_total = k₁ + k₂. Cada uno tiene su elongación estática distinta.</div>
+   <div class="sec">Planteo</div>
+   <div class="step"><div class="sn">1</div><div class="st"><code>m=20/32=5/8 slug</code></div></div>
+   <div class="step"><div class="sn">2</div><div class="st">Resorte 1: <code>k₁=P/s₁=20/0,5=40 lb/ft</code></div></div>
+   <div class="step"><div class="sn">3</div><div class="st">Resorte 2: <code>k₂=P/s₂=20/(1/6)=120 lb/ft</code></div></div>
+   <div class="step"><div class="sn">4</div><div class="st">Paralelo: <code>k=k₁+k₂=40+120=160 lb/ft</code></div></div>
+   <div class="step"><div class="sn">5</div><div class="st">EDO: <code>(5/8)y″+160y=0 → y″+256y=0 → ω=16 rad/s</code></div></div>
+   <div class="step"><div class="sn">6</div><div class="st">CIs: y(0)=0, y′(0)=2 → <code>C₁=0 · C₂=2/16=0,125 ft</code></div></div>
+   <div class="formula">y(t) = 0,125·sen(16t)</div>
+   <div class="ans">✓ A=0,125 ft · ω=16 rad/s · T=π/8 s</div>`
+  },
+  {id:'p8', label:'P8', title:'Automóvil sobre un bache', sub:'m=1300kg · k=20.000N/m × 4 ruedas',
+   content:`<div class="warn">⚠ Los 4 amortiguadores están en paralelo → k_total=4×20.000=80.000 N/m. Masa total incluye chasis+pasajeros.</div>
+   <div class="sec">a) Frecuencia de vibración del auto</div>
+   <div class="step"><div class="sn">1</div><div class="st">Masa total: <code>m=1460 kg</code></div></div>
+   <div class="step"><div class="sn">2</div><div class="st"><code>k=4×20.000=80.000 N/m</code></div></div>
+   <div class="step"><div class="sn">3</div><div class="st"><code>ω=√(80.000/1460)=√54,79≈7,4 rad/s</code></div></div>
+   <div class="step"><div class="sn">4</div><div class="st"><code>f=ω/2π=7,4/2π≈1,18 Hz</code></div></div>
+   <div class="ans">✓ f≈1,18 Hz · ω≈7,4 rad/s</div>
+   <hr class="divl">
+   <div class="sec">b) Tiempo en ejecutar 2 vibraciones completas</div>
+   <div class="step"><div class="sn">1</div><div class="st"><code>T=1/f≈0,847 s por vibración</code></div></div>
+   <div class="step"><div class="sn">2</div><div class="st"><code>2 vibraciones → t=2T≈1,69 s</code></div></div>
+   <div class="ans">✓ t≈1,69 s para 2 oscilaciones completas</div>`
+  },
+  {id:'p9', label:'P9', title:'Solución dada, determinar parámetros', sub:'y(t)=−√2·sen(ωt)+√2·cos(ωt) · amplitud, φ, CIs si ω=4',
+   content:`<div class="sec">a) Amplitud y ángulo de fase</div>
+   <div class="step"><div class="sn">1</div><div class="st">C₁=−√2 (coef. sen) · C₂=√2 (coef. cos)</div></div>
+   <div class="step"><div class="sn">2</div><div class="st"><code>A=√(2+2)=√4=2 m</code></div></div>
+   <div class="step"><div class="sn">3</div><div class="st">Ángulo de fase: <code>φ=arcctg(−1)=−π/4 rad → φ_real=3π/4 rad</code></div></div>
+   <div class="formula">y(t) = 2·sen(ωt + 3π/4)</div>
+   <div class="ans">✓ A=2m · φ=3π/4 rad</div>
+   <hr class="divl">
+   <div class="sec">b) Si ω=4, condiciones iniciales</div>
+   <div class="step"><div class="sn">1</div><div class="st"><code>y(0)=C₁=−√2 m</code></div></div>
+   <div class="step"><div class="sn">2</div><div class="st"><code>y′(0)=−4√2≈−5,66 m/s</code></div></div>
+   <hr class="divl">
+   <div class="sec">c) Gráficas de y′(t) y y″(t)</div>
+   <div class="step"><div class="sn">1</div><div class="st">Cada derivada agrega π/2 al ángulo de fase y multiplica la amplitud por ω.</div></div>
+   <div class="step"><div class="sn">2</div><div class="st"><code>|y′|_max=Aω=2·4=8 m/s · |y″|_max=Aω²=32 m/s²</code></div></div>
+   <hr class="divl">
+   <div class="sec">d) EDO del MAS</div>
+   <div class="formula">y″ + 16y = 0</div>`
+  },
+  {id:'p10', label:'P10', title:'Caída libre + MAS (modelado completo)', sub:'m=90kg · h₁=18m · h₂=12m · objeto cae y engancha resorte',
+   content:`<div class="warn">⚠ Dos fases: (1) caída libre hasta enganchar el resorte, (2) MAS. Las CIs del MAS vienen de la velocidad al final de la caída.</div>
+   <div class="sec">a) Fase 1 — caída libre</div>
+   <div class="step"><div class="sn">1</div><div class="st"><code>t=√(2h/g)=√(36/9,8)≈1,92 s</code></div></div>
+   <div class="step"><div class="sn">2</div><div class="st">Velocidad al enganche: <code>Vf=gt≈9,8×1,92≈18,82 m/s↓</code></div></div>
+   <div class="ans">✓ t_caída≈1,92s · V al enganche≈18,82 m/s</div>
+   <hr class="divl">
+   <div class="sec">b) Fase 2 — MAS (4 ecuaciones del sistema)</div>
+   <div class="step"><div class="sn">e₁</div><div class="st">A = 12 − s (desplazamiento desde punto de enganche)</div></div>
+   <div class="step"><div class="sn">e₂</div><div class="st">Conservación de energía inicial</div></div>
+   <div class="step"><div class="sn">e₃</div><div class="st">Energía total en el MAS</div></div>
+   <div class="step"><div class="sn">e₄</div><div class="st">Equilibrio estático: <code>mg=k·s</code></div></div>
+   <div class="formula">k≈453,68 N/m · A≈10,06 m · s_eq≈1,94 m · V_enganche≈17,77 m/s</div>
+   <div class="ans">✓ Resultados del sistema resuelto numéricamente (Solve)</div>`
+  },
+  {id:'sim', label:'Sim', title:'Simulador interactivo de MAS', sub:'Ajustá los parámetros y observá el movimiento',
+   content:`<div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+    <span style="font-size:12px;color:var(--color-text-secondary);width:110px">Masa m (kg)</span>
+    <input type="range" min="0.1" max="5" step="0.1" value="0.2" id="sl-m" style="flex:1" oninput="upSim()">
+    <span style="font-size:12px;font-weight:500;min-width:55px;text-align:right" id="out-m">0,2 kg</span>
+   </div>
+   <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+    <span style="font-size:12px;color:var(--color-text-secondary);width:110px">Constante k (N/m)</span>
+    <input type="range" min="1" max="80" step="1" value="5" id="sl-k" style="flex:1" oninput="upSim()">
+    <span style="font-size:12px;font-weight:500;min-width:55px;text-align:right" id="out-k">5 N/m</span>
+   </div>
+   <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px">
+    <span style="font-size:12px;color:var(--color-text-secondary);width:110px">Amplitud A (m)</span>
+    <input type="range" min="0.01" max="0.5" step="0.01" value="0.1" id="sl-a" style="flex:1" oninput="upSim()">
+    <span style="font-size:12px;font-weight:500;min-width:55px;text-align:right" id="out-a">0,10 m</span>
+   </div>
+   <div class="cards" style="margin-bottom:8px">
+    <div class="card"><div class="cl">ω (rad/s)</div><div class="cv" id="res-w">5,00</div></div>
+    <div class="card"><div class="cl">T (s)</div><div class="cv" id="res-t">1,26</div></div>
+    <div class="card"><div class="cl">v_max (m/s)</div><div class="cv" id="res-v">0,50</div></div>
+    <div class="card"><div class="cl">a_max (m/s²)</div><div class="cv" id="res-ac">2,50</div></div>
+   </div>
+   <canvas id="simC" style="width:100%;height:160px;border-radius:var(--border-radius-md);border:0.5px solid var(--color-border-tertiary);display:block"></canvas>
+   <div style="margin-top:5px;display:flex;gap:14px;font-size:11px;color:var(--color-text-secondary)">
+    <span style="display:flex;align-items:center;gap:4px"><span style="width:14px;height:2px;background:#534AB7;display:inline-block"></span>posición</span>
+    <span style="display:flex;align-items:center;gap:4px"><span style="width:14px;height:2px;background:#1D9E75;display:inline-block"></span>velocidad norm.</span>
+   </div>
+   <button onclick="togPlay()" style="margin-top:8px;padding:5px 14px;font-size:12px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);background:transparent;color:var(--color-text-primary);cursor:pointer" id="pbtn">▶ Animar</button>`
+  }
+];
+
+const dataB = [
+  {id:'ba1', label:'A1', title:'MAS no forzado — Problema A1', sub:'m=2kg · K=4N/m · x(0)=0,5m · V₀=2m/s',
+   content:`<div class="section-header">A — SMR no forzado y no amortiguado</div>
+   <div class="cards">
+    <div class="card"><div class="cl">m</div><div class="cv">2</div><div class="cu">kg</div></div>
+    <div class="card"><div class="cl">k</div><div class="cv">4</div><div class="cu">N/m</div></div>
+    <div class="card"><div class="cl">x(0)</div><div class="cv">0,5</div><div class="cu">m</div></div>
+    <div class="card"><div class="cl">V₀</div><div class="cv">2</div><div class="cu">m/s</div></div>
+   </div>
+   <div class="sec">a) Modelo diferencial</div>
+   <div class="step"><div class="sn">1</div><div class="st">Suma de fuerzas: <code>mg−ks−ky(t)=my″(t) → my″+ky=0</code></div></div>
+   <div class="formula">2y″(t) + 4y(t) = 0 → y″ + 2y = 0</div>
+   <div class="sec">b) Solución general y PVI</div>
+   <div class="step"><div class="sn">1</div><div class="st">Ec. característica: <code>r²+2=0 → r=±√2·i → ω=√2</code></div></div>
+   <div class="step"><div class="sn">2</div><div class="st">Sol. general: <code>y=C₁cos(√2·t)+C₂sen(√2·t)</code></div></div>
+   <div class="step"><div class="sn">3</div><div class="st">C₁=y(0)=0,5 · C₂=y′(0)/ω=2/√2=√2</div></div>
+   <div class="formula">y_pvi = 0,5·cos(√2·t) + √2·sen(√2·t)</div>
+   <div class="sec">c) Amplitud y forma alternativa</div>
+   <div class="step"><div class="sn">1</div><div class="st"><code>A=√(0,5²+(√2)²)=√(0,25+2)=√2,25=1,5 m</code></div></div>
+   <div class="step"><div class="sn">2</div><div class="st"><code>φ=arctan(C₁/C₂)=arctan(0,5/√2)≈0,34 rad</code></div></div>
+   <div class="formula">y_pvi = 1,5·sen(√2·t + 0,34)</div>
+   <div class="sec">d) Forma alternativa: y′(t)</div>
+   <div class="step"><div class="sn">1</div><div class="st"><code>y′=1,5·√2·cos(√2·t+0,34)</code></div></div>
+   <div class="sec">e) Energía mecánica (verificar que es constante)</div>
+   <div class="step"><div class="sn">1</div><div class="st"><code>Ec = ½m(y′)²+½ky² = cte ✓</code></div></div>
+   <div class="ans">✓ A=1,5m · T=2π/√2≈4,44s</div>`
+  },
+  {id:'ba2', label:'A2', title:'Interpretación física — PVI', sub:'a) (4/32)y″+3y=0 · b) y″+25=0',
+   content:`<div class="section-header">Problema A2 — Interpretación física y PVI</div>
+   <div class="sec">a) (4/32)y″ + 3y = 0 · y(0)=−3 · y′(0)=−2</div>
+   <div class="step"><div class="sn">1</div><div class="st"><code>ω=√(k/m)=√(3/(4/32))=√24=2√6</code></div></div>
+   <div class="step"><div class="sn">2</div><div class="st">C₁=−3 · C₂=y′(0)/ω=−2/(2√6)=−1/√6=−√6/6</div></div>
+   <div class="formula">y_pvi = −3cos(√24·t) − (√6/6)·sen(√24·t)</div>
+   <hr class="divl">
+   <div class="sec">b) y″ + 25y = 0 · y(0)=−2 · y′(0)=10</div>
+   <div class="warn">⚠ ω²=25 → la ecuación característica da r²+25=0 → r=±5i. No confundir con y″=−25 (sin y).</div>
+   <div class="step"><div class="sn">1</div><div class="st">C₁=−2 · 10t+C₁=y(0)? → No: esto es y″=−25, sin y. Verificar enunciado.</div></div>
+   <div class="step"><div class="sn">2</div><div class="st">Si es y″=−25: <code>dy/dt=−25t+C₁ → y=−25t²/2+C₁t+C₂</code></div></div>
+   <div class="step"><div class="sn">3</div><div class="st">C₁=y′(0)=10 · C₂=y(0)=−2</div></div>
+   <div class="formula">y = −25t²/2 + 10t − 2</div>`
+  },
+  {id:'ba3', label:'A3', title:'Período libre no amortiguado', sub:'k=16lb/pie · T=π/4 s · ¿cuánto pesa?',
+   content:`<div class="section-header">Problema A3 — Encontrar el peso</div>
+   <div class="step"><div class="sn">1</div><div class="st"><code>T=π/4 s → ω=2π/T=2π/(π/4)=8 rad/s</code></div></div>
+   <div class="step"><div class="sn">2</div><div class="st"><code>ω=√(k/m) → m=k/ω²=16/64=1/4 lb·s²/pie (=0,25 slug)</code></div></div>
+   <div class="step"><div class="sn">3</div><div class="st"><code>P=m·g=0,25×32=8 lb</code></div></div>
+   <div class="ans">✓ P=8 lb · m=0,25 slug</div>`
+  },
+  {id:'bb1', label:'B1', title:'SMR amortiguado-libre — Problema 1', sub:'m=2kg · s=0,5m · b=1,5 N·s/m · K=39,2 · V₀=+2m/s',
+   content:`<div class="section-header">B — SMR amortiguado-libre</div>
+   <div class="sec">Actividad B1 — demostrar que r₁,r₂ son siempre negativos</div>
+   <div class="step"><div class="sn">→</div><div class="st">EDO general: <code>y″+(b/m)y′+(k/m)y=0</code></div></div>
+   <div class="step"><div class="sn">→</div><div class="st"><code>r₁,₂=−λ±√(λ²−ω²)</code> con λ=b/2m>0, ω²=k/m>0</div></div>
+   <div class="step"><div class="sn">→</div><div class="st">|−λ|>|√(λ²−ω²)| → r₁,r₂ siempre ≤0 ✓</div></div>
+   <hr class="divl">
+   <div class="sec">Problema 1 — EC del movimiento</div>
+   <div class="step"><div class="sn">1</div><div class="st"><code>mg=ks → k=2×9,8/0,5=39,2 N/m</code></div></div>
+   <div class="step"><div class="sn">2</div><div class="st"><code>λ=b/2m=1,5/4=3/8 · ω²=k/m=19,6</code></div></div>
+   <div class="formula">y″ + (3/4)y′ + 19,6y = 0</div>
+   <div class="step"><div class="sn">3</div><div class="st">Raíces: <code>r₁,₂=−3/8±√(9/64−19,6)≈−3/8±4,41i → subamortiguado</code></div></div>
+   <div class="step"><div class="sn">4</div><div class="st">CIs: y(0)=0 · y′(0)=2 → C₁=0 · C₂=2/4,41≈0,45</div></div>
+   <div class="formula">y_pvi = e^{−0,375t}[0,45·sen(4,41t)]</div>
+   <div class="sec">b) Simular para distintos valores de k (sub/crít/sobre)</div>
+   <div class="step"><div class="sn">→</div><div class="st">Críticamente amortiguado cuando <code>b=√(4mk)=√(4·2·39,2)≈17,71 N·s/m</code> → λ=b/2m=4,427</div></div>
+   <div class="step"><div class="sn">→</div><div class="st">Sobreamortiguado si b>17,71 → e.g. b=20: <code>y_g=0,043e^{−0,1t}(−e^{2,67t}+e^{7,33t})</code></div></div>
+   <div class="sec">c) Energía mecánica total</div>
+   <div class="step"><div class="sn">1</div><div class="st"><code>Ec=(1/2)m(y′)²+(1/2)ky²</code> — decrece por disipación</div></div>`
+  },
+  {id:'bb2', label:'B2', title:'SMR amortiguado — Problema B2', sub:'P=16lb · s=8,2pie · b=1 · y(0)=−2 · y′(0)=0',
+   content:`<div class="section-header">Problema B2</div>
+   <div class="step"><div class="sn">1</div><div class="st"><code>m=16/32=0,5 slug · k=P/s=16/3,2=5 lb/ft</code></div></div>
+   <div class="step"><div class="sn">2</div><div class="st"><code>λ=b/2m=1 · ω²=k/m=10</code></div></div>
+   <div class="step"><div class="sn">3</div><div class="st">Raíces: <code>r₁,₂=−1±√(1−10)=−1±3i → subamortiguado</code> (β=3)</div></div>
+   <div class="step"><div class="sn">4</div><div class="st">CIs: C₁=y(0)=−2 · y′(0)=0 → <code>C₂=−2/3</code></div></div>
+   <div class="formula">y_g = e^{−t}[−2cos(3t) − (2/3)sen(3t)]</div>
+   <div class="sec">Amplitud y forma alternativa</div>
+   <div class="step"><div class="sn">1</div><div class="st"><code>A=√(4+(4/9))≈2,108 · φ=1,25+π≈4,4 rad</code></div></div>
+   <div class="formula">y(t) = 2,108·sen(3t + 4,4)·e^{−t}</div>`
+  },
+  {id:'bb3', label:'B3', title:'SMR amortiguado — Problema B3', sub:'m=0,04kg · s=0,01m · B=560 · V=0,02m/s',
+   content:`<div class="section-header">Problema B3 — Sobreamortiguado</div>
+   <div class="step"><div class="sn">1</div><div class="st"><code>k=mg/s=0,04×9,8/0,01=39,2 N/m</code></div></div>
+   <div class="step"><div class="sn">2</div><div class="st"><code>λ=B/2m=560/0,08=7000 · ω²=39,2/0,04=980</code></div></div>
+   <div class="step"><div class="sn">3</div><div class="st">Raíces: <code>r₁,₂=−7000±√(7000²−980)≈−7000±6999,93 → r₁≈−0,07 · r₂≈−13999,93</code></div></div>
+   <div class="warn">⚠ Δ>λ²−ω²>0 → Sobreamortiguado (dos raíces reales distintas negativas)</div>
+   <div class="step"><div class="sn">4</div><div class="st">CIs: y(0)=0 · y′(0)=0,02 → C₁=C₂=1,43×10⁻⁶</div></div>
+   <div class="formula">y(t) = 1,43×10⁻⁶[e^{−0,07t} − e^{−14000t}]</div>`
+  },
+  {id:'bc1', label:'C1', title:'Vibraciones forzadas — Problema C1', sub:'P=4lb · k=3lb/pie · b=1 · y(0)=2pie · P(t)=e^{−t}',
+   content:`<div class="section-header">C — Vibraciones forzadas</div>
+   <div class="step"><div class="sn">1</div><div class="st"><code>m=4/32=1/8 slug · k=3 · b=1</code></div></div>
+   <div class="step"><div class="sn">2</div><div class="st">EDO: <code>(1/8)y″+y′+3y=e^{−t} → y″+8y′+24y=8e^{−t}</code></div></div>
+   <div class="step"><div class="sn">3</div><div class="st">Ec. homogénea: <code>r²+8r+24=0 → r=−4±√8·i → subamortiguado</code></div></div>
+   <div class="step"><div class="sn">4</div><div class="st">Particular: y_p=Ae^{−t} → A=8/17</div></div>
+   <div class="formula">y_g = e^{−4t}[C₁cos(√8·t)+C₂sen(√8·t)] + (8/17)e^{−t}</div>
+   <div class="step"><div class="sn">5</div><div class="st">CIs: y(0)=2 → C₁=2−8/17=26/17 · y′(0)=0 → C₂≈2,33</div></div>
+   <div class="formula">y_g = (26/17)e^{−4t}cos(√8·t) + 2,33e^{−4t}sen(√8·t) + (8/17)e^{−t}</div>`
+  },
+  {id:'bc2', label:'C2', title:'Vibraciones forzadas — Problema C2', sub:'(m,b,k) → PVI · término transitorio y estable · gráfica',
+   content:`<div class="section-header">Problema C2</div>
+   <div class="sec">C2.1 — m=1, b=4, k=3 · P(t)=t²+5</div>
+   <div class="step"><div class="sn">1</div><div class="st">Homogénea: <code>r²+4r+3=0 → r=−1, r=−3 → sobreamortiguado</code></div></div>
+   <div class="step"><div class="sn">2</div><div class="st">Particular: <code>y_p=At²+Bt+C → A=1/3, B=−8/9, C=71/27</code></div></div>
+   <div class="formula">y_g = C₁e^{−t} + C₂e^{−3t} + (1/3)t² − (8/9)t + 71/27</div>
+   <div class="step"><div class="sn">3</div><div class="st">CIs y(0)=2, y′(0)=3 → C₁=1 · C₂=−44/27</div></div>
+   <div class="sec">b) Límite t→∞</div>
+   <div class="step"><div class="sn">→</div><div class="st">Términos transitorios: <code>C₁e^{−t}</code> y <code>C₂e^{−3t}</code> → 0 cuando t→∞ (estables). Término estable: <code>(1/3)t²−(8/9)t+71/27</code> → ∞</div></div>
+   <hr class="divl">
+   <div class="sec">C2.2 — m=2, b=4, k=2 · P(t)=0,5e^{2t}</div>
+   <div class="step"><div class="sn">1</div><div class="st">Homogénea: <code>r²+2r+1=0 → r=−1 (doble) → críticamente amortiguado</code></div></div>
+   <div class="step"><div class="sn">2</div><div class="st">Particular: y_p=(1/36)e^{2t} · Solución completa con CIs y(0)=2, y′(0)=3</div></div>
+   <div class="formula">y_g = (71/36)e^{−t} + (59/12)te^{−t} + (1/36)e^{2t}</div>
+   <div class="ans">Transitorio: e^{−t} y te^{−t} (→0) · Estable: (1/36)e^{2t} (→∞)</div>
+   <hr class="divl">
+   <div class="sec">C2.3 — m=1, b=2, k=3 · P(t)=2sen(3t)</div>
+   <div class="step"><div class="sn">1</div><div class="st">Homogénea: <code>r=−1±√2·i → subamortiguado</code></div></div>
+   <div class="step"><div class="sn">2</div><div class="st">Particular: y_p=Asen(3t)+Bcos(3t) → A=B=−1/6</div></div>
+   <div class="formula">y_g = e^{−t}[(13/6)cos(√2t)+(17√2/6)sen(√2t)] − (1/6)sen(3t) − (1/6)cos(3t)</div>
+   <hr class="divl">
+   <div class="sec">C2.4 — m=4, b=0, k=16 · P(t)=4sen(1,95t)</div>
+   <div class="step"><div class="sn">1</div><div class="st">Sin amortiguamiento: <code>ω=2 · P(t)=4sen(1,95t) → cerca de resonancia</code></div></div>
+   <div class="step"><div class="sn">2</div><div class="st">A=5,263 · B=0 · CIs: C₁=2, C₂=−3,63</div></div>
+   <div class="formula">y_g = 2cos(2t) − 3,63sen(2t) + 5,263sen(1,95t)</div>
+   <hr class="divl">
+   <div class="sec">C2.5 — m=4, b=0, k=16 · P(t)=4cos(2t) — RESONANCIA</div>
+   <div class="step"><div class="sn">1</div><div class="st">Forzante con ω igual a frecuencia natural → resonancia pura</div></div>
+   <div class="step"><div class="sn">2</div><div class="st">Particular: <code>y_p=t(Asen(2t)−cos(2t)) → A=1 · yp=tsen(2t)−tcos(2t)</code></div></div>
+   <div class="formula">y_g = 2cos(2t) + 2sen(2t) + tsen(2t) − tcos(2t)</div>`
+  },
+  {id:'bc3', label:'C3', title:'Resonancia pura', sub:'b=0 · x(t)·ωx(t)=5cos(t) · n=ω · ω=1',
+   content:`<div class="section-header">Problema C3 — Resonancia pura (b=0, ω_forzante=ω_natural)</div>
+   <div class="step"><div class="sn">1</div><div class="st">Homogénea: <code>C₁cos(t)+C₂sen(t)</code> (ω=1)</div></div>
+   <div class="step"><div class="sn">2</div><div class="st">Particular (resonancia): <code>y_p=t(Acos(t)+Bsen(t))</code></div></div>
+   <div class="step"><div class="sn">3</div><div class="st">Sustituyendo: A=0, B=5/2</div></div>
+   <div class="formula">y_p = (5/2)·t·sen(t)</div>
+   <div class="step"><div class="sn">4</div><div class="st">CIs: x(0)=0, x′(0)=1 → C₁=0, C₂=1</div></div>
+   <div class="formula">y_g = sen(t) + (5/2)·t·sen(t) = sen(t)·(1 + 5t/2)</div>
+   <div class="warn">⚠ La amplitud crece sin límite → resonancia destructiva</div>`
+  },
+  {id:'bc4', label:'C4', title:'Circuito RLC serie', sub:'R=10Ω · L=0,028H · C=0,0000036F · V(t)=220√2·sen(100πt)',
+   content:`<div class="section-header">Problema C4 — Circuito RLC</div>
+   <div class="cards">
+    <div class="card"><div class="cl">R</div><div class="cv">10</div><div class="cu">Ω</div></div>
+    <div class="card"><div class="cl">L</div><div class="cv">0,028</div><div class="cu">H</div></div>
+    <div class="card"><div class="cl">C</div><div class="cv">3,6×10⁻⁵</div><div class="cu">F</div></div>
+    <div class="card"><div class="cl">ω</div><div class="cv">100π</div><div class="cu">rad/s</div></div>
+   </div>
+   <div class="sec">Modelo diferencial</div>
+   <div class="formula">L·i″ + R·i′ + (1/C)·i = V′(t)</div>
+   <div class="formula">0,028i″ + 10i′ + (1/0,0000036)·i = 100π·220√2·cos(100πt)</div>
+   <div class="sec">Resolución</div>
+   <div class="step"><div class="sn">1</div><div class="st">Ec. auxiliar: <code>0,028r²+10r+(1/C)=0 → r₁,r₂ ∈ ℝ → subamortiguado</code></div></div>
+   <div class="step"><div class="sn">2</div><div class="st"><code>λ=R/2L=178,57 · ω²=1/(LC)≈992.063 · √(ω²−λ²)≈979,88</code></div></div>
+   <div class="step"><div class="sn">3</div><div class="st">y_H: <code>e^{−178,57t}[C₁cos(979,88t)+C₂sen(979,88t)]</code></div></div>
+   <div class="step"><div class="sn">4</div><div class="st">Particular: y_p=Acos(100πt)+Bsen(100πt) → A=3,85 · B=0,46</div></div>
+   <div class="step"><div class="sn">5</div><div class="st">CIs i(0)=0, i′(0)=0 → C₁=−3,85 · C₂=−0,849</div></div>
+   <div class="formula">i_g = e^{−178,57t}[−3,85cos(979,88t)−0,849sen(979,88t)] + 3,85cos(100πt)+0,46sen(100πt)</div>
+   <div class="ans">Transitorio: e^{−178t}(…) → 0 rápidamente. Estable: corriente alterna a 50Hz.</div>`
+  }
+];
+
+function buildTaller(data, navId, probsId) {
+  const nav = document.getElementById(navId);
+  const probs = document.getElementById(probsId);
+  if (!nav || !probs) return;
+  nav.innerHTML = data.map((d,i) =>
+    `<button class="snbtn${i===0?' active':''}" onclick="showProb('${d.id}','${navId}','${probsId}')">${d.label}</button>`
+  ).join('');
+  probs.innerHTML = data.map((d,i) =>
+    `<div class="prob${i===0?' active':''}" id="${d.id}">
+      <div class="ph"><div class="pt">${d.title}</div><div class="ps">${d.sub}</div></div>
+      ${d.content}
+     </div>`
+  ).join('');
+}
+
+function showProb(id, navId, probsId) {
+  document.querySelectorAll(`#${probsId} .prob`).forEach(p=>p.classList.remove('active'));
+  document.querySelectorAll(`#${navId} .snbtn`).forEach(b=>b.classList.remove('active'));
+  const el=document.getElementById(id);
+  if(el) el.classList.add('active');
+  const btns=[...document.querySelectorAll(`#${navId} .snbtn`)];
+  const idx=el?[...document.getElementById(probsId).querySelectorAll('.prob')].indexOf(el):0;
+  if(btns[idx]) btns[idx].classList.add('active');
+  if(id==='sim') setTimeout(initSim,50);
+}
+
+function switchTaller(t) {
+  document.querySelectorAll('.taller').forEach(x=>x.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(b=>b.classList.remove('active'));
+  document.getElementById('taller-'+t).classList.add('active');
+  document.querySelectorAll('.tab')[t==='a'?0:1].classList.add('active');
+}
+
+buildTaller(dataA,'nav-a','probs-a');
+buildTaller(dataB,'nav-b','probs-b');
+
+let playing=false, tAnim=0, animId=null, lastTs=null;
+function getP(){return{m:parseFloat(document.getElementById('sl-m')?.value||0.2),k:parseFloat(document.getElementById('sl-k')?.value||5),A:parseFloat(document.getElementById('sl-a')?.value||0.1)};}
+function upSim(){
+  const {m,k,A}=getP(), w=Math.sqrt(k/m), T=2*Math.PI/w;
+  const fmt=v=>v.toFixed(2);
+  const el=id=>document.getElementById(id);
+  if(el('out-m')) el('out-m').textContent=m.toFixed(1)+' kg';
+  if(el('out-k')) el('out-k').textContent=k.toFixed(0)+' N/m';
+  if(el('out-a')) el('out-a').textContent=A.toFixed(2)+' m';
+  if(el('res-w')) el('res-w').textContent=fmt(w);
+  if(el('res-t')) el('res-t').textContent=fmt(T);
+  if(el('res-v')) el('res-v').textContent=fmt(w*A);
+  if(el('res-ac')) el('res-ac').textContent=fmt(w*w*A);
+  drawSim(w,A,tAnim);
+}
+function drawSim(w,A,tNow){
+  const cv=document.getElementById('simC'); if(!cv) return;
+  const dpr=window.devicePixelRatio||1, W=cv.offsetWidth, H=cv.offsetHeight||160;
+  cv.width=W*dpr; cv.height=H*dpr;
+  const ctx=cv.getContext('2d'); ctx.scale(dpr,dpr);
+  const isDark=matchMedia('(prefers-color-scheme:dark)').matches;
+  const axC=isDark?'rgba(255,255,255,0.15)':'rgba(0,0,0,0.12)';
+  ctx.clearRect(0,0,W,H);
+  const pl=6,pr=6,pt=10,pb=10, gW=W-pl-pr, gH=H-pt-pb, cy=pt+gH/2;
+  const T=2*Math.PI/w, tT=3*T, steps=Math.min(W*2,500);
+  ctx.strokeStyle=axC; ctx.lineWidth=0.5;
+  ctx.beginPath(); ctx.moveTo(pl,cy); ctx.lineTo(pl+gW,cy); ctx.stroke();
+  ctx.beginPath(); ctx.strokeStyle='#534AB7'; ctx.lineWidth=2;
+  for(let i=0;i<=steps;i++){
+    const t=(i/steps)*tT, y=A*Math.cos(w*t);
+    const px=pl+(i/steps)*gW, py=cy-(y/(A*1.2))*(gH/2);
+    i===0?ctx.moveTo(px,py):ctx.lineTo(px,py);
+  }
+  ctx.stroke();
+  ctx.setLineDash([5,3]); ctx.beginPath(); ctx.strokeStyle='#1D9E75'; ctx.lineWidth=1.5;
+  const vm=A*w;
+  for(let i=0;i<=steps;i++){
+    const t=(i/steps)*tT, yp=-A*w*Math.sin(w*t);
+    const px=pl+(i/steps)*gW, py=cy-(yp/(vm*1.2))*(gH/2);
+    i===0?ctx.moveTo(px,py):ctx.lineTo(px,py);
+  }
+  ctx.stroke(); ctx.setLineDash([]);
+  if(playing){
+    const tm=tNow%tT, yn=A*Math.cos(w*tm);
+    const px=pl+(tm/tT)*gW, py=cy-(yn/(A*1.2))*(gH/2);
+    ctx.beginPath(); ctx.arc(px,py,5,0,Math.PI*2); ctx.fillStyle='#534AB7'; ctx.fill();
+  }
+}
+function initSim(){upSim();}
+function togPlay(){
+  playing=!playing;
+  const btn=document.getElementById('pbtn');
+  if(btn) btn.textContent=playing?'⏸ Pausar':'▶ Animar';
+  if(playing) requestAnimationFrame(anim); else{cancelAnimationFrame(animId);lastTs=null;}
+}
+function anim(ts){
+  if(!playing) return;
+  if(!lastTs) lastTs=ts;
+  tAnim+=(ts-lastTs)/1000; lastTs=ts;
+  const {m,k,A}=getP(); drawSim(Math.sqrt(k/m),A,tAnim);
+  animId=requestAnimationFrame(anim);
+}
+window.addEventListener('resize',()=>{const {m,k,A}=getP(); drawSim(Math.sqrt(k/m),A,tAnim);});
+setTimeout(()=>upSim(),150);
+</script>

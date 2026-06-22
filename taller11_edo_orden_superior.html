@@ -1,0 +1,263 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;padding:1rem 0 0;margin-bottom:1.5rem}
+.tab{padding:6px 14px;font-size:13px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);cursor:pointer;background:transparent;color:var(--color-text-secondary)}
+.tab.active{background:var(--color-background-secondary);color:var(--color-text-primary);border-color:var(--color-border-primary);font-weight:500}
+.sec{display:none}.sec.active{display:block}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin-bottom:.75rem}
+.card h3{font-size:14px;font-weight:500;margin-bottom:.6rem}
+.f{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.4rem .75rem;font-family:var(--font-mono);font-size:12.5px;margin:.35rem 0;color:var(--color-text-primary)}
+.row2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:.75rem}
+.step{border-left:2px solid var(--color-border-secondary);padding-left:.75rem;margin:.35rem 0;font-size:13px;color:var(--color-text-secondary);line-height:1.5}
+.step b{color:var(--color-text-primary)}
+.note{font-size:12px;color:var(--color-text-secondary);margin-top:.4rem;line-height:1.5}
+.pill{display:inline-block;font-size:11px;padding:2px 8px;border-radius:var(--border-radius-md);margin:2px}
+.p-teal{background:#E1F5EE;color:#0F6E56}
+.p-amber{background:#FAEEDA;color:#854F0B}
+.p-coral{background:#FAECE7;color:#993C1D}
+.p-purple{background:#EEEDFE;color:#534AB7}
+.warn{background:#FAEEDA;border-radius:var(--border-radius-md);padding:.5rem .75rem;font-size:12.5px;color:#854F0B;margin:.4rem 0}
+.ok{background:#E1F5EE;border-radius:var(--border-radius-md);padding:.5rem .75rem;font-size:12.5px;color:#0F6E56;margin:.4rem 0}
+.tog{display:inline-block;margin-top:.5rem;padding:4px 12px;font-size:12px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);cursor:pointer;background:transparent;color:var(--color-text-secondary)}
+.xtra{display:none;margin-top:.6rem;background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.6rem .8rem;font-size:12.5px;color:var(--color-text-secondary);line-height:1.6}
+.xtra.open{display:block}
+table{width:100%;font-size:12px;border-collapse:collapse;margin-top:.5rem}
+td,th{padding:5px 8px;border:0.5px solid var(--color-border-tertiary);text-align:left}
+th{font-weight:500;background:var(--color-background-secondary)}
+</style>
+
+<h2 class="sr-only">Teoría completa Taller 11 — Dependencia lineal, Wronskiano y reducción de orden</h2>
+
+<div class="tabs">
+  <button class="tab active" onclick="sw('li',this)">Dep. e indep. lineal</button>
+  <button class="tab" onclick="sw('wron',this)">Wronskiano</button>
+  <button class="tab" onclick="sw('conj',this)">Conj. fundamental</button>
+  <button class="tab" onclick="sw('red',this)">Reducción de orden</button>
+  <button class="tab" onclick="sw('nhom',this)">No homogéneas</button>
+</div>
+
+<div class="sec active" id="sec-li">
+
+  <div class="card">
+    <h3>Dependencia e independencia lineal de funciones</h3>
+    <div class="step">Un conjunto de funciones {f₁(x), f₂(x), ..., fₙ(x)} es <b>linealmente dependiente</b> en un intervalo I si existen constantes c₁, c₂, ..., cₙ no todas cero tales que:</div>
+    <div class="f">c₁f₁(x) + c₂f₂(x) + ... + cₙfₙ(x) = 0  para todo x en I</div>
+    <div class="step">Si el conjunto <b>no</b> es linealmente dependiente, se dice <b>linealmente independiente (LI)</b>:</div>
+    <div class="f">c₁f₁(x) + c₂f₂(x) + ... + cₙfₙ(x) = 0  →  c₁ = c₂ = ... = cₙ = 0</div>
+    <div class="ok">Caso de 2 funciones: LI si y solo si una NO es múltiplo constante de la otra.</div>
+  </div>
+
+  <div class="row2">
+    <div class="card">
+      <h3>Ejemplos LI</h3>
+      <div class="step">f₁ = senx, f₂ = cosx → LI (ninguna es múltiplo de la otra)</div>
+      <div class="step">f₁ = x², f₂ = x³ → LI en cualquier intervalo</div>
+      <div class="step">f₁ = eˣ, f₂ = e²ˣ → LI</div>
+    </div>
+    <div class="card">
+      <h3>Ejemplos LD</h3>
+      <div class="step">f₁ = 2x, f₂ = 6x → LD porque f₂ = 3·f₁</div>
+      <div class="step">f₁ = senx, f₂ = 5senx → LD</div>
+      <div class="step">f₁ = x², f₂ = 3x², f₃ = x²+1 → LD</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Relación con EDO lineal homogénea de orden n</h3>
+    <div class="step">Una EC diferencial lineal homogénea siempre tiene la <b>solución trivial</b> y = 0.</div>
+    <div class="step">La <b>superposición</b> de 2 o más soluciones de una EC lineal homogénea también es solución.</div>
+    <div class="step">Si y₁, y₂, ..., yₖ son soluciones en I, entonces la combinación lineal:</div>
+    <div class="f">y = C₁y₁(x) + C₂y₂(x) + ... + Cₖyₖ(x)</div>
+    <div class="step">también es solución en I. Un múltiplo constante de una solución también es solución.</div>
+  </div>
+
+</div>
+
+<div class="sec" id="sec-wron">
+
+  <div class="card">
+    <h3>Wronskiano — definición</h3>
+    <div class="step">Dado un conjunto de funciones {f₁(x), f₂(x), ..., fₙ(x)} con al menos n-1 derivadas, el <b>Wronskiano</b> es el determinante:</div>
+    <div class="f">W(f₁, f₂, ..., fₙ) = |f₁   f₂   ... fₙ |
+                           |f₁'  f₂'  ... fₙ'|
+                           |...            ...|
+                           |f₁⁽ⁿ⁻¹⁾ ... fₙ⁽ⁿ⁻¹⁾|</div>
+    <div class="step">Para 2 funciones, el Wronskiano es simplemente:</div>
+    <div class="f">W(u₁, u₂) = u₁(x)·u₂'(x) − u₁'(x)·u₂(x)</div>
+  </div>
+
+  <div class="card">
+    <h3>Criterio del Wronskiano</h3>
+    <div class="ok">W ≠ 0 en todo punto de I → las funciones son LI en I</div>
+    <div class="warn">W = 0 en todo punto de I → las funciones son LD en I (o no se puede concluir si W=0 en algún punto)</div>
+    <div class="step">Si y₁ e y₂ son soluciones de la EC lineal homogénea de orden 2 en I, entonces:</div>
+    <div class="step">O bien W(y₁,y₂) = 0 para todo x en I, o bien W(y₁,y₂) ≠ 0 para todo x en I.</div>
+    <div class="note">No puede ocurrir que W sea cero en algunos puntos y no cero en otros dentro del mismo intervalo.</div>
+  </div>
+
+  <div class="card">
+    <h3>Cálculo del Wronskiano — ejemplos</h3>
+    <div class="tog" onclick="tog('w1',this)">Ej 1: y₁=e^(r₁x), y₂=e^(r₂x) ↓</div>
+    <div class="xtra" id="w1">
+      W = e^(r₁x)·r₂e^(r₂x) − r₁e^(r₁x)·e^(r₂x)<br>
+      W = e^((r₁+r₂)x)·(r₂ − r₁)<br>
+      Si r₁ ≠ r₂ → W ≠ 0 → son <b>LI</b>
+    </div>
+    <div class="tog" onclick="tog('w2',this)">Ej 2: y₁=senx, y₂=cosx ↓</div>
+    <div class="xtra" id="w2">
+      W = senx·(-senx) − cosx·cosx<br>
+      W = -sen²x − cos²x = -1 ≠ 0<br>
+      → son <b>LI</b>
+    </div>
+    <div class="tog" onclick="tog('w3',this)">Ej 3: y₁=x², y₂=x³ ↓</div>
+    <div class="xtra" id="w3">
+      W = x²·3x² − 2x·x³ = 3x⁴ − 2x⁴ = x⁴<br>
+      W ≠ 0 para x ≠ 0 → LI en cualquier intervalo que no contenga 0
+    </div>
+  </div>
+
+</div>
+
+<div class="sec" id="sec-conj">
+
+  <div class="card">
+    <h3>Conjunto fundamental de soluciones</h3>
+    <div class="step">Sea una EC lineal homogénea de orden n. Un <b>conjunto fundamental de soluciones</b> es un conjunto de n soluciones LI {y₁, y₂, ..., yₙ} en I.</div>
+    <div class="step"><b>Teorema de existencia:</b> siempre existe un conjunto fundamental de soluciones de la EC lineal homogénea de orden n en I.</div>
+    <div class="step"><b>Solución general:</b> si {y₁, y₂, ..., yₙ} es un conjunto fundamental en I, entonces:</div>
+    <div class="f">yₘ(x) = C₁y₁(x) + C₂y₂(x) + ... + Cₙyₙ(x)</div>
+    <div class="step">con C₁, C₂, ..., Cₙ constantes arbitrarias, es la solución general en I.</div>
+  </div>
+
+  <div class="card">
+    <h3>Condición para que sea conjunto fundamental</h3>
+    <div class="step">Sean aₙ(x), aₙ₋₁(x), ..., a₀(x) y g(x) continuas en I, con aₙ(x) ≠ 0 en I.</div>
+    <div class="step">Si y₁, y₂, ..., yₙ son n soluciones de la EC homogénea en I, entonces el conjunto es <b>fundamental</b> si y solo si:</div>
+    <div class="f">W(y₁, y₂, ..., yₙ) ≠ 0  para todo x en I</div>
+    <div class="ok">En la práctica: calcular el Wronskiano. Si W ≠ 0 → son LI → forman conjunto fundamental.</div>
+  </div>
+
+  <div class="card">
+    <h3>EC. no homogénea — estructura de la solución general</h3>
+    <div class="step">Para la EC completa L(y) = g(x), la solución general es:</div>
+    <div class="f">y = yc + yp</div>
+    <div class="step"><b>yc</b> = función complementaria = SG de la EC homogénea asociada L(y) = 0</div>
+    <div class="step"><b>yp</b> = solución particular = cualquier solución libre de parámetros arbitrarios que satisfaga L(y) = g(x)</div>
+    <div class="note">Al imponer condiciones iniciales sobre la SG y su derivada se calculan los valores específicos de C₁ y C₂ → se obtiene la SP (PVI).</div>
+  </div>
+
+</div>
+
+<div class="sec" id="sec-red">
+
+  <div class="card">
+    <h3>Reducción de orden — idea central</h3>
+    <div class="step">Si se conoce una solución no trivial y₁(x) de la EC homogénea de orden 2, se puede hallar una segunda solución y₂ LI con y₁.</div>
+    <div class="step">Se supone y₂(x) = u(x)·y₁(x) con u(x) incógnita. Como y₂/y₁ ≠ constante → y₂ e y₁ son LI.</div>
+    <div class="step">Se sustituye en la EC para obtener una EC de 1er orden en w = u':</div>
+    <div class="f">g(x)·w'' + h(x)·w' = 0  →  EDO 1er orden: variable dependiente ausente</div>
+  </div>
+
+  <div class="card">
+    <h3>Caso 1 — variable dependiente ausente</h3>
+    <div class="step">EC de la forma: F(x, y', y'') = 0, donde falta y explícitamente.</div>
+    <div class="step">Sustitución: <b>u = y'</b>, entonces u' = y''</div>
+    <div class="f">F(x, u, u') = 0  →  EDO de 1er orden en u</div>
+    <div class="step">Se resuelve para u(x), luego se integra para obtener y = ∫u dx + C</div>
+    <div class="tog" onclick="tog('r1',this)">Ejemplo: xy'' + y' = 0 ↓</div>
+    <div class="xtra" id="r1">
+      Sea u = y' → xu' + u = 0<br>
+      du/u = -dx/x → ln|u| = -ln|x| + C<br>
+      u = C₁/x → y' = C₁/x<br>
+      y = C₁·ln|x| + C₂
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Caso 2 — hallar y₂ a partir de y₁ conocida</h3>
+    <div class="step">EC estándar: y'' + P(x)y' + Q(x)y = 0, con y₁ conocida y₁ ≠ 0</div>
+    <div class="step">Se propone y₂ = u(x)·y₁(x). Se calcula y₂' y y₂'' y se sustituye:</div>
+    <div class="step">Se define w = u' → se obtiene EC de 1er orden separable en w:</div>
+    <div class="f">dw/w + (2y₁'/y₁ + P)dx = 0</div>
+    <div class="step">Integrando:</div>
+    <div class="f">w·y₁² = C·e^(-∫P dx)</div>
+    <div class="step">La fórmula directa para y₂ es:</div>
+    <div class="f">y₂ = y₁(x) · ∫ [e^(-∫P(x)dx) / y₁²(x)] dx</div>
+    <div class="ok">Con C₁=1 y C₂=0 se obtiene la segunda solución independiente limpia.</div>
+    <div class="tog" onclick="tog('r2',this)">Ejemplo: y₁ = eˣ, EC: y'' - y = 0 ↓</div>
+    <div class="xtra" id="r2">
+      P(x) = 0 → e^(-∫0 dx) = 1<br>
+      y₂ = eˣ · ∫ [1/e^(2x)] dx = eˣ · ∫e^(-2x) dx<br>
+      y₂ = eˣ · (-1/2)e^(-2x) = -½e^(-x)<br>
+      → y₂ = e^(-x) (eliminando constante)<br>
+      SG: y = C₁eˣ + C₂e^(-x)
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Cómo identificar el caso</h3>
+    <table>
+      <tr><th>Situación</th><th>Método</th></tr>
+      <tr><td>Falta y explícitamente: F(x, y', y'')=0</td><td>Caso 1: u = y'</td></tr>
+      <tr><td>Se conoce y₁, buscar y₂ LI</td><td>Caso 2: y₂ = u·y₁, fórmula directa</td></tr>
+      <tr><td>Falta x: F(y, y', y'')=0</td><td>u = y', luego u' = u·du/dy</td></tr>
+    </table>
+  </div>
+
+</div>
+
+<div class="sec" id="sec-nhom">
+
+  <div class="card">
+    <h3>EC. no homogéneas — método de coeficientes indeterminados</h3>
+    <div class="step">Para hallar yp cuando g(x) tiene forma particular. Se ensaya yp según el tipo de g(x):</div>
+    <table>
+      <tr><th>g(x)</th><th>yp a ensayar</th></tr>
+      <tr><td>Polinomial: a₀ + a₁x + ... + aₙxⁿ</td><td>Aₙxⁿ + ... + A₁x + A₀</td></tr>
+      <tr><td>Exponencial: aeᵐˣ</td><td>Aeᵐˣ (si m no es raíz de la ec. aux.)</td></tr>
+      <tr><td>m es raíz simple de ec. aux.</td><td>Axeᵐˣ</td></tr>
+      <tr><td>m es raíz doble</td><td>Ax²eᵐˣ</td></tr>
+      <tr><td>a·cos(δx) o a·sen(δx)</td><td>A·cos(δx) + B·sen(δx)</td></tr>
+      <tr><td>Combinación de los anteriores</td><td>Suma de los yp correspondientes</td></tr>
+    </table>
+    <div class="note">Se sustituye yp en la EC y se igualan coeficientes para determinar las constantes A, B, ...</div>
+  </div>
+
+  <div class="card">
+    <h3>Términos TET y TEP</h3>
+    <div class="step"><b>Término de estado transitorio (TET):</b> parte de la solución que tiende a 0 cuando t → ∞. Generalmente son las funciones exponenciales decrecientes.</div>
+    <div class="step"><b>Término de estado permanente (TEP):</b> parte que permanece constante o invariable cuando t → ∞. Generalmente son funciones trigonométricas o constantes.</div>
+    <div class="f">y = yc + yp  →  yc = TET (desaparece),  yp = TEP (permanece)</div>
+  </div>
+
+  <div class="card">
+    <h3>Operadores diferenciales</h3>
+    <div class="step">El operador D transforma una función diferenciable en su derivada: Dy = dy/dx</div>
+    <div class="f">D²y = d²y/dx²  →  Dⁿy = dⁿy/dxⁿ</div>
+    <div class="step">El operador diferencial de orden n: L = aₙ(x)Dⁿ + aₙ₋₁(x)Dⁿ⁻¹ + ... + a₁(x)D + a₀(x)</div>
+    <div class="step">L tiene propiedad de linealidad: L(αf + βg) = αL(f) + βL(g)</div>
+    <div class="step">EC lineal en notación compacta: L(y) = 0 (homogénea), L(y) = g(x) (completa)</div>
+    <div class="tog" onclick="tog('op1',this)">Ejemplo: y'' + 5y' + 6y = 5x - 3 ↓</div>
+    <div class="xtra" id="op1">
+      En notación de operadores: D²y + 5Dy + 6y = 5x - 3<br>
+      → (D² + 5D + 6)y = 5x - 3<br>
+      → L(y) = 5x - 3 donde L = D² + 5D + 6
+    </div>
+  </div>
+
+</div>
+
+<script>
+function sw(id,btn){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('sec-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+function tog(id,btn){
+  const el=document.getElementById(id);
+  el.classList.toggle('open');
+  btn.textContent=el.classList.contains('open')?btn.textContent.replace('↓','↑'):btn.textContent.replace('↑','↓');
+}
+</script>

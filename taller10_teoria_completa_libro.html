@@ -1,0 +1,294 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.tabs{display:flex;gap:6px;margin-bottom:1.5rem;flex-wrap:wrap;padding:1rem 0 0}
+.tab{padding:6px 14px;font-size:13px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);cursor:pointer;background:transparent;color:var(--color-text-secondary);transition:all .15s}
+.tab.active{background:var(--color-background-secondary);color:var(--color-text-primary);border-color:var(--color-border-primary);font-weight:500}
+.sec{display:none}.sec.active{display:block}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin-bottom:.75rem}
+.card h3{font-size:14px;font-weight:500;margin-bottom:.6rem;color:var(--color-text-primary)}
+.f{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.4rem .75rem;font-family:var(--font-mono);font-size:12.5px;margin:.35rem 0;color:var(--color-text-primary)}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:.75rem}
+.note{font-size:12.5px;color:var(--color-text-secondary);margin:.3rem 0 0;line-height:1.5}
+.pill{display:inline-block;font-size:11px;padding:2px 8px;border-radius:var(--border-radius-md);margin:2px}
+.p-teal{background:#E1F5EE;color:#0F6E56}
+.p-amber{background:#FAEEDA;color:#854F0B}
+.p-coral{background:#FAECE7;color:#993C1D}
+.p-blue{background:#E6F1FB;color:#185FA5}
+.p-purple{background:#EEEDFE;color:#534AB7}
+.step{border-left:2px solid var(--color-border-secondary);padding-left:.75rem;margin:.4rem 0;font-size:13px;color:var(--color-text-secondary)}
+.step b{color:var(--color-text-primary)}
+.toggle-btn{display:inline-block;margin-top:.5rem;padding:4px 12px;font-size:12px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);cursor:pointer;background:transparent;color:var(--color-text-secondary)}
+.extra{display:none;margin-top:.6rem;background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.6rem .8rem;font-size:12.5px;color:var(--color-text-secondary)}
+.extra.open{display:block}
+.warn{background:#FAEEDA;border-radius:var(--border-radius-md);padding:.5rem .75rem;font-size:12.5px;color:#854F0B;margin:.4rem 0}
+table{width:100%;font-size:12px;border-collapse:collapse;margin-top:.5rem}
+td,th{padding:5px 8px;border:0.5px solid var(--color-border-tertiary);text-align:left}
+th{font-weight:500;background:var(--color-background-secondary)}
+</style>
+
+<h2 class="sr-only">Teoría completa Taller 10 — EDO de primer orden, extraída y cruzada del libro y resumen</h2>
+
+<div class="tabs">
+  <button class="tab active" onclick="sw('def',this)">Definiciones</button>
+  <button class="tab" onclick="sw('metodos',this)">Métodos</button>
+  <button class="tab" onclick="sw('model',this)">Modelación</button>
+  <button class="tab" onclick="sw('circuitos',this)">Circuitos</button>
+  <button class="tab" onclick="sw('extra',this)">Extras del libro</button>
+</div>
+
+<div class="sec active" id="sec-def">
+
+  <div class="card">
+    <h3>¿Qué es una EDO?</h3>
+    <div class="step">Contiene una función desconocida de <b>una sola variable independiente</b> y sus derivadas. Si hay derivadas respecto a 2 o más variables, es una EDP.</div>
+    <div class="step"><b>Orden:</b> la derivada de mayor orden que aparece. <span class="pill p-teal">y'' - 3y = 5x³ → orden 2</span></div>
+    <div class="step"><b>Grado:</b> el exponente al que está elevada la derivada de mayor orden. <span class="pill p-amber">y'' + 3y' = x⁵ → grado 5</span></div>
+    <div class="step"><b>Linealidad:</b> los exponentes de y y sus derivadas deben ser 1. Las funciones coeficiente dependen solo de x.</div>
+  </div>
+
+  <div class="row2">
+    <div class="card">
+      <h3>Homogénea vs completa</h3>
+      <div class="step"><b>Homogénea:</b> f(x) = 0 → no hay término independiente</div>
+      <div class="step"><b>Completa:</b> f(x) ≠ 0 → hay término independiente</div>
+      <div class="note">También: incompleta / completa</div>
+    </div>
+    <div class="card">
+      <h3>Tipos de solución</h3>
+      <div class="step"><b>General (SG):</b> contiene constante arbitraria C</div>
+      <div class="step"><b>Particular (SP):</b> C determinada por cond. inicial</div>
+      <div class="step"><b>Singular (SS):</b> verifica la EDO pero no pertenece a la SG. Al graficar es la <b>envolvente</b> de la SG.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Familia de curvas → EDO</h3>
+    <div class="step">Derivar y eliminar la constante c. La EDO no contiene c.</div>
+    <div class="f">y(x) = cx² → y' = 2cx → como c = y/x² → EDO: y' = 2y/x</div>
+    <div class="note">Este proceso siempre tiene tantas constantes irreducibles como sea el orden de la ecuación.</div>
+  </div>
+
+  <div class="card">
+    <h3>Campo de direcciones e isóclinas</h3>
+    <div class="step"><b>Campo de direcciones:</b> en cada punto se traza un segmento orientado que representa la pendiente de la tangente. Provee info sobre el comportamiento de la familia de soluciones.</div>
+    <div class="step"><b>Isóclinas:</b> curvas donde la pendiente es constante k. Para y' = 2y/x → isóclinas: y = kx/2</div>
+    <div class="step"><b>Trayectorias ortogonales:</b> se invierte y cambia de signo la pendiente. Si la familia tiene y' = f(x,y), las ortogonales tienen y' = -1/f(x,y)</div>
+    <div class="f">Flia y' = 2y/x → ortogonales: y' = -x/(2y)</div>
+  </div>
+
+  <div class="card">
+    <h3>Curva solución y condiciones iniciales</h3>
+    <div class="step">La curva solución es la gráfica de la solución en el intervalo de definición. Puede diferir del dominio de la función.</div>
+    <div class="step">El <b>Problema de Valor Inicial (PVI)</b> agrega condiciones iniciales a la EDO para obtener la SP.</div>
+    <div class="step"><b>Teorema de existencia y unicidad:</b> si f(x,y) y ∂f/∂y son continuas en una región R, existe una única solución.</div>
+  </div>
+
+</div>
+
+<div class="sec" id="sec-metodos">
+
+  <div class="card">
+    <h3>Separación de variables — EDO homogénea (f(x) = 0)</h3>
+    <div class="step">Para: y'(x) + p(x)·y(x) = 0</div>
+    <div class="f">dy/dx = -p(x)·y → dy/y = -p(x)dx</div>
+    <div class="step">Integrar ambos miembros:</div>
+    <div class="f">ln|y| = -∫p(x)dx + C</div>
+    <div class="f">y(x) = C₀ · e^(-∫p(x)dx)</div>
+    <div class="warn">Atención: al separar variables, los divisores podrían ser cero en algún punto → puede aparecer la solución singular.</div>
+  </div>
+
+  <div class="card">
+    <h3>Factor integrante — EDO completa (f(x) ≠ 0)</h3>
+    <div class="step">Para: y' + P(x)·y = f(x)</div>
+    <div class="step">1. Llevar a forma estándar (dividir por el coeficiente de y')</div>
+    <div class="step">2. Calcular el factor integrante μ:</div>
+    <div class="f">μ(x) = e^(∫P(x)dx)</div>
+    <div class="step">3. Multiplicar ambos lados por μ. El miembro izquierdo se convierte en la derivada del producto:</div>
+    <div class="f">d(μ·y)/dx = f(x)·μ</div>
+    <div class="step">4. Integrar y despejar y:</div>
+    <div class="f">y(x) = (1/μ) · (∫f(x)·μ dx + C)</div>
+    <div class="step">La solución general es: <b>y = yc + yp</b> (solución complementaria + solución particular)</div>
+  </div>
+
+  <div class="card">
+    <h3>EC. exactas — complemento del libro</h3>
+    <div class="step">M(x,y)dx + N(x,y)dy = 0 es exacta si <b>∂M/∂y = ∂N/∂x</b></div>
+    <div class="step">1. Verificar la condición de simetría ∂M/∂y = ∂N/∂x</div>
+    <div class="step">2. Integrar M(x,y) respecto a x → f(x,y) = ∫M dx + φ(y)</div>
+    <div class="step">3. Derivar respecto a y e igualar a N → hallar φ'(y)</div>
+    <div class="step">4. Integrar φ'(y). Solución implícita: f(x,y) = C</div>
+    <div class="note">Este método da directamente la familia de curvas de nivel (solución general).</div>
+  </div>
+
+  <div class="card">
+    <h3>EC. autónoma</h3>
+    <div class="f">dy/dx = f(y) — la variable x no aparece explícitamente</div>
+    <div class="step"><b>Puntos críticos:</b> valores c donde f(c) = 0. También llamados puntos de equilibrio.</div>
+    <div class="step">Si y(x) = c es solución constante de la EC autónoma → <b>solución de equilibrio</b></div>
+    <div class="note">Ejemplo del libro: dP/dt = P(a-bP), a,b > 0. Puntos críticos: P(t)=0 y P(t)=a/b</div>
+  </div>
+
+  <div class="card">
+    <h3>¿Cuándo usar cada método?</h3>
+    <table>
+      <tr><th>Condición</th><th>Método</th></tr>
+      <tr><td>f(x) = 0 y variables separables</td><td>Separación de variables</td></tr>
+      <tr><td>f(x) ≠ 0, lineal de 1er orden</td><td>Factor integrante</td></tr>
+      <tr><td>∂M/∂y = ∂N/∂x</td><td>Ecuación exacta</td></tr>
+      <tr><td>x no aparece explícitamente</td><td>Ecuación autónoma</td></tr>
+    </table>
+  </div>
+
+</div>
+
+<div class="sec" id="sec-model">
+
+  <div class="card">
+    <h3>Desintegración radiactiva</h3>
+    <div class="f">dn/dt = -kn → n(t) = n₀·e^(-kt)</div>
+    <div class="step">k > 0 es la constante de decaimiento. k = 0,0001216 para C14, T½ = 5730 años</div>
+    <div class="f">Modelo vida media: M(t) = M₀·e^(-t·ln2/T)</div>
+    <div class="step">Para hallar edad: t = ln(c_reliquia/c_actual) / (-k)</div>
+    <div class="toggle-btn" onclick="tog('d1',this)">Ejemplo resuelto ↓</div>
+    <div class="extra" id="d1">Cráneo con 1/6 del C14 original → M(t) = (1/6)M₀<br>e^(-t·ln2/5730) = 1/6 → t = 5730·ln6/ln2 = <b>14.811,84 años</b></div>
+  </div>
+
+  <div class="card">
+    <h3>Crecimiento poblacional — modelo de Malthus</h3>
+    <div class="f">dP/dt = kP → P(t) = P₀·e^(kt)</div>
+    <div class="step">Cuando k > 0: crecimiento. Cuando k < 0: decaimiento.</div>
+    <div class="step"><b>Malthus mejorado:</b> tasa de mortalidad proporcional al tamaño. Lím P(t) = a/b (población límite)</div>
+    <div class="f">P'(t) = P(t)(k - k₁) → solución: P(t) = P₀·e^(kt)</div>
+    <div class="step"><b>Modelo logístico:</b> medio ambiente con capacidad de sustento K (capacidad de carga)</div>
+    <div class="f">P(t) = C·a / (e^(-at) + C·b)</div>
+    <div class="toggle-btn" onclick="tog('d2',this)">Ejemplo bacteria ↓</div>
+    <div class="extra" id="d2">P₀=1000, se duplica en 1h → P(1)=2000<br>1000·e^k = 2000 → k = ln2<br>P(1.5) = 1000·e^(1.0397) = <b>2828 bacterias</b><br>P(t)=4000 → t = ln4/ln2 = <b>2 horas</b></div>
+  </div>
+
+  <div class="card">
+    <h3>Eliminación de medicamentos</h3>
+    <div class="f">x'(t) = -kx → x(t) = x₀·e^(-kt)</div>
+    <div class="step">Vida media: tiempo en que x se reduce a la mitad. t = 1/k</div>
+    <div class="step">Concentración en el tiempo: c(t) = a·t·e^(-bt), con a,b > 0</div>
+    <div class="step">a aumenta la amplitud del pico; b controla si la droga aumenta o disminuye</div>
+    <div class="toggle-btn" onclick="tog('d3',this)">Ejemplo pentobarbitol ↓</div>
+    <div class="extra" id="d3">Vida media 5h → e^(-5k) = 1/2 → k = 0,13863<br>Perro 50kg, dosis mín = 45mg/kg × 50 = 2250mg en t=1<br>2250 = x₀·e^(-0,13863) → x₀ = <b>2584,57 mg</b></div>
+  </div>
+
+  <div class="card">
+    <h3>Ley de enfriamiento de Newton</h3>
+    <div class="f">dT/dt = -k(T - Tₘ) → T(t) = C₁·e^(kt) + Tₘ</div>
+    <div class="step">Tₘ = temperatura del medio (constante). k > 0 → calor se disipa en dirección al ambiente.</div>
+    <div class="step">La velocidad de variación de T es proporcional a la diferencia entre T del cuerpo y T del ambiente.</div>
+    <div class="toggle-btn" onclick="tog('d4',this)">Ejemplo taza ↓</div>
+    <div class="extra" id="d4">T(0)=75°C, Tₘ=24°C, T(3)=61°C → C₁=51<br>61 = 24 + 51·e^(3k) → k = ln(37/51)/3 = -0,1069<br>T(18) = 24 + 51·e^(-0,1069×18) = <b>31,44°C</b><br>¿Cuándo T=56°C? → t = ln(32/51)/(-0,106) = <b>4,40 min</b></div>
+  </div>
+
+</div>
+
+<div class="sec" id="sec-circuitos">
+
+  <div class="card">
+    <h3>Leyes de Kirchhoff</h3>
+    <div class="step"><b>Ley de corriente:</b> suma algebraica de corrientes en un nodo = 0</div>
+    <div class="step"><b>Ley de voltaje:</b> suma algebraica de caídas de voltaje = tensión total suministrada</div>
+    <div class="row2" style="margin-top:.5rem">
+      <div>
+        <div class="note" style="font-weight:500;margin-bottom:4px">Elementos y sus caídas</div>
+        <div class="step">Resistencia R → Vᴿ = R·i</div>
+        <div class="step">Inductancia L → Vʟ = L·di/dt</div>
+        <div class="step">Capacitor C → Vᴄ = (1/C)·q</div>
+      </div>
+      <div>
+        <div class="note" style="font-weight:500;margin-bottom:4px">Unidades</div>
+        <div class="step">E(t) → voltios (V)</div>
+        <div class="step">R → ohms (Ω)</div>
+        <div class="step">L → henrios (H)</div>
+        <div class="step">C → faradios (F)</div>
+        <div class="step">q → coulombs; i → amperios</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Circuito RL — 1er orden</h3>
+    <div class="step">Kirchhoff: L·di/dt + R·i = E(t) → EDO 1er orden completa</div>
+    <div class="f">di/dt + (R/L)·i = E(t)/L</div>
+    <div class="step">Factor integrante: μ = e^(Rt/L)</div>
+    <div class="f">i(t) = V/R + k·e^(-Rt/L)</div>
+    <div class="step">Condición inicial i(0) = i₀ → determina k</div>
+    <div class="toggle-btn" onclick="tog('c1',this)">Ejemplo V=8V, R=10Ω, L=2H ↓</div>
+    <div class="extra" id="c1">i(0)=5 → 5 = 8/10 + k·e⁰ → k = 4,2<br>i(t) = 0,8 + 4,2·e^(-10t/2)<br>i(2) = 0,8 + 4,2·e^(-10) ≈ <b>0,8 A</b></div>
+  </div>
+
+  <div class="card">
+    <h3>Circuito RC — 1er orden</h3>
+    <div class="step">Kirchhoff: R·dq/dt + q/C = V → EDO 1er orden completa</div>
+    <div class="f">dq/dt + q/(RC) = V/R</div>
+    <div class="step">Factor integrante: μ = e^(t/RC)</div>
+    <div class="f">q(t) = VC + k·e^(-t/RC)</div>
+    <div class="toggle-btn" onclick="tog('c2',this)">Ejemplo R=20Ω, C=3×10⁻³F, V=100V ↓</div>
+    <div class="extra" id="c2">dq/dt + q/0,06 = 5<br>Solución: q(t) = 5·3×10⁻³ + k·e^(-t/0,06)<br>q(t) = 0,015 + k·e^(-t/0,06)</div>
+  </div>
+
+</div>
+
+<div class="sec" id="sec-extra">
+
+  <div class="card">
+    <h3>Solución explícita vs implícita</h3>
+    <div class="step"><b>Explícita:</b> la variable dependiente se expresa directamente en términos de x. Ej: y = e^(x²)</div>
+    <div class="step"><b>Implícita:</b> una relación G(x,y)=0 contiene al menos una función que satisface la EDO en I. Ej: x²+y²=25</div>
+    <div class="note">La curva solución puede diferir del dominio de la función y del intervalo de definición de la solución.</div>
+  </div>
+
+  <div class="card">
+    <h3>Problema de valor inicial (PVI)</h3>
+    <div class="f">dy/dx = f(x,y) , y(x₀) = y₀</div>
+    <div class="step">Se busca una solución definida en algún intervalo I que contenga x₀ y satisfaga la condición inicial.</div>
+    <div class="step">Para resolverlo: 1) hallar la familia n-paramétrica de soluciones, 2) usar la condición inicial para determinar las constantes.</div>
+  </div>
+
+  <div class="card">
+    <h3>Ecuación diferencial autónoma y puntos de equilibrio</h3>
+    <div class="f">dy/dx = f(y) — x no aparece explícitamente</div>
+    <div class="step">Si y = c constante satisface f(c) = 0 → <b>solución de equilibrio</b> (también: punto crítico o estacionario)</div>
+    <div class="step">En el campo de direcciones, las soluciones de equilibrio son rectas horizontales.</div>
+    <div class="step">Interpretación: creciente si dy/dx > 0; decreciente si dy/dx < 0</div>
+  </div>
+
+  <div class="card">
+    <h3>Modelo logístico — Malthus mejorado</h3>
+    <div class="f">P'(t) = P(a - bP) , a,b > 0</div>
+    <div class="step">Capacidad de sustento del medio: K = a/b</div>
+    <div class="step">Puntos críticos: P(t)=0 y P(t)=a/b</div>
+    <div class="f">P(t) = C·a / (e^(-at) + C·b)</div>
+    <div class="step">A medida que t→∞, P(t)→a/b (población límite)</div>
+    <div class="note">Agrega término de competencia intraespecífica proporcional al nº de interacciones bipártitas P(P-1)/2</div>
+  </div>
+
+  <div class="card">
+    <h3>Trayectorias ortogonales — procedimiento completo</h3>
+    <div class="step">1. Obtener la EDO de la familia de curvas G(x,y,c)=0</div>
+    <div class="step">2. Aplicar la condición de perpendicularidad: la nueva EDO es y' = -1/f(x,y)</div>
+    <div class="step">3. Resolver esa nueva EDO → solución = familia de trayectorias ortogonales</div>
+    <div class="f">Flia y = cx² → y' = 2y/x → ortogonales: y' = -x/(2y)</div>
+    <div class="note">Las familias de trayectorias ortogonales aparecen en electrostática, flujo de calor, mapas topográficos.</div>
+  </div>
+
+</div>
+
+<script>
+function sw(id,btn){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('sec-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+function tog(id,btn){
+  const el=document.getElementById(id);
+  el.classList.toggle('open');
+  btn.textContent=el.classList.contains('open')?btn.textContent.replace('↓','↑'):btn.textContent.replace('↑','↓');
+}
+</script>

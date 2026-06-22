@@ -1,0 +1,313 @@
+
+<style>
+*{box-sizing:border-box;margin:0;padding:0}
+.tabs{display:flex;gap:6px;flex-wrap:wrap;padding:1rem 0 0;margin-bottom:1.5rem}
+.tab{padding:6px 14px;font-size:13px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);cursor:pointer;background:transparent;color:var(--color-text-secondary)}
+.tab.active{background:var(--color-background-secondary);color:var(--color-text-primary);border-color:var(--color-border-primary);font-weight:500}
+.sec{display:none}.sec.active{display:block}
+.card{background:var(--color-background-primary);border:0.5px solid var(--color-border-tertiary);border-radius:var(--border-radius-lg);padding:1rem 1.25rem;margin-bottom:.75rem}
+.card h3{font-size:14px;font-weight:500;margin-bottom:.6rem}
+.f{background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.4rem .75rem;font-family:var(--font-mono);font-size:12.5px;margin:.35rem 0;color:var(--color-text-primary)}
+.row2{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:.75rem}
+.step{border-left:2px solid var(--color-border-secondary);padding-left:.75rem;margin:.35rem 0;font-size:13px;color:var(--color-text-secondary);line-height:1.5}
+.step b{color:var(--color-text-primary)}
+.note{font-size:12px;color:var(--color-text-secondary);margin-top:.4rem;line-height:1.5}
+.pill{display:inline-block;font-size:11px;padding:2px 8px;border-radius:var(--border-radius-md);margin:2px}
+.p-teal{background:#E1F5EE;color:#0F6E56}
+.p-amber{background:#FAEEDA;color:#854F0B}
+.p-coral{background:#FAECE7;color:#993C1D}
+.p-purple{background:#EEEDFE;color:#534AB7}
+.p-blue{background:#E6F1FB;color:#185FA5}
+.warn{background:#FAEEDA;border-radius:var(--border-radius-md);padding:.5rem .75rem;font-size:12.5px;color:#854F0B;margin:.4rem 0}
+.ok{background:#E1F5EE;border-radius:var(--border-radius-md);padding:.5rem .75rem;font-size:12.5px;color:#0F6E56;margin:.4rem 0}
+.tog{display:inline-block;margin-top:.5rem;padding:4px 12px;font-size:12px;border:0.5px solid var(--color-border-secondary);border-radius:var(--border-radius-md);cursor:pointer;background:transparent;color:var(--color-text-secondary)}
+.xtra{display:none;margin-top:.6rem;background:var(--color-background-secondary);border-radius:var(--border-radius-md);padding:.6rem .8rem;font-size:12.5px;color:var(--color-text-secondary);line-height:1.6}
+.xtra.open{display:block}
+table{width:100%;font-size:12px;border-collapse:collapse;margin-top:.5rem}
+td,th{padding:5px 8px;border:0.5px solid var(--color-border-tertiary);text-align:left}
+th{font-weight:500;background:var(--color-background-secondary)}
+</style>
+
+<h2 class="sr-only">Teoría completa Taller 12 — Movimiento Armónico Simple, sistema masa-resorte amortiguado y libre</h2>
+
+<div class="tabs">
+  <button class="tab active" onclick="sw('mas',this)">MAS libre</button>
+  <button class="tab" onclick="sw('amort',this)">Amortiguado</button>
+  <button class="tab" onclick="sw('forz',this)">Forzado</button>
+  <button class="tab" onclick="sw('rlc',this)">Circuito RLC</button>
+  <button class="tab" onclick="sw('res',this)">Resonancia</button>
+</div>
+
+<div class="sec active" id="sec-mas">
+
+  <div class="card">
+    <h3>Movimiento Armónico Simple — modelo físico</h3>
+    <div class="step">Sistema: resorte + masa "m" suspendidos. La fuerza impulsora actúa sobre la masa.</div>
+    <div class="step"><b>Ley de Hooke:</b> el resorte ejerce una fuerza de restitución proporcional al alargamiento:</div>
+    <div class="f">F = −k·s</div>
+    <div class="step"><b>2da Ley de Newton:</b> equilibrio estático y dinámica dan:</div>
+    <div class="f">W = mg = ks  →  my''(t) + ky(t) = 0</div>
+    <div class="step">Desplazamientos y velocidades positivos hacia abajo y derecha. El mov. comienza si al menos una condición inicial ≠ 0.</div>
+  </div>
+
+  <div class="card">
+    <h3>Ecuación auxiliar y solución general</h3>
+    <div class="step">Se propone y(t) = eʳᵗ. Como m, k son positivos, las raíces son complejas conjugadas:</div>
+    <div class="f">r² + ω² = 0  →  r₁,₂ = ±ωi  donde  ω = √(k/m)</div>
+    <div class="f">y(t) = C₁Cos(ωt) + C₂Sen(ωt)</div>
+    <div class="ok">Condición inicial: C₁ = y(0),  C₂ = y'(0)/ω</div>
+  </div>
+
+  <div class="row2">
+    <div class="card">
+      <h3>Magnitudes del MAS</h3>
+      <div class="step"><b>Frecuencia angular:</b></div>
+      <div class="f">ω = √(k/m)</div>
+      <div class="step"><b>Período:</b></div>
+      <div class="f">T = 2π/ω</div>
+      <div class="step"><b>Frecuencia:</b></div>
+      <div class="f">f = 1/T = ω/2π</div>
+    </div>
+    <div class="card">
+      <h3>Forma alternativa</h3>
+      <div class="step">Expresión senoidal con amplitud y fase:</div>
+      <div class="f">y(t) = A·Sen(ωt + φ)</div>
+      <div class="f">A = √(C₁² + C₂²)</div>
+      <div class="f">tan(φ) = C₁/C₂</div>
+      <div class="note">φ = ángulo de fase. Elegir cuadrante según signos de C₁ y C₂.</div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Ángulo de fase — cuadrante correcto</h3>
+    <table>
+      <tr><th>C₁</th><th>C₂</th><th>Cuadrante</th><th>φ correcto</th></tr>
+      <tr><td>> 0</td><td>> 0</td><td>1°</td><td>φ_calc (calculadora)</td></tr>
+      <tr><td>< 0</td><td>< 0</td><td>3°</td><td>φ_calc + π</td></tr>
+      <tr><td>> 0 (sen > 0)</td><td>< 0</td><td>2°</td><td>φ_calc + π</td></tr>
+      <tr><td>< 0 (sen < 0)</td><td>> 0</td><td>4°</td><td>φ_calc (correcto)</td></tr>
+    </table>
+  </div>
+
+  <div class="card">
+    <h3>Resortes en paralelo y en serie</h3>
+    <div class="row2">
+      <div>
+        <div class="step"><b>Paralelo:</b></div>
+        <div class="f">k_eq = k₁ + k₂</div>
+      </div>
+      <div>
+        <div class="step"><b>Serie:</b></div>
+        <div class="f">1/k_eq = 1/k₁ + 1/k₂</div>
+      </div>
+    </div>
+    <div class="tog" onclick="tog('ej1',this)">Ejemplo: m=2 kg, k=50 N/m ↓</div>
+    <div class="xtra" id="ej1">
+      ω = √(50/2) = √25 = 5 rad/s<br>
+      x₀ = −1 m, v₀ = 2 m/s<br>
+      C₁ = −1, C₂ = 2/5 = 0.4<br>
+      x(t) = −cos(5t) + 0.4·sen(5t)<br>
+      Amplitud A = √(1 + 0.16) ≈ 1.08 m<br>
+      Período T = 2π/5 ≈ 1.26 s<br>
+      Frecuencia f = 5/2π ≈ 0.8 Hz
+    </div>
+  </div>
+
+  <div class="card">
+    <h3>Energía del oscilador armónico simple</h3>
+    <div class="step">Sistema conservativo → energía total constante:</div>
+    <div class="f">Et = Ec + Ep</div>
+    <div class="f">Ec = ½m·(y'(t))²  →  Ep = ½k·(y(t))²</div>
+    <div class="f">Ep_máxima = ½kA²  cuando Ec = 0</div>
+  </div>
+
+</div>
+
+<div class="sec" id="sec-amort">
+
+  <div class="card">
+    <h3>Movimiento amortiguado y libre</h3>
+    <div class="step">En sistemas reales actúan fuerzas disipativas (fricción) que retardan el mov. La energía mecánica disminuye con el tiempo.</div>
+    <div class="step">Modelo con amortiguamiento (β > 0):</div>
+    <div class="f">my''(t) + by'(t) + ky(t) = 0</div>
+    <div class="f">EC auxiliar: mr² + br + k = 0</div>
+    <div class="f">r₁,₂ = (−b ± √(b²−4km)) / 2m</div>
+  </div>
+
+  <div class="card">
+    <h3>Tres casos según el discriminante</h3>
+    <table>
+      <tr><th>Sistema</th><th>Condición</th><th>Raíces</th><th>Solución general</th></tr>
+      <tr>
+        <td><span class="pill p-coral">Sobreamortiguado</span></td>
+        <td>b²−4km > 0</td>
+        <td>r₁ ≠ r₂ ∈ ℝ</td>
+        <td>C₁eʳ¹ᵗ + C₂eʳ²ᵗ<br><span style="font-size:11px;color:#993C1D">Pasa P.E. más de 1 vez</span></td>
+      </tr>
+      <tr>
+        <td><span class="pill p-amber">Críticamente amortiguado</span></td>
+        <td>b²−4km = 0</td>
+        <td>r₁ = r₂ = r ∈ ℝ</td>
+        <td>C₁eʳᵗ + C₂t·eʳᵗ<br><span style="font-size:11px;color:#854F0B">Pasa P.E. a lo más 1 vez</span></td>
+      </tr>
+      <tr>
+        <td><span class="pill p-teal">Subamortiguado</span></td>
+        <td>b²−4km < 0</td>
+        <td>r = α ± βi<br>α = −b/2m<br>β = √(4km−b²)/2m</td>
+        <td>eᵅᵗ(C₁Cos(βt) + C₂Sen(βt))<br><span style="font-size:11px;color:#0F6E56">Oscila, amplitud → 0</span></td>
+      </tr>
+    </table>
+    <div class="note">λ²−ω² > 0 → sobre | λ²−ω² = 0 → crítico | λ²−ω² < 0 → sub<br>donde λ = b/2m, ω = √(k/m)</div>
+  </div>
+
+  <div class="card">
+    <h3>Forma alternativa — subamortiguado</h3>
+    <div class="f">y(t) = A·e^(αt)·Sen(√(ω²−λ²)·t + φ)</div>
+    <div class="step"><b>Amplitud amortiguada:</b> A·e^(αt) → 0 cuando t → ∞</div>
+    <div class="step"><b>Cuasiperiodo:</b> 2π/√(ω²−λ²) — intervalo entre 2 máximos sucesivos</div>
+    <div class="step"><b>Cuasifrecuencia:</b> √(ω²−λ²) / 2π</div>
+    <div class="note">La curva admite una asíntota horizontal y = 0 (P.E.).</div>
+  </div>
+
+</div>
+
+<div class="sec" id="sec-forz">
+
+  <div class="card">
+    <h3>Movimiento amortiguado y forzado</h3>
+    <div class="step">Se agrega una fuerza externa de excitación f(t) al sistema:</div>
+    <div class="f">my''(t) + by'(t) + ky(t) = f(t)</div>
+    <div class="step"><b>Solución general:</b></div>
+    <div class="f">Yg(t) = Yh(t) + Yp(t)</div>
+    <div class="step">Yh = función complementaria (sol. de la ec. homogénea)</div>
+    <div class="step">Yp = solución particular de la ec. completa</div>
+  </div>
+
+  <div class="card">
+    <h3>Términos transitorio y permanente</h3>
+    <div class="step"><b>TET (término de estado transitorio):</b> parte de la solución que tiende a 0 cuando t → ∞. Son las funciones exponenciales decrecientes (Yh si λ > 0).</div>
+    <div class="step"><b>TEP (término de estado permanente):</b> parte que permanece constante o invariable cuando t → ∞. Son las funciones trigonométricas o constantes (generalmente Yp).</div>
+    <div class="f">y = Yh + Yp  →  Yh = TET,  Yp = TEP</div>
+  </div>
+
+  <div class="card">
+    <h3>Método de coeficientes indeterminados — Yp a ensayar</h3>
+    <table>
+      <tr><th>f(t)</th><th>Yp a ensayar</th></tr>
+      <tr><td>Polinomial: a₀ + a₁t + ... + aₙtⁿ</td><td>Aₙtⁿ + ... + A₁t + A₀</td></tr>
+      <tr><td>Exponencial: aeᵐᵗ (m no es raíz)</td><td>Aeᵐᵗ</td></tr>
+      <tr><td>m es raíz simple de ec. aux.</td><td>Ateᵐᵗ</td></tr>
+      <tr><td>m es raíz doble</td><td>At²eᵐᵗ</td></tr>
+      <tr><td>a·Cos(δt) o a·Sen(δt)</td><td>A·Cos(δt) + B·Sen(δt)</td></tr>
+      <tr><td>Combinación</td><td>Suma de los Yp correspondientes</td></tr>
+    </table>
+    <div class="note">Sustituir Yp en la EC e igualar coeficientes para encontrar A, B, ...</div>
+  </div>
+
+  <div class="card">
+    <h3>Mov. forzado NO amortiguado</h3>
+    <div class="step">Sin fuerza de amortiguamiento (b=0) y con fuerza periódica f(t) = F₀Sen(γt):</div>
+    <div class="f">x'' + ω²x = F(t)  donde F(t) = f(t)/m</div>
+    <div class="step">Si γ ≠ ω (frecuencias distintas):</div>
+    <div class="f">Yp(t) = F₀/(ω²−γ²) · Sen(γt)</div>
+    <div class="f">X(t) = C₁Cos(ωt) + C₂Sen(ωt) + F₀/(ω²−γ²)·Sen(γt)</div>
+  </div>
+
+</div>
+
+<div class="sec" id="sec-rlc">
+
+  <div class="card">
+    <h3>Circuito RLC en serie — modelo</h3>
+    <div class="step">Por la 2da Ley de Kirchhoff, la suma de las caídas de voltaje es igual a la tensión total aplicada:</div>
+    <div class="f">L·di/dt + Ri + (1/C)·q = E(t)</div>
+    <div class="step">Como i = dq/dt → i' = q'':</div>
+    <div class="f">L·q'' + R·q' + (1/C)·q = E(t)</div>
+    <div class="f">EDO lineal de 2° orden completa → Solución: q(t) = qh(t) + qp(t)</div>
+  </div>
+
+  <div class="card">
+    <h3>Analogía mecánico-eléctrica</h3>
+    <table>
+      <tr><th>Mecánica</th><th>Eléctrica</th></tr>
+      <tr><td>masa m</td><td>inductancia L [H]</td></tr>
+      <tr><td>amort. b</td><td>resistencia R [Ω]</td></tr>
+      <tr><td>constante k</td><td>1/capacitancia 1/C [F⁻¹]</td></tr>
+      <tr><td>fuerza f(t)</td><td>voltaje E(t) [V]</td></tr>
+      <tr><td>posición y(t)</td><td>carga q(t) [C]</td></tr>
+      <tr><td>velocidad y'(t)</td><td>corriente i(t) [A]</td></tr>
+    </table>
+    <div class="note">Misma estructura → mismos 3 casos (sobre/crítico/sub) según R²−4L/C.</div>
+  </div>
+
+  <div class="card">
+    <h3>Vibraciones eléctricas libres (E(t)=0)</h3>
+    <div class="f">EC auxiliar: Lm² + Rm + 1/C = 0</div>
+    <div class="step">Factor de decaimiento: e^(−Rt/2L)</div>
+    <div class="step">Si E(t) = 0 y R = 0: circuito no amortiguado, las vibraciones eléctricas no tienden a 0 → respuesta armónica simple.</div>
+    <div class="step">Si E(t) ≠ 0 (periódico o constante) y R ≠ 0:</div>
+    <div class="f">R ≠ 0 → Yh es solución transitoria</div>
+    <div class="f">Yp es solución de estado estable</div>
+    <div class="step">Cuando E(t) es periódica o constante:</div>
+    <div class="f">Reactancia: X = Lγ − 1/(Cγ)</div>
+    <div class="f">Impedancia: Z = √(X² + R²)</div>
+  </div>
+
+  <div class="card">
+    <h3>Caídas de voltaje</h3>
+    <table>
+      <tr><th>Elemento</th><th>Caída de voltaje</th></tr>
+      <tr><td>Resistencia R</td><td>E_R = R·i</td></tr>
+      <tr><td>Inductancia L</td><td>E_L = L·di/dt</td></tr>
+      <tr><td>Capacitor C</td><td>E_C = (1/C)·q</td></tr>
+    </table>
+  </div>
+
+</div>
+
+<div class="sec" id="sec-res">
+
+  <div class="card">
+    <h3>Resonancia pura (γ → ω, sin amortiguamiento)</h3>
+    <div class="step">Cuando la frecuencia de la fuerza externa γ → frecuencia natural ω, la amplitud crece sin límite.</div>
+    <div class="step">Se aplica L'Hôpital al límite:</div>
+    <div class="f">x(t) = lim(γ→ω) F₀(-γSen(ωt)+ωSen(γt)) / ω(ω²-γ²)</div>
+    <div class="f">= F₀/(2ω²) · (-Sen(ωt) + ωt·Cos(ωt))</div>
+    <div class="step">Cuando t → ∞, los desplazamientos crecen sin límite.</div>
+    <div class="warn">Sintonización de frecuencias: la frecuencia impulsora γ coincide con la natural ω → pulsación/resonancia.</div>
+  </div>
+
+  <div class="card">
+    <h3>Resonancia en sistema con amortiguamiento</h3>
+    <div class="step">La frecuencia angular resonante es el valor de γ para el cual la amplitud de la oscilación es máxima.</div>
+    <div class="step">Para el movimiento forzado y amortiguado la amplitud de Yp depende de γ:</div>
+    <div class="f">Amplitud Yp = F₀ / √((ω²-γ²)² + (2λγ)²)</div>
+    <div class="step">Se maximiza derivando respecto a γ e igualando a 0:</div>
+    <div class="f">γ_resonante = √(ω² - 2λ²)</div>
+    <div class="note">Solo existe γ_resonante real si ω² > 2λ² (sistema subamortiguado suficientemente débil).</div>
+  </div>
+
+  <div class="card">
+    <h3>Pulsación y modulación</h3>
+    <div class="step"><b>Pulsación:</b> fenómeno que ocurre cuando 2 frecuencias son próximas entre sí. La amplitud oscila lentamente.</div>
+    <div class="step"><b>Modulación de amplitud:</b> mismo fenómeno en electrónica, utilizado para afinar instrumentos.</div>
+    <div class="step">Oscilaciones forzadas → frecuencia de la fuerza exterior, no la del cuerpo.</div>
+    <div class="step">La respuesta depende de la relación entre frecuencia natural ω y forzada γ.</div>
+    <div class="ok">Si sistema es subamortiguado (Δ < 0) → grandes oscilaciones cuando la frecuencia de la función rozamiento ≥ resonancia del sist.</div>
+  </div>
+
+</div>
+
+<script>
+function sw(id,btn){
+  document.querySelectorAll('.sec').forEach(s=>s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t=>t.classList.remove('active'));
+  document.getElementById('sec-'+id).classList.add('active');
+  btn.classList.add('active');
+}
+function tog(id,btn){
+  const el=document.getElementById(id);
+  el.classList.toggle('open');
+  btn.textContent=el.classList.contains('open')?btn.textContent.replace('↓','↑'):btn.textContent.replace('↑','↓');
+}
+</script>
