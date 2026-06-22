@@ -740,6 +740,300 @@ details>*:not(summary){padding:1rem 1.4rem;}
     <li>Para disco completo: \(\theta\in[0,2\pi]\). Para semicírculo superior: \(\theta\in[0,\pi]\). Para cuadrante I: \(\theta\in[0,\pi/2]\)</li>
   </ul>
 </div>
+
+<h3 id="guia-ejercicios-parcial">★ Ejercicios de Parcial EDO — Todos los Temas por Tipo</h3>
+<div class="warnbox">
+  <div class="warnbox-label">Estructura del parcial EDO</div>
+  <p>Cada tema tiene exactamente <strong>4 ejercicios de práctica</strong>: (3) Modelado con EDO de 1° orden · (4) EDO 2° orden: homogénea + planteo de yp · (5) Variación de Parámetros con PVI · (6) Sistema Masa-Resorte (MAS). Se muestran aquí todos los enunciados reales agrupados por tipo.</p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<h4>🌿 Tipo A — Modelado con EDO de 1° Orden</h4>
+<!-- ══════════════════════════════════════════════════════ -->
+
+<div class="ejercbox">
+  <div class="ejercbox-label">Tema 1 — Crecimiento de microalgas</div>
+  <p>En un entorno controlado se introduce una población de microalgas. La tasa de variación de la población con respecto al tiempo es directamente proporcional a la cantidad de algas presentes en cualquier instante \(t\) (medido en días). Al inicio del experimento se contabilizan <strong>500 unidades</strong>. Tras 4 días de observación la población ha incrementado a <strong>1200 unidades</strong>. Se pide:</p>
+  <ul>
+    <li>a) La solución general de la ecuación diferencial que modela el fenómeno, y la solución particular según los datos. <em>(1p)</em></li>
+    <li>b) El tamaño de la población al cabo de 10 días. <em>(0,5p)</em></li>
+    <li>c) ¿En qué momento la población alcanzará las 5000 unidades? <em>(0,5p)</em></li>
+  </ul>
+  <p><strong>Modelo:</strong> \(\dfrac{dP}{dt}=kP\) → \(P(t)=P_0e^{kt}\), \(P(0)=500\), \(P(4)=1200\).</p>
+</div>
+
+<div class="ejercbox">
+  <div class="ejercbox-label">Tema 2 — Decaimiento radiactivo</div>
+  <p>Un resto orgánico encontrado en una excavación contiene una sustancia radiactiva que se desintegra a una tasa proporcional a la cantidad presente. Originalmente la muestra contenía <strong>100 mg</strong>; después de <strong>2000 años</strong> se observa que la cantidad se ha reducido a <strong>85 mg</strong>. Se pide:</p>
+  <ul>
+    <li>a) La expresión matemática (solución particular) que rige la cantidad de sustancia radiactiva en función del tiempo. <em>(1p)</em></li>
+    <li>b) La cantidad de sustancia que quedará después de 5000 años. <em>(0,5p)</em></li>
+    <li>c) Calcule la "vida media" de la sustancia. <em>(0,5p)</em></li>
+  </ul>
+  <p><strong>Modelo:</strong> \(\dfrac{dA}{dt}=kA\) → \(A(t)=A_0e^{kt}\), \(A(0)=100\), \(A(2000)=85\).</p>
+</div>
+
+<div class="ejercbox">
+  <div class="ejercbox-label">Tema 3 — Enfriamiento de Newton</div>
+  <p>Se encuentra un objeto metálico que fue extraído de una fundición y dejado en una habitación que mantiene una temperatura constante de <strong>20 °C</strong>. Al momento de ser descubierto, el objeto tiene una temperatura de <strong>180 °C</strong>. Pasados 10 minutos, su temperatura ha descendido a <strong>120 °C</strong>. Sabiendo que la rapidez de cambio de la temperatura del objeto es proporcional a la diferencia entre la temperatura del objeto y la del medio ambiente, determine:</p>
+  <ul>
+    <li>a) La función de temperatura \(T(t)\) que describe el enfriamiento del objeto. <em>(1p)</em></li>
+    <li>b) ¿Cuál será la temperatura del objeto cuando hayan transcurrido 25 minutos? <em>(0,5p)</em></li>
+    <li>c) ¿Cuánto tiempo debe pasar para que el objeto alcance una temperatura de 35 °C? <em>(0,5p)</em></li>
+  </ul>
+  <p><strong>Modelo:</strong> \(\dfrac{dT}{dt}=k(T-T_m)\) → \(T(t)=T_m+(T_0-T_m)e^{kt}\), \(T_m=20\), \(T(0)=180\), \(T(10)=120\).</p>
+</div>
+
+<div class="ejercbox">
+  <div class="ejercbox-label">Tema 4 — Crecimiento de biomasa (bioetanol)</div>
+  <p>En un proceso de producción de bioetanol se inocula un tanque con una cepa de levaduras. La tasa de crecimiento de la biomasa es proporcional a la cantidad presente. Si inicialmente hay <strong>2 kg de biomasa</strong> y las condiciones del sustrato permiten que esta se triplique en <strong>5 horas</strong>, determine:</p>
+  <ul>
+    <li>a) El modelo particular de crecimiento de la biomasa. <em>(1p)</em></li>
+    <li>b) La cantidad de biomasa presente tras 12 horas de operación continua. <em>(0,5p)</em></li>
+    <li>c) El tiempo necesario para alcanzar los 50 kg, punto en el cual se debe iniciar la fase de cosecha. <em>(0,5p)</em></li>
+  </ul>
+  <p><strong>Modelo:</strong> \(\dfrac{dB}{dt}=kB\) → \(B(t)=B_0e^{kt}\), \(B(0)=2\), \(B(5)=6\).</p>
+</div>
+
+<div class="ejercbox">
+  <div class="ejercbox-label">Tema 5 — Crecimiento bacteriano en depósito de agua</div>
+  <p>Un estudio de ingeniería ambiental detecta una bacteria infiltrada en un depósito de agua subterránea. Se estima que la población crece a un ritmo proporcional a la población actual. Una muestra inicial detecta <strong>1500 UFC/ml</strong>. A las 48 horas la concentración subió a <strong>2200 UFC/ml</strong>. Determine:</p>
+  <ul>
+    <li>a) La función de concentración en relación al tiempo (días). <em>(1p)</em></li>
+    <li>b) La concentración esperada tras una semana. <em>(0,5p)</em></li>
+    <li>c) El tiempo que tardará la bacteria en colonizar el depósito alcanzando las 10000 UFC/ml, momento en que el agua se considerará no potable. <em>(0,5p)</em></li>
+  </ul>
+  <p><strong>Modelo:</strong> \(\dfrac{dC}{dt}=kC\) → \(C(t)=C_0e^{kt}\), \(C(0)=1500\), \(C(2)=2200\) (t en días).</p>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<h4>📐 Tipo B — EDO 2° Orden: Homogénea + Planteo de y<sub>p</sub></h4>
+<!-- ══════════════════════════════════════════════════════ -->
+<p style="color:var(--ink2);font-size:14px;margin-bottom:1rem">En todos los casos: (a) resolver la homogénea con las CI dadas; (b) <em>plantear solo la forma</em> de \(y_p\) (no resolver) para cada escenario del término no homogéneo.</p>
+
+<div class="ejercbox">
+  <div class="ejercbox-label">Tema 1 — Control de inventario en planta de ensamblaje</div>
+  <p>La variación del nivel de inventario \(y\) respecto al tiempo \(t\) se modela mediante: \[y'' + 4y' + 4y = R(t)\] con condiciones iniciales \(y(0) = 100\), \(y'(0) = 0\).</p>
+  <ul>
+    <li>a) Halle la solución cuando no hay pedidos externos (\(R(t)=0\)). <em>(0,5p)</em></li>
+    <li>b) Plantee la forma de \(y_p\) para: <em>(1p)</em>
+      <ul>
+        <li>\(y''+4y'+4y = 10e^{-2t}\) <em>(Ajuste exponencial crítico)</em> → \(y_p=\) ?</li>
+        <li>\(y''+4y'+4y = 50t+10\) <em>(Crecimiento lineal de demanda)</em> → \(y_p=\) ?</li>
+        <li>\(y''+4y'+4y = \sin(2t)\) <em>(Demanda estacional cíclica)</em> → \(y_p=\) ?</li>
+      </ul>
+    </li>
+  </ul>
+  <div class="exambox" style="margin-top:0.8rem">
+    <div class="exambox-label">Claves de planteo</div>
+    <p>Ec. auxiliar: \(r^2+4r+4=0 \Rightarrow (r+2)^2=0 \Rightarrow r=-2\) (raíz doble). Para \(10e^{-2t}\): \(\alpha=-2\) es raíz doble → multiplicar por \(x^2\) → \(y_p=Ax^2e^{-2t}\). Para \(50t+10\): polinomio grado 1, \(\alpha=0\) no es raíz → \(y_p=At+B\). Para \(\sin(2t)\): \(\alpha=\pm 2i\) no es raíz → \(y_p=A\cos(2t)+B\sin(2t)\).</p>
+  </div>
+</div>
+
+<div class="ejercbox">
+  <div class="ejercbox-label">Tema 2 — Proceso de refinamiento (concentración de aditivo)</div>
+  <p>La concentración de un aditivo \(y\) en un tanque de mezcla fluctúa según la presión del flujo: \[y'' - 4y' + 3y = R(t)\] con condiciones iniciales \(y(0) = 2\), \(y'(0) = 4\).</p>
+  <ul>
+    <li>a) Determine la solución para el comportamiento del sistema en estado de reposo inicial (\(R(t)=0\)). <em>(0,5p)</em></li>
+    <li>b) Plantee la forma de \(y_p\) para: <em>(1p)</em>
+      <ul>
+        <li>\(y''-4y'+3y = 3e^{3t}\) <em>(Pulso de inyección constante)</em> → \(y_p=\) ?</li>
+        <li>\(y''-4y'+3y = 12e^{5t}\) <em>(Aumento de presión constante)</em> → \(y_p=\) ?</li>
+        <li>\(y''-4y'+3y = 4t^2\) <em>(Variación cuadrática de flujo)</em> → \(y_p=\) ?</li>
+      </ul>
+    </li>
+  </ul>
+  <div class="exambox" style="margin-top:0.8rem">
+    <div class="exambox-label">Claves de planteo</div>
+    <p>Ec. auxiliar: \(r^2-4r+3=0 \Rightarrow (r-1)(r-3)=0 \Rightarrow r_1=1,\,r_2=3\). Para \(3e^{3t}\): \(\alpha=3\) es raíz simple → \(y_p=Axe^{3t}\). Para \(12e^{5t}\): \(\alpha=5\) no es raíz → \(y_p=Ae^{5t}\). Para \(4t^2\): \(\alpha=0\) no es raíz → \(y_p=At^2+Bt+C\).</p>
+  </div>
+</div>
+
+<div class="ejercbox">
+  <div class="ejercbox-label">Tema 3 — Prensa hidráulica (sistema de amortiguación)</div>
+  <p>El desplazamiento \(y\) de una prensa hidráulica se modela para evitar vibraciones excesivas: \[y'' + 5y' + 4y = R(t)\] con condiciones iniciales \(y(0) = 0\), \(y'(0) = 1\).</p>
+  <ul>
+    <li>a) Halle la solución cuando no hay fuerzas externas (\(R(t)=0\)), con \(y(0)=0\) e \(y'(0)=1\). <em>(0,5p)</em></li>
+    <li>b) Plantee la forma de \(y_p\) para: <em>(1p)</em>
+      <ul>
+        <li>\(y''+5y'+4y = e^{-t}\) <em>(Fallo en el suministro de energía)</em> → \(y_p=\) ?</li>
+        <li>\(y''+5y'+4y = \cos(4t)\) <em>(Carga cíclica por motor desbalanceado)</em> → \(y_p=\) ?</li>
+        <li>\(y''+5y'+4y = t^2+1\) <em>(Incremento progresivo de presión de trabajo)</em> → \(y_p=\) ?</li>
+      </ul>
+    </li>
+  </ul>
+  <div class="exambox" style="margin-top:0.8rem">
+    <div class="exambox-label">Claves de planteo</div>
+    <p>Ec. auxiliar: \(r^2+5r+4=0 \Rightarrow (r+1)(r+4)=0 \Rightarrow r_1=-1,\,r_2=-4\). Para \(e^{-t}\): \(\alpha=-1\) es raíz simple → \(y_p=Axe^{-t}\). Para \(\cos(4t)\): \(\alpha=\pm4i\) no es raíz → \(y_p=A\cos(4t)+B\sin(4t)\). Para \(t^2+1\): \(\alpha=0\) no es raíz → \(y_p=At^2+Bt+C\).</p>
+  </div>
+</div>
+
+<div class="ejercbox">
+  <div class="ejercbox-label">Tema 4 — Acumulación de errores en etiquetado</div>
+  <p>En un centro de distribución, la acumulación de errores \(y\) en el etiquetado frente al volumen de carga \(x\) se describe mediante: \[y'' - 3y' - 4y = R(x)\] con condiciones iniciales \(y(0) = 1\), \(y'(0) = -1\).</p>
+  <ul>
+    <li>a) Resuelva la homogénea con \(y(0)=1\) e \(y'(0)=-1\). <em>(0,5p)</em></li>
+    <li>b) Plantee la forma de \(y_p\) para: <em>(1p)</em>
+      <ul>
+        <li>\(y''-3y'-4y = 5e^{4x}\) <em>(Crecimiento logístico acelerado por temporada)</em> → \(y_p=\) ?</li>
+        <li>\(y''-3y'-4y = x^2\) <em>(Desgaste progresivo del sistema de clasificación)</em> → \(y_p=\) ?</li>
+        <li>\(y''-3y'-4y = e^{-4x}\) <em>(Estabilización por implementación de nueva tecnología)</em> → \(y_p=\) ?</li>
+      </ul>
+    </li>
+  </ul>
+  <div class="exambox" style="margin-top:0.8rem">
+    <div class="exambox-label">Claves de planteo</div>
+    <p>Ec. auxiliar: \(r^2-3r-4=0 \Rightarrow (r-4)(r+1)=0 \Rightarrow r_1=4,\,r_2=-1\). Para \(5e^{4x}\): \(\alpha=4\) es raíz simple → \(y_p=Axe^{4x}\). Para \(x^2\): \(\alpha=0\) no es raíz → \(y_p=Ax^2+Bx+C\). Para \(e^{-4x}\): \(\alpha=-4\) no es raíz (las raíces son 4 y −1) → \(y_p=Ae^{-4x}\).</p>
+  </div>
+</div>
+
+<div class="ejercbox">
+  <div class="ejercbox-label">Tema 5 — Ajuste de precios de materia prima</div>
+  <p>El ajuste de precios \(y\) de una materia prima en función de la oferta acumulada se modela para predecir burbujas económicas: \[y'' + 7y' + 10y = R(t)\] con condiciones iniciales \(y(0) = 0\), \(y'(0) = 2\).</p>
+  <ul>
+    <li>a) Halle la estabilidad del sistema (\(R(t)=0\)) dado que \(y(0)=0\) e \(y'(0)=2\). <em>(0,5p)</em></li>
+    <li>b) Plantee la forma de \(y_p\) para: <em>(1p)</em>
+      <ul>
+        <li>\(y''+7y'+10y = e^{-2t}\) <em>(Shock de oferta por agotamiento gradual)</em> → \(y_p=\) ?</li>
+        <li>\(y''+7y'+10y = e^{-5t}\) <em>(Intervención regulatoria agresiva)</em> → \(y_p=\) ?</li>
+        <li>\(y''+7y'+10y = 4\cos(5t)\) <em>(Estacionalidad cíclica de la producción)</em> → \(y_p=\) ?</li>
+      </ul>
+    </li>
+  </ul>
+  <div class="exambox" style="margin-top:0.8rem">
+    <div class="exambox-label">Claves de planteo</div>
+    <p>Ec. auxiliar: \(r^2+7r+10=0 \Rightarrow (r+2)(r+5)=0 \Rightarrow r_1=-2,\,r_2=-5\). Para \(e^{-2t}\): \(\alpha=-2\) es raíz simple → \(y_p=Axe^{-2t}\). Para \(e^{-5t}\): \(\alpha=-5\) es raíz simple → \(y_p=Axe^{-5t}\). Para \(4\cos(5t)\): \(\alpha=\pm5i\) no es raíz → \(y_p=A\cos(5t)+B\sin(5t)\).</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<h4>🔧 Tipo C — Variación de Parámetros (PVI completo)</h4>
+<!-- ══════════════════════════════════════════════════════ -->
+<p style="color:var(--ink2);font-size:14px;margin-bottom:1rem">Resolver completamente el PVI usando el método de Variación de Parámetros. Fórmulas: \(u_1'=-\dfrac{y_2\,g}{W}\), \(u_2'=\dfrac{y_1\,g}{W}\), \(y_p=u_1y_1+u_2y_2\).</p>
+
+<div class="ejercbox">
+  <div class="ejercbox-label">Tema 1 — Función de inventario (Variación de Parámetros)</div>
+  <p>Determine la función de inventario \(y(x)\) si el modelo está regido por: \[4y'' - y = xe^{x/2}\] sabiendo que al inicio del trimestre hay <strong>1 unidad de excedente</strong> y la tasa de variación del inventario es nula. <em>(1,5p)</em></p>
+  <p><strong>CI:</strong> \(y(0)=1\), \(y'(0)=0\).</p>
+  <div class="exambox" style="margin-top:0.8rem">
+    <div class="exambox-label">Guía de resolución</div>
+    <p>Forma estándar: \(y''-\frac{1}{4}y=\frac{x}{4}e^{x/2}\). Ec. auxiliar: \(r^2-\frac{1}{4}=0 \Rightarrow r=\pm\frac{1}{2}\). Conjunto fundamental: \(y_1=e^{x/2}\), \(y_2=e^{-x/2}\). Wronskiano: \(W=y_1y_2'-y_2y_1'=-1\). Entonces \(u_1'=\frac{y_2\cdot(x/4)e^{x/2}}{1}\) (verificar signos). Integrar para hallar \(u_1,u_2\) y luego aplicar CI a \(y=y_H+y_p\).</p>
+  </div>
+</div>
+
+<div class="ejercbox">
+  <div class="ejercbox-label">Tema 2 — Desviación de velocidad (Variación de Parámetros)</div>
+  <p>Encuentre la desviación de la velocidad \(y(x)\) mediante la ecuación: \[2y'' + y' - y = x + 1\] resolviendo con Variación de Parámetros. Considere que en el arranque la desviación es de <strong>1 m/s</strong> y la aceleración inicial de la desviación es nula. <em>(1,5p)</em></p>
+  <p><strong>CI:</strong> \(y(0)=1\), \(y'(0)=0\).</p>
+  <div class="exambox" style="margin-top:0.8rem">
+    <div class="exambox-label">Guía de resolución</div>
+    <p>Forma estándar: \(y''+\frac{1}{2}y'-\frac{1}{2}y=\frac{x+1}{2}\). Ec. auxiliar: \(2r^2+r-1=0 \Rightarrow (2r-1)(r+1)=0 \Rightarrow r_1=\frac{1}{2},\,r_2=-1\). Conjunto fundamental: \(y_1=e^{x/2}\), \(y_2=e^{-x}\). Wronskiano: \(W=-\frac{3}{2}e^{-x/2}\). Calcular \(u_1',u_2'\), integrar y aplicar CI.</p>
+  </div>
+</div>
+
+<div class="ejercbox">
+  <div class="ejercbox-label">Tema 3 — Modelo de costos (Variación de Parámetros)</div>
+  <p>Resuelva el modelo de costos \(y''+2y'-8y = 2e^{-2x}-e^{-x}\) para hallar la evolución del costo particular, asumiendo que el costo inicial es <strong>1 unidad monetaria</strong> sobre el presupuesto y su tendencia de cambio inicial es <strong>estable (0)</strong>. <em>(1,5p)</em></p>
+  <p><strong>CI:</strong> \(y(0)=1\), \(y'(0)=0\).</p>
+  <div class="exambox" style="margin-top:0.8rem">
+    <div class="exambox-label">Guía de resolución</div>
+    <p>Ec. auxiliar: \(r^2+2r-8=0 \Rightarrow (r+4)(r-2)=0 \Rightarrow r_1=-4,\,r_2=2\). Conjunto fundamental: \(y_1=e^{-4x}\), \(y_2=e^{2x}\). Wronskiano: \(W=6e^{-2x}\). Calcular \(u_1'=-\dfrac{y_2(2e^{-2x}-e^{-x})}{W}\), integrar y luego aplicar las CI al general \(y=C_1e^{-4x}+C_2e^{2x}+u_1e^{-4x}+u_2e^{2x}\).</p>
+  </div>
+</div>
+
+<div class="ejercbox">
+  <div class="ejercbox-label">Tema 4 — Vibración forzada (Variación de Parámetros)</div>
+  <p>Obtenga la ecuación de la vibración \(y(x)\) sujeta a: \[y'' - 4y' + 4y = (12x^2 - 6x)e^{2x}\] con un desplazamiento inicial de <strong>1 mm</strong> y partiendo desde el reposo. <em>(1,5p)</em></p>
+  <p><strong>CI:</strong> \(y(0)=1\), \(y'(0)=0\).</p>
+  <div class="exambox" style="margin-top:0.8rem">
+    <div class="exambox-label">Guía de resolución</div>
+    <p>Ec. auxiliar: \(r^2-4r+4=0 \Rightarrow (r-2)^2=0 \Rightarrow r=2\) (raíz doble). Conjunto fundamental: \(y_1=e^{2x}\), \(y_2=xe^{2x}\). Wronskiano: \(W=e^{4x}\). Entonces \(g(x)=(12x^2-6x)e^{2x}\). Calcular \(u_2'=\dfrac{y_1 g}{W}=(12x^2-6x)\), integrar: \(u_2=4x^3-3x^2\). Calcular \(u_1'=-\dfrac{y_2 g}{W}=-(12x^3-6x^2)\), integrar: \(u_1=-3x^4+2x^3\). Aplicar CI.</p>
+  </div>
+</div>
+
+<div class="ejercbox">
+  <div class="ejercbox-label">Tema 5 — Función de defectos (Variación de Parámetros)</div>
+  <p>Determine la función de defectos \(y(x)\) mediante la ecuación: \[y'' - 9y = 9xe^{-3x}\] Al inicio del muestreo el nivel de error es de <strong>1 unidad</strong> y no existe razón de cambio inicial en la aparición de defectos. <em>(1,5p)</em></p>
+  <p><strong>CI:</strong> \(y(0)=1\), \(y'(0)=0\).</p>
+  <div class="exambox" style="margin-top:0.8rem">
+    <div class="exambox-label">Guía de resolución</div>
+    <p>Ec. auxiliar: \(r^2-9=0 \Rightarrow r=\pm3\). Conjunto fundamental: \(y_1=e^{3x}\), \(y_2=e^{-3x}\). Wronskiano: \(W=-6\). \(g(x)=9xe^{-3x}\). \(u_1'=-\dfrac{y_2\cdot9xe^{-3x}}{-6}=\dfrac{9xe^{-6x}}{6}\), integrar por partes. \(u_2'=\dfrac{y_1\cdot9xe^{-3x}}{-6}=-\dfrac{9x}{6}=-\dfrac{3x}{2}\), integrar: \(u_2=-\dfrac{3x^2}{4}\). Aplicar CI.</p>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════ -->
+<h4>⚙️ Tipo D — Sistema Masa-Resorte (MAS)</h4>
+<!-- ══════════════════════════════════════════════════════ -->
+<p style="color:var(--ink2);font-size:14px;margin-bottom:1rem">Ecuación general del MAS: \(m\ddot{x}+c\dot{x}+kx=f(t)\). Recordar: \(k=mg/s\) (peso/elongación estática); en libras-pie usar \(m=W/32\) slugs; en SI, \(m\) en kg directamente.</p>
+
+<div class="ejercbox">
+  <div class="ejercbox-label">Tema 1 — Resorte sin amortiguamiento (movimiento libre no amortiguado)</div>
+  <p>Una masa que pesa <strong>24 libras</strong> se une a un resorte que alarga <strong>4 pulgadas</strong>. La masa se libera desde el reposo desde un punto situado <strong>3 pulgadas arriba</strong> de la posición de equilibrio.</p>
+  <ul>
+    <li>a) Encuentre la ecuación del movimiento. <em>(1p)</em></li>
+    <li>b) Determine la velocidad y la aceleración de la masa en cualquier instante \(t\). Calcule el valor de la velocidad máxima y la aceleración máxima que alcanza el sistema. <em>(0,5p)</em></li>
+    <li>c) ¿En qué instantes la masa pasa por la posición de equilibrio? Determine el primer instante de tiempo en que esto ocurre. <em>(0,5p)</em></li>
+  </ul>
+  <div class="exambox" style="margin-top:0.8rem">
+    <div class="exambox-label">Datos clave</div>
+    <p>\(W=24\text{ lb}\), \(s=4\text{ in}=\frac{1}{3}\text{ ft}\) → \(k=\frac{24}{1/3}=72\text{ lb/ft}\). \(m=\frac{24}{32}=\frac{3}{4}\text{ slug}\). Sin amortiguamiento: \(\frac{3}{4}x''+72x=0\) → \(x''+96x=0\). \(\omega=\sqrt{96}=4\sqrt{6}\text{ rad/s}\). CI: \(x(0)=-\frac{1}{4}\text{ ft}\) (arriba del equilibrio, negativo por convención), \(x'(0)=0\).</p>
+  </div>
+</div>
+
+<div class="ejercbox">
+  <div class="ejercbox-label">Tema 2 — Resorte sin amortiguamiento (SI)</div>
+  <p>Una fuerza de <strong>400 newtons</strong> alarga <strong>2 metros</strong> un resorte. Una masa de <strong>50 kilogramos</strong> se une al extremo del resorte y se libera inicialmente desde la posición de equilibrio con una <strong>velocidad ascendente de 0,5 m/s</strong>.</p>
+  <ul>
+    <li>a) Encuentre la ecuación del movimiento. <em>(1p)</em></li>
+    <li>b) Encuentre las expresiones para la velocidad y la aceleración. ¿Cuál es la aceleración de la masa en el instante en que alcanza su desplazamiento máximo hacia arriba? <em>(0,5p)</em></li>
+    <li>c) Calcule los dos primeros instantes en los que la masa pasa por la posición de equilibrio y los instantes en los que alcanza su máxima extensión hacia abajo. <em>(0,5p)</em></li>
+  </ul>
+  <div class="exambox" style="margin-top:0.8rem">
+    <div class="exambox-label">Datos clave</div>
+    <p>\(k=\frac{400}{2}=200\text{ N/m}\), \(m=50\text{ kg}\). Sin amortiguamiento: \(50x''+200x=0\) → \(x''+4x=0\). \(\omega=2\text{ rad/s}\). CI: \(x(0)=0\), \(x'(0)=-0{,}5\text{ m/s}\) (ascendente = negativo si positivo es hacia abajo).</p>
+  </div>
+</div>
+
+<div class="ejercbox">
+  <div class="ejercbox-label">Tema 3 — Resorte sin amortiguamiento (masa sustituida)</div>
+  <p>Una masa que pesa <strong>10 libras</strong> alarga un resorte <strong>1/3 de pie</strong>. Esta masa se retira y se coloca una de <strong>1,6 slugs</strong>, que se libera desde un punto situado <strong>1/3 de pie arriba</strong> de la posición de equilibrio con una <strong>velocidad descendente de 5/4 pies/s</strong>.</p>
+  <ul>
+    <li>a) Exprese la ecuación de movimiento. <em>(1p)</em></li>
+    <li>b) ¿En qué tiempos la masa logra un desplazamiento debajo de la posición de equilibrio numéricamente igual a \(\frac{1}{2}\) de la amplitud? <em>(1p)</em></li>
+  </ul>
+  <div class="exambox" style="margin-top:0.8rem">
+    <div class="exambox-label">Datos clave</div>
+    <p>\(k=\frac{10}{1/3}=30\text{ lb/ft}\), \(m=1{,}6\text{ slugs}\). Sin amortiguamiento: \(1{,}6x''+30x=0\) → \(x''+\frac{75}{4}x=0\). \(\omega=\frac{5\sqrt{3}}{2}\text{ rad/s}\). CI: \(x(0)=-\frac{1}{3}\text{ ft}\) (arriba), \(x'(0)=\frac{5}{4}\text{ ft/s}\) (descendente = positivo).</p>
+  </div>
+</div>
+
+<div class="ejercbox">
+  <div class="ejercbox-label">Tema 4 — Resorte con amortiguamiento subcrítico</div>
+  <p>Una masa que pesa <strong>4 libras</strong> se une a un resorte cuya constante es <strong>2 lb/pie</strong>. El medio ofrece una fuerza de amortiguamiento numéricamente igual a la <strong>velocidad instantánea</strong>. La masa se libera desde un punto situado <strong>1 pie arriba</strong> de la posición de equilibrio con una <strong>velocidad descendente de 8 pies/s</strong>.</p>
+  <ul>
+    <li>a) Exprese la ecuación de movimiento. <em>(1p)</em></li>
+    <li>b) Determine el tiempo en el que la masa pasa por la posición de equilibrio. <em>(0,5p)</em></li>
+    <li>c) Encuentre el tiempo en el que la masa alcanza su desplazamiento extremo desde la posición de equilibrio. ¿Cuál es la posición de la masa en este instante? <em>(0,5p)</em></li>
+  </ul>
+  <div class="exambox" style="margin-top:0.8rem">
+    <div class="exambox-label">Datos clave</div>
+    <p>\(W=4\text{ lb}\), \(m=\frac{4}{32}=\frac{1}{8}\text{ slug}\), \(k=2\text{ lb/ft}\), \(c=1\text{ lb·s/ft}\). Ecuación: \(\frac{1}{8}x''+x'+2x=0\) → \(x''+8x'+16x=0\). Ec. auxiliar: \(r^2+8r+16=0\Rightarrow(r+4)^2=0\Rightarrow r=-4\) (raíz doble → críticamente amortiguado). CI: \(x(0)=-1\text{ ft}\) (arriba), \(x'(0)=8\text{ ft/s}\) (descendente = positivo).</p>
+  </div>
+</div>
+
+<div class="ejercbox">
+  <div class="ejercbox-label">Tema 5 — Resorte con amortiguamiento (subamortiguado)</div>
+  <p>Un resorte de <strong>4 pies</strong> de largo se alarga <strong>8 pies</strong> después de colgarle una masa que pesa <strong>8 libras</strong>. El medio por el que se mueve la masa ofrece una fuerza de amortiguamiento igual a <strong>\(\sqrt{2}\) veces la velocidad instantánea</strong>. La masa se libera inicialmente desde la posición de equilibrio con una <strong>velocidad descendente de 5 pies/s</strong>.</p>
+  <ul>
+    <li>a) Encuentre la ecuación de movimiento si la masa se libera inicialmente desde la posición de equilibrio con una velocidad descendente de 5 pies/s. <em>(1p)</em></li>
+    <li>b) Calcule el tiempo en que la masa alcanza su desplazamiento extremo desde la posición de equilibrio. ¿Cuál es la posición de la masa en ese instante? <em>(1p)</em></li>
+  </ul>
+  <div class="exambox" style="margin-top:0.8rem">
+    <div class="exambox-label">Datos clave</div>
+    <p>\(W=8\text{ lb}\), elongación \(s=8\text{ ft}\) → \(k=\frac{8}{8}=1\text{ lb/ft}\), \(m=\frac{8}{32}=\frac{1}{4}\text{ slug}\), \(c=\sqrt{2}\text{ lb·s/ft}\). Ecuación: \(\frac{1}{4}x''+\sqrt{2}x'+x=0\) → \(x''+4\sqrt{2}x'+4x=0\). Discriminante: \(\Delta=32-16=16>0\)... verificar si es subamortiguado. CI: \(x(0)=0\), \(x'(0)=5\text{ ft/s}\).</p>
+  </div>
+</div>
+
 <h3 id="guia-teoria">★ Cómo justificar teóricamente (lo que el docente espera escuchar)</h3>
 <div class="defbox">
   <div class="defbox-label">Estructura para preguntas tipo "Justifique / Explique / Desarrolle"</div>
