@@ -433,6 +433,11 @@ details>*:not(summary){padding:1rem 1.4rem;}
 </table>
 
 <h4>📋 Parcial de EDO — Tema 1</h4>
+<div class="exambox" style="margin-bottom:1rem">
+  <div class="exambox-label">Pregunta 1 — Justificación teórica (1p)</div>
+  <p><strong>En el contexto de los problemas con valores iniciales (PVI), ¿cuáles son las condiciones generales para que una solución sea única en una región determinada?</strong></p>
+  <p><strong>Respuesta:</strong> Por el <strong>Teorema de Existencia y Unicidad de Picard</strong>: dado el PVI \(y'=f(x,y)\), \(y(x_0)=y_0\), si \(f(x,y)\) y \(\dfrac{\partial f}{\partial y}\) son <strong>continuas</strong> en una región rectangular \(R\) que contiene al punto \((x_0,y_0)\), entonces existe un intervalo \(I\) centrado en \(x_0\) en el cual el PVI tiene <strong>solución única</strong>. Condición suficiente, no necesaria: si alguna de las dos condiciones falla, puede no haber solución, haber solución no única, o haber infinitas soluciones. Ejemplo de falla: \(y'=y^{1/3}\), \(y(0)=0\) — \(\partial f/\partial y\) no es continua en \(y=0\) → infinitas soluciones.</p>
+</div>
 <table class="vtable">
   <tr><th style="width:42%">Afirmación</th><th style="width:8%">V/F</th><th>Justificación completa</th></tr>
   <tr>
@@ -458,6 +463,12 @@ details>*:not(summary){padding:1rem 1.4rem;}
 </table>
 
 <h4>📋 Parcial de EDO — Tema 2</h4>
+<div class="exambox" style="margin-bottom:1rem">
+  <div class="exambox-label">Pregunta 1 — Justificación teórica (1p)</div>
+  <p><strong>Describa cómo se utiliza una EDO de primer orden para modelar el crecimiento poblacional simple (modelo malthusiano) o el enfriamiento de Newton.</strong></p>
+  <p><strong>Crecimiento malthusiano:</strong> La hipótesis es que la tasa de cambio de la población \(P\) es proporcional al tamaño actual: \(\dfrac{dP}{dt}=kP\). Es una EDO separable y lineal. Se separa: \(\dfrac{dP}{P}=k\,dt\), se integra: \(\ln|P|=kt+C\), con CI \(P(0)=P_0\) se obtiene \(P(t)=P_0e^{kt}\). Si \(k>0\): crecimiento exponencial ilimitado; si \(k<0\): decaimiento exponencial.</p>
+  <p><strong>Enfriamiento de Newton:</strong> La tasa de cambio de temperatura \(T\) es proporcional a la diferencia entre la temperatura del cuerpo y la del medio \(T_m\): \(\dfrac{dT}{dt}=k(T-T_m)\). Con la sustitución \(u=T-T_m\) queda \(\dfrac{du}{dt}=ku\), EDO separable. Solución: \(T(t)=T_m+(T_0-T_m)e^{kt}\), con \(k<0\) si el cuerpo se enfría. La temperatura se aproxima asintóticamente a \(T_m\) cuando \(t\to\infty\).</p>
+</div>
 <table class="vtable">
   <tr><th style="width:42%">Afirmación</th><th style="width:8%">V/F</th><th>Justificación completa</th></tr>
   <tr>
@@ -483,6 +494,17 @@ details>*:not(summary){padding:1rem 1.4rem;}
 </table>
 
 <h4>📋 Parcial de EDO — Tema 5</h4>
+<div class="exambox" style="margin-bottom:1rem">
+  <div class="exambox-label">Pregunta 1 — Justificación teórica (1p)</div>
+  <p><strong>¿En qué casos es preferible utilizar el método de variación de parámetros sobre el de coeficientes indeterminados para resolver una EDO no homogénea?</strong></p>
+  <p><strong>Respuesta:</strong> El <strong>Método de Coeficientes Indeterminados (MCI)</strong> es más sencillo pero solo aplica cuando \(g(x)\) es de forma admisible: polinomios, exponenciales \(e^{\alpha x}\), senos/cosenos, o combinaciones/productos de estos. Se prefiere <strong>Variación de Parámetros (MVP)</strong> cuando:</p>
+  <ul style="color:var(--ink2);font-size:15px;line-height:1.7">
+    <li>\(g(x)\) no es de tipo admisible: \(g(x)=\ln x\), \(\tan x\), \(\sec x\), \(1/x\), etc.</li>
+    <li>Los coeficientes de la EDO no son constantes (MVP aplica a EDO de coeficientes variables siempre que se conozca \(y_H\)).</li>
+    <li>Cuando el MCI requiere formas muy complejas y el MVP resulta más directo.</li>
+  </ul>
+  <p>MVP siempre funciona para cualquier \(g(x)\) continua, dado que se conoce el conjunto fundamental \(\{y_1,y_2\}\). Las fórmulas son: \(y_p=u_1y_1+u_2y_2\) con \(u_1'=-\dfrac{y_2 g}{W}\) y \(u_2'=\dfrac{y_1 g}{W}\), donde \(W\) es el Wronskiano.</p>
+</div>
 <table class="vtable">
   <tr><th style="width:42%">Afirmación</th><th style="width:8%">V/F</th><th>Justificación completa</th></tr>
   <tr>
