@@ -1333,12 +1333,16 @@ details>*:not(summary){padding:1rem 1.4rem;}
         <div class="math-block">\[D=(-18)(-12)-0^2=216>0\quad\text{y}\quad H_{aa}=-18<0\implies\textbf{máximo local}\]</div>
         <p><strong>b) Producción máxima:</strong></p>
         <div class="math-block">\[H\!\left(\tfrac{7}{3},6\right)=-9\!\cdot\!\tfrac{49}{9}-6\!\cdot\!36+42\!\cdot\!\tfrac{7}{3}+72\!\cdot\!6=-49-216+98+432=\boxed{265\text{ unidades}}\]</div>
-        <p><strong>c) Variación aproximada (diferencial total) y exacta:</strong></p>
-        <p>En el punto crítico \(\partial H/\partial a=\partial H/\partial b=0\), por lo tanto el diferencial total es:</p>
-        <div class="math-block">\[dH=\tfrac{\partial H}{\partial a}\,da+\tfrac{\partial H}{\partial b}\,db=0\cdot0{,}05+0\cdot0{,}03=0\]</div>
-        <p>La variación de segundo orden (cuadrática):</p>
-        <div class="math-block">\[\Delta H\approx\tfrac{1}{2}\!\left(H_{aa}(\Delta a)^2+H_{bb}(\Delta b)^2\right)=\tfrac{1}{2}\!\left(-18(0{,}05)^2-12(0{,}03)^2\right)\approx -0{,}028\]</div>
-        <p>La producción <strong>disminuye</strong> ~0,028 unidades al apartarse del óptimo.</p>
+        <p><strong>c) Cantidad exacta y aproximada con \(\Delta a=0{,}05\), \(\Delta b=0{,}03\):</strong></p>
+        <p><strong>Cantidad exacta</strong> — sustituir \(a'=\tfrac{7}{3}+0{,}05\) y \(b'=6{,}03\) directamente en \(H\):</p>
+        <div class="math-block">\[H\!\left(\tfrac{7}{3}+0{,}05,\;6{,}03\right)=-9\!\left(\tfrac{7}{3}+0{,}05\right)^{\!2}-6(6{,}03)^2+42\!\left(\tfrac{7}{3}+0{,}05\right)+72(6{,}03)\]</div>
+        <p>Expandiendo (usando que \(H\) es cuadrática, la expansión de Taylor es <em>exacta</em> en el 2° término):</p>
+        <div class="math-block">\[\Delta H_{\text{exacto}}=\underbrace{H_{aa}(\Delta a)^2}_{-9\,(0{,}05)^2}+\underbrace{H_{bb}(\Delta b)^2}_{-6\,(0{,}03)^2}=-0{,}0225-0{,}0054=-0{,}0279\]</div>
+        <div class="math-block">\[\boxed{H_{\text{exacta}}=265-0{,}0279=264{,}9721\text{ unidades}}\]</div>
+        <p class="notebox"><strong>Nota:</strong> los términos lineales se anulan porque estamos en el punto crítico (\(\partial H/\partial a=\partial H/\partial b=0\)), y como \(H\) es de grado 2, la expansión es exacta.</p>
+        <p><strong>Cantidad aproximada</strong> — diferencial total de primer orden:</p>
+        <div class="math-block">\[dH=\frac{\partial H}{\partial a}\,\Delta a+\frac{\partial H}{\partial b}\,\Delta b=0\cdot0{,}05+0\cdot0{,}03=0\]</div>
+        <p>La aproximación de primer orden da \(H_{\text{aprox}}\approx\boxed{265\text{ unidades}}\) (el diferencial no detecta el cambio porque estamos en un máximo). La variación real es la de segundo orden: la producción <strong>disminuye</strong> 0,0279 unidades al apartarse del óptimo.</p>
       </div>
     </details>
   </div>
@@ -1384,6 +1388,17 @@ details>*:not(summary){padding:1rem 1.4rem;}
         <p><strong>Solución general:</strong> \(x(t)=e^{-t/4}\!\left(C_1\cos\tfrac{\sqrt{195}}{4}t+C_2\sin\tfrac{\sqrt{195}}{4}t\right)\)</p>
         <p>CI: \(x(0)=0\Rightarrow C_1=0\). \(x'(0)=3\Rightarrow C_2\beta=3\Rightarrow C_2=\dfrac{12}{\sqrt{195}}\).</p>
         <div class="math-block">\[\boxed{x(t)=\frac{12}{\sqrt{195}}\,e^{-t/4}\sin\!\left(\frac{\sqrt{195}}{4}\,t\right)}\quad A\approx0{,}859\,\text{m}\]</div>
+        <p><strong>b) Datos que caracterizan el movimiento:</strong></p>
+        <table style="font-size:13px">
+          <tr><th>Parámetro</th><th>Fórmula</th><th>Valor</th><th>Significado físico</th></tr>
+          <tr><td>Factor de decaimiento \(\alpha\)</td><td>\(-\text{Re}(r)=\tfrac{1}{4}\)</td><td>\(0{,}25\text{ s}^{-1}\)</td><td>Velocidad con que la amplitud decrece</td></tr>
+          <tr><td>Frec. cuasi-amortiguada \(\beta\)</td><td>\(\tfrac{\sqrt{195}}{4}\)</td><td>\(\approx 3{,}49\text{ rad/s}\)</td><td>Frec. de oscilación real del sistema</td></tr>
+          <tr><td>Cuasi-período \(T_q\)</td><td>\(\tfrac{2\pi}{\beta}=\tfrac{8\pi}{\sqrt{195}}\)</td><td>\(\approx 1{,}80\text{ s}\)</td><td>Tiempo entre dos ceros consecutivos</td></tr>
+          <tr><td>Frecuencia natural \(\omega_0\)</td><td>\(\sqrt{k/m}=\sqrt{49/4}\)</td><td>\(\tfrac{7}{2}=3{,}5\text{ rad/s}\)</td><td>Frecuencia sin amortiguamiento</td></tr>
+          <tr><td>Amplitud inicial \(A\)</td><td>\(\tfrac{12}{\sqrt{195}}\)</td><td>\(\approx 0{,}859\text{ m}\)</td><td>Máx. desplazamiento posible desde equilibrio</td></tr>
+          <tr><td>Envolvente exponencial</td><td>\(\pm A\,e^{-t/4}\)</td><td>—</td><td>Curvas que "encierran" la oscilación</td></tr>
+        </table>
+        <p style="margin-top:0.6rem">La gráfica muestra una sinusoide amortiguada: oscila con período \(T_q\approx1{,}80\,\text{s}\), la amplitud disminuye exponencialmente según \(e^{-t/4}\). Comienza en equilibrio (\(x(0)=0\)) con velocidad positiva (hacia abajo), alcanza un primer máximo y luego las oscilaciones decaen hasta 0. La envolvente es \(\pm\tfrac{12}{\sqrt{195}}\,e^{-t/4}\).</p>
         <p><strong>c)</strong> No existe término permanente: la ecuación es <em>homogénea</em> (sin forzado externo). Toda la solución es <strong>transitoria</strong> (\(x(t)\to0\) cuando \(t\to\infty\)). El término permanente sólo aparece en sistemas forzados.</p>
       </div>
     </details>
@@ -1423,7 +1438,32 @@ details>*:not(summary){padding:1rem 1.4rem;}
           <tr><td>\((1,1)\)</td><td>\(-1\)</td><td>\(12\cdot12-16=128>0\)</td><td>\(12>0\)</td><td>Mínimo local</td></tr>
           <tr><td>\((-1,-1)\)</td><td>\(-1\)</td><td>\(128>0\)</td><td>\(12>0\)</td><td>Mínimo local</td></tr>
         </table>
-        <p style="margin-top:0.6rem"><strong>Curvas de nivel:</strong> \(x^4+y^4-4xy=c-1\). Para valores de \(c\) cercanos a \(-1\): curvas cerradas alrededor de los mínimos. Para \(c=1\): pasa por el punto silla.</p>
+        <p style="margin-top:0.6rem"><strong>c) Método utilizado — Criterio de la segunda derivada (Hessiano):</strong></p>
+        <p>Para encontrar extremos <em>libres</em> (sin restricción) en \(\mathbb{R}^2\):</p>
+        <ol style="font-size:13.5px">
+          <li>Calcular las derivadas parciales \(f_x\) y \(f_y\) e igualarlas a cero → puntos críticos candidatos.</li>
+          <li>Armar la <strong>matriz Hessiana</strong> \(H=\begin{pmatrix}f_{xx}&f_{xy}\\f_{xy}&f_{yy}\end{pmatrix}\) y calcular \(D=f_{xx}f_{yy}-f_{xy}^2\).</li>
+          <li>Clasificar: \(D>0,\,f_{xx}>0\) → mínimo; \(D>0,\,f_{xx}<0\) → máximo; \(D<0\) → punto silla; \(D=0\) → test no concluyente.</li>
+        </ol>
+        <p><strong>d) Métodos para extremos condicionados:</strong></p>
+        <p>Se usan cuando hay una <em>restricción</em> \(g(x,y)=0\) que limita el dominio. Existen tres métodos principales:</p>
+        <table style="font-size:13px">
+          <tr><th>Método</th><th>Idea</th><th>Ventaja</th></tr>
+          <tr><td><strong>Multiplicadores de Lagrange</strong></td><td>\(\nabla f=\lambda\nabla g\)</td><td>Sistemático, válido para \(n\) variables y \(m\) restricciones</td></tr>
+          <tr><td>Parametrización</td><td>Sustituir la restricción para reducir variables</td><td>Simple si la restricción es sencilla de despejar</td></tr>
+          <tr><td>Sustitución directa</td><td>Despejar \(y=h(x)\) de \(g=0\) y sustituir en \(f\)</td><td>Reduce a extremo de una variable</td></tr>
+        </table>
+        <p><strong>Lagrange detallado</strong> (el más pedido en finales): Se busca el extremo de \(f\) sobre la curva \(g=0\). En el punto extremo condicionado, las curvas de nivel de \(f\) y de \(g\) son <em>tangentes</em>, es decir, \(\nabla f \parallel \nabla g\). Formalmente:</p>
+        <div class="math-block">\[\nabla f(x_0,y_0)=\lambda\,\nabla g(x_0,y_0)\implies\begin{cases}f_x=\lambda\,g_x\\f_y=\lambda\,g_y\\g(x,y)=0\end{cases}\]</div>
+        <p>Sistema de 3 ecuaciones con 3 incógnitas \((x,y,\lambda)\). Los puntos solución son candidatos a extremos condicionados.</p>
+        <p><strong>e) Curvas de nivel — descripción de la fosa:</strong></p>
+        <p>Las curvas de nivel son \(x^4+y^4-4xy=k\) (con \(k=c-1\)):</p>
+        <ul style="font-size:13.5px">
+          <li>\(k=-2\) (\(c=-1\)): curvas cerradas pequeñas <em>alrededor de cada mínimo</em> \((1,1)\) y \((-1,-1)\). La fosa es "profunda" en esas zonas.</li>
+          <li>\(k=0\) (\(c=1\)): curva que pasa por el <strong>punto silla</strong> \((0,0)\). Tiene forma de "lazo" — separa las dos cuencas.</li>
+          <li>\(k>0\) (\(c>1\)): curvas que encierran toda la región; la fosa se "abre" hacia afuera.</li>
+        </ul>
+        <p>Interpretación física: cada curva de nivel representa una "cota de profundidad" de la fosa. Los mínimos locales \((1,1)\) y \((-1,-1)\) son los <em>fondos</em> de la fosa; el punto silla \((0,0)\) es el <em>paso de montaña</em> que los separa.</p>
       </div>
     </details>
   </div>
@@ -1536,8 +1576,15 @@ details>*:not(summary){padding:1rem 1.4rem;}
         <div class="math-block">\[(-9A+6B+4A)\cos+(-9B-6A+4B)\sin=5\cos\]</div>
         <div class="math-block">\[\begin{cases}-5A+6B=5\\-6A-5B=0\end{cases}\implies B=\frac{30}{61},\;A=-\frac{25}{61}\]</div>
         <div class="math-block">\[y_G=e^{-t}\!\left(C_1\cos\sqrt{3}\,t+C_2\sin\sqrt{3}\,t\right)-\frac{25}{61}\cos3t+\frac{30}{61}\sin3t\]</div>
-        <p><strong>d) Resonancia:</strong> ocurre cuando \(\omega=\omega_0\) (frec. natural) y \(c=0\). La \(y_p\) contiene factor \(t\), la amplitud crece sin cota → sistema se destruye.</p>
-        <p><strong>e) \(c=0\), \(F_0=0\):</strong> \(y''+4y=0\Rightarrow\omega_0=2\,\text{rad/s}\). Oscilación libre no amortiguada: \(y=C_1\cos2t+C_2\sin2t\). Si además \(\omega=\omega_0=2\): resonancia pura.</p>
+        <p><strong>d) Fenómeno de resonancia:</strong></p>
+        <p>La resonancia ocurre en un sistema <em>sin amortiguamiento</em> (\(c=0\)) cuando la frecuencia de la fuerza externa \(\omega\) coincide con la frecuencia natural del sistema \(\omega_0=\sqrt{k/m}\).</p>
+        <p>Cuando \(\omega=\omega_0\), la función de forzado coincide con las soluciones de la homogénea → el método de coeficientes indeterminados exige multiplicar por \(t\):</p>
+        <div class="math-block">\[y_p=t(A\cos\omega_0 t+B\sin\omega_0 t)\]</div>
+        <p>El factor \(t\) hace que la amplitud crezca <strong>sin límite</strong> con el tiempo: \(\text{amplitud}\to\infty\) cuando \(t\to\infty\). Físicamente, la energía ingresa al sistema de manera acumulativa sin posibilidad de disiparse (no hay amortiguamiento), lo que puede llevar a la <strong>destrucción estructural</strong> del sistema. Ejemplos históricos: colapso del puente de Tacoma (1940), ruptura de cristales con sonido a frecuencia natural.</p>
+        <p>Con amortiguamiento (\(c>0\)), la resonancia no produce amplitud infinita pero sí el máximo de amplitud cuando \(\omega\approx\sqrt{\omega_0^2-2\alpha^2}\) (resonancia práctica).</p>
+        <p><strong>e) Con \(c=0\) y \(F_0=0\):</strong></p>
+        <div class="math-block">\[2y''+8y=0\implies y''+4y=0\implies\omega_0=2\,\text{rad/s}\]</div>
+        <p>Solución: \(y(t)=C_1\cos2t+C_2\sin2t\) → <strong>MAS libre no amortiguado</strong>, oscilación perpetua con amplitud constante \(A=\sqrt{C_1^2+C_2^2}\). Si luego se agrega la fuerza externa con \(\omega=\omega_0=2\,\text{rad/s}\) → <strong>resonancia pura</strong>.</p>
       </div>
     </details>
   </div>
@@ -1570,6 +1617,15 @@ details>*:not(summary){padding:1rem 1.4rem;}
         <div class="math-block">\[2x-2=2y-4\implies x=y-1\quad\text{y}\quad x+y=4\implies y=\frac{5}{2},\;x=\frac{3}{2}\]</div>
         <div class="math-block">\[f\!\left(\tfrac{3}{2},\tfrac{5}{2}\right)=\tfrac{9}{4}+\tfrac{25}{4}-3-10=-\frac{9}{2}=-4{,}5\]</div>
         <p><strong>c) Parametrización:</strong> con \(x=4-t\), \(y=t\): \(f=(4-t)^2+t^2-2(4-t)-4t\), derivar e igualar a 0. Equivalente a Lagrange, pero menos sistemático.</p>
+        <p><strong>d) Aplicaciones de extremos condicionados:</strong></p>
+        <table style="font-size:13px">
+          <tr><th>Área</th><th>Función a optimizar \(f\)</th><th>Restricción \(g=0\)</th></tr>
+          <tr><td><strong>Economía</strong></td><td>Producción \(P(K,L)\) (capital y trabajo)</td><td>Presupuesto fijo \(wL+rK=C\)</td></tr>
+          <tr><td><strong>Ingeniería</strong></td><td>Peso de una estructura \(W(l,h)\)</td><td>Resistencia mínima requerida \(R(l,h)\ge R_0\)</td></tr>
+          <tr><td><strong>Física</strong></td><td>Energía potencial \(U(x,y,z)\)</td><td>Superficie de movimiento (p. ej. una esfera)</td></tr>
+          <tr><td><strong>Geometría</strong></td><td>Volumen de una caja \(V=xyz\)</td><td>Superficie total fija \(2(xy+xz+yz)=S\)</td></tr>
+        </table>
+        <p style="font-size:13.5px;margin-top:0.5rem">Ejemplo típico de examen: <em>maximizar el volumen de una caja rectangular de superficie fija</em>. Con Lagrange: \(\nabla V=\lambda\nabla S\) → \((yz,xz,xy)=\lambda(2y+2z,\,2x+2z,\,2x+2y)\) → por simetría, la caja óptima es un cubo (\(x=y=z\)). Este resultado no es evidente sin el método y demuestra su potencia analítica.</p>
       </div>
     </details>
   </div>
