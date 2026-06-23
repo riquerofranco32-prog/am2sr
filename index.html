@@ -976,141 +976,120 @@ details>*:not(summary){padding:1rem 1.4rem;}
 
   <!-- SOLUCIÓN GENERAL -->
   <div style="padding:1rem 1.4rem;background:#f7faf9;border-bottom:1px solid var(--rule)">
-    <p style="font-size:13.5px;color:var(--ink2);margin-bottom:0.5rem">Solución general: \(x(t)=C_1\cos(\omega t)+C_2\sen(\omega t)\) con \(C_1=x(0)\), \(C_2=x'(0)/\omega\)</p>
+    <p style="font-size:13px;color:var(--ink2);margin-bottom:0.5rem">Solución general: \(x(t)=C_1\cos(\omega t)+C_2\sen(\omega t)\) con \(C_1=x(0)\), \(C_2=x'(0)/\omega\). Forma alternativa:</p>
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:0.6rem">
-      <div style="background:#e8f4f3;border:1px solid #a7d9d7;border-radius:6px;padding:0.5rem 0.9rem;text-align:center;font-size:14px">\(x(t)=A\cos(\omega t+\varphi)\)</div>
-      <div style="background:#e8f4f3;border:1px solid #a7d9d7;border-radius:6px;padding:0.5rem 0.9rem;text-align:center;font-size:14px">\(x(t)=A\sen(\omega t+\varphi)\)</div>
+      <div style="background:#e8f4f3;border:1.5px solid #a7d9d7;border-radius:6px;padding:0.5rem 0.9rem;text-align:center">\(x(t)=A\cos(\omega t+\varphi)\)</div>
+      <div style="background:#e8f4f3;border:1.5px solid #a7d9d7;border-radius:6px;padding:0.5rem 0.9rem;text-align:center">\(x(t)=A\sen(\omega t+\varphi)\)</div>
     </div>
-    <p style="font-size:13px;color:var(--ink2);text-align:center;margin-top:0.5rem">\(A=\sqrt{C_1^2+C_2^2}\qquad\tan\varphi=C_1/C_2\) (verificar cuadrante)</p>
+    <p style="font-size:12.5px;color:var(--ink2);text-align:center;margin-top:0.5rem">\(A=\sqrt{C_1^2+C_2^2}\qquad\tan\varphi=C_1/C_2\) (verificar cuadrante)</p>
   </div>
 
-  <!-- FILAS DE CASOS -->
-  <!-- Etiquetas de columna -->
-  <div style="display:grid;grid-template-columns:180px 1fr 1fr;background:#1a4a2e;padding:0.5rem 1rem;gap:1rem">
-    <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;color:rgba(255,255,255,0.5);text-transform:uppercase">Pregunta</div>
-    <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:1px;color:#a9dfbf;text-align:center">con COS</div>
-    <div style="font-family:var(--mono);font-size:10.5px;letter-spacing:1px;color:#a9dfbf;text-align:center">con SEN</div>
+  <!-- ENCABEZADO COLUMNAS -->
+  <div style="display:grid;grid-template-columns:minmax(130px,160px) 1fr 1fr;background:#1a4a2e;padding:0.45rem 1rem;gap:0">
+    <div style="font-family:var(--mono);font-size:9px;letter-spacing:2px;color:rgba(255,255,255,0.45);text-transform:uppercase;padding:0 0.5rem">Pregunta</div>
+    <div style="font-family:var(--mono);font-size:10px;letter-spacing:1px;color:#a9dfbf;text-align:center;border-left:1px solid rgba(255,255,255,0.1);padding:0 0.5rem">con COS</div>
+    <div style="font-family:var(--mono);font-size:10px;letter-spacing:1px;color:#a9dfbf;text-align:center;border-left:1px solid rgba(255,255,255,0.1);padding:0 0.5rem">con SEN</div>
   </div>
+
+  <!-- helper macro: cada fila usa este patrón -->
+  <!-- label-bg: #f0f6f2 (verde) o #fdf9ee (amarillo) -->
+  <!-- chip-bg: #1a4a2e (verde) o #b8860b (dorado) -->
 
   <!-- FILA 1: Equilibrio -->
-  <div style="display:grid;grid-template-columns:180px 1fr 1fr;gap:0;border-bottom:1px solid var(--rule)">
-    <div style="padding:1rem;background:#f0f6f2;border-right:1px solid var(--rule);display:flex;flex-direction:column;justify-content:center">
-      <span style="font-weight:700;font-size:14px;color:var(--green)">Equilibrio</span>
-      <span style="font-family:var(--mono);font-size:12px;color:var(--ink2);margin-top:2px">\(x(t)=0\)</span>
+  <div style="display:grid;grid-template-columns:minmax(130px,160px) 1fr 1fr;border-bottom:1px solid var(--rule)">
+    <div style="padding:0.9rem 0.8rem;background:#f0f6f2;border-right:1px solid var(--rule)">
+      <div style="font-weight:700;font-size:13.5px;color:var(--green)">Equilibrio</div>
+      <div style="font-size:12px;color:var(--ink2);margin-top:3px">\(x(t)=0\)</div>
     </div>
-    <div style="padding:1rem;border-right:1px solid var(--rule)">
-      <div style="font-size:13px;line-height:2">
-        <span style="background:#f0f6f2;border-radius:4px;padding:2px 6px">\(\cos(\omega t+\varphi)=0\)</span><br>
-        <span style="color:var(--ink2)">→ \(\omega t+\varphi=\dfrac{\pi}{2}+n\pi\)</span><br>
-        <span style="background:#1a4a2e;color:#fff;border-radius:4px;padding:3px 8px;font-family:var(--mono);font-size:12px">\(t=\dfrac{\pi/2\,-\,\varphi\,+\,n\pi}{\omega}\)</span>
-      </div>
+    <div style="padding:0.9rem 1rem;border-right:1px solid var(--rule)">
+      <div style="font-size:12.5px;color:var(--ink2);margin-bottom:3px">\(\cos(\omega t+\varphi)=0\)</div>
+      <div style="font-size:12px;color:var(--ink2);margin-bottom:6px">→ \(\omega t+\varphi=\tfrac{\pi}{2}+n\pi\)</div>
+      <div style="background:#1a4a2e;color:#a9dfbf;border-radius:5px;padding:0.4rem 0.7rem;font-size:13px;text-align:center">\[t=\frac{\pi/2-\varphi+n\pi}{\omega}\]</div>
     </div>
-    <div style="padding:1rem">
-      <div style="font-size:13px;line-height:2">
-        <span style="background:#f0f6f2;border-radius:4px;padding:2px 6px">\(\sen(\omega t+\varphi)=0\)</span><br>
-        <span style="color:var(--ink2)">→ \(\omega t+\varphi=n\pi\)</span><br>
-        <span style="background:#1a4a2e;color:#fff;border-radius:4px;padding:3px 8px;font-family:var(--mono);font-size:12px">\(t=\dfrac{n\pi\,-\,\varphi}{\omega}\)</span>
-      </div>
+    <div style="padding:0.9rem 1rem">
+      <div style="font-size:12.5px;color:var(--ink2);margin-bottom:3px">\(\sen(\omega t+\varphi)=0\)</div>
+      <div style="font-size:12px;color:var(--ink2);margin-bottom:6px">→ \(\omega t+\varphi=n\pi\)</div>
+      <div style="background:#1a4a2e;color:#a9dfbf;border-radius:5px;padding:0.4rem 0.7rem;font-size:13px;text-align:center">\[t=\frac{n\pi-\varphi}{\omega}\]</div>
     </div>
   </div>
 
   <!-- FILA 2: Máx abajo -->
-  <div style="display:grid;grid-template-columns:180px 1fr 1fr;gap:0;border-bottom:1px solid var(--rule)">
-    <div style="padding:1rem;background:#f0f6f2;border-right:1px solid var(--rule);display:flex;flex-direction:column;justify-content:center">
-      <span style="font-weight:700;font-size:14px;color:var(--green)">Máx. abajo ↓</span>
-      <span style="font-family:var(--mono);font-size:12px;color:var(--ink2);margin-top:2px">\(x(t)=+A\)</span>
+  <div style="display:grid;grid-template-columns:minmax(130px,160px) 1fr 1fr;border-bottom:1px solid var(--rule)">
+    <div style="padding:0.9rem 0.8rem;background:#f0f6f2;border-right:1px solid var(--rule)">
+      <div style="font-weight:700;font-size:13.5px;color:var(--green)">Máx. abajo ↓</div>
+      <div style="font-size:12px;color:var(--ink2);margin-top:3px">\(x(t)=+A\)</div>
     </div>
-    <div style="padding:1rem;border-right:1px solid var(--rule)">
-      <div style="font-size:13px;line-height:2">
-        <span style="background:#f0f6f2;border-radius:4px;padding:2px 6px">\(\cos(\omega t+\varphi)=1\)</span><br>
-        <span style="color:var(--ink2)">→ \(\omega t+\varphi=2n\pi\)</span><br>
-        <span style="background:#1a4a2e;color:#fff;border-radius:4px;padding:3px 8px;font-family:var(--mono);font-size:12px">\(t=\dfrac{2n\pi\,-\,\varphi}{\omega}\)</span>
-      </div>
+    <div style="padding:0.9rem 1rem;border-right:1px solid var(--rule)">
+      <div style="font-size:12.5px;color:var(--ink2);margin-bottom:3px">\(\cos(\omega t+\varphi)=1\)</div>
+      <div style="font-size:12px;color:var(--ink2);margin-bottom:6px">→ \(\omega t+\varphi=2n\pi\)</div>
+      <div style="background:#1a4a2e;color:#a9dfbf;border-radius:5px;padding:0.4rem 0.7rem;font-size:13px;text-align:center">\[t=\frac{2n\pi-\varphi}{\omega}\]</div>
     </div>
-    <div style="padding:1rem">
-      <div style="font-size:13px;line-height:2">
-        <span style="background:#f0f6f2;border-radius:4px;padding:2px 6px">\(\sen(\omega t+\varphi)=1\)</span><br>
-        <span style="color:var(--ink2)">→ \(\omega t+\varphi=\dfrac{\pi}{2}+2n\pi\)</span><br>
-        <span style="background:#1a4a2e;color:#fff;border-radius:4px;padding:3px 8px;font-family:var(--mono);font-size:12px">\(t=\dfrac{\pi/2\,-\,\varphi\,+\,2n\pi}{\omega}\)</span>
-      </div>
+    <div style="padding:0.9rem 1rem">
+      <div style="font-size:12.5px;color:var(--ink2);margin-bottom:3px">\(\sen(\omega t+\varphi)=1\)</div>
+      <div style="font-size:12px;color:var(--ink2);margin-bottom:6px">→ \(\omega t+\varphi=\tfrac{\pi}{2}+2n\pi\)</div>
+      <div style="background:#1a4a2e;color:#a9dfbf;border-radius:5px;padding:0.4rem 0.7rem;font-size:13px;text-align:center">\[t=\frac{\pi/2-\varphi+2n\pi}{\omega}\]</div>
     </div>
   </div>
 
   <!-- FILA 3: Máx arriba -->
-  <div style="display:grid;grid-template-columns:180px 1fr 1fr;gap:0;border-bottom:1px solid var(--rule)">
-    <div style="padding:1rem;background:#f0f6f2;border-right:1px solid var(--rule);display:flex;flex-direction:column;justify-content:center">
-      <span style="font-weight:700;font-size:14px;color:var(--green)">Máx. arriba ↑</span>
-      <span style="font-family:var(--mono);font-size:12px;color:var(--ink2);margin-top:2px">\(x(t)=-A\)</span>
+  <div style="display:grid;grid-template-columns:minmax(130px,160px) 1fr 1fr;border-bottom:1px solid var(--rule)">
+    <div style="padding:0.9rem 0.8rem;background:#f0f6f2;border-right:1px solid var(--rule)">
+      <div style="font-weight:700;font-size:13.5px;color:var(--green)">Máx. arriba ↑</div>
+      <div style="font-size:12px;color:var(--ink2);margin-top:3px">\(x(t)=-A\)</div>
     </div>
-    <div style="padding:1rem;border-right:1px solid var(--rule)">
-      <div style="font-size:13px;line-height:2">
-        <span style="background:#f0f6f2;border-radius:4px;padding:2px 6px">\(\cos(\omega t+\varphi)=-1\)</span><br>
-        <span style="color:var(--ink2)">→ \(\omega t+\varphi=\pi+2n\pi\)</span><br>
-        <span style="background:#1a4a2e;color:#fff;border-radius:4px;padding:3px 8px;font-family:var(--mono);font-size:12px">\(t=\dfrac{\pi\,-\,\varphi\,+\,2n\pi}{\omega}\)</span>
-      </div>
+    <div style="padding:0.9rem 1rem;border-right:1px solid var(--rule)">
+      <div style="font-size:12.5px;color:var(--ink2);margin-bottom:3px">\(\cos(\omega t+\varphi)=-1\)</div>
+      <div style="font-size:12px;color:var(--ink2);margin-bottom:6px">→ \(\omega t+\varphi=\pi+2n\pi\)</div>
+      <div style="background:#1a4a2e;color:#a9dfbf;border-radius:5px;padding:0.4rem 0.7rem;font-size:13px;text-align:center">\[t=\frac{\pi-\varphi+2n\pi}{\omega}\]</div>
     </div>
-    <div style="padding:1rem">
-      <div style="font-size:13px;line-height:2">
-        <span style="background:#f0f6f2;border-radius:4px;padding:2px 6px">\(\sen(\omega t+\varphi)=-1\)</span><br>
-        <span style="color:var(--ink2)">→ \(\omega t+\varphi=-\dfrac{\pi}{2}+2n\pi\)</span><br>
-        <span style="background:#1a4a2e;color:#fff;border-radius:4px;padding:3px 8px;font-family:var(--mono);font-size:12px">\(t=\dfrac{-\pi/2\,-\,\varphi\,+\,2n\pi}{\omega}\)</span>
-      </div>
+    <div style="padding:0.9rem 1rem">
+      <div style="font-size:12.5px;color:var(--ink2);margin-bottom:3px">\(\sen(\omega t+\varphi)=-1\)</div>
+      <div style="font-size:12px;color:var(--ink2);margin-bottom:6px">→ \(\omega t+\varphi=-\tfrac{\pi}{2}+2n\pi\)</div>
+      <div style="background:#1a4a2e;color:#a9dfbf;border-radius:5px;padding:0.4rem 0.7rem;font-size:13px;text-align:center">\[t=\frac{-\pi/2-\varphi+2n\pi}{\omega}\]</div>
     </div>
   </div>
 
-  <!-- FILA 4: Fracción -->
-  <div style="display:grid;grid-template-columns:180px 1fr 1fr;gap:0;border-bottom:1px solid var(--rule)">
-    <div style="padding:1rem;background:#fdf9ee;border-right:1px solid var(--rule);display:flex;flex-direction:column;justify-content:center">
-      <span style="font-weight:700;font-size:14px;color:var(--gold)">Fracción de A</span>
-      <span style="font-family:var(--mono);font-size:12px;color:var(--ink2);margin-top:2px">\(x(t)=k\cdot A\)<br><small style="font-size:11px">\(0&lt;k&lt;1\)</small></span>
+  <!-- FILA 4: Fracción de A -->
+  <div style="display:grid;grid-template-columns:minmax(130px,160px) 1fr 1fr;border-bottom:1px solid var(--rule)">
+    <div style="padding:0.9rem 0.8rem;background:#fdf9ee;border-right:1px solid var(--rule)">
+      <div style="font-weight:700;font-size:13.5px;color:var(--gold)">Fracción de A</div>
+      <div style="font-size:12px;color:var(--ink2);margin-top:3px">\(x(t)=k\cdot A\)</div>
+      <div style="font-size:11px;color:var(--ink2)">\(0&lt;k&lt;1\)</div>
     </div>
-    <div style="padding:1rem;border-right:1px solid var(--rule)">
-      <div style="font-size:13px;line-height:2">
-        <span style="background:#fdf9ee;border-radius:4px;padding:2px 6px">\(\cos(\omega t+\varphi)=k\)</span><br>
-        <span style="color:var(--ink2)">→ \(\omega t+\varphi=\pm\arccos(k)+2n\pi\)</span><br>
-        <span style="background:#b8860b;color:#fff;border-radius:4px;padding:3px 8px;font-family:var(--mono);font-size:12px">\(t=\dfrac{\pm\arccos(k)\,-\,\varphi\,+\,2n\pi}{\omega}\)</span>
-      </div>
+    <div style="padding:0.9rem 1rem;border-right:1px solid var(--rule)">
+      <div style="font-size:12.5px;color:var(--ink2);margin-bottom:3px">\(\cos(\omega t+\varphi)=k\)</div>
+      <div style="font-size:12px;color:var(--ink2);margin-bottom:6px">→ \(\omega t+\varphi=\pm\arccos(k)+2n\pi\)</div>
+      <div style="background:#6b4c00;color:#fdebd0;border-radius:5px;padding:0.4rem 0.7rem;font-size:13px;text-align:center">\[t=\frac{\pm\arccos(k)-\varphi+2n\pi}{\omega}\]</div>
     </div>
-    <div style="padding:1rem">
-      <div style="font-size:13px;line-height:2">
-        <span style="background:#fdf9ee;border-radius:4px;padding:2px 6px">\(\sen(\omega t+\varphi)=k\)</span><br>
-        <span style="color:var(--ink2)">→ \(\omega t+\varphi=\arcsen(k)\) o \(\pi-\arcsen(k)\)</span><br>
-        <span style="background:#b8860b;color:#fff;border-radius:4px;padding:3px 8px;font-family:var(--mono);font-size:12px">\(t=\dfrac{\arcsen(k)\,-\,\varphi\,+\,2n\pi}{\omega}\)</span>
-      </div>
+    <div style="padding:0.9rem 1rem">
+      <div style="font-size:12.5px;color:var(--ink2);margin-bottom:3px">\(\sen(\omega t+\varphi)=k\)</div>
+      <div style="font-size:12px;color:var(--ink2);margin-bottom:6px">→ \(\omega t+\varphi=\arcsen(k)\) o \(\pi-\arcsen(k)\)</div>
+      <div style="background:#6b4c00;color:#fdebd0;border-radius:5px;padding:0.4rem 0.7rem;font-size:13px;text-align:center">\[t=\frac{\arcsen(k)-\varphi+2n\pi}{\omega}\]</div>
     </div>
   </div>
 
   <!-- FILA 5: v_max y a_max -->
-  <div style="display:grid;grid-template-columns:1fr 1fr;gap:0;border-bottom:1px solid var(--rule)">
-    <div style="padding:0.9rem 1.2rem;border-right:1px solid var(--rule);background:#f4f0f8;display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
-      <div>
-        <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;color:#534AB7;text-transform:uppercase;margin-bottom:3px">Velocidad máxima</div>
-        <div style="font-size:15px">\(\lvert v_{\max}\rvert = A\cdot\omega\)</div>
-        <div style="font-size:12px;color:var(--ink2);margin-top:3px">ocurre cuando \(x=0\) (equilibrio)<br>→ cos o sen = <strong>0</strong></div>
-      </div>
+  <div style="display:grid;grid-template-columns:1fr 1fr;border-bottom:1px solid var(--rule)">
+    <div style="padding:0.85rem 1rem;border-right:1px solid var(--rule);background:#f0edf8">
+      <div style="font-family:var(--mono);font-size:9px;letter-spacing:2px;color:#534AB7;text-transform:uppercase;margin-bottom:4px">Velocidad máxima</div>
+      <div style="font-size:15px;margin-bottom:3px">\(|v_{\max}| = A\cdot\omega\)</div>
+      <div style="font-size:12px;color:var(--ink2)">cuando \(x=0\) → cos o sen \(=\mathbf{0}\)</div>
     </div>
-    <div style="padding:0.9rem 1.2rem;background:#f4f0f8;display:flex;align-items:center;gap:1rem;flex-wrap:wrap">
-      <div>
-        <div style="font-family:var(--mono);font-size:10px;letter-spacing:2px;color:#534AB7;text-transform:uppercase;margin-bottom:3px">Aceleración máxima</div>
-        <div style="font-size:15px">\(\lvert a_{\max}\rvert = A\cdot\omega^2\)</div>
-        <div style="font-size:12px;color:var(--ink2);margin-top:3px">ocurre cuando \(\lvert x\rvert=A\) (extremo)<br>→ cos o sen = <strong>±1</strong></div>
-      </div>
+    <div style="padding:0.85rem 1rem;background:#f0edf8">
+      <div style="font-family:var(--mono);font-size:9px;letter-spacing:2px;color:#534AB7;text-transform:uppercase;margin-bottom:4px">Aceleración máxima</div>
+      <div style="font-size:15px;margin-bottom:3px">\(|a_{\max}| = A\cdot\omega^2\)</div>
+      <div style="font-size:12px;color:var(--ink2)">cuando \(|x|=A\) → cos o sen \(=\pm\mathbf{1}\)</div>
     </div>
   </div>
 
-  <!-- FOOTER: valores frecuentes -->
-  <div style="padding:0.8rem 1.4rem;background:#f7faf9;border-top:1px solid var(--rule)">
-    <span style="font-family:var(--mono);font-size:10px;letter-spacing:2px;text-transform:uppercase;color:var(--teal);margin-right:0.8rem">Ángulos frecuentes</span>
-    <span style="font-size:13px;color:var(--ink2)">
-      \(\tfrac{1}{2}\;\leftrightarrow\;30°=\tfrac{\pi}{6}\)
-      &ensp;·&ensp;
-      \(\tfrac{\sqrt{2}}{2}\;\leftrightarrow\;45°=\tfrac{\pi}{4}\)
-      &ensp;·&ensp;
-      \(\tfrac{\sqrt{3}}{2}\;\leftrightarrow\;60°=\tfrac{\pi}{3}\)
-      &ensp;·&ensp;
-      \(1\;\leftrightarrow\;90°=\tfrac{\pi}{2}\)
-    </span>
-    <p style="font-size:12.5px;color:var(--ink2);margin-top:0.4rem">⚠️ Siempre tomá el menor \(t&gt;0\): probá \(n=0\); si da negativo, usá \(n=1\).</p>
+  <!-- FOOTER -->
+  <div style="padding:0.75rem 1.4rem;background:#f7faf9;display:flex;flex-wrap:wrap;align-items:center;gap:0.5rem 1.5rem">
+    <span style="font-family:var(--mono);font-size:9px;letter-spacing:2px;text-transform:uppercase;color:var(--teal)">Ángulos frecuentes</span>
+    <span style="font-size:13px;color:var(--ink2)">\(\tfrac{1}{2}\leftrightarrow\tfrac{\pi}{6}\)</span>
+    <span style="font-size:13px;color:var(--ink2)">\(\tfrac{\sqrt{2}}{2}\leftrightarrow\tfrac{\pi}{4}\)</span>
+    <span style="font-size:13px;color:var(--ink2)">\(\tfrac{\sqrt{3}}{2}\leftrightarrow\tfrac{\pi}{3}\)</span>
+    <span style="font-size:13px;color:var(--ink2)">\(1\leftrightarrow\tfrac{\pi}{2}\)</span>
+    <span style="font-size:12px;color:var(--ink2);width:100%;margin-top:2px">⚠️ Tomá siempre el menor \(t&gt;0\): probá \(n=0\); si da negativo, usá \(n=1\).</span>
   </div>
 
 </div>
@@ -5643,7 +5622,12 @@ document.addEventListener("DOMContentLoaded", function(){
 
     const toMove = [];
     let next = h4.nextElementSibling;
-    while (next && !(next.tagName === 'H4' && next.id) && next.tagName !== 'H3' && !next.classList.contains('chapter-divider')) {
+    while (next &&
+           !(next.tagName === 'H4' && next.id) &&
+           next.tagName !== 'H3' &&
+           !next.classList.contains('chapter-divider') &&
+           !next.classList.contains('chapter-cover') &&
+           !next.classList.contains('content-area')) {
       toMove.push(next);
       next = next.nextElementSibling;
     }
