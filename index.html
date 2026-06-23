@@ -966,6 +966,59 @@ details>*:not(summary){padding:1rem 1.4rem;}
 <!-- ══════════════════════════════════════════════════════ -->
 <p style="color:var(--ink2);font-size:14px;margin-bottom:1rem">Ecuación general del MAS: \(m\ddot{x}+c\dot{x}+kx=f(t)\). Recordar: \(k=mg/s\) (peso/elongación estática); en libras-pie usar \(m=W/32\) slugs; en SI, \(m\) en kg directamente.</p>
 
+<div class="thmbox" style="margin-bottom:1.5rem">
+  <div class="thmbox-label">📐 Fórmulas de referencia — MAS libre (sin amortiguamiento)</div>
+  <p style="margin-bottom:0.8rem">La solución general es \(x(t)=C_1\cos(\omega t)+C_2\sen(\omega t)\) con \(C_1=x(0)\), \(C_2=x'(0)/\omega\). Se puede escribir como:</p>
+  <div class="math-block">\[x(t)=A\cos(\omega t+\varphi)\quad\text{o}\quad x(t)=A\sen(\omega t+\varphi)\qquad A=\sqrt{C_1^2+C_2^2}\]</div>
+
+  <table style="margin-top:0.8rem;font-size:13px">
+    <thead>
+      <tr>
+        <th style="width:22%">Pregunta</th>
+        <th style="width:39%">Si la solución es \(\boldsymbol{A\cos(\omega t+\varphi)}\)</th>
+        <th style="width:39%">Si la solución es \(\boldsymbol{A\sen(\omega t+\varphi)}\)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td><strong>Equilibrio</strong><br><small>\(x(t)=0\)</small></td>
+        <td>\(\cos(\omega t+\varphi)=0\)<br>\(\omega t+\varphi=\dfrac{\pi}{2}+n\pi\)<br>\(t=\dfrac{\pi/2-\varphi+n\pi}{\omega}\)</td>
+        <td>\(\sen(\omega t+\varphi)=0\)<br>\(\omega t+\varphi=n\pi\)<br>\(t=\dfrac{n\pi-\varphi}{\omega}\)</td>
+      </tr>
+      <tr>
+        <td><strong>Máx. extensión<br>hacia abajo</strong><br><small>\(x(t)=+A\)</small></td>
+        <td>\(\cos(\omega t+\varphi)=1\)<br>\(\omega t+\varphi=2n\pi\)<br>\(t=\dfrac{2n\pi-\varphi}{\omega}\)</td>
+        <td>\(\sen(\omega t+\varphi)=1\)<br>\(\omega t+\varphi=\dfrac{\pi}{2}+2n\pi\)<br>\(t=\dfrac{\pi/2-\varphi+2n\pi}{\omega}\)</td>
+      </tr>
+      <tr>
+        <td><strong>Máx. extensión<br>hacia arriba</strong><br><small>\(x(t)=-A\)</small></td>
+        <td>\(\cos(\omega t+\varphi)=-1\)<br>\(\omega t+\varphi=\pi+2n\pi\)<br>\(t=\dfrac{\pi-\varphi+2n\pi}{\omega}\)</td>
+        <td>\(\sen(\omega t+\varphi)=-1\)<br>\(\omega t+\varphi=-\dfrac{\pi}{2}+2n\pi\)<br>\(t=\dfrac{-\pi/2-\varphi+2n\pi}{\omega}\)</td>
+      </tr>
+      <tr>
+        <td><strong>Fracción de A</strong><br><small>\(x(t)=kA\)<br>\(0{<}k{<}1\)</small></td>
+        <td>\(\cos(\omega t+\varphi)=k\)<br>\(\omega t+\varphi=\pm\arccos(k)+2n\pi\)<br>\(t=\dfrac{\pm\arccos(k)-\varphi+2n\pi}{\omega}\)</td>
+        <td>\(\sen(\omega t+\varphi)=k\)<br>\(\omega t+\varphi=\arcsen(k)+2n\pi\)<br>o \(=\pi-\arcsen(k)+2n\pi\)<br>\(t=\dfrac{\arcsen(k)-\varphi+2n\pi}{\omega}\)</td>
+      </tr>
+      <tr>
+        <td><strong>Velocidad<br>máxima</strong></td>
+        <td colspan="2" style="text-align:center">\(\lvert v_{\max}\rvert = A\cdot\omega\quad\) ocurre cuando \(x=0\) (posición de equilibrio)</td>
+      </tr>
+      <tr>
+        <td><strong>Aceleración<br>máxima</strong></td>
+        <td colspan="2" style="text-align:center">\(\lvert a_{\max}\rvert = A\cdot\omega^2\quad\) ocurre cuando \(\lvert x\rvert=A\) (extensión máxima)</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <p style="margin-top:0.9rem;font-size:13px"><strong>Valores de sen/cos frecuentes en examen:</strong>
+  \(\quad\frac{1}{2}\to 30°=\frac{\pi}{6}\)
+  \(\quad\frac{\sqrt{2}}{2}\to 45°=\frac{\pi}{4}\)
+  \(\quad\frac{\sqrt{3}}{2}\to 60°=\frac{\pi}{3}\)
+  \(\quad 1\to 90°=\frac{\pi}{2}\)</p>
+  <p style="font-size:13px;margin-top:0.4rem"><strong>Regla práctica:</strong> siempre tomá el menor \(t&gt;0\) (probá \(n=0\); si da negativo, usá \(n=1\)).</p>
+</div>
+
 <div class="ejercbox">
   <div class="ejercbox-label">Tema 1 — Resorte sin amortiguamiento (movimiento libre no amortiguado)</div>
   <p>Una masa que pesa <strong>24 libras</strong> se une a un resorte que alarga <strong>4 pulgadas</strong>. La masa se libera desde el reposo desde un punto situado <strong>3 pulgadas arriba</strong> de la posición de equilibrio.</p>
