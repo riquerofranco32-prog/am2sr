@@ -1295,6 +1295,325 @@ details>*:not(summary){padding:1rem 1.4rem;}
   </details>
 </div>
 
+<h3 id="examenes-reales">★ Exámenes Finales Completos — Enunciados y Resoluciones</h3>
+
+<!-- ══ FINAL 13 FEB 2026 ══════════════════════════════════════════════ -->
+<div style="border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin-bottom:2rem">
+  <div style="background:var(--ink2);padding:1rem 1.5rem;display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap">
+    <span style="font-family:var(--mono);font-size:10px;letter-spacing:3px;color:rgba(255,255,255,0.4);text-transform:uppercase">Examen Final</span>
+    <span style="font-family:var(--display);font-size:1.2rem;color:#fff;font-weight:700">AM II — 13 de Febrero 2026</span>
+    <span style="margin-left:auto;font-family:var(--mono);font-size:11px;color:var(--gold2)">4 ejercicios</span>
+  </div>
+  <div style="padding:1.2rem 1.5rem">
+
+  <div class="ejercbox">
+    <div class="ejercbox-label">Ejercicio 1 · Gradiente y Descenso más Rápido</div>
+    <p>La superficie de un valle: \(f(x,y)=2500-0{,}002x^2-0{,}003y^2\). Sendero turístico desde \((20,10,2494{,}1)\) por el camino de descenso más rápido.</p>
+    <ul>
+      <li>a) Indique la dirección de descenso más rápido y su relación con el gradiente.</li>
+      <li>b) Justifique teóricamente por qué esa dirección corresponde al descenso más rápido.</li>
+      <li>c) Un resort en la misma altura desea trazar un camino desde su entrada hasta el punto de partida. ¿Cuál es la ecuación de esa curva? ¿Cómo se llama?</li>
+      <li>d) ¿Qué relación existe entre esa curva y el gradiente en el punto? Demuestre analíticamente.</li>
+      <li>e) ¿Qué tipo de función es \(\nabla f\)? ¿Cómo se llama? ¿Cómo resulta físicamente?</li>
+    </ul>
+    <details style="margin-top:0.8rem">
+      <summary>▸ Resolución completa</summary>
+      <div>
+        <p><strong>a) Dirección de descenso más rápido:</strong></p>
+        <div class="math-block">\[\nabla f = \left(-0{,}004x,\,-0{,}006y\right)\Big|_{(20,10)} = (-0{,}08,\,-0{,}06)\]</div>
+        <p>La dirección de descenso más rápido es \(-\nabla f = (0{,}08,\,0{,}06)\). El gradiente apunta hacia el <em>ascenso</em> más rápido; su opuesto, al descenso.</p>
+        <p><strong>b) Justificación teórica:</strong></p>
+        <div class="math-block">\[DD_{\mathbf{u}}f = \nabla f \cdot \mathbf{u} = |\nabla f|\cos\theta\]</div>
+        <p>Es mínima cuando \(\cos\theta=-1\), es decir \(\mathbf{u}=-\nabla f/|\nabla f|\). La tasa de descenso máxima es \(-|\nabla f|\).</p>
+        <p><strong>c) Curva de nivel (misma altura = \(f=2494{,}1\)):</strong></p>
+        <div class="math-block">\[2500-0{,}002x^2-0{,}003y^2=2494{,}1\implies 0{,}002x^2+0{,}003y^2=5{,}9\]</div>
+        <p>Es una <strong>elipse</strong>. En matemática se llama <strong>curva de nivel</strong> (o curva isovalor) de \(f\).</p>
+        <p><strong>d) Gradiente ⊥ curva de nivel:</strong> si \(\mathbf{r}(t)\) es una parametrización de la curva de nivel \(f(\mathbf{r}(t))=c\), entonces derivando por regla de la cadena:</p>
+        <div class="math-block">\[\nabla f(\mathbf{r}(t))\cdot\mathbf{r}'(t)=0\]</div>
+        <p>luego \(\nabla f\) es perpendicular a todo vector tangente a la curva de nivel. \(\blacksquare\)</p>
+        <p><strong>e)</strong> \(\nabla f\) es un <strong>campo vectorial</strong> (asigna un vector a cada punto del dominio). Si \(f\) representa altitud, \(\nabla f\) indica la pendiente más empinada en cada punto y apunta "cuesta arriba". Es la "brújula del máximo crecimiento".</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="ejercbox">
+    <div class="ejercbox-label">Ejercicio 2 · Extremos — Optimización de Producción</div>
+    <p>Fabricante de helados: \(H(a,b)=-9a^2-6b^2+42a+72b\) donde \(a\) = azúcar (quintales) y \(b\) = leche (m³).</p>
+    <ul>
+      <li>a) ¿Cuántos quintales de azúcar y m³ de leche para producción óptima? Justificar con la teoría.</li>
+      <li>b) ¿Qué cantidad de helado se obtiene con esas cantidades?</li>
+      <li>c) Si se aumenta el azúcar en 0,05 y la leche en 0,03, ¿cuál es la cantidad exacta y aproximada?</li>
+    </ul>
+    <details style="margin-top:0.8rem">
+      <summary>▸ Resolución completa</summary>
+      <div>
+        <p><strong>a) Punto crítico (libre, sin restricción):</strong></p>
+        <div class="math-block">\[\frac{\partial H}{\partial a}=-18a+42=0\implies a=\frac{7}{3}\text{ quintales}\]</div>
+        <div class="math-block">\[\frac{\partial H}{\partial b}=-12b+72=0\implies b=6\text{ m}^3\]</div>
+        <p>Hessiano: \(H_{aa}=-18\), \(H_{bb}=-12\), \(H_{ab}=0\).</p>
+        <div class="math-block">\[D=(-18)(-12)-0^2=216>0\quad\text{y}\quad H_{aa}=-18<0\implies\textbf{máximo local}\]</div>
+        <p><strong>b) Producción máxima:</strong></p>
+        <div class="math-block">\[H\!\left(\tfrac{7}{3},6\right)=-9\!\cdot\!\tfrac{49}{9}-6\!\cdot\!36+42\!\cdot\!\tfrac{7}{3}+72\!\cdot\!6=-49-216+98+432=\boxed{265\text{ unidades}}\]</div>
+        <p><strong>c) Variación aproximada (diferencial total) y exacta:</strong></p>
+        <p>En el punto crítico \(\partial H/\partial a=\partial H/\partial b=0\), por lo tanto el diferencial total es:</p>
+        <div class="math-block">\[dH=\tfrac{\partial H}{\partial a}\,da+\tfrac{\partial H}{\partial b}\,db=0\cdot0{,}05+0\cdot0{,}03=0\]</div>
+        <p>La variación de segundo orden (cuadrática):</p>
+        <div class="math-block">\[\Delta H\approx\tfrac{1}{2}\!\left(H_{aa}(\Delta a)^2+H_{bb}(\Delta b)^2\right)=\tfrac{1}{2}\!\left(-18(0{,}05)^2-12(0{,}03)^2\right)\approx -0{,}028\]</div>
+        <p>La producción <strong>disminuye</strong> ~0,028 unidades al apartarse del óptimo.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="ejercbox">
+    <div class="ejercbox-label">Ejercicio 3 · Integral Doble — Placa Metálica</div>
+    <p>Placa de metal: \(x^2+y^2\le3\), \(0\le x\), \(y\le -x\).</p>
+    <ul>
+      <li>a) Grafique y plantee la integral del área en cartesianas. Realice el cambio a polares.</li>
+      <li>b) Sólido de 20 cm de altura con esa base. Calcule el volumen.</li>
+      <li>c) Verifique en coordenadas cilíndricas.</li>
+    </ul>
+    <details style="margin-top:0.8rem">
+      <summary>▸ Resolución completa</summary>
+      <div>
+        <p><strong>Identificación de la región:</strong> círculo de radio \(\sqrt{3}\), con \(x\ge0\) (derecha del eje) y \(y\le-x\) (debajo de la recta \(y=-x\)). En polar: \(x\ge0\Rightarrow\cos\theta\ge0\); \(y\le-x\Rightarrow\sin\theta+\cos\theta\le0\Rightarrow\theta\in[-\tfrac{\pi}{2},-\tfrac{\pi}{4}]\).</p>
+        <p><strong>a) Cartesianas → Polares:</strong></p>
+        <div class="math-block">\[\text{Cartesianas: }\int_0^{\sqrt{3}}\int_{-x}^{0}\,dy\,dx\quad\longrightarrow\quad\text{Polares: }\int_{-\pi/2}^{-\pi/4}\int_0^{\sqrt{3}}r\,dr\,d\theta\]</div>
+        <div class="math-block">\[A=\int_{-\pi/2}^{-\pi/4}\!\frac{3}{2}\,d\theta=\frac{3}{2}\cdot\frac{\pi}{4}=\boxed{\frac{3\pi}{8}\text{ u}^2}\]</div>
+        <p><strong>b) Volumen del sólido (altura 20):</strong></p>
+        <div class="math-block">\[V=20\cdot A=20\cdot\frac{3\pi}{8}=\boxed{\frac{15\pi}{2}\approx 23{,}56\text{ u}^3}\]</div>
+        <p><strong>c) Coordenadas cilíndricas</strong> (\(z\) de 0 a 20, mismos límites de \(r\) y \(\theta\)):</p>
+        <div class="math-block">\[V=\int_{-\pi/2}^{-\pi/4}\!\int_0^{\sqrt{3}}\!\int_0^{20}r\,dz\,dr\,d\theta=20\cdot\frac{3\pi}{8}=\frac{15\pi}{2}\checkmark\]</div>
+      </div>
+    </details>
+  </div>
+
+  <div class="ejercbox">
+    <div class="ejercbox-label">Ejercicio 4 · MAS — Sistema Amortiguado (subamortiguado)</div>
+    <p>Masa \(m=4\,\text{kg}\) estira resorte \(0{,}8\,\text{m}\). Amortiguación \(=2\times\) velocidad. Se suelta desde equilibrio con velocidad descendente de \(3\,\text{m/s}\).</p>
+    <ul>
+      <li>a) Encuentre la ecuación del movimiento con DCL, SG y SPVI.</li>
+      <li>b) Esboce la gráfica e indique todos los datos que caracterizan el movimiento.</li>
+      <li>c) ¿Existe término transitorio y permanente? Justifique.</li>
+    </ul>
+    <details style="margin-top:0.8rem">
+      <summary>▸ Resolución completa</summary>
+      <div>
+        <p><strong>Datos:</strong> \(k=mg/s=4\times9{,}8/0{,}8=49\,\text{N/m}\), \(c=2\,\text{N·s/m}\). EDO:</p>
+        <div class="math-block">\[4x''+2x'+49x=0\implies x''+0{,}5x'+12{,}25x=0\]</div>
+        <p><strong>Ec. auxiliar:</strong> \(4r^2+2r+49=0\). \(\Delta=4-784=-780<0\) → <span style="color:var(--teal);font-weight:700">subamortiguado</span>.</p>
+        <div class="math-block">\[r=\frac{-2\pm\sqrt{-780}}{8}=-\frac{1}{4}\pm\frac{\sqrt{195}}{4}\,i\qquad(\alpha=-\tfrac{1}{4},\;\beta=\tfrac{\sqrt{195}}{4}\approx3{,}49\,\text{rad/s})\]</div>
+        <p><strong>Solución general:</strong> \(x(t)=e^{-t/4}\!\left(C_1\cos\tfrac{\sqrt{195}}{4}t+C_2\sin\tfrac{\sqrt{195}}{4}t\right)\)</p>
+        <p>CI: \(x(0)=0\Rightarrow C_1=0\). \(x'(0)=3\Rightarrow C_2\beta=3\Rightarrow C_2=\dfrac{12}{\sqrt{195}}\).</p>
+        <div class="math-block">\[\boxed{x(t)=\frac{12}{\sqrt{195}}\,e^{-t/4}\sin\!\left(\frac{\sqrt{195}}{4}\,t\right)}\quad A\approx0{,}859\,\text{m}\]</div>
+        <p><strong>c)</strong> No existe término permanente: la ecuación es <em>homogénea</em> (sin forzado externo). Toda la solución es <strong>transitoria</strong> (\(x(t)\to0\) cuando \(t\to\infty\)). El término permanente sólo aparece en sistemas forzados.</p>
+      </div>
+    </details>
+  </div>
+
+  </div><!-- /padding -->
+</div><!-- /Final 13 Feb -->
+
+<!-- ══ FINAL 27 FEB 2026 ══════════════════════════════════════════════ -->
+<div style="border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin-bottom:2rem">
+  <div style="background:#1a3a5c;padding:1rem 1.5rem;display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap">
+    <span style="font-family:var(--mono);font-size:10px;letter-spacing:3px;color:rgba(255,255,255,0.4);text-transform:uppercase">Examen Final</span>
+    <span style="font-family:var(--display);font-size:1.2rem;color:#fff;font-weight:700">AM II — 27 de Febrero 2026</span>
+    <span style="margin-left:auto;font-family:var(--mono);font-size:11px;color:#7fb3d3">4 ejercicios</span>
+  </div>
+  <div style="padding:1.2rem 1.5rem">
+
+  <div class="ejercbox">
+    <div class="ejercbox-label">Ejercicio 1 · Extremos — Función de 4° Grado</div>
+    <p>Fosa marina: \(f(x,y)=x^4+y^4-4xy+1\) en \(R=\{(x,y):-2\le x\le2,\;-2\le y\le2\}\).</p>
+    <ul>
+      <li>a) Grafique y describa la región.</li>
+      <li>b) Indique si la fosa posee extremos o puntos silla en el interior.</li>
+      <li>c) Explique el método utilizado (teoría).</li>
+      <li>d) ¿Qué métodos se usan para extremos condicionados? Explique uno.</li>
+      <li>e) Describa la fosa mediante sus curvas de nivel.</li>
+    </ul>
+    <details style="margin-top:0.8rem">
+      <summary>▸ Resolución completa</summary>
+      <div>
+        <p><strong>Puntos críticos interiores:</strong></p>
+        <div class="math-block">\[\frac{\partial f}{\partial x}=4x^3-4y=0\implies y=x^3\qquad\frac{\partial f}{\partial y}=4y^3-4x=0\implies x=y^3\]</div>
+        <p>Sustituyendo: \(x=(x^3)^3=x^9\Rightarrow x(x^8-1)=0\Rightarrow x\in\{0,1,-1\}\).</p>
+        <table>
+          <tr><th>Punto</th><th>\(f\)</th><th>\(D=f_{xx}f_{yy}-f_{xy}^2\)</th><th>\(f_{xx}\)</th><th>Clasificación</th></tr>
+          <tr><td>\((0,0)\)</td><td>\(1\)</td><td>\(0\cdot0-16=-16<0\)</td><td>—</td><td>Punto silla</td></tr>
+          <tr><td>\((1,1)\)</td><td>\(-1\)</td><td>\(12\cdot12-16=128>0\)</td><td>\(12>0\)</td><td>Mínimo local</td></tr>
+          <tr><td>\((-1,-1)\)</td><td>\(-1\)</td><td>\(128>0\)</td><td>\(12>0\)</td><td>Mínimo local</td></tr>
+        </table>
+        <p style="margin-top:0.6rem"><strong>Curvas de nivel:</strong> \(x^4+y^4-4xy=c-1\). Para valores de \(c\) cercanos a \(-1\): curvas cerradas alrededor de los mínimos. Para \(c=1\): pasa por el punto silla.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="ejercbox">
+    <div class="ejercbox-label">Ejercicio 2 · EDO 1° Orden — Carbono 14</div>
+    <p>Momia egipcia con \(\tfrac{2}{3}\) de la cantidad habitual de C-14. Semivida del C-14: 5570 años.</p>
+    <ul>
+      <li>a) Plantee el modelo diferencial correspondiente.</li>
+      <li>b) Clasifique en forma completa la EDO, justificando.</li>
+      <li>c) ¿Cuánto tiempo ha transcurrido desde la momificación? Explique el método.</li>
+    </ul>
+    <details style="margin-top:0.8rem">
+      <summary>▸ Resolución completa</summary>
+      <div>
+        <p><strong>a) Modelo:</strong> \(\dfrac{dQ}{dt}=kQ\) → EDO de 1° orden, lineal, homogénea, separable, a coef. constantes.</p>
+        <p><strong>b) Clasificación:</strong> EDO ordinaria, 1° orden, 1° grado, lineal, homogénea, a coeficientes constantes, separable.</p>
+        <p><strong>Solución:</strong> \(Q(t)=Q_0\,e^{kt}\). Semivida: \(Q(5570)=Q_0/2\):</p>
+        <div class="math-block">\[e^{5570k}=\tfrac{1}{2}\implies k=\frac{-\ln 2}{5570}\]</div>
+        <p><strong>c) Tiempo de momificación:</strong> \(Q=\tfrac{2}{3}Q_0\):</p>
+        <div class="math-block">\[e^{kt}=\frac{2}{3}\implies t=\frac{\ln(2/3)}{k}=\frac{\ln(2/3)}{-\ln2/5570}=5570\cdot\frac{\ln(3/2)}{\ln 2}\approx5570\cdot0{,}585\approx\boxed{3258\text{ años}}\]</div>
+      </div>
+    </details>
+  </div>
+
+  <div class="ejercbox">
+    <div class="ejercbox-label">Ejercicio 3 · Integral Doble — Carpa para Eventos</div>
+    <p>Carpa: \(f(x,y)=\sqrt{9-x^2-y^2}\) en \(R=\{(x,y):x^2+y^2\le4\}\).</p>
+    <ul>
+      <li>a) Grafique y plantee la integral del área superficial en coordenadas cartesianas.</li>
+      <li>b) Aplique cambio a polares y resuélvala.</li>
+    </ul>
+    <details style="margin-top:0.8rem">
+      <summary>▸ Resolución completa</summary>
+      <div>
+        <p><strong>Área superficial:</strong> \(A=\iint_R\sqrt{1+\left(\tfrac{\partial z}{\partial x}\right)^2+\left(\tfrac{\partial z}{\partial y}\right)^2}\,dA\)</p>
+        <div class="math-block">\[\frac{\partial z}{\partial x}=\frac{-x}{\sqrt{9-x^2-y^2}},\quad\frac{\partial z}{\partial y}=\frac{-y}{\sqrt{9-x^2-y^2}}\]</div>
+        <div class="math-block">\[1+\left(\frac{\partial z}{\partial x}\right)^2+\left(\frac{\partial z}{\partial y}\right)^2=\frac{9}{9-x^2-y^2}\implies\sqrt{\cdot}=\frac{3}{\sqrt{9-x^2-y^2}}\]</div>
+        <p><strong>Cartesianas:</strong> \(A=\displaystyle\int_{-2}^{2}\int_{-\sqrt{4-x^2}}^{\sqrt{4-x^2}}\dfrac{3}{\sqrt{9-x^2-y^2}}\,dy\,dx\)</p>
+        <p><strong>Polares</strong> (\(0\le r\le2\), \(0\le\theta\le2\pi\)):</p>
+        <div class="math-block">\[A=\int_0^{2\pi}\!\int_0^{2}\frac{3r}{\sqrt{9-r^2}}\,dr\,d\theta=2\pi\cdot3\left[-\sqrt{9-r^2}\right]_0^2=6\pi\!\left(3-\sqrt{5}\right)\approx\boxed{14{,}40\text{ u}^2}\]</div>
+      </div>
+    </details>
+  </div>
+
+  <div class="ejercbox">
+    <div class="ejercbox-label">Ejercicio 4 · Verdadero / Falso — Justificado</div>
+    <p>Indique V o F y justifique cada afirmación:</p>
+    <details style="margin-top:0.8rem">
+      <summary>▸ Respuestas completas</summary>
+      <div>
+        <table>
+          <tr><th style="width:60%">Afirmación</th><th style="width:8%">R</th><th>Justificación</th></tr>
+          <tr>
+            <td>a) "La ecuación característica surge de plantear una posible solución particular de la EDO de 2do orden."</td>
+            <td><strong style="color:var(--red)">F</strong></td>
+            <td>Surge de proponer \(y=e^{rt}\) como solución de la ec. <strong>homogénea</strong>, no particular.</td>
+          </tr>
+          <tr>
+            <td>b) "Si \(f(x,y)\) es continua en una región, puede garantizarse que es diferenciable en dicha región."</td>
+            <td><strong style="color:var(--red)">F</strong></td>
+            <td>Continuidad no implica diferenciabilidad. Contraejemplo: \(f(x,y)=\sqrt{x^2+y^2}\) es continua pero no diferenciable en \((0,0)\).</td>
+          </tr>
+          <tr>
+            <td>c) "Si el vector gradiente es no nulo en \((x_0,y_0)\), es perpendicular a la curva de nivel."</td>
+            <td><strong style="color:var(--green)">V</strong></td>
+            <td>Si \(\mathbf{r}(t)\) parametriza la curva de nivel \(f=c\): \(\nabla f\cdot\mathbf{r}'=0\) por regla de la cadena.</td>
+          </tr>
+          <tr>
+            <td>d) "La solución de una EDO de 2do orden siempre consta de término transitorio y permanente."</td>
+            <td><strong style="color:var(--red)">F</strong></td>
+            <td>Sólo en sistemas forzados con amortiguamiento. La ec. homogénea no tiene término permanente (todo tiende a 0).</td>
+          </tr>
+        </table>
+      </div>
+    </details>
+  </div>
+
+  </div>
+</div><!-- /Final 27 Feb -->
+
+<!-- ══ PARCIAL ═══════════════════════════════════════════════════════ -->
+<div style="border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin-bottom:2rem">
+  <div style="background:#1a4a2e;padding:1rem 1.5rem;display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap">
+    <span style="font-family:var(--mono);font-size:10px;letter-spacing:3px;color:rgba(255,255,255,0.4);text-transform:uppercase">Parcial</span>
+    <span style="font-family:var(--display);font-size:1.2rem;color:#fff;font-weight:700">AM II — Examen de Práctica (4 problemas)</span>
+    <span style="margin-left:auto;font-family:var(--mono);font-size:11px;color:#a9dfbf">120 min</span>
+  </div>
+  <div style="padding:1.2rem 1.5rem">
+
+  <div class="ejercbox">
+    <div class="ejercbox-label">Problema 1 · EDO 2° Orden — MAS Forzado</div>
+    <p>\(my''+cy'+ky=F_0\cos(\omega t)\) con \(m=2\), \(c=4\), \(k=8\), \(F_0=10\), \(\omega=3\).</p>
+    <ul>
+      <li>a) Identifique el tipo de sistema (sub/crít./sobre-amortiguado).</li>
+      <li>b) Resuelva la ec. homogénea y describa el significado físico.</li>
+      <li>c) Obtenga una solución particular y plantee la solución general.</li>
+      <li>d) Explique el fenómeno de resonancia.</li>
+      <li>e) Discuta cómo varía la respuesta si \(c=0\) y \(F_0=0\).</li>
+    </ul>
+    <details style="margin-top:0.8rem">
+      <summary>▸ Resolución completa</summary>
+      <div>
+        <p><strong>EDO simplificada:</strong> \(2y''+4y'+8y=10\cos3t\Rightarrow y''+2y'+4y=5\cos3t\)</p>
+        <p><strong>a) Tipo:</strong> \(\Delta=c^2-4mk=16-64=-48<0\) → <span style="color:var(--teal);font-weight:700">subamortiguado</span>.</p>
+        <p><strong>b) Homogénea:</strong> \(r^2+2r+4=0\Rightarrow r=-1\pm i\sqrt{3}\)</p>
+        <div class="math-block">\[y_H=e^{-t}\!\left(C_1\cos\sqrt{3}\,t+C_2\sin\sqrt{3}\,t\right)\]</div>
+        <p>Físicamente: oscilación con amplitud decayente exponencialmente. El sistema vuelve al equilibrio oscilando con frecuencia \(\sqrt{3}\,\text{rad/s}\) y envolvente \(e^{-t}\).</p>
+        <p><strong>c) Solución particular:</strong> \(y_p=A\cos3t+B\sin3t\)</p>
+        <div class="math-block">\[(-9A+6B+4A)\cos+(-9B-6A+4B)\sin=5\cos\]</div>
+        <div class="math-block">\[\begin{cases}-5A+6B=5\\-6A-5B=0\end{cases}\implies B=\frac{30}{61},\;A=-\frac{25}{61}\]</div>
+        <div class="math-block">\[y_G=e^{-t}\!\left(C_1\cos\sqrt{3}\,t+C_2\sin\sqrt{3}\,t\right)-\frac{25}{61}\cos3t+\frac{30}{61}\sin3t\]</div>
+        <p><strong>d) Resonancia:</strong> ocurre cuando \(\omega=\omega_0\) (frec. natural) y \(c=0\). La \(y_p\) contiene factor \(t\), la amplitud crece sin cota → sistema se destruye.</p>
+        <p><strong>e) \(c=0\), \(F_0=0\):</strong> \(y''+4y=0\Rightarrow\omega_0=2\,\text{rad/s}\). Oscilación libre no amortiguada: \(y=C_1\cos2t+C_2\sin2t\). Si además \(\omega=\omega_0=2\): resonancia pura.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="ejercbox">
+    <div class="ejercbox-label">Problema 2 · Integral Doble — Semidisco en Polares</div>
+    <p>Región \(R: x^2+y^2\le4\), \(y\ge0\). Calcule el área en cartesianas, transforme a polares y resuelva. Explique la ventaja del cambio.</p>
+    <details style="margin-top:0.8rem">
+      <summary>▸ Resolución completa</summary>
+      <div>
+        <p><strong>Cartesianas:</strong> \(A=\displaystyle\int_{-2}^{2}\!\int_{0}^{\sqrt{4-x^2}}\!dy\,dx\) (difícil de integrar directamente)</p>
+        <p><strong>Polares</strong> (\(0\le r\le2\), \(0\le\theta\le\pi\)):</p>
+        <div class="math-block">\[A=\int_0^{\pi}\!\int_0^{2}r\,dr\,d\theta=\int_0^{\pi}\!\left[\frac{r^2}{2}\right]_0^2\!d\theta=\int_0^{\pi}2\,d\theta=\boxed{2\pi\text{ u}^2}\]</div>
+        <p><strong>Ventaja:</strong> la condición \(x^2+y^2\le4\) se convierte en \(r\le2\), separando perfectamente las variables. La integral cartesiana requeriría integrar \(\sqrt{4-x^2}\), mucho más compleja.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="ejercbox">
+    <div class="ejercbox-label">Problema 3 · Extremos y Lagrange</div>
+    <p>\(f(x,y)=x^2+y^2-2x-4y\). a) Puntos críticos sin restricciones. b) Máximos/mínimos sobre \(x+y=4\) con Lagrange. c) ¿Podría resolverse por parametrización? d) Aplicaciones.</p>
+    <details style="margin-top:0.8rem">
+      <summary>▸ Resolución completa</summary>
+      <div>
+        <p><strong>a) Extremos libres:</strong></p>
+        <div class="math-block">\[\frac{\partial f}{\partial x}=2x-2=0\implies x=1\qquad\frac{\partial f}{\partial y}=2y-4=0\implies y=2\]</div>
+        <p>\(D=(2)(2)-0=4>0\), \(f_{xx}=2>0\) → <strong>mínimo local en \((1,2)\)</strong>, \(f(1,2)=-5\).</p>
+        <p><strong>b) Lagrange con \(g(x,y)=x+y-4=0\):</strong></p>
+        <div class="math-block">\[\nabla f=\lambda\nabla g:\quad(2x-2,\,2y-4)=(\lambda,\lambda)\]</div>
+        <div class="math-block">\[2x-2=2y-4\implies x=y-1\quad\text{y}\quad x+y=4\implies y=\frac{5}{2},\;x=\frac{3}{2}\]</div>
+        <div class="math-block">\[f\!\left(\tfrac{3}{2},\tfrac{5}{2}\right)=\tfrac{9}{4}+\tfrac{25}{4}-3-10=-\frac{9}{2}=-4{,}5\]</div>
+        <p><strong>c) Parametrización:</strong> con \(x=4-t\), \(y=t\): \(f=(4-t)^2+t^2-2(4-t)-4t\), derivar e igualar a 0. Equivalente a Lagrange, pero menos sistemático.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="ejercbox">
+    <div class="ejercbox-label">Problema 4 · Gradiente — Campo Escalar</div>
+    <p>Campo escalar \(\phi(x,y,z)=x^2+y^2+z^2\). Calcule \(\nabla\phi\), interprete, evalúe en \((1,2,2)\) e interprete geométricamente.</p>
+    <details style="margin-top:0.8rem">
+      <summary>▸ Resolución completa</summary>
+      <div>
+        <div class="math-block">\[\nabla\phi=(2x,\,2y,\,2z)\]</div>
+        <p><strong>Tipo de función:</strong> \(\nabla\phi\) es un <strong>campo vectorial</strong> (asigna un vector a cada punto de \(\mathbb{R}^3\)).</p>
+        <p><strong>En \((1,2,2)\):</strong></p>
+        <div class="math-block">\[\nabla\phi(1,2,2)=(2,4,4)\qquad|\nabla\phi|=\sqrt{4+16+16}=6\]</div>
+        <p><strong>Interpretación:</strong> si \(\phi\) representa temperatura, \(\nabla\phi(1,2,2)=(2,4,4)\) indica la dirección y tasa de mayor aumento de temperatura en ese punto. El vector unitario de máximo crecimiento es \(\hat{u}=(1/3,\,2/3,\,2/3)\).</p>
+        <p><strong>Relación con superficies de nivel:</strong> \(\nabla\phi\) es perpendicular a la superficie de nivel \(\phi=c\) (esfera \(x^2+y^2+z^2=9\) en el punto). Esto se demuestra con la regla de la cadena igual que en 2D.</p>
+      </div>
+    </details>
+  </div>
+
+  </div>
+</div><!-- /Parcial -->
+
 <h3 id="guia-teoria">★ Cómo justificar teóricamente (lo que el docente espera escuchar)</h3>
 <div class="defbox">
   <div class="defbox-label">Estructura para preguntas tipo "Justifique / Explique / Desarrolle"</div>
@@ -5288,6 +5607,50 @@ document.addEventListener("DOMContentLoaded", function(){
   },{threshold:0.2,rootMargin:'-10% 0px -65% 0px'});
 
   document.querySelectorAll('h3[id]').forEach(el=>observer.observe(el));
+
+  // ── Teoría colapsable ─────────────────────────────────────────────
+  document.querySelectorAll('h4[id^="tema-"]').forEach(h4 => {
+    const det = document.createElement('details');
+    det.style.cssText = 'border:1px solid rgba(90,60,20,0.15);border-radius:8px;margin:1.2rem 0;overflow:hidden;background:var(--paper)';
+
+    const sum = document.createElement('summary');
+    sum.style.cssText = [
+      'padding:0.85rem 1.3rem',
+      'cursor:pointer',
+      'font-family:var(--display)',
+      'font-size:1.08rem',
+      'font-weight:700',
+      'color:var(--ink2)',
+      'background:var(--paper2)',
+      'list-style:none',
+      'display:flex',
+      'align-items:center',
+      'justify-content:space-between',
+      'gap:0.5rem',
+      'user-select:none'
+    ].join(';');
+    sum.innerHTML = '<span>' + h4.innerHTML + '</span>'
+      + '<span class="tema-toggle" style="font-family:var(--mono);font-size:10px;letter-spacing:1px;color:var(--gold);white-space:nowrap;flex-shrink:0">▸ expandir</span>';
+
+    det.addEventListener('toggle', () => {
+      const lbl = det.querySelector('.tema-toggle');
+      if (lbl) lbl.textContent = det.open ? '▾ colapsar' : '▸ expandir';
+    });
+
+    det.appendChild(sum);
+    const body = document.createElement('div');
+    body.style.cssText = 'padding:0.4rem 0.6rem';
+
+    const toMove = [];
+    let next = h4.nextElementSibling;
+    while (next && !(next.tagName === 'H4' && next.id) && next.tagName !== 'H3' && !next.classList.contains('chapter-divider')) {
+      toMove.push(next);
+      next = next.nextElementSibling;
+    }
+    toMove.forEach(n => body.appendChild(n));
+    det.appendChild(body);
+    h4.replaceWith(det);
+  });
 });
 </script>
 </body>
