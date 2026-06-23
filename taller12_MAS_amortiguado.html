@@ -90,6 +90,48 @@ th{font-weight:500;background:var(--color-background-secondary)}
   </div>
 
   <div class="card">
+    <h3>Instantes especiales — equilibrio y máxima extensión</h3>
+    <div class="step">Depende de si la solución está expresada con <b>Cos</b> o con <b>Sen</b>:</div>
+    <div class="row2">
+      <div>
+        <div class="step"><b>Si y(t) = A·Cos(ωt + φ)</b></div>
+        <div class="f">Equilibrio (y = 0):<br>Cos(ωt+φ) = 0<br>ωt+φ = π/2 + nπ<br>t = (π/2 − φ + nπ)/ω</div>
+        <div class="f">Máx. extensión abajo (y = A):<br>Cos(ωt+φ) = 1<br>ωt+φ = 2nπ<br>t = (2nπ − φ)/ω</div>
+        <div class="f">Máx. extensión arriba (y = −A):<br>Cos(ωt+φ) = −1<br>ωt+φ = π + 2nπ<br>t = (π − φ + 2nπ)/ω</div>
+      </div>
+      <div>
+        <div class="step"><b>Si y(t) = A·Sen(ωt + φ)</b></div>
+        <div class="f">Equilibrio (y = 0):<br>Sen(ωt+φ) = 0<br>ωt+φ = nπ<br>t = (nπ − φ)/ω</div>
+        <div class="f">Máx. extensión abajo (y = A):<br>Sen(ωt+φ) = 1<br>ωt+φ = π/2 + 2nπ<br>t = (π/2 − φ + 2nπ)/ω</div>
+        <div class="f">Máx. extensión arriba (y = −A):<br>Sen(ωt+φ) = −1<br>ωt+φ = −π/2 + 2nπ<br>t = (−π/2 − φ + 2nπ)/ω</div>
+      </div>
+    </div>
+    <div class="note">n = 0, 1, 2, … Tomar el <b>menor t &gt; 0</b>. El primer instante positivo que cumpla la igualdad.</div>
+  </div>
+
+  <div class="card">
+    <h3>Velocidad máxima y aceleración máxima</h3>
+    <div class="step">Derivar y(t) para obtener velocidad y aceleración:</div>
+    <div class="row2">
+      <div>
+        <div class="step"><b>Con y(t) = A·Cos(ωt + φ)</b></div>
+        <div class="f">y'(t) = −Aω·Sen(ωt+φ)</div>
+        <div class="f">y''(t) = −Aω²·Cos(ωt+φ)</div>
+      </div>
+      <div>
+        <div class="step"><b>Con y(t) = A·Sen(ωt + φ)</b></div>
+        <div class="f">y'(t) = Aω·Cos(ωt+φ)</div>
+        <div class="f">y''(t) = −Aω²·Sen(ωt+φ)</div>
+      </div>
+    </div>
+    <div class="step" style="margin-top:.5rem">El módulo máximo de Cos y Sen es <b>1</b>, por lo tanto:</div>
+    <div class="f">|v_máx| = A·ω &nbsp;&nbsp; (cuando el sistema pasa por el equilibrio, y = 0)</div>
+    <div class="f">|a_máx| = A·ω² &nbsp; (cuando el sistema está en la extensión máxima, |y| = A)</div>
+    <div class="ok">Relación clave: a_máx = ω² · A = ω · v_máx</div>
+    <div class="note">Estas fórmulas son válidas tanto para la expresión en Cos como en Sen, solo cambia en qué instante ocurren dentro del ciclo.</div>
+  </div>
+
+  <div class="card">
     <h3>Resortes en paralelo y en serie</h3>
     <div class="row2">
       <div>
