@@ -4493,6 +4493,36 @@ details>*:not(summary){padding:1rem 1.4rem;}
   </div>
 </div>
 
+<div class="example">
+  <div class="example-header">Ejercicio 3 — Área de la carpa \(f(x,y)=\sqrt{9-x^2-y^2}\) sobre \(R\colon x^2+y^2\leq 4\)</div>
+  <div class="example-body">
+
+    <p><strong>Identificación:</strong> \(f(x,y)=\sqrt{9-x^2-y^2}\) es una semiesfera de radio \(R=3\). La región \(R\) es el disco de radio 2 (no el disco completo de la esfera — por eso se llama "carpa": es un casquete esférico).</p>
+
+    <p><strong>Planteo — aplicar patrón de la esfera con \(R=3\):</strong></p>
+    <div class="math-block">\[\sqrt{1+f_x^2+f_y^2} = \frac{3}{\sqrt{9-x^2-y^2}}\]</div>
+    <div class="math-block">\[A_S = \iint_R \frac{3}{\sqrt{9-x^2-y^2}}\,dA\]</div>
+
+    <p><strong>Paso 1 — Coordenadas polares</strong> \((0\leq r\leq 2,\;0\leq\theta\leq 2\pi)\):</p>
+    <div class="math-block">\[A_S = \int_0^{2\pi}\int_0^2 \frac{3}{\sqrt{9-r^2}}\,r\,dr\,d\theta\]</div>
+
+    <p><strong>Paso 2 — Separar \(\theta\)</strong> (el integrando no depende de \(\theta\)):</p>
+    <div class="math-block">\[A_S = 2\pi\int_0^2 \frac{3r}{\sqrt{9-r^2}}\,dr\]</div>
+
+    <p><strong>Paso 3 — Sustitución</strong> \(u=9-r^2 \;\Rightarrow\; du=-2r\,dr \;\Rightarrow\; r\,dr=-\tfrac{du}{2}\):</p>
+    \[r=0\Rightarrow u=9;\quad r=2\Rightarrow u=9-4=5\]
+    <div class="math-block">\[A_S = 2\pi\cdot 3\int_9^5 u^{-1/2}\cdot\left(-\frac{du}{2}\right) = 3\pi\int_5^9 u^{-1/2}\,du = 3\pi\Big[2\sqrt{u}\Big]_5^9\]</div>
+
+    <p><strong>Resultado:</strong></p>
+    <div class="math-block">\[A_S = 3\pi\left(2\sqrt{9}-2\sqrt{5}\right) = 3\pi\cdot 2\left(3-\sqrt{5}\right) = \boxed{6\pi\!\left(3-\sqrt{5}\right)}\approx 14{,}40\]</div>
+
+    <div class="defbox" style="margin-top:0.7rem">
+      <div class="defbox-label">¿Por qué el resultado no es \(2\pi\cdot 9 = 18\pi\)?</div>
+      <p>Porque integramos solo sobre el disco \(x^2+y^2\leq 4\) (radio 2), no sobre la proyección completa de la esfera (radio 3). Si integráramos sobre el disco de radio 3 obtendríamos \(2\pi\cdot 9=18\pi\) — el área total de la semiesfera. Acá calculamos solo el casquete central.</p>
+    </div>
+  </div>
+</div>
+
 <h3 id="u5-triples">5.6 Integrales Triples</h3>
 <div class="defbox">
   <div class="defbox-label">Definición</div>
