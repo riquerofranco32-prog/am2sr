@@ -4992,6 +4992,52 @@ details>*:not(summary){padding:1rem 1.4rem;}
   <p>Sustituís \(x\to tx\), \(y\to ty\) en \(f(x,y)\). Si la \(t\) se cancela completamente → es homogénea de grado cero. Ej: \(f(x,y)=\dfrac{x^2+y^2}{xy}\), entonces \(f(tx,ty)=\dfrac{t^2(x^2+y^2)}{t^2xy}=\dfrac{x^2+y^2}{xy}\) ✓.</p>
 </div>
 
+<div class="tipbox">
+  <div class="tipbox-label">⚡ Variables Separables vs Factor Integrante — ¿cuándo uso cada uno?</div>
+  <p>Ambos son métodos para EDOs de <strong>1er orden</strong>, pero atacan formas distintas:</p>
+  <table style="width:100%;border-collapse:collapse;font-size:13px;margin-top:0.6rem">
+    <thead>
+      <tr style="background:rgba(0,0,0,0.08)">
+        <th style="padding:7px 10px;text-align:left;border:1px solid rgba(0,0,0,0.15)"></th>
+        <th style="padding:7px 10px;text-align:left;border:1px solid rgba(0,0,0,0.15)">Variables Separables</th>
+        <th style="padding:7px 10px;text-align:left;border:1px solid rgba(0,0,0,0.15)">Factor Integrante</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td style="padding:6px 10px;border:1px solid rgba(0,0,0,0.1);font-weight:600">Forma de la EDO</td>
+        <td style="padding:6px 10px;border:1px solid rgba(0,0,0,0.1)">\(y' = g(x)\cdot h(y)\)<br><small>— todo \(x\) de un lado, todo \(y\) del otro</small></td>
+        <td style="padding:6px 10px;border:1px solid rgba(0,0,0,0.1)">\(y' + P(x)\,y = Q(x)\)<br><small>— \(y\) e \(y'\) mezclados con funciones de \(x\)</small></td>
+      </tr>
+      <tr style="background:rgba(0,0,0,0.03)">
+        <td style="padding:6px 10px;border:1px solid rgba(0,0,0,0.1);font-weight:600">Idea clave</td>
+        <td style="padding:6px 10px;border:1px solid rgba(0,0,0,0.1)">Separar \(dy/h(y) = g(x)\,dx\) e integrar cada lado por separado</td>
+        <td style="padding:6px 10px;border:1px solid rgba(0,0,0,0.1)">Multiplicar por \(\mu=e^{\int P\,dx}\) para convertir el LHS en \((\mu y)'\) e integrar</td>
+      </tr>
+      <tr>
+        <td style="padding:6px 10px;border:1px solid rgba(0,0,0,0.1);font-weight:600">Cuándo aplica</td>
+        <td style="padding:6px 10px;border:1px solid rgba(0,0,0,0.1)">\(f(x,y)\) se factoriza como producto de una función de \(x\) y una de \(y\)</td>
+        <td style="padding:6px 10px;border:1px solid rgba(0,0,0,0.1)">\(y\) aparece linealmente (sin elevar al cuadrado, sin \(\sin y\), sin \(e^y\))</td>
+      </tr>
+      <tr style="background:rgba(0,0,0,0.03)">
+        <td style="padding:6px 10px;border:1px solid rgba(0,0,0,0.1);font-weight:600">Ejemplo tipo</td>
+        <td style="padding:6px 10px;border:1px solid rgba(0,0,0,0.1)">\(y' = xy^2\) → \(dy/y^2 = x\,dx\)</td>
+        <td style="padding:6px 10px;border:1px solid rgba(0,0,0,0.1)">\(y' + \tfrac{2}{x}y = x^2\) → \(\mu = x^2\)</td>
+      </tr>
+      <tr>
+        <td style="padding:6px 10px;border:1px solid rgba(0,0,0,0.1);font-weight:600">¿Pueden solaparse?</td>
+        <td colspan="2" style="padding:6px 10px;border:1px solid rgba(0,0,0,0.1)">Sí: \(y' = P(x)\,y\) (lineal homogénea, \(Q=0\)) es separable <em>y</em> lineal. Podés usar cualquiera de los dos — con sep. de variables es más rápido.</td>
+      </tr>
+      <tr style="background:rgba(0,0,0,0.03)">
+        <td style="padding:6px 10px;border:1px solid rgba(0,0,0,0.1);font-weight:600">No aplica si…</td>
+        <td style="padding:6px 10px;border:1px solid rgba(0,0,0,0.1)">\(y\) y \(x\) no se pueden separar en el producto (ej: \(y'=x+y\))</td>
+        <td style="padding:6px 10px;border:1px solid rgba(0,0,0,0.1)">\(y\) aparece no-lineal (ej: \(y^2\), \(e^y\), \(\sin y\)) — ahí usá sep. de variables u otro método</td>
+      </tr>
+    </tbody>
+  </table>
+  <p style="margin-top:0.7rem"><strong>Regla rápida de decisión:</strong> mirá la EDO y preguntá <em>"¿puedo poner todos los \(y\) de un lado y todos los \(x\) del otro?"</em> → Sí: separable. No, pero \(y\) aparece solo en primer grado → factor integrante. Ninguno de los dos funciona → homogénea de grado 0 o exacta.</p>
+</div>
+
 <h3 id="u7-lineales">7.4 Ecuaciones Lineales de 1er Orden</h3>
 <div class="defbox">
   <div class="defbox-label">¿Qué significa? — EDO Lineal de 1er Orden y Factor Integrante</div>
