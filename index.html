@@ -4614,6 +4614,85 @@ details>*:not(summary){padding:1rem 1.4rem;}
   </ul>
   <p>En la práctica se aplica el <strong>Teorema de Fubini</strong> y se convierte en tres integrales simples sucesivas, integrando de adentro hacia afuera (primero en \(z\), luego en \(y\), luego en \(x\), aunque el orden puede cambiarse según la región).</p>
 </div>
+
+<!-- SVG integral triple -->
+<div style="margin:1.2rem 0">
+<svg viewBox="0 0 620 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:620px;display:block;margin:0 auto;background:#faf7f0;border:1px solid #d4c5a0;border-radius:8px;">
+  <defs>
+    <marker id="axT" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#666"/></marker>
+  </defs>
+
+  <text x="310" y="16" font-size="12" fill="#3d2e14" font-weight="bold" font-family="sans-serif" text-anchor="middle">Integral Triple — Sólido 3D subdividido en cajitas ΔV = Δx·Δy·Δz</text>
+
+  <!-- Ejes 3D isométricos -->
+  <line x1="55" y1="210" x2="210" y2="210" stroke="#888" stroke-width="1.3" marker-end="url(#axT)"/>
+  <line x1="55" y1="210" x2="15"  y2="240" stroke="#888" stroke-width="1.3" marker-end="url(#axT)"/>
+  <line x1="55" y1="210" x2="55"  y2="50"  stroke="#888" stroke-width="1.3" marker-end="url(#axT)"/>
+  <text x="214" y="213" font-size="11" fill="#555" font-family="serif" font-style="italic">x</text>
+  <text x="8"   y="248" font-size="11" fill="#555" font-family="serif" font-style="italic">y</text>
+  <text x="48"  y="46"  font-size="11" fill="#555" font-family="serif" font-style="italic">z</text>
+
+  <!-- Sólido D -->
+  <polygon points="80,200 180,200 180,100 140,70 80,110" fill="rgba(74,144,226,0.10)" stroke="#4a90e2" stroke-width="1.5" stroke-dasharray="5,3"/>
+  <polygon points="80,110 140,70 170,80 115,120" fill="rgba(74,144,226,0.18)" stroke="#4a90e2" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <polygon points="180,200 180,100 170,80 170,190" fill="rgba(74,144,226,0.14)" stroke="#4a90e2" stroke-width="1.2" stroke-dasharray="4,3"/>
+  <text x="120" y="165" font-size="13" fill="#1a3a5c" font-family="serif" font-style="italic" font-weight="bold">D</text>
+
+  <!-- Cajita ΔV resaltada -->
+  <polygon points="110,175 140,175 140,148 110,148" fill="rgba(52,211,153,0.35)" stroke="#10b981" stroke-width="1.8"/>
+  <polygon points="110,148 140,148 152,138 122,138" fill="rgba(52,211,153,0.45)" stroke="#10b981" stroke-width="1.8"/>
+  <polygon points="140,175 152,165 152,138 140,148" fill="rgba(52,211,153,0.55)" stroke="#10b981" stroke-width="1.8"/>
+
+  <!-- Punto muestra -->
+  <circle cx="131" cy="157" r="3.5" fill="#e07b39"/>
+  <text x="136" y="154" font-size="9" fill="#e07b39" font-family="serif" font-style="italic">(x*,y*,z*)</text>
+
+  <!-- Flechas dimensiones -->
+  <line x1="110" y1="182" x2="140" y2="182" stroke="#10b981" stroke-width="1.5" marker-end="url(#axT)"/>
+  <text x="118" y="194" font-size="9" fill="#10b981" font-family="monospace">Δx</text>
+  <line x1="140" y1="182" x2="152" y2="172" stroke="#10b981" stroke-width="1.5" marker-end="url(#axT)"/>
+  <text x="148" y="182" font-size="9" fill="#10b981" font-family="monospace">Δy</text>
+  <line x1="144" y1="175" x2="144" y2="148" stroke="#10b981" stroke-width="1.5" marker-end="url(#axT)"/>
+  <text x="147" y="163" font-size="9" fill="#10b981" font-family="monospace">Δz</text>
+
+  <!-- Cajitas adicionales de fondo -->
+  <polygon points="80,175 110,175 110,148 80,148" fill="rgba(74,144,226,0.07)" stroke="#4a90e2" stroke-width="0.8" stroke-dasharray="2,2"/>
+  <polygon points="80,148 110,148 122,138 92,138" fill="rgba(74,144,226,0.07)" stroke="#4a90e2" stroke-width="0.8" stroke-dasharray="2,2"/>
+  <polygon points="110,200 140,200 140,175 110,175" fill="rgba(74,144,226,0.05)" stroke="#4a90e2" stroke-width="0.8" stroke-dasharray="2,2"/>
+  <polygon points="140,200 152,190 152,165 140,175" fill="rgba(74,144,226,0.05)" stroke="#4a90e2" stroke-width="0.8" stroke-dasharray="2,2"/>
+
+  <!-- Panel derecho -->
+  <rect x="238" y="28" width="368" height="218" fill="#f0f6f2" rx="7" stroke="#1a4a2e" stroke-width="1"/>
+  <text x="422" y="48" font-size="11" fill="#1a4a2e" font-weight="bold" font-family="sans-serif" text-anchor="middle">Construcción de la Integral Triple</text>
+
+  <rect x="248" y="56" width="22" height="22" rx="3" fill="#1a4a2e"/>
+  <text x="259" y="71" font-size="11" fill="#fff" font-family="sans-serif" text-anchor="middle" font-weight="bold">①</text>
+  <text x="278" y="66" font-size="10" fill="#3d2e14" font-family="sans-serif">Dividir el sólido D en cajitas:</text>
+  <text x="278" y="78" font-size="10" fill="#1a3a5c" font-family="serif" font-style="italic">   ΔVk = Δxk · Δyk · Δzk</text>
+
+  <rect x="248" y="86" width="22" height="22" rx="3" fill="#1a4a2e"/>
+  <text x="259" y="101" font-size="11" fill="#fff" font-family="sans-serif" text-anchor="middle" font-weight="bold">②</text>
+  <text x="278" y="96" font-size="10" fill="#3d2e14" font-family="sans-serif">Elegir un punto en cada cajita:</text>
+  <text x="278" y="108" font-size="10" fill="#1a3a5c" font-family="serif" font-style="italic">   (xk*, yk*, zk*) → evaluar f ahí</text>
+
+  <rect x="248" y="116" width="22" height="22" rx="3" fill="#1a4a2e"/>
+  <text x="259" y="131" font-size="11" fill="#fff" font-family="sans-serif" text-anchor="middle" font-weight="bold">③</text>
+  <text x="278" y="126" font-size="10" fill="#3d2e14" font-family="sans-serif">Suma de Riemann 3D:</text>
+  <text x="278" y="138" font-size="10" fill="#1a3a5c" font-family="serif" font-style="italic">   V ≈ Σ f(xk*, yk*, zk*) · ΔVk</text>
+
+  <rect x="248" y="146" width="22" height="22" rx="3" fill="#1a4a2e"/>
+  <text x="259" y="161" font-size="11" fill="#fff" font-family="sans-serif" text-anchor="middle" font-weight="bold">④</text>
+  <text x="278" y="156" font-size="10" fill="#3d2e14" font-family="sans-serif">‖P‖ → 0 (cajitas infinitesimales):</text>
+  <text x="278" y="168" font-size="10.5" fill="#8b1a1a" font-family="serif" font-style="italic">   ∭D f(x,y,z) dV</text>
+
+  <line x1="245" y1="178" x2="598" y2="178" stroke="#1a4a2e" stroke-width="0.6" stroke-dasharray="4,3"/>
+  <text x="422" y="193" font-size="10" fill="#1a4a2e" font-weight="bold" font-family="sans-serif" text-anchor="middle">¿Qué mide según f ?</text>
+  <text x="248" y="207" font-size="9.5" fill="#3d2e14" font-family="sans-serif">● f = 1  →  volumen del sólido D</text>
+  <text x="248" y="221" font-size="9.5" fill="#3d2e14" font-family="sans-serif">● f = δ(x,y,z)  →  masa total del sólido</text>
+  <text x="248" y="235" font-size="9.5" fill="#3d2e14" font-family="sans-serif">● Fubini: ∭ = ∫dx ∫dy ∫dz  (cualquier orden)</text>
+</svg>
+</div>
+
 <div class="example">
   <div class="example-header">Ejemplo — Volumen del sólido \(0\leq z\leq 1-x-y\), \(0\leq y\leq 1-x\), \(0\leq x\leq 1\)</div>
   <div class="example-body">
