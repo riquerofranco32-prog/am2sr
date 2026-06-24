@@ -1333,15 +1333,38 @@ details>*:not(summary){padding:1rem 1.4rem;}
         <p><strong>b) Producción máxima:</strong></p>
         <div class="math-block">\[H\!\left(\tfrac{7}{3},6\right)=-9\!\cdot\!\tfrac{49}{9}-6\!\cdot\!36+42\!\cdot\!\tfrac{7}{3}+72\!\cdot\!6=-49-216+98+432=\boxed{265\text{ unidades}}\]</div>
         <p><strong>c) Cantidad exacta y aproximada con \(\Delta a=0{,}05\), \(\Delta b=0{,}03\):</strong></p>
-        <p><strong>Cantidad exacta</strong> — sustituir \(a'=\tfrac{7}{3}+0{,}05\) y \(b'=6{,}03\) directamente en \(H\):</p>
-        <div class="math-block">\[H\!\left(\tfrac{7}{3}+0{,}05,\;6{,}03\right)=-9\!\left(\tfrac{7}{3}+0{,}05\right)^{\!2}-6(6{,}03)^2+42\!\left(\tfrac{7}{3}+0{,}05\right)+72(6{,}03)\]</div>
-        <p>Expandiendo (usando que \(H\) es cuadrática, la expansión de Taylor es <em>exacta</em> en el 2° término):</p>
-        <div class="math-block">\[\Delta H_{\text{exacto}}=\underbrace{H_{aa}(\Delta a)^2}_{-9\,(0{,}05)^2}+\underbrace{H_{bb}(\Delta b)^2}_{-6\,(0{,}03)^2}=-0{,}0225-0{,}0054=-0{,}0279\]</div>
-        <div class="math-block">\[\boxed{H_{\text{exacta}}=265-0{,}0279=264{,}9721\text{ unidades}}\]</div>
-        <p class="notebox"><strong>Nota:</strong> los términos lineales se anulan porque estamos en el punto crítico (\(\partial H/\partial a=\partial H/\partial b=0\)), y como \(H\) es de grado 2, la expansión es exacta.</p>
-        <p><strong>Cantidad aproximada</strong> — diferencial total de primer orden:</p>
-        <div class="math-block">\[dH=\frac{\partial H}{\partial a}\,\Delta a+\frac{\partial H}{\partial b}\,\Delta b=0\cdot0{,}05+0\cdot0{,}03=0\]</div>
-        <p>La aproximación de primer orden da \(H_{\text{aprox}}\approx\boxed{265\text{ unidades}}\) (el diferencial no detecta el cambio porque estamos en un máximo). La variación real es la de segundo orden: la producción <strong>disminuye</strong> 0,0279 unidades al apartarse del óptimo.</p>
+
+        <p><strong>Cantidad APROXIMADA — diferencial total (linealización):</strong></p>
+        <p>La aproximación de primer orden usa las derivadas parciales evaluadas en el punto base \(P_0=(\tfrac{7}{3},\,6)\):</p>
+        <div class="math-block">\[dH=\frac{\partial H}{\partial a}\bigg|_{P_0}\!\!\cdot\Delta a+\frac{\partial H}{\partial b}\bigg|_{P_0}\!\!\cdot\Delta b\]</div>
+        <p>En el punto crítico, por definición, ambas derivadas parciales valen cero:</p>
+        <div class="math-block">\[\frac{\partial H}{\partial a}\bigg|_{P_0}=-18\cdot\tfrac{7}{3}+42=0\qquad\frac{\partial H}{\partial b}\bigg|_{P_0}=-12\cdot6+72=0\]</div>
+        <div class="math-block">\[dH=0\cdot(0{,}05)+0\cdot(0{,}03)=0\;\Rightarrow\;\boxed{H_{\text{aprox}}\approx265\text{ unidades}}\]</div>
+        <p>Esto <strong>no es un error</strong>: en un máximo el plano tangente es horizontal. La linealización (diferencial) no detecta ningún cambio porque es una aproximación de 1° orden, y en el máximo la variación es de 2° orden (la superficie es "plana" en primer orden).</p>
+
+        <p style="margin-top:0.8rem"><strong>Cantidad EXACTA — sustitución directa:</strong></p>
+        <p>Sustituís los valores nuevos \(a'=\tfrac{7}{3}+0{,}05\approx2{,}3833\) y \(b'=6{,}03\) directo en \(H\):</p>
+        <div class="math-block">\[H(2{,}3833,\;6{,}03)=-9(2{,}3833)^2-6(6{,}03)^2+42(2{,}3833)+72(6{,}03)\]</div>
+        <p>Calculando término a término:</p>
+        <div class="math-block">\[-9(2{,}3833)^2=-9\times5{,}6801=-51{,}11\]</div>
+        <div class="math-block">\[-6(6{,}03)^2=-6\times36{,}3609=-218{,}17\]</div>
+        <div class="math-block">\[42\times2{,}3833=100{,}10\qquad 72\times6{,}03=434{,}16\]</div>
+        <div class="math-block">\[\boxed{H_{\text{exacta}}=-51{,}11-218{,}17+100{,}10+434{,}16=264{,}98\text{ unidades}}\]</div>
+
+        <p><strong>¿Por qué coincide con usar Taylor de 2° orden?</strong> Como \(H\) es un polinomio cuadrático, su expansión de Taylor de 2° orden es <em>exacta</em> (no hay términos de orden superior). En el punto crítico los términos lineales se anulan y solo quedan los de 2° orden:</p>
+        <div class="math-block">\[\Delta H=\tfrac{1}{2}H_{aa}(\Delta a)^2+H_{ab}\,\Delta a\,\Delta b+\tfrac{1}{2}H_{bb}(\Delta b)^2=\tfrac{-18}{2}(0{,}05)^2+0+\tfrac{-12}{2}(0{,}03)^2\]</div>
+        <div class="math-block">\[=-9(0{,}0025)-6(0{,}0009)=-0{,}0225-0{,}0054=-0{,}0279\]</div>
+        <div class="math-block">\[H_{\text{exacta}}=265-0{,}0279=264{,}9721\approx\boxed{264{,}97\text{ unidades}}\]</div>
+        <p>(la pequeña diferencia respecto a 264,98 es redondeo en los decimales intermedios).</p>
+
+        <p><strong>Resumen del inciso c):</strong></p>
+        <table style="font-size:13px;width:100%;border-collapse:collapse;margin-top:0.4rem">
+          <tr style="background:rgba(0,0,0,0.05)"><th style="padding:5px 8px;border:1px solid #ccc;text-align:left">Cálculo</th><th style="padding:5px 8px;border:1px solid #ccc">Resultado</th><th style="padding:5px 8px;border:1px solid #ccc;text-align:left">Método</th></tr>
+          <tr><td style="padding:5px 8px;border:1px solid #ccc">Punto base \(H(7/3,\,6)\)</td><td style="padding:5px 8px;border:1px solid #ccc;text-align:center">265</td><td style="padding:5px 8px;border:1px solid #ccc">Sustitución exacta</td></tr>
+          <tr style="background:rgba(0,0,0,0.03)"><td style="padding:5px 8px;border:1px solid #ccc">Aproximada (diferencial)</td><td style="padding:5px 8px;border:1px solid #ccc;text-align:center">265</td><td style="padding:5px 8px;border:1px solid #ccc">\(dH=0\) — plano tangente horizontal en el máximo</td></tr>
+          <tr><td style="padding:5px 8px;border:1px solid #ccc">Exacta (sustitución directa)</td><td style="padding:5px 8px;border:1px solid #ccc;text-align:center">≈ 264,98</td><td style="padding:5px 8px;border:1px solid #ccc">Lo más limpio para el examen</td></tr>
+          <tr style="background:rgba(0,0,0,0.03)"><td style="padding:5px 8px;border:1px solid #ccc">Diferencia</td><td style="padding:5px 8px;border:1px solid #ccc;text-align:center">−0,02</td><td style="padding:5px 8px;border:1px solid #ccc">Alejarse del óptimo siempre reduce la producción</td></tr>
+        </table>
       </div>
     </details>
   </div>
@@ -5185,30 +5208,30 @@ details>*:not(summary){padding:1rem 1.4rem;}
 
 <div class="defbox">
   <div class="defbox-label">③ Ley de Enfriamiento de Newton — modelo completo</div>
-  <p><strong>Hipótesis física:</strong> la tasa de cambio de temperatura de un cuerpo es proporcional a la diferencia entre su temperatura \(T(t)\) y la del ambiente \(T_m\) (que se asume constante). Si el cuerpo está más caliente que el ambiente, enfría; si está más frío, se calienta.</p>
-  <div class="math-block">\[\frac{dT}{dt} = -k\,(T - T_m) \quad (k > 0)\]</div>
-  <p>El signo negativo asegura que si \(T > T_m\) (cuerpo más caliente), la derivada es negativa (temperatura baja).</p>
+  <p><strong>Hipótesis física:</strong> la tasa de cambio de temperatura de un cuerpo es proporcional a la diferencia entre su temperatura \(T(t)\) y la del ambiente \(T_m\) (que se asume constante). La teoría la plantea <strong>sin el signo negativo</strong>: la constante \(k\) absorbe el signo según si el cuerpo enfría (\(k<0\)) o se calienta (\(k>0\)).</p>
+  <div class="math-block">\[\frac{dT}{dt} = k\,(T - T_m)\]</div>
+  <p>Si el cuerpo enfría: \(T > T_m\) y \(k < 0\) → la derivada es negativa → la temperatura baja. Si se calienta: \(T < T_m\) y \(k < 0\) → la derivada es positiva → la temperatura sube. En ambos casos \(k < 0\) y \(T(t) \to T_m\).</p>
 
   <p><strong>Resolución (variables separables):</strong></p>
-  <div class="math-block">\[\frac{dT}{T - T_m} = -k\,dt \;\Rightarrow\; \ln|T - T_m| = -kt + C_1 \;\Rightarrow\; \boxed{T(t) = T_m + (T_0 - T_m)\,e^{-kt}}\]</div>
-  <p>donde \(T_0 = T(0)\) es la temperatura inicial del cuerpo. Cuando \(t \to \infty\): \(T(t) \to T_m\) (el cuerpo siempre llega al equilibrio con el ambiente).</p>
+  <div class="math-block">\[\frac{dT}{T - T_m} = k\,dt \;\Rightarrow\; \ln|T - T_m| = kt + C_1 \;\Rightarrow\; \boxed{T(t) = T_m + (T_0 - T_m)\,e^{kt}} \quad (k < 0)\]</div>
+  <p>donde \(T_0 = T(0)\) es la temperatura inicial. Como \(k < 0\): \(e^{kt} \to 0\) cuando \(t \to \infty\), entonces \(T(t) \to T_m\) siempre.</p>
 
   <p><strong>Interpretación de cada parte:</strong></p>
   <ul class="props">
-    <li>\(T_m\): temperatura de equilibrio final (a la que tiende todo).</li>
-    <li>\((T_0 - T_m)\): exceso inicial de temperatura respecto al ambiente.</li>
-    <li>\(e^{-kt}\): factor de decaimiento — cuanto mayor es \(k\), más rápido enfría (o calienta).</li>
+    <li>\(T_m\): temperatura de equilibrio final (a la que tiende el sistema).</li>
+    <li>\((T_0 - T_m)\): diferencia inicial entre el cuerpo y el ambiente.</li>
+    <li>\(e^{kt}\) con \(k<0\): factor de decaimiento — cuanto mayor es \(|k|\), más rápido llega al equilibrio.</li>
   </ul>
 
-  <p><strong>Tipo de examen — dos datos en dos tiempos:</strong> es el problema clásico. Te dan \(T(t_1)\) y \(T(t_2)\) y pedís \(T_0\) y/o \(k\). Planteás dos ecuaciones:</p>
-  <div class="math-block">\[T_m + (T_0-T_m)e^{-kt_1} = T_1 \qquad T_m + (T_0-T_m)e^{-kt_2} = T_2\]</div>
+  <p><strong>Tipo de examen — dos datos en dos tiempos:</strong> te dan \(T(t_1)\) y \(T(t_2)\) y pedís \(T_0\) y/o \(k\). Planteás el sistema:</p>
+  <div class="math-block">\[T_m + (T_0-T_m)e^{kt_1} = T_1 \qquad T_m + (T_0-T_m)e^{kt_2} = T_2\]</div>
   <p>Dividís la segunda entre la primera para eliminar \((T_0 - T_m)\):</p>
-  <div class="math-block">\[\frac{T_2 - T_m}{T_1 - T_m} = e^{-k(t_2-t_1)} \;\Rightarrow\; k = \frac{-1}{t_2-t_1}\ln\!\left(\frac{T_2-T_m}{T_1-T_m}\right)\]</div>
-  <p>Con \(k\) conocido, sustituís en cualquiera de las dos ecuaciones para encontrar \(T_0\).</p>
+  <div class="math-block">\[\frac{T_2 - T_m}{T_1 - T_m} = e^{k(t_2-t_1)} \;\Rightarrow\; k = \frac{1}{t_2-t_1}\ln\!\left(\frac{T_2-T_m}{T_1-T_m}\right)\]</div>
+  <p>Con \(k\) conocido, sustituís en cualquier ecuación para encontrar \(T_0\).</p>
 
-  <p><strong>Ejemplo:</strong> un cuerpo estaba a \(90°C\). A los 5 min bajó a \(70°C\). Ambiente a \(20°C\). ¿Cuánto tarda en llegar a \(40°C\)?</p>
-  <div class="math-block">\[70 = 20 + (90-20)e^{-5k} \;\Rightarrow\; \frac{50}{70} = e^{-5k} \;\Rightarrow\; k = \frac{-\ln(5/7)}{5}\]</div>
-  <div class="math-block">\[40 = 20 + 70\,e^{-kt} \;\Rightarrow\; e^{-kt} = \frac{20}{70} = \frac{2}{7} \;\Rightarrow\; t = \frac{-\ln(2/7)}{k}\]</div>
+  <p><strong>Ejemplo:</strong> un cuerpo a \(90°C\). A los 5 min bajó a \(70°C\). Ambiente a \(20°C\). ¿Cuánto tarda en llegar a \(40°C\)?</p>
+  <div class="math-block">\[70 = 20 + (90-20)e^{5k} \;\Rightarrow\; \frac{50}{70} = e^{5k} \;\Rightarrow\; k = \frac{\ln(5/7)}{5} < 0\]</div>
+  <div class="math-block">\[40 = 20 + 70\,e^{kt} \;\Rightarrow\; e^{kt} = \frac{20}{70} = \frac{2}{7} \;\Rightarrow\; t = \frac{\ln(2/7)}{k}\]</div>
 </div>
 
 <div class="defbox">
@@ -5233,7 +5256,7 @@ details>*:not(summary){padding:1rem 1.4rem;}
 <div class="defbox">
   <div class="defbox-label">Ley de Enfriamiento de Newton</div>
   <p><strong>Idea:</strong> la temperatura de un cuerpo cambia a una tasa proporcional a la diferencia entre su temperatura y la del ambiente \(T_m\). Si está más caliente, enfría rápido; cuando se acerca al ambiente, cada vez más despacio.</p>
-  <div class="math-block">\[\frac{dT}{dt} = -k(T-T_m) \quad (k>0) \;\Rightarrow\; T(t) = T_m + (T_0-T_m)e^{-kt}\]</div>
+  <div class="math-block">\[\frac{dT}{dt} = k(T-T_m) \quad (k<0) \;\Rightarrow\; T(t) = T_m + (T_0-T_m)e^{kt}\]</div>
   <ul class="props">
     <li>\(T_0\) = temperatura inicial del cuerpo. \(T_m\) = temperatura del ambiente (constante).</li>
     <li>\(k>0\) → la temperatura <strong>siempre tiende</strong> a \(T_m\) cuando \(t\to\infty\).</li>
