@@ -4883,6 +4883,17 @@ details>*:not(summary){padding:1rem 1.4rem;}
   <p>La continuidad de la función \(f(x,y)\) en \(R\), por sí misma, es suficiente para garantizar la existencia de al menos una solución de \(dy/dx=f(x,y)\), \(y(x_0)=y_0\) definida en algún intervalo \(I\). El intervalo de definición \(I\): mayor intervalo que contiene a \(x_0\) en el que está definida y es diferenciable la solución \(y(x)\). Depende de \(f(x,y)\) y la condición inicial. La condición adicional de continuidad de la primera derivada parcial \(\partial f/\partial y\) en \(R\) nos permite decir que solo existe una solución en un intervalo \(I_0\) que contiene \(x_0\) sino que es la única que satisface \(y(x_0)=y_0\).</p>
 </div>
 
+<div class="defbox">
+  <div class="defbox-label">¿Qué significa realmente? — Existencia y Unicidad</div>
+  <p>El teorema responde dos preguntas distintas sobre un PVI:</p>
+  <ul class="props">
+    <li><strong>¿Existe solución?</strong> Sí, con solo pedir que \(f(x,y)\) sea continua cerca de \((x_0,y_0)\). Eso alcanza para garantizar que existe <em>al menos una</em> curva que pasa por ese punto y satisface la EDO.</li>
+    <li><strong>¿Es única?</strong> Para garantizar que es <em>la única</em>, necesitás un requisito extra: que \(\partial f/\partial y\) también sea continua en esa región. Si no lo es, podría haber infinitas soluciones.</li>
+  </ul>
+  <p><strong>Ejemplo donde falla la unicidad:</strong> \(y' = y^{1/3}\), \(y(0)=0\). Aquí \(\partial f/\partial y = \tfrac{1}{3}y^{-2/3}\) no es continua en \(y=0\), y efectivamente hay dos soluciones que pasan por \((0,0)\): \(y=0\) e \(y=\!\left(\tfrac{2x}{3}\right)^{3/2}\).</p>
+  <p><strong>Cómo aplicarlo en el examen:</strong> ante un PVI, verificá si \(f\) y \(\partial f/\partial y\) son continuas en algún rectángulo que contenga al punto inicial. Si lo son → solución única garantizada. Si \(\partial f/\partial y\) falla → no podés afirmar unicidad.</p>
+</div>
+
 <h3 id="u7-pvi">7.2 Problema de Valor Inicial</h3>
 <div class="defbox">
   <div class="defbox-label">¿Qué significa realmente? — PVI</div>
