@@ -4452,6 +4452,47 @@ details>*:not(summary){padding:1rem 1.4rem;}
     <div class="math-block">\[A_S = \int_0^{2\pi}\int_0^1 \frac{2}{\sqrt{4-r^2}}\,r\,dr\,d\theta = 2\pi\Big[-2\sqrt{4-r^2}\Big]_0^1 = 2\pi(4-2\sqrt{3}) \approx 6.84\]</div>
   </div>
 </div>
+<div class="thmbox">
+  <div class="thmbox-label">⭐ Patrón de Examen — Esfera \(f(x,y)=\sqrt{R^2-x^2-y^2}\)</div>
+  <p>Cuando la superficie es una <strong>semiesfera de radio \(R\)</strong>, el factor \(\sqrt{1+f_x^2+f_y^2}\) siempre simplifica a la misma expresión. Conviene memorizarla:</p>
+  <p>\(f_x = \dfrac{-x}{\sqrt{R^2-x^2-y^2}}\), \quad f_y = \dfrac{-y}{\sqrt{R^2-x^2-y^2}}\)</p>
+  <div class="math-block">\[1+f_x^2+f_y^2 = 1 + \frac{x^2}{R^2-x^2-y^2} + \frac{y^2}{R^2-x^2-y^2} = \frac{R^2-x^2-y^2+x^2+y^2}{R^2-x^2-y^2} = \frac{R^2}{R^2-x^2-y^2}\]</div>
+  <div class="math-block">\[\boxed{\sqrt{1+f_x^2+f_y^2} = \frac{R}{\sqrt{R^2-x^2-y^2}}}\]</div>
+  <p><strong>Memotécnica:</strong> el resultado es siempre <em>R partido por la propia función \(f(x,y)\)</em>. Si \(R=1\), el factor es \(1/f(x,y)\).</p>
+</div>
+
+<div class="example">
+  <div class="example-header">Resolución completa — Área de la semiesfera de radio \(R\)</div>
+  <div class="example-body">
+
+    <p><strong>Planteo:</strong> aplicando el patrón anterior, el área de la semiesfera sobre la región \(R\colon x^2+y^2\leq R^2\) queda:</p>
+    <div class="math-block">\[A_S = \iint_R \frac{R}{\sqrt{R^2-x^2-y^2}}\,dA\]</div>
+
+    <div class="defbox" style="margin:0.8rem 0">
+      <div class="defbox-label">¿Por qué coordenadas polares?</div>
+      <p>Porque la región \(R\) es un <strong>disco circular</strong> y el integrando contiene \(x^2+y^2\). Al cambiar a polares \((x=r\cos\theta,\;y=r\sin\theta)\):
+        <br>① \(x^2+y^2 \to r^2\) — simplifica el radicando a \(\sqrt{R^2-r^2}\)
+        <br>② el disco \(x^2+y^2\leq R^2\) se convierte en \(0\leq r\leq R\) — límites constantes
+        <br>③ el jacobiano aporta el factor \(r\) en \(dA = r\,dr\,d\theta\), que habilita la sustitución directa
+      </p>
+    </div>
+
+    <p><strong>Paso 1 — Cambio a polares</strong> \((x=r\cos\theta,\;y=r\sin\theta,\;dA=r\,dr\,d\theta,\quad 0\leq r\leq R,\;0\leq\theta\leq 2\pi)\):</p>
+    <div class="math-block">\[A_S = \int_0^{2\pi}\int_0^R \frac{R}{\sqrt{R^2-r^2}}\,r\,dr\,d\theta\]</div>
+
+    <p><strong>Paso 2 — Separar en \(\theta\) y \(r\)</strong>: el integrando no depende de \(\theta\), así que la integral en \(\theta\) es trivial:</p>
+    <div class="math-block">\[A_S = 2\pi\int_0^R \frac{R\,r}{\sqrt{R^2-r^2}}\,dr\]</div>
+
+    <p><strong>Paso 3 — Sustitución</strong> \(u = R^2-r^2 \;\Rightarrow\; du=-2r\,dr \;\Rightarrow\; r\,dr=-\tfrac{du}{2}\):</p>
+    \[r=0\Rightarrow u=R^2;\quad r=R\Rightarrow u=0\]
+    <div class="math-block">\[A_S = 2\pi\cdot R\int_{R^2}^{0} \frac{1}{\sqrt{u}}\cdot\left(-\frac{du}{2}\right) = \pi R\int_0^{R^2} u^{-1/2}\,du = \pi R\Big[2\sqrt{u}\Big]_0^{R^2}\]</div>
+
+    <p><strong>Resultado:</strong></p>
+    <div class="math-block">\[A_S = \pi R\cdot 2\sqrt{R^2} = \pi R\cdot 2R = \boxed{2\pi R^2}\]</div>
+    <p>Área de la semiesfera de radio \(R\) — resultado clásico que podés usar para verificar tus cálculos.</p>
+  </div>
+</div>
+
 <h3 id="u5-triples">5.6 Integrales Triples</h3>
 <div class="defbox">
   <div class="defbox-label">Definición</div>
