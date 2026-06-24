@@ -4855,7 +4855,13 @@ details>*:not(summary){padding:1rem 1.4rem;}
 
 <h3 id="u7-isoclinas">7.1b Campo de Direcciones e Isoclinas</h3>
 <div class="defbox">
-  <div class="defbox-label">Campo de Direcciones</div>
+  <div class="defbox-label">¿Qué significa realmente? — Campo de Direcciones e Isoclinas</div>
+  <p>Imaginá que tenés una EDO \(y' = f(x,y)\) que no podés resolver analíticamente. El <strong>campo de direcciones</strong> te da una "hoja de ruta visual": en cada punto \((x,y)\) del plano dibujás un segmento corto con la pendiente que tendría la solución que pasa por ahí. Sin resolver nada, ya ves hacia dónde va la curva.</p>
+  <p>Las <strong>isoclinas</strong> son un atajo: en vez de evaluar la pendiente punto por punto, buscás todas las curvas \(f(x,y)=c\) donde la pendiente es constante e igual a \(c\). Sobre cada una de esas curvas dibujás segmentos paralelos de pendiente \(c\). Tomando varios valores de \(c\) llenás el campo rápidamente.</p>
+  <p><strong>Ejemplo mental:</strong> para \(y'=y\), la isoclina \(c=1\) es la recta \(y=1\). En todos esos puntos la solución sube a 45°. La isoclina \(c=0\) es el eje \(y=0\): ahí la solución es horizontal (punto de equilibrio).</p>
+</div>
+<div class="defbox">
+  <div class="defbox-label">Campo de Direcciones (definición)</div>
   <p>Para una EDO de primer orden \(dy/dx = f(x,y)\), el <strong>campo de direcciones</strong> es la representacion grafica de los segmentos de pendiente \(f(x,y)\) en una grilla de puntos \((x,y)\). Cada segmento indica la direccion de la solucion que pasa por ese punto.</p>
   <ul class="props">
     <li>Permite visualizar el comportamiento cualitativo de las soluciones sin resolverlas.</li>
@@ -4915,7 +4921,14 @@ details>*:not(summary){padding:1rem 1.4rem;}
 </div>
 <h3 id="u7-separables">7.3 Variables Separables</h3>
 <div class="defbox">
-  <div class="defbox-label">Ecuación separable</div>
+  <div class="defbox-label">¿Qué significa realmente? — Variables Separables</div>
+  <p>La idea es simple: si podés "ordenar" la EDO para que todo lo que involucre \(y\) quede de un lado del igual y todo lo de \(x\) del otro, entonces cada lado se puede integrar por separado. Es como separar en dos integrales independientes.</p>
+  <p><strong>Ejemplo mental:</strong> \(y' = xy\). Reescribís como \(dy/y = x\,dx\). Lado izquierdo: integral en \(y\). Lado derecho: integral en \(x\). Integrás: \(\ln|y| = x^2/2 + C\), despejás: \(y = Ke^{x^2/2}\). Eso es todo.</p>
+  <p><strong>¿Cuándo aplica?</strong> Cuando \(f(x,y)\) es un producto de una función solo de \(x\) y otra solo de \(y\): \(f(x,y)=g(x)\cdot h(y)\). Si no se puede factorizar así, no es separable y hay que usar otro método.</p>
+  <p><strong>Cuidado con la solución singular:</strong> al dividir por \(h(y)\), si \(h(y)=0\) para algún valor, esa constante puede ser solución extra (singular) que no aparece en la solución general.</p>
+</div>
+<div class="defbox">
+  <div class="defbox-label">Ecuación separable (definición formal)</div>
   <p>Se dice que es separable — una ec. dif. de 1er grado de la forma \(dy/dx = f(x,y)\) cuando \(f\) no depende de la variable \(y \Rightarrow f(x,y)=g(x)\). Función continua, al integrar ambos lados se llega a la solución: \(\int dy = \int g(x)\,dx \Rightarrow y=G(x)+C\) (antiderivada de \(g(x)\)). Método de solución cuando \(dy/dx=f(x,y)\) es el producto de una función de \(x\) y de \(y\):</p>
   <div class="math-block">\[\frac{dy}{dx}=g(x)h(y) \;\Rightarrow\; \frac{dy}{h(y)}=g(x)\,dx \;\Rightarrow\; \ln|h(y)| = G(x)+C\]</div>
   <p><strong>Pérdida de una solución:</strong> al separar variables, los divisores variables podrían ser cero en algún punto. Puede aparecer la <strong>solución singular</strong>.</p>
@@ -5168,7 +5181,14 @@ details>*:not(summary){padding:1rem 1.4rem;}
 
 <h3 id="u7-orden2">7.7 EDO de Orden Superior (segundo orden o mayor)</h3>
 <div class="defbox">
-  <div class="defbox-label">¿Qué significa realmente? — Los 3 casos de la ecuación auxiliar</div>
+  <div class="defbox-label">¿Qué significa realmente? — ¿Por qué proponemos y = e^{rx}?</div>
+  <p>Para resolver \(ay''+by'+cy=0\), necesitamos una función que, al derivarla dos veces y combinarla linealmente con sus derivadas, dé cero. ¿Qué función satisface eso? La exponencial \(e^{rx}\): su derivada es \(re^{rx}\), su segunda derivada es \(r^2e^{rx}\). Al sustituir en la EDO:</p>
+  <div class="math-block">\[a r^2 e^{rx} + b r e^{rx} + c e^{rx} = 0 \;\Rightarrow\; e^{rx}(ar^2+br+c)=0\]</div>
+  <p>Como \(e^{rx}\neq 0\), el paréntesis debe ser cero: \(ar^2+br+c=0\). Esa es la <strong>ecuación auxiliar</strong> — una ecuación cuadrática en \(r\). Según las raíces que tenga, la solución general cambia de forma.</p>
+  <p><strong>Resumen mental:</strong> proponés \(e^{rx}\) → algebraicamente obtenés una cuadrática → discriminante \(\Delta\) → 3 casos posibles.</p>
+</div>
+<div class="defbox">
+  <div class="defbox-label">Los 3 casos según el discriminante</div>
   <p>Para una EDO lineal homogénea de 2do orden \(ay''+by'+cy=0\), proponés \(y=e^{rx}\) y obtenés la ecuación auxiliar \(ar^2+br+c=0\). El discriminante \(\Delta=b^2-4ac\) determina el tipo de solución:</p>
 </div>
 <table class="vtable">
@@ -5306,7 +5326,13 @@ details>*:not(summary){padding:1rem 1.4rem;}
   </div>
 </div>
 <div class="defbox">
-  <div class="defbox-label">Wronskiano</div>
+  <div class="defbox-label">¿Qué significa realmente? — Independencia Lineal</div>
+  <p>Dos funciones son <strong>linealmente independientes (LI)</strong> si ninguna es múltiplo constante de la otra. Por ejemplo, \(e^x\) y \(e^{2x}\) son LI porque no podés escribir \(e^{2x} = k\cdot e^x\) para ninguna constante \(k\) fija. En cambio, \(e^x\) y \(3e^x\) son LD (linealmente dependientes) porque \(3e^x = 3\cdot e^x\).</p>
+  <p>¿Por qué importa? La solución general de una EDO de 2° orden necesita <strong>dos soluciones LI</strong>. Si las dos son LD, en realidad tenés una sola solución y la solución general está incompleta.</p>
+  <p>El Wronskiano \(W = y_1y_2' - y_2y_1'\) es el test rápido: si \(W \neq 0\) en algún punto → LI, podés usarlas. Si \(W = 0\) → LD, buscá otra solución.</p>
+</div>
+<div class="defbox">
+  <div class="defbox-label">Wronskiano (definición formal)</div>
   <p>Se dice que un conj. de funciones \(f_1(x)\), \(f_2(x)\), \(\ldots\), \(f_n(x)\) es linealmente dependiente en un intervalo \(I\) si existen ctes. \(c_1,c_2,\ldots,c_n\) no todas cero tales que: \(c_1f_1(x)+c_2f_2(x)+\cdots+c_nf_n(x)=0\) para todo \(x\) en el intervalo. Si el conj. de funciones no es linealmente dependiente en el intervalo, se considera que es linealmente independiente. Y cuando ninguna es múltiplo cte. de la otra en el intervalo.</p>
   <div class="math-block">\[W(f_1,f_2,\ldots,f_n) = \begin{vmatrix}f_1&f_2&\cdots&f_n\\f_1'&f_2'&\cdots&f_n'\\\vdots&&&\vdots\\f_1^{(n-1)}&\cdots&&f_n^{(n-1)}\end{vmatrix}\]</div>
   <p>Las primas representan las derivadas. \(W\neq 0\) en un intervalo \(\Rightarrow\) las funciones son LI en ese intervalo.</p>
@@ -5321,6 +5347,12 @@ details>*:not(summary){padding:1rem 1.4rem;}
 </div>
 
 <h3 id="u7-reduccion">7.9 Reducción de Orden</h3>
+<div class="defbox">
+  <div class="defbox-label">¿Qué significa realmente? — Reducción de Orden</div>
+  <p>Cuando ya tenés UNA solución \(y_1\) de una EDO lineal homogénea de 2° orden, te falta encontrar una segunda solución \(y_2\) que sea <em>linealmente independiente</em> de \(y_1\) (es decir, que no sea simplemente un múltiplo de \(y_1\)).</p>
+  <p>El truco es suponer que \(y_2\) tiene la forma \(y_2 = \mu(x)\cdot y_1(x)\), donde \(\mu(x)\) es una función desconocida. Al sustituir en la EDO, el término con \(\mu''\) desaparece (el orden "se reduce") y quedás con una EDO de 1° orden para \(\mu'\), que podés resolver con separación de variables o factor integrante.</p>
+  <p><strong>Resumen del proceso:</strong> conocés \(y_1\) → proponés \(y_2 = \mu\,y_1\) → sustituís → EDO de 1° orden para \(\mu'\) → integrás → obtenés \(y_2\) → Wronskiano \(\neq 0\) confirma que son LI.</p>
+</div>
 <p>\(y_1\) representa una sol. no trivial de la ecuación \(a_2(x)y''+a_1(x)y'+a_0(x)y=0\); \(y_1\) está definida en un intervalo \(I\). Se trata de encontrar una segunda solución \(y_2\) tal que \(y_1\) y \(y_2\) sean un conj. LI en \(I\).</p>
 <div class="math-block">\[y_2/y_1\neq k \;\Rightarrow\; y_2/y_1=\mu(x) \;\Rightarrow\; y_2=\mu(x)y_1(x)\]</div>
 <p>Método: Reducción de orden: solo hay que resolver una ec. lineal de 1er orden para determinar \(\mu\). \(\ast\) Falta la variable dependiente (autónoma). Las ec. dif. no lineales de 2do orden \(F(x,y,y')=0\) donde falta la variable dependiente \(y\) y donde falta la variable independiente \(A(y,y,y'')=0\) a veces se resuelven usando métodos de primer orden:</p>
@@ -5342,6 +5374,15 @@ details>*:not(summary){padding:1rem 1.4rem;}
 </div>
 
 <h3 id="u7-mci">7.10 Método de Coeficientes Indeterminados (MCI)</h3>
+<div class="defbox">
+  <div class="defbox-label">¿Cuándo uso MCI y cuándo VP?</div>
+  <p>Ambos métodos sirven para encontrar la solución particular \(y_p\) de una EDO no homogénea. La diferencia es cuándo aplican:</p>
+  <ul class="props">
+    <li><strong>MCI</strong> → usalo cuando \(g(x)\) es polinomio, exponencial, seno, coseno o sumas/productos de ellos. Es más rápido porque solo proponés una forma y resolvés un sistema algebraico.</li>
+    <li><strong>VP</strong> → usalo cuando \(g(x)\) no entra en esa lista: \(\ln x\), \(\tan x\), \(1/x\), \(\sec x\), etc. Siempre funciona, pero requiere calcular dos integrales (que pueden ser complicadas).</li>
+  </ul>
+  <p><strong>Regla práctica:</strong> primero preguntá "¿es \(g(x)\) de la tabla MCI?" Si sí → MCI. Si no → VP. Nunca al revés.</p>
+</div>
 <div class="defbox">
   <div class="defbox-label">¿Qué significa realmente? — MCI</div>
   <p>Para resolver una EDO no homogénea \(ay''+by'+cy=g(x)\), necesitamos una solución particular \(y_p\). El MCI propone que <strong>\(y_p\) tiene la misma "forma" que \(g(x)\)</strong>: si \(g\) es polinomio, probamos un polinomio; si \(g\) es exponencial, probamos una exponencial; si \(g\) es seno/coseno, probamos senos y cosenos (ambos, aunque uno no aparezca en \(g\)). Luego sustituimos y determinamos los coeficientes.</p>
@@ -5390,7 +5431,9 @@ details>*:not(summary){padding:1rem 1.4rem;}
 <h3 id="u7-vp">7.11 Variación de Parámetros (VP)</h3>
 <div class="defbox">
   <div class="defbox-label">¿Qué significa realmente? — VP</div>
-  <p>La idea es que la solución particular tiene la forma de la solución homogénea, pero con los coeficientes constantes <em>reemplazados por funciones</em>: \(y_p = u_1(x)\,y_1 + u_2(x)\,y_2\). Se impone una condición auxiliar (\(u_1'y_1+u_2'y_2=0\)) para simplificar el sistema. Esto siempre funciona, sin importar la forma de \(g(x)\). La desventaja: hay que calcular dos integrales que pueden ser difíciles.</p>
+  <p><strong>¿Por qué "variación de parámetros"?</strong> En la solución homogénea, los parámetros son las constantes \(C_1\) y \(C_2\). La idea del método es: "¿y si esas constantes no fueran constantes sino funciones \(u_1(x)\) y \(u_2(x)\)?" Si hacés eso y elegís bien las funciones, podés satisfacer también la parte no homogénea \(g(x)\). Por eso: "variar los parámetros".</p>
+  <p>La forma \(y_p = u_1(x)\,y_1 + u_2(x)\,y_2\) tiene dos incógnitas pero solo una ecuación (la EDO). Para cerrar el sistema se impone la condición auxiliar \(u_1'y_1 + u_2'y_2 = 0\), que simplifica los cálculos. Con eso obtenés dos ecuaciones en \(u_1'\) y \(u_2'\) → resolvés → integrás → tenés \(y_p\).</p>
+  <p><strong>Ventaja sobre MCI:</strong> funciona para cualquier \(g(x)\) continua, incluso \(\ln x\), \(\tan x\), \(\sec x\), \(1/x\). <strong>Desventaja:</strong> las integrales a veces no tienen solución cerrada.</p>
 </div>
 
 <div class="thmbox">
