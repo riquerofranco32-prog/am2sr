@@ -5128,43 +5128,87 @@ details>*:not(summary){padding:1rem 1.4rem;}
 <p>Descripción matemática de un sist./fenómeno y se forma con ciertos objetivos en mente. La formulación de un modelo matemático de un sist. se inicia: ① Identificación de las variables causantes del cambio del sist.; ② Establecemos un conj. de hipótesis razonables — las cuales incluyen todas las leyes empíricas aplicables al sistema; ③ Construcción de modelos (hipótesis \(\to\) expresar las hipótesis en términos de ec. diferenciales \(\to\) formulación matemática \(\to\) resolver las ec. diferenciales \(\to\) obtener soluciones \(\to\) mostrar las predicciones del modelo \(\to\) comprobarlas con hechos \(\to\) modificar o aumentar resolución del modelo).</p>
 
 <div class="defbox">
-  <div class="defbox-label">Desintegración Radioactiva</div>
-  <p><strong>Idea:</strong> la cantidad de material radioactivo disminuye a una tasa proporcional a lo que queda. Cuanto más hay, más rápido decae. Esto traduce directamente a una EDO separable:</p>
-  <div class="math-block">\[\frac{dA}{dt} = kA \quad (k<0) \;\Rightarrow\; A(t) = A_0\,e^{kt}\]</div>
+  <div class="defbox-label">① Desintegración Radioactiva — modelo completo</div>
+  <p><strong>Hipótesis física:</strong> la tasa a la que decae un material radioactivo es proporcional a la cantidad que queda. Si hay mucho, decae rápido; si queda poco, decae lento. En fórmula:</p>
+  <div class="math-block">\[\frac{dA}{dt} \propto A \;\Rightarrow\; \frac{dA}{dt} = kA \quad \text{con } k < 0\]</div>
+  <p><strong>Resolución (variables separables):</strong></p>
+  <div class="math-block">\[\frac{dA}{A} = k\,dt \;\Rightarrow\; \int\frac{dA}{A} = \int k\,dt \;\Rightarrow\; \ln|A| = kt + C_1 \;\Rightarrow\; \boxed{A(t) = A_0\,e^{kt}}\]</div>
+  <p>donde \(A_0 = A(0)\) es la cantidad inicial (condición inicial del PVI).</p>
+
+  <p><strong>Vida media \(t_{1/2}\):</strong> es el tiempo que tarda en quedar la mitad. Se obtiene imponiendo \(A(t_{1/2}) = A_0/2\):</p>
+  <div class="math-block">\[A_0\,e^{k\,t_{1/2}} = \frac{A_0}{2} \;\Rightarrow\; e^{k\,t_{1/2}} = \frac{1}{2} \;\Rightarrow\; k\,t_{1/2} = -\ln 2 \;\Rightarrow\; \boxed{t_{1/2} = \frac{\ln 2}{|k|}}\]</div>
+  <p>Notar que \(t_{1/2}\) no depende de \(A_0\): no importa cuánto material tengas, siempre tarda el mismo tiempo en reducirse a la mitad.</p>
+
+  <p><strong>Datación por C14:</strong> cuando un ser vivo muere deja de incorporar C14 y su contenido decae con \(k \approx -0{,}0001216\) año\(^{-1}\) (vida media ≈ 5700 años). Si medís que queda el \(p\%\) del C14 original:</p>
+  <div class="math-block">\[\frac{A(t)}{A_0} = e^{kt} = \frac{p}{100} \;\Rightarrow\; t = \frac{\ln(p/100)}{k}\]</div>
+
+  <p><strong>Tipo de examen:</strong> "Se sabe que a los 3 días quedan 200 mg y a los 5 días quedan 150 mg. Hallá la cantidad inicial y \(k\)." → Planteás el sistema:</p>
+  <div class="math-block">\[A_0\,e^{3k}=200 \qquad A_0\,e^{5k}=150 \;\Rightarrow\; e^{2k}=\frac{150}{200}=\frac{3}{4} \;\Rightarrow\; k=\frac{\ln(3/4)}{2}\]</div>
+  <p>Luego \(A_0 = 200/e^{3k}\). Siempre dos ecuaciones, dos incógnitas.</p>
+</div>
+
+<div class="defbox">
+  <div class="defbox-label">② Dinámica de Poblaciones — los 3 modelos explicados</div>
+  <p>Todos modelan cómo cambia una población en el tiempo. La diferencia está en las hipótesis sobre cómo crece o se frena.</p>
+
+  <p><strong>Modelo de Malthus (exponencial puro):</strong><br>
+  Hipótesis: la tasa de crecimiento es constante. Cuantos más individuos hay, más nacen (en proporción fija). No hay límite de recursos.</p>
+  <div class="math-block">\[\frac{dP}{dt} = kP \;\Rightarrow\; P(t) = P_0\,e^{kt}\]</div>
   <ul class="props">
-    <li>\(A_0\) = cantidad inicial. \(k < 0\) = constante de decaimiento (negativa porque disminuye).</li>
-    <li><strong>Vida media \(t_{1/2}\):</strong> tiempo para que quede la mitad. Imponés \(A(t_{1/2}) = A_0/2\) → \(e^{k\,t_{1/2}}=\tfrac{1}{2}\) → \(t_{1/2} = \ln 2 / |k|\).</li>
-    <li><strong>Aplicación (C14):</strong> cuando un ser vivo muere, deja de absorber C14 y su contenido decae con \(k=-0{,}0001216\). Midiendo cuánto C14 queda, se estima cuándo murió el organismo.</li>
+    <li>\(k > 0\): crecimiento exponencial sin límite (poco realista a largo plazo).</li>
+    <li>\(k < 0\): extinción exponencial (epidemia que mata, falta de recursos).</li>
+    <li>Es separable: misma EDO que la desintegración radioactiva, solo cambia el signo de \(k\).</li>
+  </ul>
+
+  <p style="margin-top:0.8rem"><strong>Malthus mejorado (natalidad y mortalidad por separado):</strong><br>
+  Hipótesis: hay una tasa de natalidad \(k_1 > 0\) y una tasa de mortalidad \(k_2 > 0\), ambas proporcionales al tamaño actual. La tasa neta es \(k_1 - k_2\).</p>
+  <div class="math-block">\[\frac{dP}{dt} = k_1 P - k_2 P = (k_1-k_2)P \;\Rightarrow\; P(t) = P_0\,e^{(k_1-k_2)t}\]</div>
+  <ul class="props">
+    <li>Si \(k_1 > k_2\): crece (natalidad supera mortalidad).</li>
+    <li>Si \(k_1 < k_2\): extinción (mortalidad supera natalidad).</li>
+    <li>Si \(k_1 = k_2\): población constante.</li>
+    <li>Sigue siendo exponencial — el problema es que no tiene techo.</li>
+  </ul>
+
+  <p style="margin-top:0.8rem"><strong>Modelo Logístico (con capacidad de carga):</strong><br>
+  Hipótesis: el ambiente solo puede sostener un máximo \(K\) individuos (comida, espacio, etc.). Cuando \(P\) se acerca a \(K\), el crecimiento se frena. El factor \((1-P/K)\) hace exactamente eso: si \(P \ll K\) → factor ≈ 1 (crece casi exponencial); si \(P \to K\) → factor → 0 (frenada total).</p>
+  <div class="math-block">\[\frac{dP}{dt} = rP\!\left(1 - \frac{P}{K}\right)\]</div>
+  <p>Se resuelve por variables separables (fracciones parciales). Solución:</p>
+  <div class="math-block">\[P(t) = \frac{K}{1 + C\,e^{-rt}} \qquad \text{con } C = \frac{K - P_0}{P_0}\]</div>
+  <ul class="props">
+    <li>Para cualquier \(P_0 > 0\): \(P(t) \to K\) cuando \(t \to \infty\). Siempre llega a la capacidad de carga.</li>
+    <li>Si \(P_0 < K/2\): la curva sube en forma de S (sigmoide), con el punto de inflexión exactamente en \(P = K/2\) (ahí crece más rápido).</li>
+    <li>Si \(P_0 > K\): la población decrece suavemente hasta \(K\) (sobrepoblación que se regula).</li>
+    <li>Puntos de equilibrio: \(P = 0\) (inestable) y \(P = K\) (estable).</li>
   </ul>
 </div>
 
 <div class="defbox">
-  <div class="defbox-label">Dinámica de Poblaciones — Los 3 modelos</div>
-  <p>Todos modelan poblaciones aisladas (sin migración) que solo cambian por causas naturales.</p>
-  <table class="vtable" style="margin-top:0.5rem">
-    <tr><th>Modelo</th><th>Hipótesis</th><th>EDO</th><th>Solución</th><th>Comportamiento</th></tr>
-    <tr>
-      <td><strong>Malthus</strong></td>
-      <td>Tasa de cambio ∝ tamaño actual. Tasa natalidad cte., mortalidad nula.</td>
-      <td>\(P'=kP\)</td>
-      <td>\(P(t)=P_0e^{kt}\)</td>
-      <td>\(k>0\): crece infinito. \(k<0\): extinción.</td>
-    </tr>
-    <tr>
-      <td><strong>Malthus mejorado</strong></td>
-      <td>Natalidad \(k_1\) y mortalidad \(k_2\) proporcionales al tamaño.</td>
-      <td>\(P'=(k_1-k_2)P\)</td>
-      <td>\(P(t)=P_0e^{(k_1-k_2)t}\)</td>
-      <td>Si \(k_1>k_2\): crece. Si \(k_1<k_2\): extinción. Tiene población límite \(a/b\).</td>
-    </tr>
-    <tr>
-      <td><strong>Logístico</strong></td>
-      <td>El ambiente soporta máximo \(K\) individuos ("capacidad de carga"). Hay competencia → frena el crecimiento.</td>
-      <td>\(P'=rP\!\left(1-\tfrac{P}{K}\right)\)</td>
-      <td>\(P(t)=\dfrac{K}{1+Ce^{-rt}}\)</td>
-      <td>Siempre tiende a \(K\). Curva en forma de S (sigmoide).</td>
-    </tr>
-  </table>
+  <div class="defbox-label">③ Ley de Enfriamiento de Newton — modelo completo</div>
+  <p><strong>Hipótesis física:</strong> la tasa de cambio de temperatura de un cuerpo es proporcional a la diferencia entre su temperatura \(T(t)\) y la del ambiente \(T_m\) (que se asume constante). Si el cuerpo está más caliente que el ambiente, enfría; si está más frío, se calienta.</p>
+  <div class="math-block">\[\frac{dT}{dt} = -k\,(T - T_m) \quad (k > 0)\]</div>
+  <p>El signo negativo asegura que si \(T > T_m\) (cuerpo más caliente), la derivada es negativa (temperatura baja).</p>
+
+  <p><strong>Resolución (variables separables):</strong></p>
+  <div class="math-block">\[\frac{dT}{T - T_m} = -k\,dt \;\Rightarrow\; \ln|T - T_m| = -kt + C_1 \;\Rightarrow\; \boxed{T(t) = T_m + (T_0 - T_m)\,e^{-kt}}\]</div>
+  <p>donde \(T_0 = T(0)\) es la temperatura inicial del cuerpo. Cuando \(t \to \infty\): \(T(t) \to T_m\) (el cuerpo siempre llega al equilibrio con el ambiente).</p>
+
+  <p><strong>Interpretación de cada parte:</strong></p>
+  <ul class="props">
+    <li>\(T_m\): temperatura de equilibrio final (a la que tiende todo).</li>
+    <li>\((T_0 - T_m)\): exceso inicial de temperatura respecto al ambiente.</li>
+    <li>\(e^{-kt}\): factor de decaimiento — cuanto mayor es \(k\), más rápido enfría (o calienta).</li>
+  </ul>
+
+  <p><strong>Tipo de examen — dos datos en dos tiempos:</strong> es el problema clásico. Te dan \(T(t_1)\) y \(T(t_2)\) y pedís \(T_0\) y/o \(k\). Planteás dos ecuaciones:</p>
+  <div class="math-block">\[T_m + (T_0-T_m)e^{-kt_1} = T_1 \qquad T_m + (T_0-T_m)e^{-kt_2} = T_2\]</div>
+  <p>Dividís la segunda entre la primera para eliminar \((T_0 - T_m)\):</p>
+  <div class="math-block">\[\frac{T_2 - T_m}{T_1 - T_m} = e^{-k(t_2-t_1)} \;\Rightarrow\; k = \frac{-1}{t_2-t_1}\ln\!\left(\frac{T_2-T_m}{T_1-T_m}\right)\]</div>
+  <p>Con \(k\) conocido, sustituís en cualquiera de las dos ecuaciones para encontrar \(T_0\).</p>
+
+  <p><strong>Ejemplo:</strong> un cuerpo estaba a \(90°C\). A los 5 min bajó a \(70°C\). Ambiente a \(20°C\). ¿Cuánto tarda en llegar a \(40°C\)?</p>
+  <div class="math-block">\[70 = 20 + (90-20)e^{-5k} \;\Rightarrow\; \frac{50}{70} = e^{-5k} \;\Rightarrow\; k = \frac{-\ln(5/7)}{5}\]</div>
+  <div class="math-block">\[40 = 20 + 70\,e^{-kt} \;\Rightarrow\; e^{-kt} = \frac{20}{70} = \frac{2}{7} \;\Rightarrow\; t = \frac{-\ln(2/7)}{k}\]</div>
 </div>
 
 <div class="defbox">
