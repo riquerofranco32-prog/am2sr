@@ -5425,56 +5425,65 @@ details>*:not(summary){padding:1rem 1.4rem;}
 
 <div class="resumenbox">
   <div class="resumenbox-label">Mapa de métodos — Unidad VII EDO (hoja de ruta para el examen)</div>
-  <table class="vtable" style="margin-top:0.5rem">
-    <tr><th>Tipo de EDO</th><th>Cómo reconocerla</th><th>Método</th><th>Resultado</th></tr>
-    <tr>
-      <td><strong>Separable</strong></td>
-      <td>\(y' = f(x)\cdot g(y)\) — todo \(x\) de un lado, \(y\) del otro</td>
-      <td>Separar: \(dy/g(y) = f(x)\,dx\) → integrar ambos lados</td>
-      <td>Solución implícita o explícita</td>
-    </tr>
-    <tr>
-      <td><strong>Lineal 1er orden</strong></td>
-      <td>\(y' + P(x)y = Q(x)\) — y y y' aparecen linealmente</td>
-      <td>Factor integrante \(\mu = e^{\int P\,dx}\) → \(d(\mu y)/dx = \mu Q\) → integrar</td>
-      <td>\(y = \tfrac{1}{\mu}\!\left[\int\mu Q\,dx + C\right]\)</td>
-    </tr>
-    <tr>
-      <td><strong>Homogénea grado 0</strong></td>
-      <td>\(y' = f(y/x)\) — todos los términos mismo grado en \(x,y\)</td>
-      <td>Sustitución \(v=y/x\) → separable en \(v,x\) → deshacer cambio</td>
-      <td>Relación entre \(x\) e \(y\)</td>
-    </tr>
-    <tr>
-      <td><strong>Exacta</strong></td>
-      <td>\(M\,dx+N\,dy=0\) con \(M_y = N_x\)</td>
-      <td>Hallar \(f\) tal que \(f_x=M,\;f_y=N\) → solución: \(f(x,y)=C\)</td>
-      <td>Curva implícita \(f=C\)</td>
-    </tr>
-    <tr>
-      <td><strong>Lineal 2do orden homogénea</strong></td>
-      <td>\(ay''+by'+cy=0\) con coeficientes constantes</td>
-      <td>Ec. auxiliar \(ar^2+br+c=0\) → 3 casos (\(\Delta\gtrless 0\))</td>
-      <td>\(y_H\) (2 soluciones LI)</td>
-    </tr>
-    <tr>
-      <td><strong>No homogénea — MCI</strong></td>
-      <td>\(g(x)\) es polinomio, exponencial, seno/coseno o producto de ellos</td>
-      <td>Proponer \(y_p\) de la misma forma que \(g\) → sustituir → resolver coeficientes (verificar resonancia)</td>
-      <td>\(y_G = y_H + y_p\)</td>
-    </tr>
-    <tr>
-      <td><strong>No homogénea — VP</strong></td>
-      <td>\(g(x)\) no encaja en tabla MCI (\(\ln x, \tan x, \sec x, 1/x\)…)</td>
-      <td>\(y_p = u_1y_1+u_2y_2\), con \(u_1' = -y_2g/W\) y \(u_2' = y_1g/W\) → integrar</td>
-      <td>\(y_G = y_H + y_p\)</td>
-    </tr>
-    <tr>
-      <td><strong>Reducción de orden</strong></td>
-      <td>Conocés UNA solución \(y_1\) de la homogénea, necesitás la segunda</td>
-      <td>\(y_2 = \mu(x)\,y_1\) → se reduce a EDO lineal de 1er orden para \(\mu\)</td>
-      <td>\(y_2 = y_1\int\!\frac{e^{-\int P\,dx}}{y_1^2}\,dx\)</td>
-    </tr>
+  <table style="width:100%;border-collapse:collapse;font-size:13.5px;margin-top:0.6rem">
+    <thead>
+      <tr style="background:#0d2d45;border-bottom:2px solid #3498db">
+        <th style="padding:8px 10px;text-align:left;color:#7dd3fc;font-weight:700;border:1px solid rgba(52,152,219,0.25)">Tipo de EDO</th>
+        <th style="padding:8px 10px;text-align:left;color:#7dd3fc;font-weight:700;border:1px solid rgba(52,152,219,0.25)">Cómo reconocerla</th>
+        <th style="padding:8px 10px;text-align:left;color:#7dd3fc;font-weight:700;border:1px solid rgba(52,152,219,0.25)">Método</th>
+        <th style="padding:8px 10px;text-align:left;color:#7dd3fc;font-weight:700;border:1px solid rgba(52,152,219,0.25)">Resultado</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr style="background:rgba(52,152,219,0.06)">
+        <td style="padding:7px 10px;border:1px solid rgba(52,152,219,0.15);color:#e2e8f0"><strong style="color:#34d399">Separable</strong></td>
+        <td style="padding:7px 10px;border:1px solid rgba(52,152,219,0.15);color:#cbd5e1">\(y' = f(x)\cdot g(y)\) — todo \(x\) de un lado, \(y\) del otro</td>
+        <td style="padding:7px 10px;border:1px solid rgba(52,152,219,0.15);color:#cbd5e1">Separar: \(dy/g(y) = f(x)\,dx\) → integrar ambos lados</td>
+        <td style="padding:7px 10px;border:1px solid rgba(52,152,219,0.15);color:#94a3b8">Solución implícita o explícita</td>
+      </tr>
+      <tr style="background:rgba(255,255,255,0.03)">
+        <td style="padding:7px 10px;border:1px solid rgba(52,152,219,0.15);color:#e2e8f0"><strong style="color:#34d399">Lineal 1er orden</strong></td>
+        <td style="padding:7px 10px;border:1px solid rgba(52,152,219,0.15);color:#cbd5e1">\(y' + P(x)y = Q(x)\) — \(y\) e \(y'\) aparecen linealmente</td>
+        <td style="padding:7px 10px;border:1px solid rgba(52,152,219,0.15);color:#cbd5e1">Factor integrante \(\mu = e^{\int P\,dx}\) → \(d(\mu y)/dx = \mu Q\) → integrar</td>
+        <td style="padding:7px 10px;border:1px solid rgba(52,152,219,0.15);color:#94a3b8">\(y = \tfrac{1}{\mu}\!\left[\int\mu Q\,dx + C\right]\)</td>
+      </tr>
+      <tr style="background:rgba(52,152,219,0.06)">
+        <td style="padding:7px 10px;border:1px solid rgba(52,152,219,0.15);color:#e2e8f0"><strong style="color:#34d399">Homogénea grado 0</strong></td>
+        <td style="padding:7px 10px;border:1px solid rgba(52,152,219,0.15);color:#cbd5e1">\(y' = f(y/x)\) — todos los términos mismo grado en \(x,y\)</td>
+        <td style="padding:7px 10px;border:1px solid rgba(52,152,219,0.15);color:#cbd5e1">Sustitución \(v=y/x\) → separable en \(v,x\) → deshacer cambio</td>
+        <td style="padding:7px 10px;border:1px solid rgba(52,152,219,0.15);color:#94a3b8">Relación entre \(x\) e \(y\)</td>
+      </tr>
+      <tr style="background:rgba(255,255,255,0.03)">
+        <td style="padding:7px 10px;border:1px solid rgba(52,152,219,0.15);color:#e2e8f0"><strong style="color:#34d399">Exacta</strong></td>
+        <td style="padding:7px 10px;border:1px solid rgba(52,152,219,0.15);color:#cbd5e1">\(M\,dx+N\,dy=0\) con \(M_y = N_x\)</td>
+        <td style="padding:7px 10px;border:1px solid rgba(52,152,219,0.15);color:#cbd5e1">Hallar \(f\) tal que \(f_x=M,\;f_y=N\) → solución: \(f(x,y)=C\)</td>
+        <td style="padding:7px 10px;border:1px solid rgba(52,152,219,0.15);color:#94a3b8">Curva implícita \(f=C\)</td>
+      </tr>
+      <tr style="background:rgba(52,152,219,0.06)">
+        <td style="padding:7px 10px;border:1px solid rgba(52,152,219,0.15);color:#e2e8f0"><strong style="color:#fbbf24">Lineal 2do orden homogénea</strong></td>
+        <td style="padding:7px 10px;border:1px solid rgba(52,152,219,0.15);color:#cbd5e1">\(ay''+by'+cy=0\) con coeficientes constantes</td>
+        <td style="padding:7px 10px;border:1px solid rgba(52,152,219,0.15);color:#cbd5e1">Ec. auxiliar \(ar^2+br+c=0\) → 3 casos (\(\Delta\gtrless 0\))</td>
+        <td style="padding:7px 10px;border:1px solid rgba(52,152,219,0.15);color:#94a3b8">\(y_H\) (2 soluciones LI)</td>
+      </tr>
+      <tr style="background:rgba(255,255,255,0.03)">
+        <td style="padding:7px 10px;border:1px solid rgba(52,152,219,0.15);color:#e2e8f0"><strong style="color:#fbbf24">No homogénea — MCI</strong></td>
+        <td style="padding:7px 10px;border:1px solid rgba(52,152,219,0.15);color:#cbd5e1">\(g(x)\) es polinomio, exponencial, seno/coseno o producto</td>
+        <td style="padding:7px 10px;border:1px solid rgba(52,152,219,0.15);color:#cbd5e1">Proponer \(y_p\) de la misma forma que \(g\) → sustituir → coeficientes (verificar resonancia)</td>
+        <td style="padding:7px 10px;border:1px solid rgba(52,152,219,0.15);color:#94a3b8">\(y_G = y_H + y_p\)</td>
+      </tr>
+      <tr style="background:rgba(52,152,219,0.06)">
+        <td style="padding:7px 10px;border:1px solid rgba(52,152,219,0.15);color:#e2e8f0"><strong style="color:#fbbf24">No homogénea — VP</strong></td>
+        <td style="padding:7px 10px;border:1px solid rgba(52,152,219,0.15);color:#cbd5e1">\(g(x)\) no encaja en MCI (\(\ln x,\tan x,\sec x,1/x\)…)</td>
+        <td style="padding:7px 10px;border:1px solid rgba(52,152,219,0.15);color:#cbd5e1">\(y_p=u_1y_1+u_2y_2\), \(u_1'=-y_2g/W\), \(u_2'=y_1g/W\) → integrar</td>
+        <td style="padding:7px 10px;border:1px solid rgba(52,152,219,0.15);color:#94a3b8">\(y_G = y_H + y_p\)</td>
+      </tr>
+      <tr style="background:rgba(255,255,255,0.03)">
+        <td style="padding:7px 10px;border:1px solid rgba(52,152,219,0.15);color:#e2e8f0"><strong style="color:#f87171">Reducción de orden</strong></td>
+        <td style="padding:7px 10px;border:1px solid rgba(52,152,219,0.15);color:#cbd5e1">Conocés UNA solución \(y_1\), necesitás la segunda</td>
+        <td style="padding:7px 10px;border:1px solid rgba(52,152,219,0.15);color:#cbd5e1">\(y_2 = \mu(x)\,y_1\) → se reduce a EDO de 1er orden para \(\mu\)</td>
+        <td style="padding:7px 10px;border:1px solid rgba(52,152,219,0.15);color:#94a3b8">\(y_2 = y_1\!\int\!\frac{e^{-\int P\,dx}}{y_1^2}\,dx\)</td>
+      </tr>
+    </tbody>
   </table>
 </div>
 
