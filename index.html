@@ -259,7 +259,6 @@ details>*:not(summary){padding:1rem 1.4rem;}
   <a class="nav-link" href="#u5-polar">5.4 Coordenadas polares y Jacobiano</a>
   <a class="nav-link" href="#u5-area">5.5 Área de superficie</a>
   <a class="nav-link" href="#u5-triples">5.6 Integrales triples</a>
-  <a class="nav-link" href="#u5-linea">5.7 Integrales de línea y Green</a>
 </div>
 <div class="nav-unit">
   <a class="nav-unit-header" href="#unidad7">VII. Ecuaciones Diferenciales</a>
@@ -4205,6 +4204,71 @@ details>*:not(summary){padding:1rem 1.4rem;}
   <div class="defbox-label">¿Qué significa realmente? — Integral Doble</div>
   <p>La integral simple \(\int_a^b f(x)\,dx\) calcula el <strong>área bajo una curva</strong>. La integral doble \(\iint_R f(x,y)\,dA\) calcula el <strong>volumen bajo una superficie</strong> sobre la región \(R\) en el plano \(xy\). Si imaginás cortás el sólido en rebanadas infinitamente delgadas y sumás todos los volúmenes de esas rebanadas, eso es la integral doble. El teorema de Fubini convierte esa suma doble en dos integrales simples sucesivas.</p>
 </div>
+
+<div class="defbox">
+  <div class="defbox-label">Interpretación Geométrica — ¿de dónde viene la integral doble?</div>
+  <p>Consideremos una superficie \(z = f(x,y)\) continua sobre una región \(R\) del plano \(xy\). Nuestro objetivo es calcular el <strong>volumen del sólido \(S\)</strong> comprendido entre la superficie y la región plana:</p>
+  <div class="math-block">\[S = \{(x,y,z) \;/\; 0 \leq z \leq f(x,y),\;(x,y)\in R\}\]</div>
+  <p><strong>Paso 1 — Subdividir la región:</strong> dividimos \(R\) en pequeños rectángulos de lados \(\Delta x_i\) y \(\Delta y_i\), y elegimos un punto \((x_i,y_i)\) en cada uno.</p>
+  <p><strong>Paso 2 — Construir prismas:</strong> sobre cada rectángulo levantamos un prisma rectangular de altura \(f(x_i,y_i)\). El volumen de cada prisma es:</p>
+  <div class="math-block">\[\Delta V_i = f(x_i,\,y_i)\cdot\Delta x_i\cdot\Delta y_i\]</div>
+  <p><strong>Paso 3 — Suma de Riemann:</strong> la suma de todos los prismas aproxima el volumen real. Cuanto más pequeños sean los rectángulos, mejor es la aproximación:</p>
+  <div class="math-block">\[V \approx \sum_{i=1}^n f(x_i,y_i)\,\Delta x_i\,\Delta y_i\]</div>
+  <p><strong>Paso 4 — Límite → Integral Doble:</strong> al hacer que \(\Delta x_i \to 0\) y \(\Delta y_i \to 0\) simultáneamente, la suma converge a la integral doble:</p>
+  <div class="math-block">\[V = \iint_R f(x,y)\,dA = \lim_{\substack{\Delta x\to 0\\\Delta y\to 0}}\sum_{i=1}^n f(x_i,y_i)\,\Delta x_i\,\Delta y_i\]</div>
+  <p>Cuando el límite existe decimos que \(f\) es <strong>integrable</strong> sobre \(R\). Haciendo uso de la integral doble el volumen del sólido es:</p>
+  <div class="math-block">\[V = \iint_R f(x,y)\,dA\]</div>
+</div>
+
+<!-- SVG: construcción geométrica prismas -->
+<div style="margin:1.2rem 0">
+<svg viewBox="0 0 580 240" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:580px;display:block;margin:0 auto;background:#faf7f0;border:1px solid #d4c5a0;border-radius:8px;">
+  <defs>
+    <marker id="ax3d" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#666"/></marker>
+  </defs>
+  <text x="290" y="16" font-size="12" fill="#3d2e14" font-weight="bold" font-family="sans-serif" text-anchor="middle">Suma de Riemann → Volumen bajo la superficie z = f(x,y)</text>
+  <!-- Axes -->
+  <line x1="60" y1="195" x2="220" y2="195" stroke="#888" stroke-width="1.3" marker-end="url(#ax3d)"/>
+  <line x1="60" y1="195" x2="20" y2="225" stroke="#888" stroke-width="1.3" marker-end="url(#ax3d)"/>
+  <line x1="60" y1="195" x2="60" y2="40" stroke="#888" stroke-width="1.3" marker-end="url(#ax3d)"/>
+  <text x="224" y="198" font-size="11" fill="#555" font-family="serif" font-style="italic">x</text>
+  <text x="12" y="232" font-size="11" fill="#555" font-family="serif" font-style="italic">y</text>
+  <text x="52" y="36" font-size="11" fill="#555" font-family="serif" font-style="italic">z</text>
+  <!-- Prisma 1 (izq) -->
+  <polygon points="80,180 120,180 120,150 80,150" fill="rgba(74,144,226,0.18)" stroke="#4a90e2" stroke-width="1.2"/>
+  <polygon points="80,150 120,150 130,140 90,140" fill="rgba(74,144,226,0.28)" stroke="#4a90e2" stroke-width="1.2"/>
+  <polygon points="120,180 130,170 130,140 120,150" fill="rgba(74,144,226,0.38)" stroke="#4a90e2" stroke-width="1.2"/>
+  <!-- Prisma 2 -->
+  <polygon points="120,180 160,180 160,130 120,130" fill="rgba(80,200,120,0.18)" stroke="#34a853" stroke-width="1.2"/>
+  <polygon points="120,130 160,130 170,120 130,120" fill="rgba(80,200,120,0.28)" stroke="#34a853" stroke-width="1.2"/>
+  <polygon points="160,180 170,170 170,120 160,130" fill="rgba(80,200,120,0.38)" stroke="#34a853" stroke-width="1.2"/>
+  <!-- Prisma 3 (der) -->
+  <polygon points="160,180 200,180 200,155 160,155" fill="rgba(234,130,50,0.18)" stroke="#e07b39" stroke-width="1.2"/>
+  <polygon points="160,155 200,155 210,145 170,145" fill="rgba(234,130,50,0.28)" stroke="#e07b39" stroke-width="1.2"/>
+  <polygon points="200,180 210,170 210,145 200,155" fill="rgba(234,130,50,0.38)" stroke="#e07b39" stroke-width="1.2"/>
+  <!-- Altura label -->
+  <line x1="125" y1="130" x2="125" y2="180" stroke="#34a853" stroke-width="1.5" stroke-dasharray="3,2"/>
+  <text x="128" y="158" font-size="10" fill="#34a853" font-family="serif" font-style="italic">f(xᵢ,yᵢ)</text>
+  <!-- Base label -->
+  <text x="118" y="193" font-size="9" fill="#1a3a5c" font-family="sans-serif">Δxᵢ·Δyᵢ</text>
+  <!-- Curva superficie aproximada -->
+  <path d="M80,150 C100,135 130,118 160,128 C180,135 200,152 220,160" fill="none" stroke="#8b1a1a" stroke-width="2" stroke-dasharray="4,2"/>
+  <text x="222" y="158" font-size="10" fill="#8b1a1a" font-family="serif" font-style="italic">z=f(x,y)</text>
+  <!-- Panel derecho: fórmulas -->
+  <rect x="300" y="28" width="265" height="195" fill="#f0f6f2" rx="7" stroke="#1a4a2e" stroke-width="1"/>
+  <text x="432" y="48" font-size="11" fill="#1a4a2e" font-weight="bold" font-family="sans-serif" text-anchor="middle">Construcción paso a paso</text>
+  <text x="315" y="68" font-size="10" fill="#3d2e14" font-family="sans-serif">① Subdividir R en rectángulos Δxᵢ·Δyᵢ</text>
+  <text x="315" y="86" font-size="10" fill="#3d2e14" font-family="sans-serif">② Elegir punto (xᵢ, yᵢ) en cada uno</text>
+  <text x="315" y="104" font-size="10" fill="#3d2e14" font-family="sans-serif">③ Prisma de altura f(xᵢ,yᵢ):</text>
+  <text x="330" y="120" font-size="10" fill="#1a3a5c" font-family="serif" font-style="italic">   ΔVᵢ = f(xᵢ,yᵢ)·Δxᵢ·Δyᵢ</text>
+  <text x="315" y="138" font-size="10" fill="#3d2e14" font-family="sans-serif">④ Suma de Riemann:</text>
+  <text x="330" y="154" font-size="10" fill="#1a3a5c" font-family="serif" font-style="italic">   V ≈ Σ f(xᵢ,yᵢ)·Δxᵢ·Δyᵢ</text>
+  <line x1="308" y1="162" x2="557" y2="162" stroke="#1a4a2e" stroke-width="0.5" stroke-dasharray="3,3"/>
+  <text x="315" y="178" font-size="10" fill="#3d2e14" font-family="sans-serif">⑤ Δx,Δy → 0 (límite):</text>
+  <text x="330" y="196" font-size="10.5" fill="#8b1a1a" font-family="serif" font-style="italic">   V = ∬R f(x,y) dA</text>
+  <text x="315" y="214" font-size="9" fill="#888" font-family="sans-serif">Más pequeños los rect. → mejor aproximación</text>
+</svg>
+</div>
 <div class="example">
   <div class="example-header">Ejemplo — Integral doble sobre un rectángulo con Fubini</div>
   <div class="example-body">
@@ -4534,6 +4598,22 @@ details>*:not(summary){padding:1rem 1.4rem;}
   <div class="defbox-label">¿Qué significa realmente? — Integral Triple</div>
   <p>La integral doble \(\iint_R f(x,y)\,dA\) suma valores de \(f\) sobre una región 2D. La integral triple \(\iiint_D f(x,y,z)\,dV\) hace lo mismo pero en 3D — suma los valores de \(f\) sobre un sólido 3D. Si \(f(x,y,z)=1\), el resultado es el <strong>volumen</strong> del sólido. Si \(f\) es densidad, el resultado es la <strong>masa total</strong>. En la práctica, se convierte en tres integrales iteradas: primero integrás en \(z\), luego en \(y\), luego en \(x\) (o cualquier orden por Fubini).</p>
 </div>
+
+<div class="defbox">
+  <div class="defbox-label">Interpretación Geométrica — ¿de dónde viene la integral triple?</div>
+  <p>La idea es la misma que la integral doble, pero ahora la región es un <strong>sólido 3D \(D\)</strong> y dividimos en pequeños <strong>paralelepípedos</strong> (cajas) de lados \(\Delta x_i\), \(\Delta y_i\), \(\Delta z_i\):</p>
+  <p><strong>Paso 1 — Subdividir el sólido \(D\)</strong> en \(n\) cajitas de volumen \(\Delta V_k = \Delta x_k\cdot\Delta y_k\cdot\Delta z_k\).</p>
+  <p><strong>Paso 2 — Elegir un punto</strong> \((x_k^*, y_k^*, z_k^*)\) dentro de cada cajita y evaluar \(f\) en ese punto.</p>
+  <p><strong>Paso 3 — Suma de Riemann en 3D:</strong></p>
+  <div class="math-block">\[\iiint_D f(x,y,z)\,dV \approx \sum_{k=1}^n f(x_k^*,\,y_k^*,\,z_k^*)\,\Delta x_k\,\Delta y_k\,\Delta z_k\]</div>
+  <p><strong>Paso 4 — Límite:</strong> cuando las cajitas se hacen infinitamente pequeñas (\(\|P\|\to 0\)), la suma converge a la integral triple.</p>
+  <p><strong>Dos lecturas según \(f\):</strong></p>
+  <ul class="props">
+    <li>Si \(f(x,y,z)=1\) → cada cajita aporta su volumen → la integral da el <strong>volumen del sólido \(D\)</strong>.</li>
+    <li>Si \(f(x,y,z)=\delta(x,y,z)\) (densidad) → cada cajita aporta su masa → la integral da la <strong>masa total del sólido</strong>.</li>
+  </ul>
+  <p>En la práctica se aplica el <strong>Teorema de Fubini</strong> y se convierte en tres integrales simples sucesivas, integrando de adentro hacia afuera (primero en \(z\), luego en \(y\), luego en \(x\), aunque el orden puede cambiarse según la región).</p>
+</div>
 <div class="example">
   <div class="example-header">Ejemplo — Volumen del sólido \(0\leq z\leq 1-x-y\), \(0\leq y\leq 1-x\), \(0\leq x\leq 1\)</div>
   <div class="example-body">
@@ -4545,110 +4625,6 @@ details>*:not(summary){padding:1rem 1.4rem;}
 </div>
 </div>
 
-<h3 id="u5-linea">5.7 Integrales de Línea y Teorema de Green</h3>
-<div class="defbox">
-  <div class="defbox-label">¿Qué significa realmente? — Integral de Línea</div>
-  <p>La integral simple suma valores a lo largo de un intervalo del eje \(x\). La integral de línea suma valores a lo largo de una <strong>curva</strong> en el plano o en el espacio. Hay dos tipos: la integral de un <em>campo escalar</em> \(f\) (suma alturas) y la integral de un <em>campo vectorial</em> \(\mathbf{F}\) (calcula el trabajo realizado). La clave es <strong>parametrizar la curva</strong> para convertir todo en una integral simple.</p>
-</div>
-
-<div class="thmbox">
-  <div class="thmbox-label">Integral de Línea — Definición y Fórmulas</div>
-  <p><strong>Diferencial de arco:</strong> si \(C\) está parametrizada por \(\mathbf{r}(t)=(x(t),y(t))\), \(t\in[a,b]\):</p>
-  <div class="math-block">\[ds = |\mathbf{r}'(t)|\,dt = \sqrt{[x'(t)]^2+[y'(t)]^2}\,dt\]</div>
-  <p><strong>Campo escalar</strong> (longitud de arco ponderada):</p>
-  <div class="math-block">\[\int_C f(x,y)\,ds = \int_a^b f(x(t),y(t))\,|\mathbf{r}'(t)|\,dt\]</div>
-  <p><strong>Campo vectorial</strong> (trabajo):</p>
-  <div class="math-block">\[W = \int_C \mathbf{F}\cdot d\mathbf{r} = \int_C M\,dx + N\,dy = \int_a^b \mathbf{F}(\mathbf{r}(t))\cdot\mathbf{r}'(t)\,dt\]</div>
-</div>
-
-<div style="margin:1.5rem 0;">
-<svg viewBox="0 0 560 220" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:560px;display:block;margin:0 auto;background:#faf7f0;border:1px solid #d4c5a0;border-radius:8px;">
-  <defs>
-    <marker id="arr-li" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#1a3a5c"/></marker>
-    <marker id="arr-f" markerWidth="7" markerHeight="7" refX="5" refY="3.5" orient="auto"><path d="M0,0 L7,3.5 L0,7 Z" fill="#8b1a1a"/></marker>
-    <marker id="arr-ax" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#999"/></marker>
-  </defs>
-  <text x="280" y="15" font-size="12" fill="#3d2e14" font-family="sans-serif" font-weight="bold" text-anchor="middle">Integral de Línea — Trabajo a lo largo de C</text>
-  <!-- Axes -->
-  <line x1="30" y1="185" x2="270" y2="185" stroke="#999" stroke-width="1.2" marker-end="url(#arr-ax)"/>
-  <line x1="50" y1="200" x2="50" y2="30" stroke="#999" stroke-width="1.2" marker-end="url(#arr-ax)"/>
-  <text x="273" y="188" font-size="10" fill="#999" font-family="serif" font-style="italic">x</text>
-  <text x="44" y="28" font-size="10" fill="#999" font-family="serif" font-style="italic">y</text>
-  <!-- Curve C: cubic-ish from A to B -->
-  <path d="M70,160 C100,140 140,100 170,80 C200,60 220,55 240,70" fill="none" stroke="#1a3a5c" stroke-width="2.5" marker-end="url(#arr-li)"/>
-  <text x="250" y="68" font-size="10" fill="#1a3a5c" font-family="monospace">C</text>
-  <!-- Point A -->
-  <circle cx="70" cy="160" r="4" fill="#1a4a2e"/>
-  <text x="55" y="175" font-size="10" fill="#1a4a2e" font-family="monospace">A</text>
-  <!-- Point B -->
-  <circle cx="240" cy="70" r="4" fill="#1a4a2e"/>
-  <text x="245" y="68" font-size="10" fill="#1a4a2e" font-family="monospace">B</text>
-  <!-- Force vectors at 3 points -->
-  <line x1="100" y1="140" x2="122" y2="118" stroke="#8b1a1a" stroke-width="2" marker-end="url(#arr-f)"/>
-  <line x1="155" y1="90" x2="175" y2="68" stroke="#8b1a1a" stroke-width="2" marker-end="url(#arr-f)"/>
-  <line x1="205" y1="60" x2="215" y2="38" stroke="#8b1a1a" stroke-width="2" marker-end="url(#arr-f)"/>
-  <text x="125" y="112" font-size="9" fill="#8b1a1a" font-family="serif" font-style="italic">F</text>
-  <!-- dr vector -->
-  <line x1="100" y1="140" x2="118" y2="130" stroke="#b8860b" stroke-width="2" marker-end="url(#arr-f)"/>
-  <text x="119" y="129" font-size="9" fill="#b8860b" font-family="monospace">dr</text>
-  <!-- label for dot product -->
-  <text x="130" y="155" font-size="9" fill="#3d2e14" font-family="sans-serif">F·dr = trabajo en dA</text>
-  <!-- Key formula right panel -->
-  <rect x="295" y="25" width="245" height="185" fill="#f0f6f2" rx="6" stroke="#1a4a2e" stroke-width="1"/>
-  <text x="417" y="45" font-size="11" fill="#1a4a2e" font-family="sans-serif" font-weight="bold" text-anchor="middle">Interpretación del Trabajo</text>
-  <text x="310" y="65" font-size="10" fill="#3d2e14" font-family="sans-serif">• W &gt; 0: F empuja en el sentido de C</text>
-  <text x="310" y="82" font-size="10" fill="#3d2e14" font-family="sans-serif">• W &lt; 0: F frena el movimiento</text>
-  <text x="310" y="99" font-size="10" fill="#3d2e14" font-family="sans-serif">• W = 0: F ⊥ trayectoria (no hace trabajo)</text>
-  <line x1="305" y1="110" x2="530" y2="110" stroke="#1a4a2e" stroke-width="0.5" stroke-dasharray="3,3"/>
-  <text x="310" y="127" font-size="10" fill="#3d2e14" font-family="sans-serif">Si F = ∇f (conservativo):</text>
-  <text x="310" y="144" font-size="10.5" fill="#1a3a5c" font-family="serif" font-style="italic">  W = f(B) − f(A)</text>
-  <text x="310" y="161" font-size="10" fill="#3d2e14" font-family="sans-serif">independiente de la trayectoria.</text>
-  <text x="310" y="178" font-size="10" fill="#3d2e14" font-family="sans-serif">Para curva cerrada: ∮F·dr = 0</text>
-  <text x="310" y="198" font-size="9" fill="#8b1a1a" font-family="sans-serif">(si y solo si F es conservativo en región simplemente conexa)</text>
-</svg>
-</div>
-
-<div class="thmbox">
-  <div class="thmbox-label">Teorema Fundamental de las Integrales de Línea</div>
-  <p>Si \(\mathbf{F}=\nabla f\) (campo conservativo) en una región abierta y conexa, entonces para cualquier curva suave \(C\) con extremos \(A\) y \(B\):</p>
-  <div class="math-block">\[\int_C \mathbf{F}\cdot d\mathbf{r} = f(B)-f(A)\]</div>
-  <p>El trabajo <strong>no depende de la trayectoria</strong>, solo de los extremos. Corolario: \(\oint_C \mathbf{F}\cdot d\mathbf{r}=0\) para toda curva cerrada \(\Leftrightarrow\) \(\mathbf{F}\) es conservativo \(\Leftrightarrow\) \(\partial N/\partial x=\partial M/\partial y\) en una región simplemente conexa.</p>
-</div>
-
-<div class="thmbox">
-  <div class="thmbox-label">Teorema de Green</div>
-  <p>Sea \(C\) el borde positivamente orientado (antihorario) de una región simple \(R\). Sea \(\mathbf{F}=(M,N)\) con \(M,N\) continuas y con derivadas parciales continuas en \(R\):</p>
-  <div class="math-block">\[\oint_C M\,dx+N\,dy = \iint_R\left(\frac{\partial N}{\partial x}-\frac{\partial M}{\partial y}\right)dA\]</div>
-  <p><strong>¿Qué dice?</strong> Convierte una integral de línea sobre el borde (1D) en una integral doble sobre la región (2D). Si \(\partial N/\partial x - \partial M/\partial y = 0\), la integral de línea es cero → campo conservativo. Si la integración sobre el borde es difícil, conviene pasar al interior (y viceversa).</p>
-  <p><strong>Caso especial — Área:</strong> tomando \(M=-y/2\), \(N=x/2\): \(A=\tfrac{1}{2}\oint_C x\,dy-y\,dx\).</p>
-</div>
-
-<div class="example">
-  <div class="example-header">Ejemplo — Integral de línea directa: \(\int_C (x^2+y)\,dx + (y-x)\,dy\) sobre \(C\): \(y=x^2\), \(x\in[0,1]\)</div>
-  <div class="example-body">
-    <p>Parametrizamos: \(x=t\), \(y=t^2\), \(t\in[0,1]\). Entonces \(dx=dt\), \(dy=2t\,dt\).</p>
-    <div class="math-block">\[\int_0^1\left[(t^2+t^2)\,1+(t^2-t)\,2t\right]dt = \int_0^1\left[2t^2+2t^3-2t^2\right]dt = \int_0^1 2t^3\,dt = \frac{1}{2}\]</div>
-  </div>
-</div>
-
-<div class="example">
-  <div class="example-header">Ejemplo — Usar Green: \(\oint_C (xy)\,dx+(x^2)\,dy\) sobre el triángulo \((0,0)\to(1,0)\to(1,1)\to(0,0)\)</div>
-  <div class="example-body">
-    <p>Calculamos el rotacional: \(\partial N/\partial x - \partial M/\partial y = 2x - x = x\). La región es el triángulo con \(0\leq x\leq 1\), \(0\leq y\leq x\).</p>
-    <div class="math-block">\[\iint_R x\,dA = \int_0^1\int_0^x x\,dy\,dx = \int_0^1 x^2\,dx = \frac{1}{3}\]</div>
-    <p>Mucho más rápido que calcular los 3 segmentos de la integral de línea directamente.</p>
-  </div>
-</div>
-
-<div class="tipbox">
-  <div class="tipbox-label">💡 Tip de examen — Integrales de Línea</div>
-  <ul class="props" style="color:#fdebd0">
-    <li>Siempre <strong>parametrizá primero</strong>. Elegí el parámetro más natural (ángulo para arcos, la coordenada que varía monótonamente).</li>
-    <li>Para verificar si el campo es conservativo: revisá \(\partial N/\partial x = \partial M/\partial y\). Si sí → usá el Teorema Fundamental, es más rápido.</li>
-    <li>Green se usa cuando el borde está formado por varios segmentos — evitá sumar 3 o más integrales de línea.</li>
-    <li>\(\partial N/\partial x - \partial M/\partial y\) es el <strong>rotacional escalar</strong> (componente \(z\) del rotor). Si es 0, campo conservativo.</li>
-  </ul>
-</div>
 
 <!-- ═══════════════════════════════════════════════════ UNIDAD VII ═══ -->
 <div id="unidad7" class="chapter-cover" data-num="VII">
