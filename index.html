@@ -965,6 +965,113 @@ details>*:not(summary){padding:1rem 1.4rem;}
 <!-- ══════════════════════════════════════════════════════ -->
 <p style="color:var(--ink2);font-size:14px;margin-bottom:1rem">Ecuación general del MAS: \(m\ddot{x}+c\dot{x}+kx=f(t)\). Recordar: \(k=mg/s\) (peso/elongación estática); en libras-pie usar \(m=W/32\) slugs; en SI, \(m\) en kg directamente.</p>
 
+<!-- DCL Masa-Resorte -->
+<div style="display:flex;gap:1.5rem;flex-wrap:wrap;margin-bottom:1.8rem;align-items:flex-start">
+
+  <!-- Diagrama SVG -->
+  <div style="flex:0 0 auto;background:var(--paper);border:1px solid var(--rule);border-radius:10px;padding:1.2rem 1.4rem;display:flex;flex-direction:column;align-items:center;gap:0.5rem">
+    <div style="font-family:var(--mono);font-size:10px;letter-spacing:3px;text-transform:uppercase;color:var(--ink2);margin-bottom:0.3rem">Diagrama de Cuerpo Libre</div>
+    <svg width="200" height="310" viewBox="0 0 200 310" xmlns="http://www.w3.org/2000/svg" aria-label="Diagrama de cuerpo libre sistema masa-resorte">
+      <!-- Techo fijo -->
+      <rect x="30" y="8" width="140" height="10" fill="#4a5568" rx="2"/>
+      <line x1="30" y1="18" x2="170" y2="18" stroke="#4a5568" stroke-width="1"/>
+      <line x1="30" y1="8" x2="20" y2="20" stroke="#4a5568" stroke-width="1.5"/>
+      <line x1="50" y1="8" x2="40" y2="20" stroke="#4a5568" stroke-width="1.5"/>
+      <line x1="70" y1="8" x2="60" y2="20" stroke="#4a5568" stroke-width="1.5"/>
+      <line x1="90" y1="8" x2="80" y2="20" stroke="#4a5568" stroke-width="1.5"/>
+      <line x1="110" y1="8" x2="100" y2="20" stroke="#4a5568" stroke-width="1.5"/>
+      <line x1="130" y1="8" x2="120" y2="20" stroke="#4a5568" stroke-width="1.5"/>
+      <line x1="150" y1="8" x2="140" y2="20" stroke="#4a5568" stroke-width="1.5"/>
+      <line x1="170" y1="8" x2="160" y2="20" stroke="#4a5568" stroke-width="1.5"/>
+
+      <!-- Resorte (zigzag) -->
+      <polyline points="100,18 100,38 88,48 112,58 88,68 112,78 88,88 112,98 88,108 112,118 100,128 100,138"
+        fill="none" stroke="#2b6cb0" stroke-width="2.5" stroke-linejoin="round"/>
+      <!-- Etiqueta k -->
+      <text x="120" y="82" font-size="13" fill="#2b6cb0" font-family="serif" font-style="italic" font-weight="700">k</text>
+
+      <!-- Línea de unión resorte-masa -->
+      <line x1="100" y1="138" x2="100" y2="150" stroke="#4a5568" stroke-width="1.5" stroke-dasharray="3,2"/>
+
+      <!-- Masa -->
+      <rect x="58" y="150" width="84" height="52" rx="6" fill="#276749" stroke="#1a4a2e" stroke-width="2"/>
+      <text x="100" y="182" font-size="15" fill="#fff" font-family="serif" font-style="italic" font-weight="700" text-anchor="middle">m</text>
+
+      <!-- Línea de equilibrio -->
+      <line x1="22" y1="176" x2="178" y2="176" stroke="#e67e22" stroke-width="1" stroke-dasharray="5,3"/>
+      <text x="16" y="180" font-size="9" fill="#e67e22" text-anchor="middle">eq.</text>
+
+      <!-- Eje x positivo hacia abajo -->
+      <line x1="178" y1="150" x2="178" y2="215" stroke="#718096" stroke-width="1.5" marker-end="url(#arrowGray)"/>
+      <text x="188" y="215" font-size="11" fill="#718096" font-family="serif" font-style="italic" text-anchor="middle">x</text>
+      <text x="188" y="156" font-size="9" fill="#718096" text-anchor="middle">0</text>
+
+      <!-- Flecha Peso W=mg hacia abajo -->
+      <line x1="100" y1="202" x2="100" y2="252" stroke="#c0392b" stroke-width="2.5" marker-end="url(#arrowRed)"/>
+      <text x="114" y="242" font-size="12" fill="#c0392b" font-family="serif" font-style="italic" font-weight="700">W</text>
+      <text x="114" y="254" font-size="10" fill="#c0392b">=mg</text>
+
+      <!-- Flecha Fuerza resorte F_k hacia arriba -->
+      <line x1="84" y1="150" x2="84" y2="100" stroke="#2b6cb0" stroke-width="2.5" marker-end="url(#arrowBlue)"/>
+      <text x="54" y="118" font-size="12" fill="#2b6cb0" font-family="serif" font-style="italic" font-weight="700">F<tspan dy="3" font-size="9">k</tspan></text>
+      <text x="44" y="130" font-size="10" fill="#2b6cb0">= kx</text>
+
+      <!-- Flecha amortiguamiento F_c (opcional, hacia arriba, más pequeña) -->
+      <line x1="116" y1="150" x2="116" y2="116" stroke="#805ad5" stroke-width="2" marker-end="url(#arrowPurp)" stroke-dasharray="4,2"/>
+      <text x="122" y="130" font-size="12" fill="#805ad5" font-family="serif" font-style="italic" font-weight="700">F<tspan dy="3" font-size="9">c</tspan></text>
+      <text x="122" y="142" font-size="10" fill="#805ad5">= cx'</text>
+
+      <!-- Marcadores de flechas -->
+      <defs>
+        <marker id="arrowRed" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+          <path d="M0,0 L0,8 L8,4 z" fill="#c0392b"/>
+        </marker>
+        <marker id="arrowBlue" markerWidth="8" markerHeight="8" refX="4" refY="4" orient="auto">
+          <path d="M0,0 L0,8 L8,4 z" fill="#2b6cb0"/>
+        </marker>
+        <marker id="arrowPurp" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto">
+          <path d="M0,0 L0,7 L7,3.5 z" fill="#805ad5"/>
+        </marker>
+        <marker id="arrowGray" markerWidth="7" markerHeight="7" refX="3.5" refY="3.5" orient="auto">
+          <path d="M0,0 L0,7 L7,3.5 z" fill="#718096"/>
+        </marker>
+      </defs>
+    </svg>
+  </div>
+
+  <!-- Leyenda y Segunda Ley -->
+  <div style="flex:1 1 220px;display:flex;flex-direction:column;gap:0.8rem">
+    <div style="background:#f0f6f2;border:1.5px solid #a7d9d7;border-radius:8px;padding:0.9rem 1.1rem">
+      <div style="font-weight:700;font-size:13px;color:var(--green);margin-bottom:0.5rem">Fuerzas sobre la masa</div>
+      <div style="display:flex;flex-direction:column;gap:0.35rem;font-size:13px">
+        <div><span style="color:#c0392b;font-weight:700">W = mg</span> — peso (↓ positivo)</div>
+        <div><span style="color:#2b6cb0;font-weight:700">F<sub>k</sub> = kx</span> — fuerza del resorte (↑)</div>
+        <div><span style="color:#805ad5;font-weight:700">F<sub>c</sub> = cx'</span> — amortiguamiento (↑)</div>
+        <div><span style="color:#b7791f;font-weight:700">f(t)</span> — fuerza externa (si hay)</div>
+      </div>
+    </div>
+
+    <div style="background:#fdf9ee;border:1.5px solid #f6e05e;border-radius:8px;padding:0.9rem 1.1rem">
+      <div style="font-weight:700;font-size:13px;color:#b7791f;margin-bottom:0.4rem">2ª Ley de Newton → EDO</div>
+      <div style="font-size:12.5px;color:var(--ink2);line-height:1.6">
+        Tomando <em>x</em> positivo hacia abajo desde el equilibrio:<br>
+        \(\sum F = ma \Rightarrow mx'' = -kx - cx' + f(t)\)<br>
+        <span style="color:var(--green);font-weight:600">→ \(mx'' + cx' + kx = f(t)\)</span>
+      </div>
+    </div>
+
+    <div style="background:#fff5f5;border:1.5px solid #fc8181;border-radius:8px;padding:0.9rem 1.1rem">
+      <div style="font-weight:700;font-size:13px;color:#c0392b;margin-bottom:0.4rem">Truco clave: elongación estática</div>
+      <div style="font-size:12.5px;color:var(--ink2);line-height:1.6">
+        El peso y la deformación estática del resorte se cancelan:<br>
+        \(mg = ks \;\Rightarrow\; k = \dfrac{mg}{s}\)<br>
+        La EDO se escribe solo en términos del <em>desplazamiento desde el equilibrio</em>.
+      </div>
+    </div>
+  </div>
+
+</div>
+
 <div style="border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin-bottom:1.8rem;background:var(--paper)">
 
   <!-- HEADER -->
