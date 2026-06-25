@@ -4778,79 +4778,172 @@ details>*:not(summary){padding:1rem 1.4rem;}
 
 <!-- SVG integral triple -->
 <div style="margin:1.2rem 0">
-<svg viewBox="0 0 620 260" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:620px;display:block;margin:0 auto;background:#faf7f0;border:1px solid #d4c5a0;border-radius:8px;">
+<svg viewBox="0 0 700 340" xmlns="http://www.w3.org/2000/svg" style="width:100%;max-width:700px;display:block;margin:0 auto;background:#0d1117;border:1px solid #30363d;border-radius:10px;">
   <defs>
-    <marker id="axT" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto"><path d="M0,0 L6,3 L0,6 Z" fill="#666"/></marker>
+    <marker id="axT3" markerWidth="7" markerHeight="7" refX="6" refY="3.5" orient="auto">
+      <path d="M0,0 L7,3.5 L0,7 Z" fill="#8b949e"/>
+    </marker>
+    <marker id="axG" markerWidth="6" markerHeight="6" refX="5" refY="3" orient="auto">
+      <path d="M0,0 L6,3 L0,6 Z" fill="#10b981"/>
+    </marker>
+    <!-- gradiente cajita resaltada -->
+    <linearGradient id="boxFront" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#34d399" stop-opacity="0.55"/>
+      <stop offset="100%" stop-color="#059669" stop-opacity="0.35"/>
+    </linearGradient>
+    <linearGradient id="boxTop" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#6ee7b7" stop-opacity="0.65"/>
+      <stop offset="100%" stop-color="#34d399" stop-opacity="0.4"/>
+    </linearGradient>
+    <linearGradient id="boxSide" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#059669" stop-opacity="0.7"/>
+      <stop offset="100%" stop-color="#047857" stop-opacity="0.5"/>
+    </linearGradient>
   </defs>
 
-  <text x="310" y="16" font-size="12" fill="#3d2e14" font-weight="bold" font-family="sans-serif" text-anchor="middle">Integral Triple — Sólido 3D subdividido en cajitas ΔV = Δx·Δy·Δz</text>
+  <!-- ── TÍTULO ── -->
+  <text x="350" y="22" font-size="13" fill="#e6edf3" font-weight="bold" font-family="sans-serif" text-anchor="middle">Integral Triple — Sólido D subdividido en cajitas  ΔV = Δx·Δy·Δz</text>
 
-  <!-- Ejes 3D isométricos -->
-  <line x1="55" y1="210" x2="210" y2="210" stroke="#888" stroke-width="1.3" marker-end="url(#axT)"/>
-  <line x1="55" y1="210" x2="15"  y2="240" stroke="#888" stroke-width="1.3" marker-end="url(#axT)"/>
-  <line x1="55" y1="210" x2="55"  y2="50"  stroke="#888" stroke-width="1.3" marker-end="url(#axT)"/>
-  <text x="214" y="213" font-size="11" fill="#555" font-family="serif" font-style="italic">x</text>
-  <text x="8"   y="248" font-size="11" fill="#555" font-family="serif" font-style="italic">y</text>
-  <text x="48"  y="46"  font-size="11" fill="#555" font-family="serif" font-style="italic">z</text>
+  <!-- ══════════════════════════════════════════════
+       PANEL IZQUIERDO — sólido 3D isométrico
+       origen isométrico: (175, 285)
+       eje x → derecha (dx=1.6, dy=0)
+       eje y → diagonal (dx=-0.8, dy=0.5)   (oblicuo clásico)
+       eje z → arriba (dx=0, dy=-1)
+       escala: 1 unidad = 48px
+  ══════════════════════════════════════════════ -->
 
-  <!-- Sólido D -->
-  <polygon points="80,200 180,200 180,100 140,70 80,110" fill="rgba(74,144,226,0.10)" stroke="#4a90e2" stroke-width="1.5" stroke-dasharray="5,3"/>
-  <polygon points="80,110 140,70 170,80 115,120" fill="rgba(74,144,226,0.18)" stroke="#4a90e2" stroke-width="1.2" stroke-dasharray="4,3"/>
-  <polygon points="180,200 180,100 170,80 170,190" fill="rgba(74,144,226,0.14)" stroke="#4a90e2" stroke-width="1.2" stroke-dasharray="4,3"/>
-  <text x="120" y="165" font-size="13" fill="#1a3a5c" font-family="serif" font-style="italic" font-weight="bold">D</text>
+  <!-- helper: origin=(175,285), scale=48
+       iso(i,j,k) = (175 + 1.6*48*i - 0.8*48*j , 285 - 0.5*48*j - 48*k)
+                  = (175 + 76.8i - 38.4j , 285 - 24j - 48k)
+    Esquinas del cuboide 3×2×2:
+      (0,0,0)→(175,285)   (3,0,0)→(405,285)   (0,2,0)→(98,237)   (3,2,0)→(328,237)
+      (0,0,2)→(175,189)   (3,0,2)→(405,189)   (0,2,2)→(98,141)   (3,2,2)→(328,141)
+  -->
 
-  <!-- Cajita ΔV resaltada -->
-  <polygon points="110,175 140,175 140,148 110,148" fill="rgba(52,211,153,0.35)" stroke="#10b981" stroke-width="1.8"/>
-  <polygon points="110,148 140,148 152,138 122,138" fill="rgba(52,211,153,0.45)" stroke="#10b981" stroke-width="1.8"/>
-  <polygon points="140,175 152,165 152,138 140,148" fill="rgba(52,211,153,0.55)" stroke="#10b981" stroke-width="1.8"/>
+  <!-- cara inferior (z=0): (0,0,0)(3,0,0)(3,2,0)(0,2,0) -->
+  <polygon points="175,285 405,285 328,237 98,237" fill="rgba(30,58,138,0.18)" stroke="#3b82f6" stroke-width="1.2" stroke-dasharray="5,3"/>
+  <!-- cara trasera y=2: (0,2,0)(3,2,0)(3,2,2)(0,2,2) -->
+  <polygon points="98,237 328,237 328,141 98,141" fill="rgba(30,58,138,0.10)" stroke="#3b82f6" stroke-width="1" stroke-dasharray="4,3"/>
+  <!-- cara lateral x=0: (0,0,0)(0,2,0)(0,2,2)(0,0,2) -->
+  <polygon points="175,285 98,237 98,141 175,189" fill="rgba(30,58,138,0.12)" stroke="#3b82f6" stroke-width="1" stroke-dasharray="4,3"/>
+  <!-- cara superior z=2: (0,0,2)(3,0,2)(3,2,2)(0,2,2) -->
+  <polygon points="175,189 405,189 328,141 98,141" fill="rgba(59,130,246,0.20)" stroke="#60a5fa" stroke-width="1.4"/>
+  <!-- cara frontal y=0: (0,0,0)(3,0,0)(3,0,2)(0,0,2) -->
+  <polygon points="175,285 405,285 405,189 175,189" fill="rgba(30,58,138,0.22)" stroke="#60a5fa" stroke-width="1.4"/>
+  <!-- cara lateral x=3: (3,0,0)(3,2,0)(3,2,2)(3,0,2) -->
+  <polygon points="405,285 328,237 328,141 405,189" fill="rgba(37,99,235,0.28)" stroke="#60a5fa" stroke-width="1.4"/>
 
-  <!-- Punto muestra -->
-  <circle cx="131" cy="157" r="3.5" fill="#e07b39"/>
-  <text x="136" y="154" font-size="9" fill="#e07b39" font-family="serif" font-style="italic">(x*,y*,z*)</text>
+  <!-- label D -->
+  <text x="270" y="225" font-size="20" fill="#93c5fd" font-family="serif" font-style="italic" font-weight="bold">D</text>
 
-  <!-- Flechas dimensiones -->
-  <line x1="110" y1="182" x2="140" y2="182" stroke="#10b981" stroke-width="1.5" marker-end="url(#axT)"/>
-  <text x="118" y="194" font-size="9" fill="#10b981" font-family="monospace">Δx</text>
-  <line x1="140" y1="182" x2="152" y2="172" stroke="#10b981" stroke-width="1.5" marker-end="url(#axT)"/>
-  <text x="148" y="182" font-size="9" fill="#10b981" font-family="monospace">Δy</text>
-  <line x1="144" y1="175" x2="144" y2="148" stroke="#10b981" stroke-width="1.5" marker-end="url(#axT)"/>
-  <text x="147" y="163" font-size="9" fill="#10b981" font-family="monospace">Δz</text>
+  <!-- ── GRILLA interior — líneas iso sobre cara frontal y=0 ── -->
+  <!-- verticals x=1,2 on y=0 face -->
+  <line x1="252" y1="285" x2="252" y2="189" stroke="#1d4ed8" stroke-width="0.7" stroke-dasharray="3,3" opacity="0.7"/>
+  <line x1="329" y1="285" x2="329" y2="189" stroke="#1d4ed8" stroke-width="0.7" stroke-dasharray="3,3" opacity="0.7"/>
+  <!-- horizontals z=1 on y=0 face -->
+  <line x1="175" y1="237" x2="405" y2="237" stroke="#1d4ed8" stroke-width="0.7" stroke-dasharray="3,3" opacity="0.7"/>
+  <!-- grilla sobre cara superior z=2 -->
+  <!-- x=1,2 lines on top -->
+  <line x1="252" y1="189" x2="175" y2="141" stroke="#1d4ed8" stroke-width="0.7" stroke-dasharray="3,3" opacity="0.6"/>
+  <line x1="329" y1="189" x2="252" y2="141" stroke="#1d4ed8" stroke-width="0.7" stroke-dasharray="3,3" opacity="0.6"/>
+  <!-- y=1 line on top -->
+  <line x1="252" y1="165" x2="482" y2="165" stroke="#1d4ed8" stroke-width="0.7" stroke-dasharray="3,3" opacity="0.6"/>
+  <!-- grilla sobre cara lateral x=3 -->
+  <line x1="405" y1="237" x2="328" y2="189" stroke="#1d4ed8" stroke-width="0.7" stroke-dasharray="3,3" opacity="0.5"/>
 
-  <!-- Cajitas adicionales de fondo -->
-  <polygon points="80,175 110,175 110,148 80,148" fill="rgba(74,144,226,0.07)" stroke="#4a90e2" stroke-width="0.8" stroke-dasharray="2,2"/>
-  <polygon points="80,148 110,148 122,138 92,138" fill="rgba(74,144,226,0.07)" stroke="#4a90e2" stroke-width="0.8" stroke-dasharray="2,2"/>
-  <polygon points="110,200 140,200 140,175 110,175" fill="rgba(74,144,226,0.05)" stroke="#4a90e2" stroke-width="0.8" stroke-dasharray="2,2"/>
-  <polygon points="140,200 152,190 152,165 140,175" fill="rgba(74,144,226,0.05)" stroke="#4a90e2" stroke-width="0.8" stroke-dasharray="2,2"/>
+  <!-- ══ CAJITA RESALTADA — celda (1,0,0)→(2,1,1) ══
+       iso: (1,0,0)=(252,285) (2,0,0)=(329,285) (1,1,0)=(214,261) (2,1,0)=(290,261)
+            (1,0,1)=(252,237) (2,0,1)=(329,237) (1,1,1)=(214,213) (2,1,1)=(290,213)
+  -->
+  <!-- cara frontal y=0: (1,0,0)(2,0,0)(2,0,1)(1,0,1) -->
+  <polygon points="252,285 329,285 329,237 252,237" fill="url(#boxFront)" stroke="#34d399" stroke-width="2"/>
+  <!-- cara superior z=1: (1,0,1)(2,0,1)(2,1,1)(1,1,1) -->
+  <polygon points="252,237 329,237 290,213 214,213" fill="url(#boxTop)" stroke="#34d399" stroke-width="2"/>
+  <!-- cara lateral x=2: (2,0,0)(2,1,0)(2,1,1)(2,0,1) -->
+  <polygon points="329,285 290,261 290,213 329,237" fill="url(#boxSide)" stroke="#34d399" stroke-width="2"/>
 
-  <!-- Panel derecho -->
-  <rect x="238" y="28" width="368" height="218" fill="#f0f6f2" rx="7" stroke="#1a4a2e" stroke-width="1"/>
-  <text x="422" y="48" font-size="11" fill="#1a4a2e" font-weight="bold" font-family="sans-serif" text-anchor="middle">Construcción de la Integral Triple</text>
+  <!-- Punto muestra en centro de la cajita: iso(1.5, 0.5, 0.5)=(290,258) -->
+  <circle cx="290" cy="258" r="4.5" fill="#f97316" stroke="#fff" stroke-width="1.2"/>
+  <text x="298" y="253" font-size="9.5" fill="#fb923c" font-family="serif" font-style="italic">(x*,y*,z*)</text>
 
-  <rect x="248" y="56" width="22" height="22" rx="3" fill="#1a4a2e"/>
-  <text x="259" y="71" font-size="11" fill="#fff" font-family="sans-serif" text-anchor="middle" font-weight="bold">①</text>
-  <text x="278" y="66" font-size="10" fill="#3d2e14" font-family="sans-serif">Dividir el sólido D en cajitas:</text>
-  <text x="278" y="78" font-size="10" fill="#1a3a5c" font-family="serif" font-style="italic">   ΔVk = Δxk · Δyk · Δzk</text>
+  <!-- Cotas Δx, Δy, Δz con flechas -->
+  <!-- Δx: abajo de la cara frontal, de x=1 a x=2 en z=0 -->
+  <line x1="252" y1="295" x2="329" y2="295" stroke="#34d399" stroke-width="1.5" marker-end="url(#axG)"/>
+  <line x1="252" y1="287" x2="252" y2="297" stroke="#34d399" stroke-width="1"/>
+  <line x1="329" y1="287" x2="329" y2="297" stroke="#34d399" stroke-width="1"/>
+  <text x="284" y="308" font-size="10.5" fill="#34d399" font-family="monospace" text-anchor="middle">Δx</text>
 
-  <rect x="248" y="86" width="22" height="22" rx="3" fill="#1a4a2e"/>
-  <text x="259" y="101" font-size="11" fill="#fff" font-family="sans-serif" text-anchor="middle" font-weight="bold">②</text>
-  <text x="278" y="96" font-size="10" fill="#3d2e14" font-family="sans-serif">Elegir un punto en cada cajita:</text>
-  <text x="278" y="108" font-size="10" fill="#1a3a5c" font-family="serif" font-style="italic">   (xk*, yk*, zk*) → evaluar f ahí</text>
+  <!-- Δz: lado derecho de cara frontal, de z=0 a z=1 -->
+  <line x1="340" y1="285" x2="340" y2="237" stroke="#34d399" stroke-width="1.5" marker-end="url(#axG)"/>
+  <line x1="331" y1="285" x2="341" y2="285" stroke="#34d399" stroke-width="1"/>
+  <line x1="331" y1="237" x2="341" y2="237" stroke="#34d399" stroke-width="1"/>
+  <text x="352" y="264" font-size="10.5" fill="#34d399" font-family="monospace">Δz</text>
 
-  <rect x="248" y="116" width="22" height="22" rx="3" fill="#1a4a2e"/>
-  <text x="259" y="131" font-size="11" fill="#fff" font-family="sans-serif" text-anchor="middle" font-weight="bold">③</text>
-  <text x="278" y="126" font-size="10" fill="#3d2e14" font-family="sans-serif">Suma de Riemann 3D:</text>
-  <text x="278" y="138" font-size="10" fill="#1a3a5c" font-family="serif" font-style="italic">   V ≈ Σ f(xk*, yk*, zk*) · ΔVk</text>
+  <!-- Δy: sobre cara superior, de (2,0,1) a (2,1,1) -->
+  <line x1="338" y1="232" x2="300" y2="208" stroke="#34d399" stroke-width="1.5" marker-end="url(#axG)"/>
+  <text x="326" y="217" font-size="10.5" fill="#34d399" font-family="monospace">Δy</text>
 
-  <rect x="248" y="146" width="22" height="22" rx="3" fill="#1a4a2e"/>
-  <text x="259" y="161" font-size="11" fill="#fff" font-family="sans-serif" text-anchor="middle" font-weight="bold">④</text>
-  <text x="278" y="156" font-size="10" fill="#3d2e14" font-family="sans-serif">‖P‖ → 0 (cajitas infinitesimales):</text>
-  <text x="278" y="168" font-size="10.5" fill="#8b1a1a" font-family="serif" font-style="italic">   ∭D f(x,y,z) dV</text>
+  <!-- Fórmula ΔV -->
+  <rect x="170" y="313" width="245" height="22" rx="5" fill="rgba(16,185,129,0.12)" stroke="#10b981" stroke-width="1"/>
+  <text x="292" y="328" font-size="11" fill="#34d399" font-family="monospace" text-anchor="middle">ΔV = Δx · Δy · Δz</text>
 
-  <line x1="245" y1="178" x2="598" y2="178" stroke="#1a4a2e" stroke-width="0.6" stroke-dasharray="4,3"/>
-  <text x="422" y="193" font-size="10" fill="#1a4a2e" font-weight="bold" font-family="sans-serif" text-anchor="middle">¿Qué mide según f ?</text>
-  <text x="248" y="207" font-size="9.5" fill="#3d2e14" font-family="sans-serif">● f = 1  →  volumen del sólido D</text>
-  <text x="248" y="221" font-size="9.5" fill="#3d2e14" font-family="sans-serif">● f = δ(x,y,z)  →  masa total del sólido</text>
-  <text x="248" y="235" font-size="9.5" fill="#3d2e14" font-family="sans-serif">● Fubini: ∭ = ∫dx ∫dy ∫dz  (cualquier orden)</text>
+  <!-- ── EJES ── -->
+  <line x1="100" y1="285" x2="430" y2="285" stroke="#8b949e" stroke-width="1.4" marker-end="url(#axT3)"/>
+  <line x1="100" y1="285" x2="30"  y2="237" stroke="#8b949e" stroke-width="1.4" marker-end="url(#axT3)"/>
+  <line x1="100" y1="285" x2="100" y2="100" stroke="#8b949e" stroke-width="1.4" marker-end="url(#axT3)"/>
+  <text x="436" y="289" font-size="12" fill="#8b949e" font-family="serif" font-style="italic">x</text>
+  <text x="20"  y="243" font-size="12" fill="#8b949e" font-family="serif" font-style="italic">y</text>
+  <text x="92"  y="95"  font-size="12" fill="#8b949e" font-family="serif" font-style="italic">z</text>
+
+  <!-- ══════════════════════════════════════════════
+       PANEL DERECHO — construcción + qué mide
+  ══════════════════════════════════════════════ -->
+  <rect x="458" y="34" width="232" height="290" fill="#161b22" rx="8" stroke="#30363d" stroke-width="1.2"/>
+  <text x="574" y="54" font-size="11.5" fill="#58a6ff" font-weight="bold" font-family="sans-serif" text-anchor="middle">Construcción</text>
+
+  <!-- paso 1 -->
+  <rect x="468" y="62" width="20" height="20" rx="4" fill="#1d4ed8"/>
+  <text x="478" y="76" font-size="10" fill="#fff" font-family="sans-serif" text-anchor="middle" font-weight="bold">①</text>
+  <text x="496" y="70" font-size="9.5" fill="#c9d1d9" font-family="sans-serif">Subdividir D en cajitas</text>
+  <text x="496" y="82" font-size="9.5" fill="#79c0ff" font-family="monospace">ΔVk = Δxk·Δyk·Δzk</text>
+
+  <!-- paso 2 -->
+  <rect x="468" y="92" width="20" height="20" rx="4" fill="#1d4ed8"/>
+  <text x="478" y="106" font-size="10" fill="#fff" font-family="sans-serif" text-anchor="middle" font-weight="bold">②</text>
+  <text x="496" y="100" font-size="9.5" fill="#c9d1d9" font-family="sans-serif">Elegir punto en cada cajita</text>
+  <text x="496" y="112" font-size="9.5" fill="#79c0ff" font-family="monospace">(xk*, yk*, zk*)</text>
+
+  <!-- paso 3 -->
+  <rect x="468" y="122" width="20" height="20" rx="4" fill="#1d4ed8"/>
+  <text x="478" y="136" font-size="10" fill="#fff" font-family="sans-serif" text-anchor="middle" font-weight="bold">③</text>
+  <text x="496" y="130" font-size="9.5" fill="#c9d1d9" font-family="sans-serif">Suma de Riemann 3D:</text>
+  <text x="496" y="142" font-size="9.5" fill="#79c0ff" font-family="monospace">Σ f(xk*,yk*,zk*)·ΔVk</text>
+
+  <!-- paso 4 -->
+  <rect x="468" y="152" width="20" height="20" rx="4" fill="#7c3aed"/>
+  <text x="478" y="166" font-size="10" fill="#fff" font-family="sans-serif" text-anchor="middle" font-weight="bold">④</text>
+  <text x="496" y="160" font-size="9.5" fill="#c9d1d9" font-family="sans-serif">‖P‖ → 0:</text>
+  <text x="496" y="173" font-size="11" fill="#c084fc" font-family="serif" font-style="italic">∭D f(x,y,z) dV</text>
+
+  <line x1="468" y1="186" x2="682" y2="186" stroke="#30363d" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <text x="574" y="202" font-size="10.5" fill="#58a6ff" font-weight="bold" font-family="sans-serif" text-anchor="middle">¿Qué mide según f ?</text>
+
+  <circle cx="474" cy="216" r="3" fill="#34d399"/>
+  <text x="483" y="220" font-size="9.5" fill="#c9d1d9" font-family="sans-serif">f = 1  →  volumen de D</text>
+
+  <circle cx="474" cy="234" r="3" fill="#f97316"/>
+  <text x="483" y="238" font-size="9.5" fill="#c9d1d9" font-family="sans-serif">f = δ(x,y,z)  →  masa total</text>
+
+  <circle cx="474" cy="252" r="3" fill="#a78bfa"/>
+  <text x="483" y="256" font-size="9.5" fill="#c9d1d9" font-family="sans-serif">f = 1  y D plano  →  área</text>
+
+  <line x1="468" y1="266" x2="682" y2="266" stroke="#30363d" stroke-width="1" stroke-dasharray="4,3"/>
+
+  <text x="574" y="281" font-size="10" fill="#58a6ff" font-weight="bold" font-family="sans-serif" text-anchor="middle">Teorema de Fubini</text>
+  <text x="574" y="296" font-size="10" fill="#79c0ff" font-family="monospace" text-anchor="middle">∭ = ∫dx ∫dy ∫dz</text>
+  <text x="574" y="310" font-size="9" fill="#8b949e" font-family="sans-serif" text-anchor="middle">(cualquier orden si D es simple)</text>
 </svg>
 </div>
 
