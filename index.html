@@ -3725,6 +3725,32 @@ details>*:not(summary){padding:1rem 1.4rem;}
   <p>Potencia para incrementos; orden de derivación para derivadas parciales.</p>
 </div>
 
+<div class="example">
+  <div class="example-header">Ejemplo — Linealización y diferencial en puntos críticos</div>
+  <div class="example-body">
+    <p>Usando la misma \(f(x,y)=x^3-3xy+y^3\) con sus puntos críticos \((0,0)\) y \((1,1)\).</p>
+    <p><strong>¿Qué pasa con \(L(x,y)\) y \(df\) en un punto crítico?</strong></p>
+    <p>En todo punto crítico, por definición, \(f_x=0\) y \(f_y=0\). Entonces:</p>
+    <div class="math-block">\[L(x,y) = f(a,b) + \underbrace{f_x(a,b)}_{=\,0}(x-a) + \underbrace{f_y(a,b)}_{=\,0}(y-b) = f(a,b)\]</div>
+    <div class="math-block">\[df = \underbrace{f_x(a,b)}_{=\,0}\,dx + \underbrace{f_y(a,b)}_{=\,0}\,dy = 0\]</div>
+
+    <p><strong>En \((0,0)\) — punto de silla:</strong></p>
+    <p>\(f(0,0)=0\). Linealización: \(L(x,y)=0\) (plano horizontal \(z=0\)). Diferencial: \(df=0\).</p>
+
+    <p><strong>En \((1,1)\) — mínimo local:</strong></p>
+    <p>\(f(1,1)=-1\). Linealización: \(L(x,y)=-1\) (plano horizontal \(z=-1\)). Diferencial: \(df=0\).</p>
+
+    <p><strong>Conclusión clave:</strong> en ambos casos \(df=0\) y \(L\) es un plano horizontal. La linealización (aproximación de 1° orden) <em>no puede distinguir</em> entre un mínimo, un máximo y un punto de silla — en todos el plano tangente es horizontal. Por eso <strong>no alcanza con el diferencial</strong>: hay que ir al criterio de 2° orden (Hessiano) para clasificar.</p>
+
+    <table class="vtable" style="margin-top:0.8rem">
+      <tr><th>Punto</th><th>\(L(x,y)\)</th><th>\(df\)</th><th>Tipo (Hessiano)</th></tr>
+      <tr><td>\((0,0)\)</td><td>\(0\) (plano horizontal)</td><td>\(0\)</td><td>Punto de silla (\(H=-9\))</td></tr>
+      <tr><td>\((1,1)\)</td><td>\(-1\) (plano horizontal)</td><td>\(0\)</td><td>Mínimo local (\(H=27\))</td></tr>
+    </table>
+    <p style="margin-top:0.6rem"><em>El diferencial es ciego al tipo de punto crítico. El Hessiano ve lo que el diferencial no puede.</em></p>
+  </div>
+</div>
+
 <h3 id="u3-cadena">3.7 Regla de la Cadena</h3>
 <div class="defbox">
   <div class="defbox-label">¿Qué significa realmente? — Regla de la Cadena</div>
@@ -4107,15 +4133,11 @@ details>*:not(summary){padding:1rem 1.4rem;}
     <p>En todo punto crítico, por definición, \(f_x=0\) y \(f_y=0\). Entonces:</p>
     <div class="math-block">\[L(x,y) = f(a,b) + \underbrace{f_x(a,b)}_{=\,0}(x-a) + \underbrace{f_y(a,b)}_{=\,0}(y-b) = f(a,b)\]</div>
     <div class="math-block">\[df = \underbrace{f_x(a,b)}_{=\,0}\,dx + \underbrace{f_y(a,b)}_{=\,0}\,dy = 0\]</div>
-
     <p><strong>En \((0,0)\) — punto de silla:</strong></p>
     <p>\(f(0,0)=0\). Linealización: \(L(x,y)=0\) (plano horizontal \(z=0\)). Diferencial: \(df=0\).</p>
-
     <p><strong>En \((1,1)\) — mínimo local:</strong></p>
     <p>\(f(1,1)=-1\). Linealización: \(L(x,y)=-1\) (plano horizontal \(z=-1\)). Diferencial: \(df=0\).</p>
-
     <p><strong>Conclusión clave:</strong> en ambos casos \(df=0\) y \(L\) es un plano horizontal. La linealización (aproximación de 1° orden) <em>no puede distinguir</em> entre un mínimo, un máximo y un punto de silla — en todos el plano tangente es horizontal. Por eso <strong>no alcanza con el diferencial</strong>: hay que ir al criterio de 2° orden (Hessiano) para clasificar.</p>
-
     <table class="vtable" style="margin-top:0.8rem">
       <tr><th>Punto</th><th>\(L(x,y)\)</th><th>\(df\)</th><th>Tipo (Hessiano)</th></tr>
       <tr><td>\((0,0)\)</td><td>\(0\) (plano horizontal)</td><td>\(0\)</td><td>Punto de silla (\(H=-9\))</td></tr>
