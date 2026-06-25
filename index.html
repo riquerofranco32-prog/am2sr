@@ -3742,6 +3742,35 @@ details>*:not(summary){padding:1rem 1.4rem;}
   </div>
 </div>
 
+<div class="example">
+  <div class="example-header">Ejemplo aplicado — Cantidad exacta y aproximada en el punto óptimo (Fabricante de helados)</div>
+  <div class="example-body">
+    <p>\(H(a,b)=-9a^2-6b^2+42a+72b\) donde \(a\) = azúcar (quintales), \(b\) = leche (m³).</p>
+    <p><strong>Paso 1 — Punto crítico (producción óptima):</strong></p>
+    <div class="math-block">\[H_a=-18a+42=0\implies a=\tfrac{7}{3}\qquad H_b=-12b+72=0\implies b=6\]</div>
+    <p>Hessiano: \(D=(-18)(-12)-0^2=216>0\) y \(H_{aa}=-18<0\) → <strong>máximo local</strong>. Producción óptima: \(H\!\left(\tfrac{7}{3},6\right)=265\) unidades.</p>
+
+    <p style="margin-top:0.8rem"><strong>Paso 2 — Si \(\Delta a=0{,}05\) y \(\Delta b=0{,}03\), ¿cuánto cambia la producción?</strong></p>
+
+    <p><strong>APROXIMADA — diferencial total \(dH\):</strong></p>
+    <p>Como \(P_0=\!\left(\tfrac{7}{3},6\right)\) es el punto crítico, \(H_a\big|_{P_0}=0\) y \(H_b\big|_{P_0}=0\). Entonces:</p>
+    <div class="math-block">\[dH=H_a\big|_{P_0}\cdot\Delta a+H_b\big|_{P_0}\cdot\Delta b=0\cdot(0{,}05)+0\cdot(0{,}03)=0\]</div>
+    <div class="math-block">\[\boxed{H_{\text{aprox}}=265+0=265\text{ unidades}}\]</div>
+    <p>En el máximo el plano tangente es horizontal → \(dH=0\) siempre que evaluemos en el punto crítico. La linealización no detecta el cambio porque es de 2° orden.</p>
+
+    <p style="margin-top:0.8rem"><strong>EXACTA — sustitución en \(H\):</strong></p>
+    <div class="math-block">\[H\!\left(\tfrac{7}{3}+0{,}05,\;6{,}03\right)=-9(2{,}3833)^2-6(6{,}03)^2+42(2{,}3833)+72(6{,}03)\]</div>
+    <div class="math-block">\[\boxed{H_{\text{exacta}}\approx264{,}97\text{ unidades}}\]</div>
+
+    <table class="vtable" style="margin-top:0.8rem">
+      <tr><th>Cantidad</th><th>Resultado</th><th>Método</th></tr>
+      <tr><td>APROXIMADA \((dH)\)</td><td><strong>265</strong></td><td>\(dH=0\) — derivadas nulas en el punto crítico</td></tr>
+      <tr><td>EXACTA \((\Delta H)\)</td><td><strong>≈ 264,97</strong></td><td>Evaluar \(H\) en los valores nuevos</td></tr>
+      <tr><td>Diferencia</td><td style="color:#f1948a"><strong>−0,03</strong></td><td>Alejarse del óptimo siempre baja la producción</td></tr>
+    </table>
+  </div>
+</div>
+
 <h3 id="u3-cadena">3.7 Regla de la Cadena</h3>
 <div class="defbox">
   <div class="defbox-label">¿Qué significa realmente? — Regla de la Cadena</div>
