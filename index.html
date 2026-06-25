@@ -3594,6 +3594,23 @@ details>*:not(summary){padding:1rem 1.4rem;}
   <p>La ecuación del plano tangente a la gráfica de una función \(f\) de 2 variables en el punto \((a,b,f(a,b))\) es: \(z = f(a,b) + f_x(a,b)(x-a) + f_y(a,b)(y-b)\).</p>
 </div>
 
+<div class="example">
+  <div class="example-header">Ejemplo — Linealización (aproximación cerca de un punto)</div>
+  <div class="example-body">
+    <p>Sea \(f(x,y)=\sqrt{x^2+y^2}\). Linealizar en \(P_0=(3,4)\) y estimar \(f(2{,}9;\;4{,}1)\).</p>
+    <p><strong>Paso 1 — valor en el punto:</strong> \(f(3,4)=\sqrt{9+16}=5\).</p>
+    <p><strong>Paso 2 — derivadas parciales:</strong>
+    \(f_x=\dfrac{x}{\sqrt{x^2+y^2}}\Rightarrow f_x(3,4)=\dfrac{3}{5}\);\quad
+    \(f_y=\dfrac{y}{\sqrt{x^2+y^2}}\Rightarrow f_y(3,4)=\dfrac{4}{5}\).</p>
+    <p><strong>Paso 3 — linealización:</strong></p>
+    <div class="math-block">\[L(x,y)=5+\tfrac{3}{5}(x-3)+\tfrac{4}{5}(y-4)\]</div>
+    <p><strong>Paso 4 — estimar:</strong>
+    \(L(2{,}9;\;4{,}1)=5+\tfrac{3}{5}(-0{,}1)+\tfrac{4}{5}(0{,}1)=5-0{,}06+0{,}08=\mathbf{5{,}02}\).</p>
+    <p>Valor exacto: \(\sqrt{2{,}9^2+4{,}1^2}=\sqrt{8{,}41+16{,}81}=\sqrt{25{,}22}\approx 5{,}022\). Error \(\approx 0{,}002\).</p>
+    <p><strong>Idea clave:</strong> la linealización reemplaza la superficie curva por el plano tangente en \(P_0\). Cuanto más cerca de \(P_0\), mejor es la aproximación.</p>
+  </div>
+</div>
+
 <div class="defbox">
   <div class="defbox-label">Ecuación del plano tangente (superficie de nivel)</div>
   <p>El plano tangente en el punto \(P_0(x_0,y_0,z_0)\) en la superficie de nivel \(f(x,y,z)=c\) de una función derivable \(f\) es el plano que pasa por \(P_0\) normal a \(\nabla f|_{P_0}\):</p>
@@ -3659,6 +3676,31 @@ details>*:not(summary){padding:1rem 1.4rem;}
   <p>Si nos movemos de \((x_0,y_0)\) a un punto cercano \((x_0+dx, y_0+dy)\), el cambio resultante en la aproximación lineal de \(f\) se llama <strong>diferencial total</strong>:</p>
   <div class="math-block">\[df = \frac{\partial f}{\partial x}dx + \frac{\partial f}{\partial y}dy\]</div>
   <p>Interpretación geométrica: cambio de cota que sufre el plano tg. cuando pasó de \(x_0\) a \(x_0+\Delta x\), \(y_0\) a \(y_0+\Delta y\). Diferencial \(dz\): \(dz = f(x_0,y_0)+f_x(x_1,y_1)(x-x_0)+f_y(x_1,y_1)(y-y_0)\) — cambio en la altura del plano tg. <strong>Incremento</strong> \(\Delta z = f(x_0+\Delta x, y_0+\Delta y)-f(x_0,y_0)\) (exacto) — cambio en la altura de la superficie \(z=f(x,y)\) cuando \((x,y)\) pasa de \((a,b)\) a \((a+\Delta x, b+\Delta y)\).</p>
+</div>
+
+<div class="example">
+  <div class="example-header">Ejemplo — DFI Exacto (\(\Delta f\)) vs Aproximado (\(df\))</div>
+  <div class="example-body">
+    <p>Sea \(f(x,y)=x^2 y\). En el punto \(P_0=(2,3)\) con incrementos \(\Delta x=0{,}1\) y \(\Delta y=-0{,}05\).</p>
+
+    <p><strong>DFI Exacto — \(\Delta f\) (calculás el valor real):</strong></p>
+    <div class="math-block">\[\Delta f = f(2{,}1\;;\;2{,}95)-f(2,3) = (2{,}1)^2(2{,}95)-(4)(3) = 4{,}41\cdot 2{,}95 - 12 = 13{,}0095-12 = \mathbf{1{,}0095}\]</div>
+    <p>Esto es el cambio <em>verdadero</em> en la superficie. Requiere evaluar \(f\) en el punto nuevo.</p>
+
+    <p><strong>DFI Aproximado — \(df\) (usás las derivadas en \(P_0\)):</strong></p>
+    <p>\(f_x=2xy \Rightarrow f_x(2,3)=12\);\quad \(f_y=x^2 \Rightarrow f_y(2,3)=4\).</p>
+    <div class="math-block">\[df = f_x\,\Delta x + f_y\,\Delta y = 12\cdot(0{,}1)+4\cdot(-0{,}05)=1{,}2-0{,}2=\mathbf{1{,}0}\]</div>
+    <p>Esto es el cambio en el <em>plano tangente</em>. Sólo usa derivadas en el punto original.</p>
+
+    <p><strong>Comparación:</strong></p>
+    <table class="vtable" style="margin-top:0.5rem">
+      <tr><th></th><th>Valor</th><th>Cómo se obtiene</th></tr>
+      <tr><td>\(\Delta f\) (exacto)</td><td>\(1{,}0095\)</td><td>Evaluar \(f\) en el punto nuevo menos el original</td></tr>
+      <tr><td>\(df\) (aproximado)</td><td>\(1{,}0000\)</td><td>Derivadas en \(P_0\) × incrementos</td></tr>
+      <tr><td>Error</td><td>\(0{,}0095\)</td><td>Pequeño porque \(\Delta x, \Delta y\) son chicos</td></tr>
+    </table>
+    <p style="margin-top:0.8rem"><strong>Regla práctica:</strong> usás \(df\) cuando es difícil evaluar \(f\) en el punto nuevo (raíces, potencias, logs) y los incrementos son pequeños. Cuanto más chico el incremento, menor el error.</p>
+  </div>
 </div>
 
 <h5>Cambio absoluto / relativo / porcentual</h5>
