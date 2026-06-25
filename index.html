@@ -1333,56 +1333,47 @@ details>*:not(summary){padding:1rem 1.4rem;}
         <p><strong>b) Producción máxima:</strong></p>
         <div class="math-block">\[H\!\left(\tfrac{7}{3},6\right)=-9\!\cdot\!\tfrac{49}{9}-6\!\cdot\!36+42\!\cdot\!\tfrac{7}{3}+72\!\cdot\!6=-49-216+98+432=\boxed{265\text{ unidades}}\]</div>
         <p><strong>c) Cantidad exacta y aproximada con \(\Delta a=0{,}05\), \(\Delta b=0{,}03\):</strong></p>
+        <p>Ya tenemos el punto óptimo \(P_0=\!\left(\tfrac{7}{3},6\right)\) con \(H(P_0)=265\). Ahora los insumos cambian a \(a'=\tfrac{7}{3}+0{,}05\) y \(b'=6{,}03\). La pregunta es: ¿cuánto varía la producción?</p>
 
-        <p><strong>Cantidad APROXIMADA — diferencial total (linealización):</strong></p>
-        <p>La aproximación de primer orden usa las derivadas parciales evaluadas en el punto base \(P_0=(\tfrac{7}{3},\,6)\):</p>
-        <div class="math-block">\[dH=\frac{\partial H}{\partial a}\bigg|_{P_0}\!\!\cdot\Delta a+\frac{\partial H}{\partial b}\bigg|_{P_0}\!\!\cdot\Delta b\]</div>
-        <p>En el punto crítico, por definición, ambas derivadas parciales valen cero:</p>
-        <div class="math-block">\[\frac{\partial H}{\partial a}\bigg|_{P_0}=-18\cdot\tfrac{7}{3}+42=0\qquad\frac{\partial H}{\partial b}\bigg|_{P_0}=-12\cdot6+72=0\]</div>
-        <div class="math-block">\[dH=0\cdot(0{,}05)+0\cdot(0{,}03)=0\;\Rightarrow\;\boxed{H_{\text{aprox}}\approx265\text{ unidades}}\]</div>
-        <p>Esto <strong>no es un error</strong>: en un máximo el plano tangente es horizontal. La linealización (diferencial) no detecta ningún cambio porque es una aproximación de 1° orden, y en el máximo la variación es de 2° orden (la superficie es "plana" en primer orden).</p>
+        <p style="margin-top:0.8rem"><strong>Camino 1 — Cantidad APROXIMADA (diferencial total \(dH\)):</strong></p>
+        <p>La fórmula es \(dH = H_a\big|_{P_0}\cdot\Delta a + H_b\big|_{P_0}\cdot\Delta b\). Pero \(P_0\) <em>es el punto crítico</em>, así que por definición:</p>
+        <div class="math-block">\[H_a\big|_{P_0}=-18\cdot\tfrac{7}{3}+42=0\qquad H_b\big|_{P_0}=-12\cdot6+72=0\]</div>
+        <div class="math-block">\[dH=0\cdot(0{,}05)+0\cdot(0{,}03)=0\]</div>
+        <div class="math-block">\[\boxed{H_{\text{aprox}}=H(P_0)+dH=265+0=265\text{ unidades}}\]</div>
+        <p>Esto <strong>no es un error</strong>. En el máximo el plano tangente es horizontal: el diferencial es siempre cero en todo punto crítico. La linealización no detecta el cambio porque la variación real es de 2° orden (la superficie es "plana" en primer orden).</p>
 
-        <p style="margin-top:0.8rem"><strong>Cantidad EXACTA — sustitución directa:</strong></p>
-        <p>Sustituís los valores nuevos \(a'=\tfrac{7}{3}+0{,}05\approx2{,}3833\) y \(b'=6{,}03\) directo en \(H\):</p>
+        <p style="margin-top:0.8rem"><strong>Camino 2 — Cantidad EXACTA (sustitución directa):</strong></p>
+        <p>Evaluás \(H\) en los valores nuevos \(a'=\tfrac{7}{3}+0{,}05\approx2{,}3833\) y \(b'=6{,}03\):</p>
         <div class="math-block">\[H(2{,}3833,\;6{,}03)=-9(2{,}3833)^2-6(6{,}03)^2+42(2{,}3833)+72(6{,}03)\]</div>
-        <p>Calculando término a término:</p>
-        <div class="math-block">\[-9(2{,}3833)^2=-9\times5{,}6801=-51{,}11\]</div>
-        <div class="math-block">\[-6(6{,}03)^2=-6\times36{,}3609=-218{,}17\]</div>
-        <div class="math-block">\[42\times2{,}3833=100{,}10\qquad 72\times6{,}03=434{,}16\]</div>
-        <div class="math-block">\[\boxed{H_{\text{exacta}}=-51{,}11-218{,}17+100{,}10+434{,}16=264{,}98\text{ unidades}}\]</div>
-
-        <p><strong>¿Por qué coincide con usar Taylor de 2° orden?</strong> Como \(H\) es un polinomio cuadrático, su expansión de Taylor de 2° orden es <em>exacta</em> (no hay términos de orden superior). En el punto crítico los términos lineales se anulan y solo quedan los de 2° orden:</p>
-        <div class="math-block">\[\Delta H=\tfrac{1}{2}H_{aa}(\Delta a)^2+H_{ab}\,\Delta a\,\Delta b+\tfrac{1}{2}H_{bb}(\Delta b)^2=\tfrac{-18}{2}(0{,}05)^2+0+\tfrac{-12}{2}(0{,}03)^2\]</div>
-        <div class="math-block">\[=-9(0{,}0025)-6(0{,}0009)=-0{,}0225-0{,}0054=-0{,}0279\]</div>
-        <div class="math-block">\[H_{\text{exacta}}=265-0{,}0279=264{,}9721\approx\boxed{264{,}97\text{ unidades}}\]</div>
-        <p>(la pequeña diferencia respecto a 264,98 es redondeo en los decimales intermedios).</p>
+        <div class="math-block">\[= -9(5{,}6801) - 6(36{,}3609) + 100{,}10 + 434{,}16\]</div>
+        <div class="math-block">\[\boxed{H_{\text{exacta}}=-51{,}12-218{,}17+100{,}10+434{,}16\approx264{,}97\text{ unidades}}\]</div>
 
         <p><strong>Resumen del inciso c):</strong></p>
         <table style="font-size:13px;width:100%;border-collapse:collapse;margin-top:0.4rem">
           <tr style="background:#2d0060;border-bottom:2px solid #9b59b6">
-            <th style="padding:6px 10px;border:1px solid rgba(155,89,182,0.35);text-align:left;color:#c39bd3">Cálculo</th>
+            <th style="padding:6px 10px;border:1px solid rgba(155,89,182,0.35);text-align:left;color:#c39bd3">Cantidad</th>
             <th style="padding:6px 10px;border:1px solid rgba(155,89,182,0.35);color:#c39bd3">Resultado</th>
-            <th style="padding:6px 10px;border:1px solid rgba(155,89,182,0.35);text-align:left;color:#c39bd3">Método</th>
+            <th style="padding:6px 10px;border:1px solid rgba(155,89,182,0.35);text-align:left;color:#c39bd3">Cómo se obtiene</th>
           </tr>
           <tr style="background:rgba(155,89,182,0.08)">
-            <td style="padding:5px 10px;border:1px solid rgba(155,89,182,0.25);color:#e8daef">Punto base \(H(7/3,\,6)\)</td>
+            <td style="padding:5px 10px;border:1px solid rgba(155,89,182,0.25);color:#e8daef">Óptimo base \(H(P_0)\)</td>
             <td style="padding:5px 10px;border:1px solid rgba(155,89,182,0.25);color:#d7bde2;text-align:center;font-weight:600">265</td>
-            <td style="padding:5px 10px;border:1px solid rgba(155,89,182,0.25);color:#e8daef">Sustitución exacta</td>
+            <td style="padding:5px 10px;border:1px solid rgba(155,89,182,0.25);color:#e8daef">Sustitución en el punto crítico</td>
           </tr>
           <tr>
-            <td style="padding:5px 10px;border:1px solid rgba(155,89,182,0.25);color:#e8daef">Aproximada (diferencial)</td>
+            <td style="padding:5px 10px;border:1px solid rgba(155,89,182,0.25);color:#e8daef">APROXIMADA \((dH)\)</td>
             <td style="padding:5px 10px;border:1px solid rgba(155,89,182,0.25);color:#d7bde2;text-align:center;font-weight:600">265</td>
-            <td style="padding:5px 10px;border:1px solid rgba(155,89,182,0.25);color:#e8daef">\(dH=0\) — plano tangente horizontal en el máximo</td>
+            <td style="padding:5px 10px;border:1px solid rgba(155,89,182,0.25);color:#e8daef">\(dH=0\) en todo punto crítico — plano tangente horizontal</td>
           </tr>
           <tr style="background:rgba(155,89,182,0.08)">
-            <td style="padding:5px 10px;border:1px solid rgba(155,89,182,0.25);color:#e8daef">Exacta (sustitución directa)</td>
-            <td style="padding:5px 10px;border:1px solid rgba(155,89,182,0.25);color:#d7bde2;text-align:center;font-weight:600">≈ 264,98</td>
-            <td style="padding:5px 10px;border:1px solid rgba(155,89,182,0.25);color:#e8daef">Lo más limpio para el examen</td>
+            <td style="padding:5px 10px;border:1px solid rgba(155,89,182,0.25);color:#e8daef">EXACTA \((\Delta H)\)</td>
+            <td style="padding:5px 10px;border:1px solid rgba(155,89,182,0.25);color:#d7bde2;text-align:center;font-weight:600">≈ 264,97</td>
+            <td style="padding:5px 10px;border:1px solid rgba(155,89,182,0.25);color:#e8daef">Evaluar \(H\) en los nuevos valores</td>
           </tr>
           <tr>
             <td style="padding:5px 10px;border:1px solid rgba(155,89,182,0.25);color:#e8daef">Diferencia</td>
-            <td style="padding:5px 10px;border:1px solid rgba(155,89,182,0.25);color:#f1948a;text-align:center;font-weight:600">−0,02</td>
-            <td style="padding:5px 10px;border:1px solid rgba(155,89,182,0.25);color:#e8daef">Alejarse del óptimo siempre reduce la producción</td>
+            <td style="padding:5px 10px;border:1px solid rgba(155,89,182,0.25);color:#f1948a;text-align:center;font-weight:600">−0,03</td>
+            <td style="padding:5px 10px;border:1px solid rgba(155,89,182,0.25);color:#e8daef">Alejarse del óptimo siempre baja la producción</td>
           </tr>
         </table>
       </div>
