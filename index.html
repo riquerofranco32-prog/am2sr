@@ -1685,6 +1685,132 @@ details>*:not(summary){padding:1rem 1.4rem;}
   </div>
 </div><!-- /Final 27 Feb -->
 
+<!-- ══ FINAL JUNIO 2026 ═══════════════════════════════════════════════ -->
+<div style="border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin-bottom:2rem">
+  <div style="background:#6b2737;padding:1rem 1.5rem;display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap">
+    <span style="font-family:var(--mono);font-size:10px;letter-spacing:3px;color:rgba(255,255,255,0.4);text-transform:uppercase">Examen Final</span>
+    <span style="font-family:var(--display);font-size:1.2rem;color:#fff;font-weight:700">AM II — Junio 2026</span>
+    <span style="margin-left:auto;font-family:var(--mono);font-size:11px;color:#f5c6cb">4 problemas · 120 min</span>
+  </div>
+  <div style="padding:0.7rem 1.5rem;background:#fdf8f8;border-bottom:1px solid var(--rule)">
+    <p style="font-size:13px;color:var(--ink2);margin:0"><strong>Instrucciones:</strong> El examen consta de <strong>cuatro problemas</strong>, cada uno con subítems que integran teoría y práctica. Para aprobar, resolver correctamente al menos 3 problemas completos, con justificación clara de los procedimientos.</p>
+  </div>
+  <div style="padding:1.2rem 1.5rem">
+
+  <div class="ejercbox">
+    <div class="ejercbox-label">Problema 1 · EDO 2° Orden — MAS Forzado</div>
+    <p>Considere la ecuación diferencial \(my''(t)+cy'(t)+ky(t)=F_0\cos(\omega t)\) con \(m=2\), \(c=4\), \(k=8\), \(F_0=10\), \(\omega=3\), todo en unidades apropiadas.</p>
+    <ul>
+      <li>(a) Identifique el tipo de sistema (subamortiguado, críticamente amortiguado o sobreamortiguado).</li>
+      <li>(b) Resuelva la ecuación homogénea y describa el significado físico de sus soluciones.</li>
+      <li>(c) Obtenga una solución particular de la completa y plantee su solución general.</li>
+      <li>(d) Explique el fenómeno de resonancia.</li>
+      <li>(e) Discuta cómo varía la respuesta si \(c=0\) y \(F_0=0\).</li>
+    </ul>
+    <details style="margin-top:0.8rem">
+      <summary>▸ Resolución completa</summary>
+      <div>
+        <p><strong>EDO simplificada:</strong> \(2y''+4y'+8y=10\cos3t\Rightarrow y''+2y'+4y=5\cos3t\)</p>
+        <p><strong>a) Tipo:</strong> \(\Delta=c^2-4mk=16-64=-48<0\) → <span style="color:var(--teal);font-weight:700">subamortiguado</span>.</p>
+        <p><strong>b) Homogénea:</strong> \(r^2+2r+4=0\Rightarrow r=-1\pm i\sqrt{3}\)</p>
+        <div class="math-block">\[y_H=e^{-t}\!\left(C_1\cos\sqrt{3}\,t+C_2\sin\sqrt{3}\,t\right)\]</div>
+        <p>Físicamente: oscilación con amplitud decayente exponencialmente. El sistema vuelve al equilibrio oscilando con frecuencia \(\sqrt{3}\) rad/s y envolvente \(e^{-t}\).</p>
+        <p><strong>c) Solución particular</strong> \(y_p=A\cos3t+B\sin3t\):</p>
+        <div class="math-block">\[\begin{cases}-5A+6B=5\\-6A-5B=0\end{cases}\implies A=-\frac{25}{61},\;B=\frac{30}{61}\]</div>
+        <div class="math-block">\[y_G=e^{-t}\!\left(C_1\cos\sqrt{3}\,t+C_2\sin\sqrt{3}\,t\right)-\frac{25}{61}\cos3t+\frac{30}{61}\sin3t\]</div>
+        <p><strong>d) Resonancia:</strong> ocurre cuando \(c=0\) y la frecuencia de forzado \(\omega=\omega_0=\sqrt{k/m}\). La solución particular exige multiplicar por \(t\): \(y_p=t(A\cos\omega_0 t+B\sin\omega_0 t)\). El factor \(t\) hace que la amplitud crezca sin límite → destrucción estructural (ej. puente de Tacoma, 1940). Con amortiguamiento, la amplitud es máxima pero finita.</p>
+        <p><strong>e) Con \(c=0\) y \(F_0=0\):</strong> \(2y''+8y=0\Rightarrow\omega_0=2\) rad/s. Solución: \(y=C_1\cos2t+C_2\sin2t\) → <strong>MAS libre no amortiguado</strong>, oscilación perpetua. Si luego \(\omega=\omega_0=2\) → resonancia pura.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="ejercbox">
+    <div class="ejercbox-label">Problema 2 · Integral Doble — Semidisco en Polares</div>
+    <p>Sea la región \(R\) delimitada por \(x^2+y^2\le4\) e \(y\ge0\).</p>
+    <ul>
+      <li>(a) Represente gráficamente la región \(R\).</li>
+      <li>(b) Plantee la integral doble para calcular el área de \(R\) en coordenadas cartesianas.</li>
+      <li>(c) Transforme la integral a coordenadas polares y resuélvala.</li>
+      <li>(d) Explique la ventaja del cambio de coordenadas en este caso.</li>
+    </ul>
+    <details style="margin-top:0.8rem">
+      <summary>▸ Resolución completa</summary>
+      <div>
+        <p><strong>a)</strong> Semidisco de radio 2 centrado en el origen, mitad superior (semiplano \(y\ge0\)).</p>
+        <p><strong>b) Cartesianas:</strong></p>
+        <div class="math-block">\[A=\int_{-2}^{2}\int_{0}^{\sqrt{4-x^2}}dy\,dx\]</div>
+        <p>La cota superior \(\sqrt{4-x^2}\) hace la integral directa más compleja.</p>
+        <p><strong>c) Polares</strong> (\(0\le r\le2\), \(0\le\theta\le\pi\)):</p>
+        <div class="math-block">\[A=\int_0^{\pi}\int_0^{2}r\,dr\,d\theta=\int_0^{\pi}\left[\frac{r^2}{2}\right]_0^2d\theta=\int_0^{\pi}2\,d\theta=\boxed{2\pi\text{ u}^2}\]</div>
+        <p><strong>d) Ventaja:</strong> la condición \(x^2+y^2\le4\) se convierte en \(r\le2\), separando perfectamente las variables. Se evita integrar raíces cuadradas y el cálculo se reduce a un producto de integrales simples.</p>
+      </div>
+    </details>
+  </div>
+
+  <div class="ejercbox">
+    <div class="ejercbox-label">Problema 3 · Extremos Libres y Condicionados — Lagrange</div>
+    <p>Considere la función \(f(x,y)=x^2+y^2-2x-4y\).</p>
+    <ul>
+      <li>(a) Determine los puntos críticos sin restricciones y clasifíquelos.</li>
+      <li>(b) Encuentre (si los hay) los máximos y/o mínimo de \(f(x,y)\) sujeto a la restricción \(x+y=4\) usando multiplicadores de Lagrange.</li>
+      <li>(c) ¿Podría resolver por parametrización? Explique, sin resolver.</li>
+      <li>(d) Explique cómo se relaciona este problema con aplicaciones en economía o ingeniería.</li>
+    </ul>
+    <details style="margin-top:0.8rem">
+      <summary>▸ Resolución completa</summary>
+      <div>
+        <p><strong>a) Extremos libres:</strong></p>
+        <div class="math-block">\[\frac{\partial f}{\partial x}=2x-2=0\implies x=1\qquad\frac{\partial f}{\partial y}=2y-4=0\implies y=2\]</div>
+        <p>Criterio Hessiano: \(D=f_{xx}f_{yy}-f_{xy}^2=(2)(2)-0=4>0\), \(f_{xx}=2>0\) → <strong>mínimo local en \((1,2)\)</strong>, \(f(1,2)=1+4-2-8=-5\).</p>
+        <p><strong>b) Lagrange</strong> con \(g(x,y)=x+y-4=0\):</p>
+        <div class="math-block">\[\nabla f=\lambda\nabla g\implies(2x-2,\;2y-4)=(\lambda,\lambda)\]</div>
+        <div class="math-block">\[2x-2=2y-4\implies x=y-1\quad\wedge\quad x+y=4\implies y=\tfrac{5}{2},\;x=\tfrac{3}{2}\]</div>
+        <div class="math-block">\[f\!\left(\tfrac{3}{2},\tfrac{5}{2}\right)=\tfrac{9}{4}+\tfrac{25}{4}-3-10=-\frac{9}{2}\approx-4{,}5\quad\text{(mínimo condicionado)}\]</div>
+        <p><strong>c) Parametrización:</strong> sustituyendo \(x=4-t\), \(y=t\) se obtiene \(h(t)=f(4-t,t)\), se deriva e iguala a cero. Es equivalente pero menos sistemático y más propenso a errores algebraicos; Lagrange generaliza a cualquier número de variables y restricciones.</p>
+        <p><strong>d) Aplicaciones:</strong></p>
+        <table style="font-size:13px">
+          <tr><th>Contexto</th><th>Función \(f\)</th><th>Restricción \(g=0\)</th></tr>
+          <tr><td><strong>Economía</strong></td><td>Producción \(P(K,L)\)</td><td>Presupuesto \(wL+rK=C\)</td></tr>
+          <tr><td><strong>Ingeniería</strong></td><td>Peso mínimo de estructura</td><td>Resistencia mínima requerida</td></tr>
+          <tr><td><strong>Geometría</strong></td><td>Volumen de caja \(V=xyz\)</td><td>Superficie fija \(S(x,y,z)=S_0\)</td></tr>
+        </table>
+      </div>
+    </details>
+  </div>
+
+  <div class="ejercbox">
+    <div class="ejercbox-label">Problema 4 · Gradiente — Campo Escalar</div>
+    <p>Sea el campo escalar \(\phi(x,y,z)=x^2+y^2+z^2\).</p>
+    <ul>
+      <li>(a) Calcule el gradiente \(\nabla\phi\) y explique su significado.</li>
+      <li>(b) ¿Qué tipo de función es \(\nabla\phi\)?</li>
+      <li>(c) Evalúe el gradiente en el punto \((1,2,2)\) y discuta su interpretación geométrica.</li>
+      <li>(d) Relacione el gradiente con la noción de dirección de máximo crecimiento.</li>
+      <li>(e) Mencione una aplicación física del campo de gradiente.</li>
+    </ul>
+    <details style="margin-top:0.8rem">
+      <summary>▸ Resolución completa</summary>
+      <div>
+        <div class="math-block">\[\nabla\phi=\left(\frac{\partial\phi}{\partial x},\frac{\partial\phi}{\partial y},\frac{\partial\phi}{\partial z}\right)=(2x,\;2y,\;2z)\]</div>
+        <p><strong>a) Significado:</strong> \(\nabla\phi\) indica la dirección y magnitud de mayor crecimiento de \(\phi\) en cada punto del espacio.</p>
+        <p><strong>b) Tipo:</strong> \(\nabla\phi\) es un <strong>campo vectorial</strong> — asigna un vector a cada punto de \(\mathbb{R}^3\).</p>
+        <p><strong>c) En \((1,2,2)\):</strong></p>
+        <div class="math-block">\[\nabla\phi(1,2,2)=(2,\;4,\;4)\qquad|\nabla\phi|=\sqrt{4+16+16}=6\]</div>
+        <p>Interpretación geométrica: el vector \((2,4,4)\) es <strong>perpendicular a la superficie de nivel</strong> \(\phi=9\) (esfera \(x^2+y^2+z^2=9\)) en el punto \((1,2,2)\). La dirección unitaria de máximo crecimiento es \(\hat{u}=\tfrac{1}{6}(2,4,4)=\bigl(\tfrac{1}{3},\tfrac{2}{3},\tfrac{2}{3}\bigr)\).</p>
+        <p><strong>d) Máximo crecimiento:</strong> la derivada direccional \(D_{\hat{u}}\phi=\nabla\phi\cdot\hat{u}=|\nabla\phi|\cos\theta\) es máxima cuando \(\theta=0\) (dirección del gradiente) e igual a \(|\nabla\phi|=6\). Es mínima (descenso más rápido) en la dirección opuesta \(-\nabla\phi\).</p>
+        <p><strong>e) Aplicaciones físicas:</strong></p>
+        <ul style="font-size:13.5px">
+          <li><strong>Temperatura:</strong> si \(\phi\) es temperatura, \(\nabla\phi\) señala hacia donde fluye el calor (Ley de Fourier: \(\mathbf{q}=-k\nabla T\)).</li>
+          <li><strong>Campo eléctrico:</strong> \(\mathbf{E}=-\nabla V\), donde \(V\) es el potencial eléctrico. El campo apunta de mayor a menor potencial.</li>
+          <li><strong>Mecánica de fluidos:</strong> el gradiente de presión determina la fuerza sobre un fluido.</li>
+        </ul>
+      </div>
+    </details>
+  </div>
+
+  </div>
+</div><!-- /Final Junio 2026 -->
+
 <!-- ══ PARCIAL ═══════════════════════════════════════════════════════ -->
 <div style="border:1px solid var(--rule);border-radius:10px;overflow:hidden;margin-bottom:2rem">
   <div style="background:#1a4a2e;padding:1rem 1.5rem;display:flex;align-items:center;gap:1.2rem;flex-wrap:wrap">
