@@ -3666,7 +3666,14 @@ details>*:not(summary){padding:1rem 1.4rem;}
   <div class="defbox-label">Diferencial total</div>
   <p>Si nos movemos de \((x_0,y_0)\) a un punto cercano \((x_0+dx, y_0+dy)\), el cambio resultante en la aproximación lineal de \(f\) se llama <strong>diferencial total</strong>:</p>
   <div class="math-block">\[df = \frac{\partial f}{\partial x}dx + \frac{\partial f}{\partial y}dy\]</div>
-  <p>Interpretación geométrica: cambio de cota que sufre el plano tg. cuando pasó de \(x_0\) a \(x_0+\Delta x\), \(y_0\) a \(y_0+\Delta y\). Diferencial \(dz\): \(dz = f(x_0,y_0)+f_x(x_1,y_1)(x-x_0)+f_y(x_1,y_1)(y-y_0)\) — cambio en la altura del plano tg. <strong>Incremento</strong> \(\Delta z = f(x_0+\Delta x, y_0+\Delta y)-f(x_0,y_0)\) (exacto) — cambio en la altura de la superficie \(z=f(x,y)\) cuando \((x,y)\) pasa de \((a,b)\) a \((a+\Delta x, b+\Delta y)\).</p>
+  <p><strong>Interpretación geométrica:</strong> es el cambio de cota que sufre el <em>plano tangente</em> cuando \((x,y)\) pasa de \((x_0,y_0)\) a \((x_0+\Delta x,\,y_0+\Delta y)\).</p>
+  <p style="margin-top:0.6rem"><strong>Diferencial \(dz\) — cambio APROXIMADO (sobre el plano tangente):</strong></p>
+  <div class="math-block">\[dz = f_x(x_0,y_0)\,\Delta x + f_y(x_0,y_0)\,\Delta y\]</div>
+  <p>Mide cuánto sube o baja el plano tangente. Usa solo las derivadas en el punto base. Es fácil de calcular.</p>
+  <p style="margin-top:0.6rem"><strong>Incremento \(\Delta z\) — cambio EXACTO (sobre la superficie real):</strong></p>
+  <div class="math-block">\[\Delta z = f(x_0+\Delta x,\;y_0+\Delta y) - f(x_0,y_0)\]</div>
+  <p>Mide el cambio real en la altura de la superficie \(z=f(x,y)\). Requiere evaluar \(f\) en el punto nuevo.</p>
+  <p style="margin-top:0.6rem"><strong>Relación:</strong> \(\Delta z \approx dz\) para incrementos pequeños. El error \(\Delta z - dz\) tiende a cero más rápido que la distancia al punto base.</p>
 </div>
 
 <div class="example">
